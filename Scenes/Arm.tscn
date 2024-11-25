@@ -9,9 +9,9 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_t4ufm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(45, 0)
+position = Vector2(50, 0)
 scale = Vector2(0.8, 0.216)
 texture = ExtResource("2_ux30r")
 
-[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
-position = Vector2(51.2, 0)
+[node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
+position = Vector2(13.605, 0)

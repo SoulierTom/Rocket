@@ -91,7 +91,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_kd5hf")
 animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.891457
+frame_progress = 0.7662
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.33333)
