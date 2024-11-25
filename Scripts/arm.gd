@@ -2,50 +2,52 @@ extends Node2D
 
 var is_using_gamepad = false
 
-# Variables pour gérer les cibles
-var last_target_pos: Vector2  # Dernière position cible (joystick ou souris)
-var previous_mouse_pos: Vector2  # Position de la souris au dernier frame
+var target_pos = Vector2.RIGHT
+var last_joystick_vector = Vector2.RIGHT
 
 # Initialisation lors du démarrage de la scène
 func _ready():
 	# Met cet objet en haut de la hiérarchie des rendus (dessiné devant les autres)
 	set_as_top_level(true)
 	# Initialiser les positions
-	last_target_pos = position
-	previous_mouse_pos = get_global_mouse_position()
+	target_pos = position
+	
 
 # Mise à jour à chaque frame physique
 func _physics_process(delta):
-	# Vérifier que le parent existe bien
-	if not get_parent():
-		return  # Si aucun parent, ne rien faire pour éviter une erreur
-
+	
+	
+	
+	
 	# Obtenir la position du personnage (le parent de ce Sprite)
-	var character_position = get_parent().position
+	var character_pos = get_parent().position
 
 	# Attacher le bras à une position relative autour du personnage
-	position.x = lerp(position.x, character_position.x + 10, 0.5)
-	position.y = lerp(position.y, character_position.y + 10, 0.5)
+	position.x = lerp(position.x, character_pos.x - 10, 0.8)
+	position.y = lerp(position.y, character_pos.y, 0.8)
 
-	# Détecter si la souris est en mouvement
-	var current_mouse_pos = get_global_mouse_position()
-	var is_mouse_moving = current_mouse_pos != previous_mouse_pos  # La souris bouge-t-elle ?
+	var mouse_pos = get_global_mouse_position()
 
 	# Vérifier si le joystick est utilisé
-	var joystick_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")  # Change les noms si besoin
-	if joystick_vector.length() > 0.1:
-		# Le joystick est actif, utiliser sa direction
-		last_target_pos = character_position + joystick_vector * 100  # Ajuster l'échelle si nécessaire
-	elif is_mouse_moving:
-		# La souris bouge, utiliser sa position
-			last_target_pos = current_mouse_pos
-
-	# Mettre à jour la position précédente de la souris
-	previous_mouse_pos = current_mouse_pos
-
-	# Faire en sorte que le bras regarde toujours dans la direction de la cible
-	look_at(last_target_pos)
+	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down") 
 	
+	
+	
+	if is_using_gamepad :
+		if joystick_vector.length() > 0.1:
+			target_pos = character_pos + joystick_vector * 500
+			last_joystick_vector = joystick_vector
+			look_at(target_pos)
+		else :
+			target_pos = character_pos + last_joystick_vector * 500
+			look_at(target_pos)
+	else:
+		# La souris bouge, utiliser sa position
+			target_pos = mouse_pos
+			look_at(target_pos)
+
+	print(last_joystick_vector)
+
 func _input(event):
 	# Vérifier si l'événement vient d'une manette
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
