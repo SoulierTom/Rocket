@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=14 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Andreï/Chara_Walk_Animation.png" id="2_cqlv8"]
+[ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Arm.tscn" id="3_n5sxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ga6to"]
 atlas = ExtResource("2_cqlv8")
@@ -83,6 +84,7 @@ height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+z_as_relative = false
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_li7m8")
 
@@ -108,3 +110,9 @@ one_shot = true
 [node name="BufferTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
+position = Vector2(-6, 2)
+scale = Vector2(1.5, 1.5)
+pos_arm_x = -8.89
+pos_arm_y = 2.465

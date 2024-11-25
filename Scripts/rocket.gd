@@ -6,6 +6,8 @@ extends Node2D
 
 var direction = Vector2.ZERO
 
+
+@onready var rocket: Projectile = $"."
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var impact_detector: Area2D = $ImpactDetector
@@ -15,14 +17,16 @@ var direction = Vector2.ZERO
 func _ready():
 	set_as_top_level(true)
 	look_at(position + direction)
+	
+	#désactive le projectile au bout d'un certain temps
+	existence.timeout.connect(queue_free)
+	
+	
+	impact_detector.body_entered.connect(_on_body_entered)
 
-	#timer.connect("timeout", self, "queue_free")
-	#timer.start(lifetime)
-
-	#impact_detector.connect("body_entered", self, "_on_impact")
-
-func _physics_process(_delta: float) -> void:
-	position += direction * speed * _delta
-
-func _on_impact(body: Node) -> void:
-	queue_free()
+func _on_body_entered(body):
+	print("Collision détectée avec :", body)
+	
+	
+func _physics_process(delta: float) -> void:
+	position += direction * speed * delta

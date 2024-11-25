@@ -1,9 +1,12 @@
 extends Node2D
 
-# Variables propres au nmovement du bras
+# Variables propres au mouvement du bras
 var is_using_gamepad = false
 var target_pos = Vector2.RIGHT
 var last_joystick_vector = Vector2.RIGHT
+@export var pos_arm_x = 10.0
+@export var pos_arm_y = 10.0
+
 
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
@@ -21,8 +24,8 @@ func _physics_process(_delta):
 	var character_pos = get_parent().position
 
 	# Attacher le bras à une position relative autour du personnage
-	position.x = lerp(position.x, character_pos.x - 10, 0.8)
-	position.y = lerp(position.y, character_pos.y, 0.8)
+	position.x = lerp(position.x, character_pos.x + pos_arm_x, 0.8)
+	position.y = lerp(position.y, character_pos.y + pos_arm_y, 0.8)
 
 	var mouse_pos = get_global_mouse_position()
 	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down") 
@@ -58,4 +61,4 @@ func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
 	projectile_instance.position = shooting_point.global_position
 	projectile_instance.direction = global_position.direction_to(target_pos)
-	add_child(projectile_instance)	
+	add_child(projectile_instance)
