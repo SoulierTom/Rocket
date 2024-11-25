@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://0in7tulhw8b5"]
+
+[ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_u06mp"]
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/icon.svg" id="2_h5f6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]
+size = Vector2(10, 26)
+
+[node name="Rocket" type="Node2D"]
+z_index = 6
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_u06mp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.515625, 0.210938)
+texture = ExtResource("2_h5f6x")
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(25, 0)
+shape = SubResource("RectangleShape2D_7hl48")
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+position = Vector2(25, 0)
+shape = SubResource("RectangleShape2D_7hl48")
+
+[node name="Existence" type="Timer" parent="."]
