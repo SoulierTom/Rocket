@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1lrdeqo1lbuw"]
+[gd_scene load_steps=27 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Texture2D" uid="uid://ccuxukl6dmv6k" path="res://Assets/brackeys_platformer_assets/sprites/knight.png" id="1_b0371"]
-[ext_resource type="Script" path="res://Scripts/character_body_2d.gd" id="1_li7m8"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xiw4u"]
 atlas = ExtResource("1_b0371")
@@ -91,7 +92,7 @@ region = Rect2(192, 96, 32, 32)
 atlas = ExtResource("1_b0371")
 region = Rect2(224, 96, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8uoko"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd5hf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -175,26 +176,25 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bn5i"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03ynb"]
 radius = 5.0
 height = 16.0
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_li7m8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_8uoko")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kd5hf")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_5bn5i")
+shape = SubResource("CapsuleShape2D_03ynb")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
 zoom = Vector2(1.5, 1.5)
 
