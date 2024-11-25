@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/icon.svg" id="2_ux30r"]
 
 [node name="Arm" type="Node2D"]
+z_index = 7
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_t4ufm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 46.5)
-scale = Vector2(1.01563, 0.273438)
+position = Vector2(45, 0)
+scale = Vector2(0.8, 0.216)
 texture = ExtResource("2_ux30r")
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D"]

@@ -58,7 +58,7 @@ func jump() :
 func input() -> Vector2:
 	var input_dir = Vector2.ZERO
 	
-	input_dir.x = Input.get_axis("Gauche","Droite")
+	input_dir.x = Input.get_axis("Move_Left","Move_Right")
 	if input_dir > Vector2.ZERO :
 		animated_sprite.flip_h = false
 	elif input_dir < Vector2.ZERO : 
