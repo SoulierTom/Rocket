@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://duch1ixhvbekr"]
+
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/brackeys_platformer_assets/icon.svg" id="1_p5gh6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53eba"]
+size = Vector2(116, 119)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_p5gh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.1)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_53eba")
