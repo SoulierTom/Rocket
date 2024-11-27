@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	
 	if input_dir != Vector2.ZERO :
 		accelerate(input_dir)
+		
 	else :
 		add_friction()
 	player_movement()
