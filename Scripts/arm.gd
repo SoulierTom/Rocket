@@ -7,10 +7,12 @@ var last_joystick_vector = Vector2.RIGHT
 @export var pos_arm_x = 10.0
 @export var pos_arm_y = 10.0
 
-
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
 @onready var shooting_point: Marker2D = $Sprite2D/ShootingPoint
+
+# Permet de générer l'explosion
+@export var explosion_scene: PackedScene
 
 
 func _ready():
@@ -62,3 +64,11 @@ func shoot(projectile: PackedScene) -> void:
 	projectile_instance.position = shooting_point.global_position
 	projectile_instance.direction = global_position.direction_to(target_pos)
 	add_child(projectile_instance)
+	
+func create_explosion(position: Vector2) -> void:
+	if explosion_scene:
+		# Instancie l'explosion
+		var explosion_instance = explosion_scene.instantiate()
+		explosion_instance.global_position = position
+		add_child(explosion_instance) # Ajoute l'explosion à la scène
+	

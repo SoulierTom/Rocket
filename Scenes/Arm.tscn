@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=5 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
+[ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
 [ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Andreï/Canon_seul_droite.png" id="2_rt7fy"]
+[ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
 
 [node name="Arm" type="Node2D"]
 z_index = 7
 z_as_relative = false
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_t4ufm")
+explosion_scene = ExtResource("2_lv75f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 7
@@ -17,3 +20,7 @@ texture = ExtResource("2_rt7fy")
 
 [node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
 position = Vector2(-1.121, 3.959)
+
+[node name="Rocket" parent="." node_paths=PackedStringArray("explosion_notifier") instance=ExtResource("3_2omhl")]
+visible = false
+explosion_notifier = NodePath("..")
