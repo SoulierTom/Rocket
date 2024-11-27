@@ -1,18 +1,13 @@
 extends Node2D
 
-@onready var ground: TileMapLayer = $TileMap/Ground
-
-
+@onready var explosion_scene = preload("res://Scenes/Explosion.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	#area_2d.area_entered.connect(_on_area_2d_area_entered)
-	
