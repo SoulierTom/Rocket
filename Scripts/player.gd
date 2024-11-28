@@ -10,9 +10,10 @@ const friction = 11
 const grav_up = 10
 const grav_down = 35
 
-@onready var coyote_timer: Timer = $"../CoyoteTimer"
-@onready var buffer_timer: Timer = $"../BufferTimer"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var buffer_timer: Timer = $BufferTimer
+
 
 
 func _physics_process(delta: float) -> void:
@@ -57,7 +58,7 @@ func jump() :
 func input() -> Vector2:
 	var input_dir = Vector2.ZERO
 	
-	input_dir.x = Input.get_axis("Gauche","Droite")
+	input_dir.x = Input.get_axis("Move_Left","Move_Right")
 	if input_dir > Vector2.ZERO :
 		animated_sprite.flip_h = false
 	elif input_dir < Vector2.ZERO : 
