@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]
 size = Vector2(10, 6)
 
-[node name="Rocket" type="CharacterBody2D"]
+[node name="Rocket" type="CharacterBody2D" node_paths=PackedStringArray("explosion_notifier")]
 z_index = 6
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_u06mp")
-lifetime = 0.1
+explosion_notifier = NodePath(".")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
