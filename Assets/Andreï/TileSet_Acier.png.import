@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tht7x0fprj5q"
-path="res://.godot/imported/TileSet_Dirt.png-4837b03751094a68f0f418687346617d.ctex"
+uid="uid://c2t8t1xqdxo8x"
+path="res://.godot/imported/TileSet_Acier.png-2bb8f3b05b512a484f2ed6e2d982e43f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Andreï/TileSet_Dirt.png"
-dest_files=["res://.godot/imported/TileSet_Dirt.png-4837b03751094a68f0f418687346617d.ctex"]
+source_file="res://Assets/Andreï/TileSet_Acier.png"
+dest_files=["res://.godot/imported/TileSet_Acier.png-2bb8f3b05b512a484f2ed6e2d982e43f.ctex"]
 
 [params]
 
