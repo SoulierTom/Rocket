@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 240.0
-const JUMP_VELOCITY = -350.0
+@export var SPEED = 240.0
+@export var JUMP_VELOCITY = -350.0
 
-const acc = 13
+@export var acc = 13
 var friction : int
 
 const grav_up = 10
