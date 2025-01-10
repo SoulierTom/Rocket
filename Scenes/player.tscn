@@ -111,6 +111,3 @@ one_shot = true
 
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 position = Vector2(-6, 2)
-scale = Vector2(1, 1)
-pos_arm_x = -8.89
-pos_arm_y = 2.465

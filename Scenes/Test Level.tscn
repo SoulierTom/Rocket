@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://bcwbaj63pum7l"]
 
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="1_a5uhd"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player.tscn" id="1_a5uhd"]
 [ext_resource type="Texture2D" uid="uid://d3x4sgfe06nms" path="res://Assets/Andreï/Tile_Set_Dirt_v2.png" id="2_3rfco"]
 [ext_resource type="Texture2D" uid="uid://cx082va6fwehr" path="res://Assets/Andreï/TileSet_Acier.png" id="3_w71yu"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_p8n5o"]
@@ -232,5 +232,5 @@ tile_set = SubResource("TileSet_ih5de")
 [node name="Caisse" parent="." instance=ExtResource("4_p8n5o")]
 position = Vector2(2936, -576)
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(12, -2)
+[node name="Caisse2" parent="." groups=["arm_group"] instance=ExtResource("4_p8n5o")]
+position = Vector2(129, -15)

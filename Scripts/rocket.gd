@@ -15,6 +15,8 @@ func _ready():
 	existence.timeout.connect(queue_free)
 	
 	
+	
+	
 func _physics_process(delta: float) -> void:
 	
 	position += direction * speed * delta

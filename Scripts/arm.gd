@@ -2,10 +2,13 @@ extends Node2D
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
-var target_pos = Vector2.RIGHT
+
 var last_joystick_vector = Vector2.RIGHT
-@export var pos_arm_x = 10.0
-@export var pos_arm_y = 10.0
+var pos_arm_x = -4
+var pos_arm_y = 3
+
+
+@onready var cooldown: Timer = $Cooldown
 
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
@@ -18,9 +21,10 @@ const RocketScene = preload("res://Scenes/Rocket.tscn")
 func _ready():
 	# Met cet objet en haut de la hiérarchie des rendus (dessiné devant les autres)
 	set_as_top_level(true)
-
+	Global.cooldown_weapon = 0.0
 
 func _physics_process(_delta):
+	
 	
 	# Obtenir la position du personnage (le parent de ce Sprite)
 	var character_pos = get_parent().position
@@ -35,15 +39,19 @@ func _physics_process(_delta):
 	
 	if is_using_gamepad :        
 		if joystick_vector.length() > 0.1:
-			target_pos = character_pos + joystick_vector * 500
+			Global.target_pos = character_pos + joystick_vector * 500
 			last_joystick_vector = joystick_vector
-			look_at(target_pos)
+			look_at(Global.target_pos)
 		else :                     # Quand le joystick est relaché il pointe vers la precedente direction
-			target_pos = character_pos + last_joystick_vector * 500
-			look_at(target_pos)
+			Global.target_pos = character_pos + last_joystick_vector * 500
+			look_at(Global.target_pos)
 	else:                          # La souris bouge, utiliser sa position
-			target_pos = mouse_pos
-			look_at(target_pos)
+			Global.target_pos = mouse_pos
+			look_at(Global.target_pos)
+	
+	
+
+
 
 
 func _input(event):
@@ -55,20 +63,23 @@ func _input(event):
 	elif event is InputEventMouse or event is InputEventKey:
 		is_using_gamepad = false 
 	
-	if event.is_action_pressed("Shoot"):
+	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
 		shoot(RocketScene)
 		
-	
+
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
 	projectile_instance.position = shooting_point.global_position
-	projectile_instance.direction = global_position.direction_to(target_pos)
+	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
 	
+	cooldown.start()
+
 func create_explosion(position: Vector2) -> void:
 	if explosion_scene:
 		# Instancie l'explosion
 		var explosion_instance = explosion_scene.instantiate()
 		explosion_instance.global_position = position
 		add_child(explosion_instance) # Ajoute l'explosion à la scène
+		
 	
