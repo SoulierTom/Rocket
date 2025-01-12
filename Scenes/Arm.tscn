@@ -25,5 +25,5 @@ position = Vector2(-0.64335, 4.04401)
 visible = false
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.5
 one_shot = true

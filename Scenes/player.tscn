@@ -86,6 +86,7 @@ height = 20.0
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
+recoil_force = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -111,3 +112,5 @@ one_shot = true
 
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 position = Vector2(-6, 2)
+
+[connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]

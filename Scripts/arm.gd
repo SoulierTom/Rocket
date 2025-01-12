@@ -2,13 +2,21 @@ extends Node2D
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
-
 var last_joystick_vector = Vector2.RIGHT
-var pos_arm_x = -4
-var pos_arm_y = 3
 
+# Position du bras
+@export var pos_arm_x :float = -4.0
+@export var pos_arm_y :float = 3.0
 
+# Cooldown de l'arme
 @onready var cooldown: Timer = $Cooldown
+
+# Le recul du tir
+signal projectile_fired
+var recoiling : bool = false
+@export var recoil_force : int = 100
+var recoil_vector: Vector2 = Vector2.ZERO
+@export var recoil_duration : float = 0.025
 
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
@@ -17,26 +25,32 @@ const RocketScene = preload("res://Scenes/Rocket.tscn")
 # Permet de générer l'explosion
 @export var explosion_scene: PackedScene
 
-
 func _ready():
 	# Met cet objet en haut de la hiérarchie des rendus (dessiné devant les autres)
 	set_as_top_level(true)
-	Global.cooldown_weapon = 0.0
-
-func _physics_process(_delta):
 	
 	
-	# Obtenir la position du personnage (le parent de ce Sprite)
+func _physics_process(delta):
+	# Obtenir la position du Player (le parent de ce Sprite)
 	var character_pos = get_parent().position
+	
+	var direction_arm = (Global.target_pos - position).normalized()
+	
+	recoil_vector = -direction_arm.normalized() * recoil_force
+	
+	if recoiling:
+		print("hello")
+		position += recoil_vector * delta
+		recoil_vector = recoil_vector.move_toward(Vector2.ZERO, recoil_force * delta)
 
-	# Attacher le bras à une position relative autour du personnage
-	position.x = lerp(position.x, character_pos.x + pos_arm_x, 0.8)
-	position.y = lerp(position.y, character_pos.y + pos_arm_y, 0.8)
+	# Attacher le bras à une position relative autour du Player
+	position.x = lerp(position.x, character_pos.x + pos_arm_x, 0.85)
+	position.y = lerp(position.y, character_pos.y + pos_arm_y, 0.85)
 
 	var mouse_pos = get_global_mouse_position()
 	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down") 
 	
-	
+	# Direction que pointe le bras, avec la souris ou le joystick
 	if is_using_gamepad :        
 		if joystick_vector.length() > 0.1:
 			Global.target_pos = character_pos + joystick_vector * 500
@@ -48,11 +62,6 @@ func _physics_process(_delta):
 	else:                          # La souris bouge, utiliser sa position
 			Global.target_pos = mouse_pos
 			look_at(Global.target_pos)
-	
-	
-
-
-
 
 func _input(event):
 	# Vérifier si l'événement vient d'une manette
@@ -63,23 +72,28 @@ func _input(event):
 	elif event is InputEventMouse or event is InputEventKey:
 		is_using_gamepad = false 
 	
+	# Appel la fonction shoot si le joueur tir et que le bras est rechargé
 	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
 		shoot(RocketScene)
-		
+		projectile_fired.emit()
+		recoiling = true
+		await get_tree().create_timer(recoil_duration).timeout
+		recoiling = false
 
+# Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
 	projectile_instance.position = shooting_point.global_position
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
-	
+	# Lance un cooldown qui désactive le tir
 	cooldown.start()
 
+# Génère l'explosion
 func create_explosion(position: Vector2) -> void:
-	if explosion_scene:
-		# Instancie l'explosion
+	if explosion_scene:   # Vérifie que la scene existe
 		var explosion_instance = explosion_scene.instantiate()
-		explosion_instance.global_position = position
+		explosion_instance.global_position = position 
 		add_child(explosion_instance) # Ajoute l'explosion à la scène
 		
 	

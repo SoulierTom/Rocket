@@ -13,10 +13,7 @@ func _ready():
 	
 	#désactive le projectile au bout d'un certain temps
 	existence.timeout.connect(queue_free)
-	
-	
-	
-	
+
 func _physics_process(delta: float) -> void:
 	
 	position += direction * speed * delta
