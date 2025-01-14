@@ -2,19 +2,21 @@ extends CharacterBody2D
 
 # Variable propre au movment du Player
 @export var SPEED = 240.0
-@export var JUMP_VELOCITY = -350.0
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descent : float
 @export var acceleration = 13
 var friction : int
 @onready var buffer_timer: Timer = $BufferTimer
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+@export var max_fall_speed : float = 350.0  # Limite maximale de la vitesse de chute
 
 var recoiling : bool = false
 @export var recoil_force : int = 100
 @export var recoil_duration : float = 0.025
-
-# Gravité
-const grav_up = 10
-const grav_down = 35
 
 # Variables propres au bras
 @onready var arm = $Arm
@@ -24,18 +26,25 @@ var dir_arm : Vector2
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
-func _physics_process(delta: float) -> void:
-	# Direction que pointe le bras
-	var dir_arm = (Global.target_pos - arm.position).normalized()
+func _ready():
+	velocity = Vector2.ZERO
+
+func _physics_process(delta: float) -> void:	# Direction que pointe le bras
+	# Appliquer la gravité
+	velocity.y += calculate_gravity() * delta
 	
+	# Limiter la vitesse de chute
+	if velocity.y > max_fall_speed:
+		velocity.y = max_fall_speed
+
+	# Gérer les mouvements horizontaux
 	var input_dir: Vector2 = input()
-	if input_dir != Vector2.ZERO :   # Déplace le Player si les inputs directionnels sont utilisés
+	if input_dir != Vector2.ZERO:
 		accelerate(input_dir)
-	else :                           # Sinon le Player subit de la Friction
+	else:
 		add_friction()
 	
 	jump()
-	gravity()
 	
 	# Détermine qu'elles animations doivent etre jouées
 	if is_on_floor() :
@@ -64,13 +73,17 @@ func _physics_process(delta: float) -> void:
 	if was_on_floor && !is_on_floor() :
 		coyote_timer.start()
 
+func calculate_gravity() -> float:
+	# Retourne la gravité appropriée
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
+
 func jump() :
 
 	if Input.is_action_just_pressed("Jump") :
 		buffer_timer.start()
 
 	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()) :
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 
 func input() -> Vector2:
 	var input_dir = Vector2.ZERO
@@ -82,12 +95,6 @@ func accelerate(direction):
 	
 func add_friction():
 	velocity = velocity.move_toward(Vector2.ZERO, friction)
-
-func gravity():
-	if velocity.y < 0 :
-		velocity.y += grav_up
-	else : 
-		velocity.y += grav_down
 
 func _on_arm_projectile_fired() -> void:
 	recoiling = true
