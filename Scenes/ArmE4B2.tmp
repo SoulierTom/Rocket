@@ -11,6 +11,10 @@
 z_index = 7
 z_as_relative = false
 script = ExtResource("1_t4ufm")
+pos_arm_x = null
+pos_arm_y = null
+recoil_force = null
+recoil_duration = null
 explosion_scene = ExtResource("2_lv75f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

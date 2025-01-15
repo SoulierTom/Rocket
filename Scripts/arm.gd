@@ -86,6 +86,7 @@ func shoot(projectile: PackedScene) -> void:
 	projectile_instance.position = shooting_point.global_position
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
+	$Tir.play()
 	# Lance un cooldown qui désactive le tir
 	cooldown.start()
 
@@ -95,5 +96,5 @@ func create_explosion(position: Vector2) -> void:
 		var explosion_instance = explosion_scene.instantiate()
 		explosion_instance.global_position = position 
 		add_child(explosion_instance) # Ajoute l'explosion à la scène
-		
+		$Explosion.play()
 	
