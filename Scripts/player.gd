@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 # Variable propre au movment du Player
 @export var SPEED = 240.0
-@export var jump_height : float
-@export var jump_time_to_peak : float
-@export var jump_time_to_descent : float
+@export var jump_height : float = 25
+@export var jump_time_to_peak : float = 0.2
+@export var jump_time_to_descent : float = 0.15
 @export var acceleration = 13
 var friction : int
 @onready var buffer_timer: Timer = $BufferTimer
@@ -30,6 +30,9 @@ func _ready():
 	velocity = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:	# Direction que pointe le bras
+	# Direction que pointe le bras
+	var dir_arm = (Global.target_pos - arm.position).normalized()
+	
 	# Appliquer la gravité
 	velocity.y += calculate_gravity() * delta
 	

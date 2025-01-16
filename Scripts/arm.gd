@@ -14,7 +14,7 @@ var last_joystick_vector = Vector2.RIGHT
 # Le recul du tir
 signal projectile_fired
 var recoiling : bool = false
-@export var recoil_force : int = 100
+@export var recoil_force : int = 25
 var recoil_vector: Vector2 = Vector2.ZERO
 @export var recoil_duration : float = 0.025
 
@@ -34,18 +34,16 @@ func _physics_process(delta):
 	# Obtenir la position du Player (le parent de ce Sprite)
 	var character_pos = get_parent().position
 	
-	var direction_arm = (Global.target_pos - position).normalized()
+	var dir_arm = (Global.target_pos - position).normalized()
+	recoil_vector = -dir_arm * recoil_force
 	
-	recoil_vector = -direction_arm.normalized() * recoil_force
-	
-	if recoiling:
-		print("hello")
-		position += recoil_vector * delta
-		recoil_vector = recoil_vector.move_toward(Vector2.ZERO, recoil_force * delta)
-
 	# Attacher le bras à une position relative autour du Player
 	position.x = lerp(position.x, character_pos.x + pos_arm_x, 0.85)
 	position.y = lerp(position.y, character_pos.y + pos_arm_y, 0.85)
+	
+	if recoiling:    # Durant une courte durée après avoir tirè le bras subit du recul
+		position.x = lerp(position.x ,character_pos.x + pos_arm_x + recoil_vector.x , 0.8)
+		position.y = lerp(position.y, character_pos.y + pos_arm_y + recoil_vector.y, 0.8)
 
 	var mouse_pos = get_global_mouse_position()
 	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down") 
