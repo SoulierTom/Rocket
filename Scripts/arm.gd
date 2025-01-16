@@ -8,15 +8,17 @@ var last_joystick_vector = Vector2.RIGHT
 @export var pos_arm_x :float = -4.0
 @export var pos_arm_y :float = 3.0
 
-# Cooldown de l'arme
-@onready var cooldown: Timer = $Cooldown
-
 # Le recul du tir
 signal projectile_fired
 var recoiling : bool = false
 @export var recoil_force : int = 25
 var recoil_vector: Vector2 = Vector2.ZERO
 @export var recoil_duration : float = 0.025
+
+
+@export var reload_time: float = 3.0 # Temps de recharge en secondes
+@onready var cooldown: Timer = $Cooldown # Cooldown entre 2 tirs
+var reloading: bool = false # Indique si une recharge est en cours
 
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
@@ -72,11 +74,25 @@ func _input(event):
 	
 	# Appel la fonction shoot si le joueur tir et que le bras est rechargé
 	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
-		shoot(RocketScene)
-		projectile_fired.emit()
-		recoiling = true
-		await get_tree().create_timer(recoil_duration).timeout
-		recoiling = false
+		if Global.current_ammo > 0:
+			shoot(RocketScene)
+			projectile_fired.emit()
+			Global.current_ammo -=1
+			print("Munitions dans le chargeur :", Global.current_ammo)
+			reloading = true
+			start_reload()
+			recoiling = true
+			await get_tree().create_timer(recoil_duration).timeout
+			recoiling = false
+		else:
+			print("Chargeur vide ! En cours de recharge...")
+
+func start_reload():
+	if reloading:
+		await get_tree().create_timer(reload_time).timeout
+		Global.current_ammo = Global.magazine_size
+		reloading = false
+		print("Chargeur rechargé :", Global.current_ammo)
 
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:

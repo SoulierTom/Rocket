@@ -86,6 +86,7 @@ height = 20.0
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
+max_fall_speed = 700.0
 recoil_force = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

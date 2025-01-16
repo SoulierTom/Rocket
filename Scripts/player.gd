@@ -29,7 +29,8 @@ var dir_arm : Vector2
 func _ready():
 	velocity = Vector2.ZERO
 
-func _physics_process(delta: float) -> void:	# Direction que pointe le bras
+func _physics_process(delta: float) -> void:
+	
 	# Direction que pointe le bras
 	var dir_arm = (Global.target_pos - arm.position).normalized()
 	
