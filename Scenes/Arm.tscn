@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=8 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
 [ext_resource type="AudioStream" uid="uid://dtrsgcfost8n0" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/circle-xxl.png" id="7_roewd"]
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
 z_index = 7
@@ -39,3 +40,11 @@ volume_db = -17.5
 [node name="Tir" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_7svj1")
 volume_db = -7.5
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
+position = Vector2(-1.90735e-06, 47)
+scale = Vector2(0.0488281, 0.0488281)
+texture = ExtResource("7_roewd")
