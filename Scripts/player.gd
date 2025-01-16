@@ -66,8 +66,8 @@ func _physics_process(delta: float) -> void:	# Direction que pointe le bras
 	if dir_arm.x < 0 :
 		animated_sprite.flip_h = true
 
-	if recoiling:    # Repousse le PLayer dans le sens opposé de la direction de son bras
-		velocity += -dir_arm * recoil_force
+	#if recoiling:    # easter eggs :))))))))   recoil annulé :((((((
+		#velocity += -dir_arm * recoil_force
 
 	var was_on_floor = is_on_floor()
 	
