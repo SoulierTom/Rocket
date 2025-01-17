@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
 [ext_resource type="AudioStream" uid="uid://dtrsgcfost8n0" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
-[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/circle-xxl.png" id="7_roewd"]
+[ext_resource type="Script" path="res://Scenes/ray_cast_2d.gd" id="7_7ctjl"]
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
 z_index = 7
@@ -43,8 +43,10 @@ volume_db = -7.5
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -1.5708
+script = ExtResource("7_7ctjl")
 
-[node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
-position = Vector2(-1.90735e-06, 47)
-scale = Vector2(0.0488281, 0.0488281)
-texture = ExtResource("7_roewd")
+[node name="Label" type="Label" parent="RayCast2D"]
+offset_left = -5.00013
+offset_top = 35.0
+offset_right = 4.99987
+offset_bottom = 58.0

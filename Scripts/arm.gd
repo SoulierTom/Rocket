@@ -78,6 +78,7 @@ func _input(event):
 			shoot(RocketScene)
 			projectile_fired.emit()
 			Global.current_ammo -=1
+			$RayCast2D.update_ammo_display()
 			print("Munitions dans le chargeur :", Global.current_ammo)
 			reloading = true
 			start_reload()
@@ -91,6 +92,7 @@ func start_reload():
 	if reloading:
 		await get_tree().create_timer(reload_time).timeout
 		Global.current_ammo = Global.magazine_size
+		$RayCast2D.update_ammo_display()
 		reloading = false
 		print("Chargeur rechargé :", Global.current_ammo)
 
@@ -111,4 +113,3 @@ func create_explosion(position: Vector2) -> void:
 		explosion_instance.global_position = position 
 		add_child(explosion_instance) # Ajoute l'explosion à la scène
 		$Explosion.play()
-	
