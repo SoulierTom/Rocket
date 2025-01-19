@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ccm4n53mdbtdm" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
-[ext_resource type="Texture2D" uid="uid://dw4pua6dtu5hy" path="res://Assets/rectangle.bmp" id="8_thb5j"]
+[ext_resource type="Texture2D" uid="uid://cclxrn24okt2m" path="res://Assets/progbar.png" id="8_ar32n"]
 [ext_resource type="Script" path="res://Scenes/texture_progress_bar.gd" id="9_558o2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
@@ -84,14 +84,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -93.9997
-offset_top = -100.0
-offset_right = 106.0
-offset_bottom = 99.9997
+offset_left = -46.0
+offset_top = -12.0001
+offset_right = 54.0
+offset_bottom = 12.9999
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
-scale = Vector2(0.07, 0.07)
-pivot_offset = Vector2(100, 100)
-texture_progress = ExtResource("8_thb5j")
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(50, 12)
+texture_progress = ExtResource("8_ar32n")
 script = ExtResource("9_558o2")
