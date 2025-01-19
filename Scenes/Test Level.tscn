@@ -215,7 +215,6 @@ sources/3 = SubResource("TileSetAtlasSource_bgtcq")
 
 [node name="Player" parent="." instance=ExtResource("1_a5uhd")]
 position = Vector2(853, -2)
-jump_time_to_peak = 0.3
 
 [node name="TileMap" type="Node2D" parent="."]
 position = Vector2(153, -49)

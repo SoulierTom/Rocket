@@ -78,30 +78,33 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03ynb"]
-radius = 7.33333
-height = 20.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxwuh"]
+radius = 6.5
+height = 17.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
-max_fall_speed = 700.0
-recoil_force = 150
+SPEED = 200.0
+jump_height = 23.0
+jump_time_to_descent = 0.16
+acceleration = 11
+max_fall_speed = 680.0
+recoil_force = 120
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_kd5hf")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.33333)
-shape = SubResource("CapsuleShape2D_03ynb")
+position = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -113,5 +116,6 @@ one_shot = true
 
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 position = Vector2(-6, 2)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
