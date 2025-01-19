@@ -51,47 +51,24 @@ volume_db = -7.5
 rotation = -1.5708
 script = ExtResource("7_7ctjl")
 
-[node name="Control" type="Control" parent="RayCast2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -10.0001
-offset_top = 34.0
-offset_right = 9.99988
-offset_bottom = 54.0
-pivot_offset = Vector2(10, 10)
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="RayCast2D/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+[node name="Label" type="Label" parent="RayCast2D"]
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.99999
-offset_top = -12.0
-offset_right = 1.00001
-offset_bottom = 11.0
-grow_horizontal = 2
+offset_left = -5.00012
+offset_top = 32.0
+offset_right = 3.99988
+offset_bottom = 55.0
 grow_vertical = 2
 pivot_offset = Vector2(5, 12)
 label_settings = SubResource("LabelSettings_d5mv8")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="RayCast2D/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.9997
-offset_top = -100.0
-offset_right = 106.0
-offset_bottom = 99.9997
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5708
-scale = Vector2(0.07, 0.07)
+[node name="TextureProgressBar" type="TextureProgressBar" parent="RayCast2D"]
+offset_left = -99.9998
+offset_top = -50.0004
+offset_right = 100.0
+offset_bottom = 150.0
+scale = Vector2(0.05, 0.05)
 pivot_offset = Vector2(100, 100)
 texture_progress = ExtResource("8_thb5j")
 script = ExtResource("9_558o2")
