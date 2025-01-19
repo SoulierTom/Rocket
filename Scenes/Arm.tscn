@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=9 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
@@ -7,6 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://dtrsgcfost8n0" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
+outline_size = 7
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
 z_index = 7
@@ -55,3 +59,4 @@ offset_right = 3.99988
 offset_bottom = 55.0
 grow_vertical = 2
 pivot_offset = Vector2(5, 12)
+label_settings = SubResource("LabelSettings_d5mv8")
