@@ -80,11 +80,13 @@ func _input(event):
 			Global.current_ammo -= 1
 			$RayCast2D.update_ammo_display()
 			print("Munitions dans le chargeur :", Global.current_ammo)
-			
-			if Global.current_ammo == 0:
-				print("Chargeur vide ! En cours de recharge...")
+
+			# Si les munitions sont inférieures à 3, démarrer le rechargement
+			if Global.current_ammo < 3 and not reloading:
+				print("Chargeur presque vide ! En cours de recharge...")
 				reloading = true
 				start_reload()
+
 			recoiling = true
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
@@ -98,6 +100,7 @@ func start_reload():
 		$RayCast2D.update_ammo_display()
 		reloading = false
 		print("Chargeur rechargé :", Global.current_ammo)
+
 
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
