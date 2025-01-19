@@ -106,6 +106,7 @@ func start_reload():
 		reloading = false
 		print("Chargeur rechargé :", Global.current_ammo)
 
+
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()

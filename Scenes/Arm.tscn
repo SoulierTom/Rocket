@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
 [ext_resource type="Texture2D" uid="uid://ia20hwapr2iw" path="res://Assets/cercle.png" id="8_knd35"]
-[ext_resource type="Script" path="res://Scripts/texture_progress_bar.gd" id="9_558o2"]
+[ext_resource type="Script" path="res://Scenes/texture_progress_bar.gd" id="9_558o2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
 outline_size = 7
