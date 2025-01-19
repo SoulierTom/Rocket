@@ -6,7 +6,7 @@ func _ready():
 	# Initialise le texte du Label avec le nombre actuel de munitions
 	update_ammo_display()
 
-func _process(delta):
+func _process(_delta):
 	if ammo_label:
 		# Applique l'inverse de la rotation globale du RayCast2D au Label
 		ammo_label.rotation = -global_rotation

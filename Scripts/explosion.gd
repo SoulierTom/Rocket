@@ -3,7 +3,7 @@ extends Area2D
 func _ready():
 	set_as_top_level(true)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	for o in get_overlapping_bodies():
 		if o is RigidBody2D:  #Interagis avec les props
 			var force = (o.global_position - global_position).normalized()

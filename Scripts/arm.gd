@@ -32,7 +32,7 @@ func _ready():
 	set_as_top_level(true)
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Obtenir la position du Player (le parent de ce Sprite)
 	var character_pos = get_parent().position
 	
@@ -110,9 +110,9 @@ func shoot(projectile: PackedScene) -> void:
 	cooldown.start()
 
 # Génère l'explosion
-func create_explosion(position: Vector2) -> void:
+func create_explosion(explosion_position: Vector2) -> void:
 	if explosion_scene:   # Vérifie que la scene existe
 		var explosion_instance = explosion_scene.instantiate()
-		explosion_instance.global_position = position 
+		explosion_instance.global_position = explosion_position  # Remplace "position" par "explosion_position"
 		add_child(explosion_instance) # Ajoute l'explosion à la scène
 		$Explosion.play()

@@ -20,7 +20,6 @@ var recoiling : bool = false
 
 # Variables propres au bras
 @onready var arm = $Arm
-var dir_arm : Vector2   
 
 # Animations du Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
