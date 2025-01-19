@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0in7tulhw8b5"]
 
 [ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_u06mp"]
-[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/brackeys_platformer_assets/icon.svg" id="2_h5f6x"]
+[ext_resource type="Texture2D" uid="uid://bxha3w1wrebwu" path="res://Assets/Andreï/Bullet.png" id="2_6y0mm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]
 size = Vector2(10, 6)
@@ -13,15 +13,14 @@ collision_mask = 2
 script = ExtResource("1_u06mp")
 explosion_notifier = NodePath(".")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(9.53674e-07, 1.19209e-07)
-scale = Vector2(0.163086, 0.0576172)
-texture = ExtResource("2_h5f6x")
-
 [node name="Existence" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7hl48")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_6y0mm")
