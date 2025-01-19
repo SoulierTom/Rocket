@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ccm4n53mdbtdm" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
-[ext_resource type="Texture2D" uid="uid://cclxrn24okt2m" path="res://Assets/progbar.png" id="8_ar32n"]
+[ext_resource type="Texture2D" uid="uid://ia20hwapr2iw" path="res://Assets/cercle.png" id="8_knd35"]
 [ext_resource type="Script" path="res://Scenes/texture_progress_bar.gd" id="9_558o2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
@@ -68,9 +68,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.99999
+offset_left = -4.99999
 offset_top = -12.0
-offset_right = 1.00001
+offset_right = 4.00001
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -84,14 +84,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -12.0001
-offset_right = 54.0
-offset_bottom = 12.9999
+offset_left = -255.999
+offset_top = -256.001
+offset_right = 256.001
+offset_bottom = 255.999
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
-scale = Vector2(0.15, 0.15)
-pivot_offset = Vector2(50, 12)
-texture_progress = ExtResource("8_ar32n")
+scale = Vector2(0.05, 0.05)
+pivot_offset = Vector2(256, 256)
+fill_mode = 4
+texture_progress = ExtResource("8_knd35")
 script = ExtResource("9_558o2")
