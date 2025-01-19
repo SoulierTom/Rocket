@@ -72,16 +72,19 @@ func _input(event):
 	elif event is InputEventMouse or event is InputEventKey:
 		is_using_gamepad = false 
 	
-	# Appel la fonction shoot si le joueur tir et que le bras est rechargé
+	# Appel la fonction shoot si le joueur tire et que le bras est rechargé
 	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
 		if Global.current_ammo > 0:
 			shoot(RocketScene)
 			projectile_fired.emit()
-			Global.current_ammo -=1
+			Global.current_ammo -= 1
 			$RayCast2D.update_ammo_display()
 			print("Munitions dans le chargeur :", Global.current_ammo)
-			reloading = true
-			start_reload()
+			
+			if Global.current_ammo == 0:
+				print("Chargeur vide ! En cours de recharge...")
+				reloading = true
+				start_reload()
 			recoiling = true
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
