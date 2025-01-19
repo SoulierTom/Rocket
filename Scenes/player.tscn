@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=15 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Andreï/Chara_Walk_Animation.png" id="2_cqlv8"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Arm.tscn" id="3_n5sxh"]
+[ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="3_nn84d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -104,7 +105,7 @@ shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
-zoom = Vector2(4, 4)
+script = ExtResource("3_nn84d")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
