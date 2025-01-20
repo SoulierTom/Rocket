@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Variable propre au movment du Player
+# Variable propre au mouvement du Player
 @export var SPEED = 240.0
 @export var jump_height : float = 25
 @export var jump_time_to_peak : float = 0.2
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	
 	jump()
 	
-	# Détermine qu'elles animations doivent etre jouées
+	# Détermine qu'elles animations doivent être jouées
 	if is_on_floor() :
 		friction = 15
 		if input_dir == Vector2.ZERO :
@@ -75,6 +75,10 @@ func _physics_process(delta: float) -> void:
 	
 	if was_on_floor && !is_on_floor() :
 		coyote_timer.start()
+
+	# Retour au menu principal
+	if Input.is_action_just_pressed("exit"):
+		get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
 
 func calculate_gravity() -> float:
 	# Retourne la gravité appropriée
