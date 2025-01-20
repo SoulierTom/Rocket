@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Explosion",
-"speed": 14.0
+"speed": 20.0
 }]
 
 [node name="Explosion" type="Area2D"]
@@ -97,6 +97,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_gwew1")
 animation = &"Explosion"
 
