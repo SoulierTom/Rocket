@@ -49,39 +49,39 @@ region = Rect2(128, 32, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_gwew1"]
 animations = [{
 "frames": [{
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7fvkn")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3w2of")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8l7es")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q0pi8")
 }, {
-"duration": 0.7,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_rps4k")
 }, {
-"duration": 0.7,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_korm8")
 }, {
-"duration": 0.7,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_kebxo")
 }, {
-"duration": 0.7,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_00oyo")
 }, {
-"duration": 0.7,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_ubnf3")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5ohkc")
 }],
 "loop": true,
 "name": &"Explosion",
-"speed": 30.0
+"speed": 10.0
 }]
 
 [node name="Explosion" type="Area2D"]
@@ -93,11 +93,11 @@ script = ExtResource("1_6xgrk")
 shape = SubResource("CircleShape2D_1u4h7")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.05
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.09375, 2.09375)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_gwew1")
 animation = &"Explosion"
 

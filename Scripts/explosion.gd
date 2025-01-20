@@ -1,7 +1,13 @@
 extends Area2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
+
+@export var animation_duration: float = 1.0  # Durée totale de l'animation en secondes
+@export var explosion_impulse_duration: float = 0.1  # Durée durant laquelle la poussée est appliquée
+
+var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
 
 func _ready():
 	set_as_top_level(true)
@@ -10,29 +16,59 @@ func _ready():
 	if animated_sprite:
 		# Arrêter toute animation en cours et lancer l'animation "Explosion"
 		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
-		animated_sprite.play("Explosion")  # Lance l'animation "Explosion" (vérifiez qu'elle existe dans le AnimatedSprite2D)
+		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
 	else:
 		print("Erreur : AnimatedSprite2D n'a pas été trouvé !")
 	
-	# Démarrer le timer avec une durée manuelle (par exemple, 1 seconde pour l'explosion)
+	# Assurez-vous que le CollisionShape2D est désactivé au départ
+	if collision_shape:
+		collision_shape.disabled = true
+	else:
+		print("Erreur : CollisionShape2D n'a pas été trouvé !")
+	
+	# Démarrer le timer avec la durée de l'animation pour supprimer l'explosion
 	if timer:
-		timer.start(0.15)  # Durée de l'explosion en secondes
+		timer.start(animation_duration)  # La durée est maintenant la durée de l'animation
 	else:
 		print("Erreur : Timer n'a pas été trouvé !")
 
-func _physics_process(_delta):
-	# Vérifier les objets dans la zone de l'explosion
+func _process(_delta):
+	# Vérifier si l'animation est en cours et obtenir la frame actuelle
+	if animated_sprite:
+		var current_frame = animated_sprite.frame
+		
+		# Activer la zone de collision entre certaines frames
+		if current_frame >= 0 and current_frame <= 1:
+			if not explosion_active:
+				# Active la collision et marque l'explosion comme active
+				collision_shape.disabled = false
+				explosion_active = true
+				
+		# Désactiver la zone de collision après la frame 5
+		if current_frame > 1:
+			if explosion_active:
+				 #Désactive la collision et marque l'explosion comme inactive
+				collision_shape.disabled = true
+				explosion_active = false
+		
+		# Appliquer l'impulsion de l'explosion aux objets dans la zone
+		if explosion_active:
+			apply_explosion_impulse()
+
+# Applique une impulsion aux objets dans la zone de l'explosion
+func apply_explosion_impulse():
+	# Applique une impulsion aux objets dans la zone de collision
 	for o in get_overlapping_bodies():
-		if o is RigidBody2D:  # Interagit avec les objets RigidBody2D
+		if o is RigidBody2D:
 			var force = (o.global_position - global_position).normalized()
-			force *= 75 
+			force *= 75  # Applique une force à l'objet
 			o.apply_central_impulse(force)
 		
-		if o is CharacterBody2D:  # Interagit avec le joueur (CharacterBody2D)
+		if o is CharacterBody2D:
 			var push_direction = (o.global_position - global_position).normalized()
-			o.velocity = push_direction * 500  # Ajuste la force de la poussée
+			o.velocity = push_direction * 450  # Ajuste la force de la poussée
 
-# Fonction appelée lorsque le timer se termine
+# Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
 func _on_timer_timeout() -> void:
 	# Supprime l'explosion après la durée définie
 	queue_free()
