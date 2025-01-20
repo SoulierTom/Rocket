@@ -20,6 +20,7 @@ z_as_relative = false
 script = ExtResource("1_t4ufm")
 recoil_force = 2
 recoil_duration = 0.1
+reload_time = 2.5
 explosion_scene = ExtResource("2_lv75f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
