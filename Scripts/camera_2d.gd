@@ -1,29 +1,30 @@
 extends Camera2D
 
-# Taille de la "zone de jeu" constante en pixels -> doit être en 16:10
-@export var target_width: float = 640
-@export var target_height: float = 384
+@export var target: NodePath
+@export var offset_y: float = 0.0
+@export var zoom_level: Vector2 = Vector2(1, 1)  # Contrôle du zoom par défaut
 
 func _ready():
-	update_zoom()
+	if target == null:
+		print("Aucun personnage assigné à la caméra.")
+		return
 
-func _viewport_size_changed():
-	# Lors du redimensionnement de la fenêtre
-	update_zoom()
+	# Appliquer le zoom initial
+	zoom = zoom_level
 
-# Met à jour le zoom pour s'adapter à la taille de la fenêtre
-func update_zoom():
-	var viewport_size = get_viewport().size
-	
-	# Calculer le facteur de zoom basé sur la taille de la fenêtre pour que le jeu s'adapte
-	var target_aspect = target_width / target_height
-	var screen_aspect = viewport_size.x / viewport_size.y
-	
-	if screen_aspect > target_aspect:
-		# Ajuste le zoom selon la hauteur
-		zoom.y = viewport_size.y / target_height
-		zoom.x = zoom.y
-	else:
-		# Ajuste le zoom selon la largeur
-		zoom.x = viewport_size.x / target_width
-		zoom.y = zoom.x
+func _process(_delta):
+	if not target:
+		return
+
+	# Suivre le personnage avec un décalage optionnel
+	global_position = get_node(target).global_position + Vector2(0, offset_y)
+
+	# Si tu veux permettre de modifier dynamiquement le zoom via des inputs :
+	handle_zoom_input()
+
+func handle_zoom_input():
+	# Augmenter ou réduire le zoom avec des inputs (par exemple : molette ou touches clavier)
+	if Input.is_action_just_pressed("zoom_in"):
+		zoom *= 0.9  # Réduire le zoom (rapprochement)
+	elif Input.is_action_just_pressed("zoom_out"):
+		zoom *= 1.1  # Augmenter le zoom (éloignement)

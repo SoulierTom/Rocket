@@ -114,8 +114,7 @@ drag_top_margin = 0.02
 drag_right_margin = 0.02
 drag_bottom_margin = 0.02
 script = ExtResource("3_nn84d")
-target_width = 512.0
-target_height = 307.0
+zoom_level = Vector2(5, 5)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
