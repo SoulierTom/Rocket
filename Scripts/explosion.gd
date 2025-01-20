@@ -4,7 +4,7 @@ extends Area2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
 
-@export var animation_duration: float = 1.0  # Durée totale de l'animation en secondes
+@export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
 @export var explosion_impulse_duration: float = 0.1  # Durée durant laquelle la poussée est appliquée
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
