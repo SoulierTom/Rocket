@@ -99,3 +99,4 @@ value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("8_knd35")
 script = ExtResource("9_558o2")
+reload_time = 2.5

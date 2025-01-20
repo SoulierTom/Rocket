@@ -11,7 +11,7 @@ func _ready():
 	value = 0
 	max_value = 100
 	reload_timer = Timer.new()
-	reload_timer.wait_time = 0.03 # 30 millisecondes
+	reload_timer.wait_time = 0.025 # 25 millisecondes
 	reload_timer.one_shot = false # Le timer doit se répéter
 	add_child(reload_timer)
 	reload_timer.connect("timeout", Callable(self, "_on_reload_tick"))
@@ -31,7 +31,7 @@ func update_progress(current_ammo: int):
 # Mise à jour progressive de la barre
 func _on_reload_tick():
 	# Incrémenter la valeur de la barre en fonction du temps de rechargement
-	value += 100 / (reload_time / 0.03)
+	value += 100 / (reload_time / 0.025)
 	if value >= 100:
 		value = 100
 		reload_timer.stop()
