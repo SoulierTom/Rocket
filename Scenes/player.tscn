@@ -106,8 +106,8 @@ shape = SubResource("CapsuleShape2D_sxwuh")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
 script = ExtResource("3_nn84d")
-target_width = 426.0
-target_height = 256.0
+target_width = 512.0
+target_height = 307.0
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
