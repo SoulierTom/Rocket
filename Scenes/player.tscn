@@ -105,6 +105,14 @@ shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 0.01
+drag_vertical_offset = 0.01
+drag_left_margin = 0.02
+drag_top_margin = 0.02
+drag_right_margin = 0.02
+drag_bottom_margin = 0.02
 script = ExtResource("3_nn84d")
 target_width = 512.0
 target_height = 307.0
