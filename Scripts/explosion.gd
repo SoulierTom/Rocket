@@ -66,7 +66,7 @@ func apply_explosion_impulse():
 		
 		if o is CharacterBody2D:
 			var push_direction = (o.global_position - global_position).normalized()
-			o.velocity = push_direction * 450  # Ajuste la force de la poussée
+			o.velocity = push_direction * 500  # Ajuste la force de la poussée
 
 # Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
 func _on_timer_timeout() -> void:
