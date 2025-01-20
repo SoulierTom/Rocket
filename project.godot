@@ -13,7 +13,7 @@ config_version=5
 config/name="Rocket"
 run/main_scene="res://Scenes/Level Pico8.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/brackeys_platformer_assets/icon.svg"
+config/icon="res://Assets/Andreï/Logo M-Corp.png"
 
 [autoload]
 
