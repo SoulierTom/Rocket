@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 # Variable propre au mouvement du Player
-@export var SPEED = 240.0
+@export var speedGround = 140.0
+@export var speedAir = 200.0
+
 @export var jump_height : float = 25
 @export var jump_time_to_peak : float = 0.2
 @export var jump_time_to_descent : float = 0.15
-@export var acceleration = 13
+@export var acceleration_ground = 9
+@export var acceleration_air = 9
+
 var friction : int
 @onready var buffer_timer: Timer = $BufferTimer
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
@@ -42,8 +46,10 @@ func _physics_process(delta: float) -> void:
 
 	# Gérer les mouvements horizontaux
 	var input_dir: Vector2 = input()
-	if input_dir != Vector2.ZERO:
-		accelerate(input_dir)
+	if input_dir != Vector2.ZERO and is_on_floor():
+		accelerate_ground(input_dir)
+	elif input_dir != Vector2.ZERO and !is_on_floor():
+		accelerate_air(input_dir)
 	else:
 		add_friction()
 	
@@ -51,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Détermine qu'elles animations doivent être jouées
 	if is_on_floor() :
-		friction = 15
+		friction = 25
 		if input_dir == Vector2.ZERO :
 			animated_sprite.play("idle")
 		else :
@@ -97,9 +103,13 @@ func input() -> Vector2:
 	input_dir.x = Input.get_axis("Move_Left","Move_Right")
 	return input_dir
 	
-func accelerate(direction):
-	velocity = velocity.move_toward(SPEED * direction, acceleration)
-	
+func accelerate_ground(direction):
+	velocity = velocity.move_toward(speedGround * direction, acceleration_ground)
+
+func accelerate_air(direction):
+	velocity = velocity.move_toward(speedAir * direction, acceleration_air)
+
+
 func add_friction():
 	velocity = velocity.move_toward(Vector2.ZERO, friction)
 

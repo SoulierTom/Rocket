@@ -87,10 +87,8 @@ height = 17.0
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
-SPEED = 200.0
 jump_height = 23.0
 jump_time_to_descent = 0.16
-acceleration = 11
 max_fall_speed = 680.0
 recoil_force = 120
 
@@ -104,7 +102,8 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 17.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_horizontal_offset = 0.01
