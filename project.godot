@@ -22,6 +22,7 @@ Global="*res://Scripts/global.gd"
 [display]
 
 window/size/mode=2
+window/stretch/scale_mode="integer"
 
 [input]
 
@@ -91,3 +92,4 @@ ok={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_vertices_to_pixel=true

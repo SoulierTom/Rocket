@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxq632opcv5qe"]
+
+[ext_resource type="Script" path="res://Scripts/speedrun.gd" id="1_jkgkb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhmu8"]
+outline_size = 5
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_jkgkb")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(3, 3)
+label_settings = SubResource("LabelSettings_vhmu8")

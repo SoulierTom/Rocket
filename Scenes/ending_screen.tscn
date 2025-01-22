@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bay45tlsap6u7"]
+
+[ext_resource type="Texture2D" uid="uid://fwgii5dbk1sf" path="res://Assets/brackeys_platformer_assets/ynf0qhxz.bmp" id="1_ydy03"]
+
+[node name="Ending_Screen" type="Node2D"]
+position = Vector2(625, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_ydy03")
+centered = false
