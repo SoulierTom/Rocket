@@ -88,6 +88,7 @@ animations = [{
 z_index = 10
 scale = Vector2(2, 2)
 script = ExtResource("1_6xgrk")
+force_player = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1u4h7")
