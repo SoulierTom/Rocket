@@ -87,8 +87,12 @@ height = 17.0
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
+speedGround = 120.0
+speedAir = 180.0
 jump_height = 23.0
 jump_time_to_descent = 0.16
+acceleration_ground = 8
+acceleration_air = 8
 max_fall_speed = 680.0
 recoil_force = 120
 
