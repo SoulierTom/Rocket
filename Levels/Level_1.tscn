@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://1cpnjqa57gkq"]
+[gd_scene load_steps=13 format=4 uid="uid://1cpnjqa57gkq"]
 
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="1_2pp3k"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Tile_Set_Dirt_v2.png" id="1_wff3r"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Tile_Set_Grassy_Cave.png" id="2_e2rmc"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Tuto picture set.png" id="3_030ka"]
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_30uee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_wff3r")
@@ -335,3 +336,6 @@ color = Color(0.0695925, 0.0942416, 0.0454617, 0.392157)
 
 [node name="Player" parent="." instance=ExtResource("1_2pp3k")]
 position = Vector2(0, -1)
+
+[node name="Area2D" parent="." instance=ExtResource("5_30uee")]
+position = Vector2(-1012, -1028)

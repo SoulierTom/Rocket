@@ -81,19 +81,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxwuh"]
 radius = 6.5
-height = 15.0
+height = 17.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
-speedGround = 120.0
-speedAir = 180.0
 jump_height = 23.0
-jump_time_to_peak = 0.22
-jump_time_to_descent = 0.18
-acceleration_ground = 8
-acceleration_air = 8
+jump_time_to_descent = 0.16
 max_fall_speed = 680.0
 recoil_force = 120
 
@@ -103,7 +98,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -36,7 +36,7 @@ func press_focused_button():
 			break
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Level 1.tscn")
+	get_tree().change_scene_to_file("res://Levels/Level_1.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
