@@ -95,6 +95,15 @@ func _input(event):
 		else:
 			print("Chargeur vide ! En cours de recharge...")
 
+# Ajoute cette fonction au script existant
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		reset_ammo()
+
+func reset_ammo():
+	Global.current_ammo = Global.magazine_size
+	print("Munitions réinitialisées :", Global.current_ammo)
+
 func start_reload():
 	if reloading:
 		$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo) # Barre visible au début du rechargement
@@ -105,7 +114,6 @@ func start_reload():
 		$RayCast2D.update_ammo_display() # Met à jour le label
 		reloading = false
 		print("Chargeur rechargé :", Global.current_ammo)
-
 
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
