@@ -6,6 +6,7 @@ extends Area2D
 @export var force_player: int = 500
 @export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
 @export var explosion_impulse_duration: float = 0.1  # Durée durant laquelle la poussée est appliquée
+@export var force_objet: int = 75
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
 
@@ -60,8 +61,8 @@ func apply_explosion_impulse():
 	# Applique une impulsion aux objets dans la zone de collision
 	for o in get_overlapping_bodies():
 		if o is RigidBody2D:
-			var force = (o.global_position - global_position).normalized()
-			force *= 75  # Applique une force à l'objet
+			var force = (o.global_position - global_position).normalized() * force_objet
+			  # Applique une force à l'objet
 			o.apply_central_impulse(force)
 		
 		if o is CharacterBody2D:
