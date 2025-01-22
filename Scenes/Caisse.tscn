@@ -16,5 +16,3 @@ texture = ExtResource("1_p5gh6")
 position = Vector2(0, 0.1)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_53eba")
-
-[node name="Camera2D" type="Camera2D" parent="."]
