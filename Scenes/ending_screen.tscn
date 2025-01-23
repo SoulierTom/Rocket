@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://bay45tlsap6u7"]
+[gd_scene load_steps=4 format=3 uid="uid://bay45tlsap6u7"]
 
+[ext_resource type="Script" path="res://Scenes/ending_screen.gd" id="1_vbw75"]
 [ext_resource type="Texture2D" uid="uid://fwgii5dbk1sf" path="res://Assets/brackeys_platformer_assets/ynf0qhxz.bmp" id="1_ydy03"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbj3c"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
 [node name="Ending_Screen" type="Node2D"]
 position = Vector2(625, 350)
+script = ExtResource("1_vbw75")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.2, 1.2)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(15, 66)
+scale = Vector2(0.791429, 0.791429)
 texture = ExtResource("1_ydy03")
 centered = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.5
+offset_top = -34.5
+offset_right = 119.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_rbj3c")

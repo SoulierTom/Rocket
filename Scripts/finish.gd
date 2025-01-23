@@ -10,10 +10,11 @@ func _on_body_entered(body):
 	# Vérifie si l'objet en collision appartient au groupe "Player"
 	if body.is_in_group(player_group):
 		# Arrêter le Timer de speedrun
-		var speedrun_timer = get_tree().root.get_node("res://Scenes/Speedrun") # Chemin du Timer
+		var speedrun_timer = get_tree().root.get_node("Speedrun") # Nom du nœud Timer
 		if speedrun_timer:
 			speedrun_timer.set_process(false) # Arrête le calcul dans le Timer
-			print("Timer arrêté : ", speedrun_timer.time)
+			Global.speedrun_time = speedrun_timer.time  # Stocke le temps dans la variable globale
+			print("Timer arrêté : ", Global.speedrun_time)
 
 		# Changer de scène
 		print("Chargement de la scène :", target_scene)
