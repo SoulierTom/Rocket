@@ -17,15 +17,16 @@ func reset_timer_if_needed():
 
 func reset_timer():
 	time = 0.0
-	Global.speedrun_time = "0.00"  # Réinitialise également la variable globale
+	Global.speedrun_time = "0:00"  # Réinitialise également la variable globale
 	update_ui()
 
 func update_ui():
-	# Formater le temps avec deux décimales
-	var formatted_time = str(time)
-	var decimal_index = formatted_time.find(".")
-	if decimal_index > 0:
-		formatted_time = formatted_time.left(decimal_index + 3)  # Deux décimales uniquement
+	# Convertir le temps total en minutes et secondes
+	var minutes = int(time) / 60
+	var seconds = int(time) % 60
+
+	# Formater le temps sous la forme "minute:seconde"
+	var formatted_time = "%d:%02d" % [minutes, seconds]
 	
 	Global.speedrun_time = formatted_time
 	$Label.text = formatted_time
