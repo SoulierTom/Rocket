@@ -36,7 +36,10 @@ func press_focused_button():
 			break
 
 func _on_play_pressed():
+	Global.speedrun_time = 0.0  # Réinitialise le temps global
+	Global.timer_initialized = false  # Indique que le timer doit être réinitialisé
 	get_tree().change_scene_to_file("res://Levels/Level_1.tscn")
+
 
 func _on_quit_pressed():
 	get_tree().quit()
