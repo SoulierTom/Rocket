@@ -29,6 +29,10 @@ var recoiling : bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
+# Référence au menu pause
+@onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
+var pause_instance = null
+
 func _ready():
 	velocity = Vector2.ZERO
 
@@ -72,9 +76,6 @@ func _physics_process(delta: float) -> void:
 	if dir_arm.x < 0 :
 		animated_sprite.flip_h = true
 
-	#if recoiling:    # easter eggs :))))))))   recoil annulé :((((((
-		#velocity += -dir_arm * recoil_force
-
 	var was_on_floor = is_on_floor()
 	
 	move_and_slide()
@@ -82,9 +83,12 @@ func _physics_process(delta: float) -> void:
 	if was_on_floor && !is_on_floor() :
 		coyote_timer.start()
 
-	# Retour au menu principal
-	if Input.is_action_just_pressed("exit"):
-		get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	# Gestion du menu pause
+	if Input.is_action_just_pressed("ui_cancel"):  # "ui_cancel" correspond à la touche Échap
+		if pause_instance == null:
+			pause_game()
+		else:
+			resume_game()
 
 func calculate_gravity() -> float:
 	# Retourne la gravité appropriée
@@ -109,7 +113,6 @@ func accelerate_ground(direction):
 func accelerate_air(direction):
 	velocity = velocity.move_toward(speedAir * direction, acceleration_air)
 
-
 func add_friction():
 	velocity = velocity.move_toward(Vector2.ZERO, friction)
 
@@ -117,3 +120,15 @@ func _on_arm_projectile_fired() -> void:
 	recoiling = true
 	await get_tree().create_timer(recoil_duration).timeout
 	recoiling = false
+
+func pause_game():
+	if pause_instance == null:
+		pause_instance = pause_menu.instantiate()
+		add_child(pause_instance)
+		get_tree().paused = true
+		
+func resume_game():
+	if pause_instance != null:
+		pause_instance.queue_free()
+		pause_instance = null
+		get_tree().paused = false
