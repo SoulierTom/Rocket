@@ -2,35 +2,40 @@ extends Control
 
 var is_using_gamepad = false
 
+func _ready():
+	print("Pause menu ready")
+
 func _input(event):
-	# Vérifier si l'événement vient d'une manette
+	# Détecter l'utilisation de la manette
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		if not is_using_gamepad:
 			is_using_gamepad = true
+			print("Gamepad detected")
 			_enable_buttons_focus(true)
 
-	# Si une autre entrée (clavier/souris) est détectée, désactiver la manette
+	# Détecter l'utilisation du clavier/souris
 	elif event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey:
 		if is_using_gamepad:
 			is_using_gamepad = false
+			print("Keyboard/mouse detected")
 			_enable_buttons_focus(false)
 
-	# Si l'utilisateur appuie sur "ok", activer le bouton sélectionné
+	# Simuler un appui sur le bouton sélectionné avec la manette
 	if Input.is_action_just_pressed("ok"):
 		press_focused_button()
 
 func _enable_buttons_focus(focus: bool):
-	# Parcourir tous les descendants de la hiérarchie pour trouver les boutons
-	for button in $MarginContainer/VBoxContainer/Resume.get_children():
+	# Activer ou désactiver le focus pour tous les boutons
+	for button in $MarginContainer/VBoxContainer.get_children():
 		if button is Button:
 			if focus:
-				button.grab_focus()  # Permet de naviguer avec la manette
+				button.grab_focus()
 			else:
-				button.release_focus()  # Empêche la navigation avec la manette
+				button.release_focus()
 
 func press_focused_button():
-	# Trouver le bouton actuellement sélectionné et simuler un appui
-	for button in $MarginContainer/VBoxContainer/Quit.get_children():
+	# Simuler un appui sur le bouton sélectionné
+	for button in $MarginContainer/VBoxContainer.get_children():
 		if button is Button and button.has_focus():
 			button.emit_signal("pressed")
 			break

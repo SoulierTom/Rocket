@@ -122,6 +122,7 @@ func _on_arm_projectile_fired() -> void:
 	recoiling = false
 
 func pause_game():
+	print("Pausing game")
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  # Place le menu pause au-dessus des autres éléments
 	add_child(pause_instance)
