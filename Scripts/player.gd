@@ -122,10 +122,10 @@ func _on_arm_projectile_fired() -> void:
 	recoiling = false
 
 func pause_game():
-	if pause_instance == null:
-		pause_instance = pause_menu.instantiate()
-		add_child(pause_instance)
-		get_tree().paused = true
+	pause_instance = pause_menu.instantiate()
+	pause_instance.z_index = 100  # Place le menu pause au-dessus des autres éléments
+	add_child(pause_instance)
+	get_tree().paused = true
 		
 func resume_game():
 	if pause_instance != null:

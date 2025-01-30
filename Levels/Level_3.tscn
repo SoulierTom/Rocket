@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx082va6fwehr" path="res://Assets/Andreï/TileSet_Acier.png" id="3_bgua2"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_2uwo6"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_ew0fu"]
-[ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="5_0cuhs"]
+[ext_resource type="PackedScene" path="res://Scenes/Finish.tscn" id="5_0cuhs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2jk4"]
 texture = ExtResource("2_nay04")

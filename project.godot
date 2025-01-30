@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rocket"
-run/main_scene="res://Levels/Level_1.tscn"
+run/main_scene="res://Scenes/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/Andreï/Logo M-Corp.png"
 

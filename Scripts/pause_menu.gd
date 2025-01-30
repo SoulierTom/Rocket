@@ -21,7 +21,7 @@ func _input(event):
 
 func _enable_buttons_focus(focus: bool):
 	# Parcourir tous les descendants de la hiérarchie pour trouver les boutons
-	for button in $MarginContainer/VBoxContainer.get_children():
+	for button in $MarginContainer/VBoxContainer/Resume.get_children():
 		if button is Button:
 			if focus:
 				button.grab_focus()  # Permet de naviguer avec la manette
@@ -30,7 +30,7 @@ func _enable_buttons_focus(focus: bool):
 
 func press_focused_button():
 	# Trouver le bouton actuellement sélectionné et simuler un appui
-	for button in $MarginContainer/VBoxContainer.get_children():
+	for button in $MarginContainer/VBoxContainer/Quit.get_children():
 		if button is Button and button.has_focus():
 			button.emit_signal("pressed")
 			break
