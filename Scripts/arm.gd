@@ -1,5 +1,11 @@
 extends Node2D
 
+@onready var player: CharacterBody2D = $".."
+
+
+
+
+
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
 var last_joystick_vector = Vector2.RIGHT
@@ -118,7 +124,7 @@ func start_reload():
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
-	projectile_instance.position = shooting_point.global_position
+	projectile_instance.position = player.global_position
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
 	$Tir.play()
