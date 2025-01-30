@@ -5,6 +5,16 @@ var is_using_gamepad = false
 func _ready():
 	print("Pause menu ready")
 
+	# Vérifier si les signaux ne sont pas déjà connectés avant de les connecter
+	if not $MarginContainer/VBoxContainer/Resume.pressed.is_connected(_on_resume_pressed):
+		$MarginContainer/VBoxContainer/Resume.pressed.connect(_on_resume_pressed)
+
+	if not $MarginContainer/VBoxContainer/Quit.pressed.is_connected(_on_quit_pressed):
+		$MarginContainer/VBoxContainer/Quit.pressed.connect(_on_quit_pressed)
+
+	# S'assurer que le menu pause fonctionne même quand le jeu est en pause
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func _input(event):
 	# Détecter l'utilisation de la manette
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
@@ -26,7 +36,7 @@ func _input(event):
 
 func _enable_buttons_focus(focus: bool):
 	# Activer ou désactiver le focus pour tous les boutons
-	for button in $MarginContainer/VBoxContainer.get_children():
+	for button in $MarginContainer/VBoxContainer/Resume.get_children():
 		if button is Button:
 			if focus:
 				button.grab_focus()
@@ -35,7 +45,7 @@ func _enable_buttons_focus(focus: bool):
 
 func press_focused_button():
 	# Simuler un appui sur le bouton sélectionné
-	for button in $MarginContainer/VBoxContainer.get_children():
+	for button in $MarginContainer/VBoxContainer/Quit.get_children():
 		if button is Button and button.has_focus():
 			button.emit_signal("pressed")
 			break
