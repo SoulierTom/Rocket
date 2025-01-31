@@ -126,10 +126,19 @@ func pause_game():
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  # Place le menu pause au-dessus des autres éléments
 	add_child(pause_instance)
+
+	# Mettre en pause les Timers
+	$Arm/ReloadTimer.set_paused(true)
+	$Arm/Cooldown.set_paused(true)
+
 	get_tree().paused = true
-		
+
 func resume_game():
 	if pause_instance != null:
 		pause_instance.queue_free()
 		pause_instance = null
 		get_tree().paused = false
+
+		# Reprendre les Timers
+		$Arm/ReloadTimer.set_paused(false)
+		$Arm/Cooldown.set_paused(false)

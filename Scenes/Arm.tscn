@@ -40,6 +40,8 @@ visible = false
 wait_time = 0.25
 one_shot = true
 
+[node name="ReloadTimer" type="Timer" parent="."]
+
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_c0t1e")
 volume_db = -7.5

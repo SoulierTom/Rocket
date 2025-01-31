@@ -2,10 +2,6 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $".."
 
-
-
-
-
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
 var last_joystick_vector = Vector2.RIGHT
@@ -114,12 +110,17 @@ func start_reload():
 	if reloading:
 		$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo) # Barre visible au début du rechargement
 		$RayCast2D.update_ammo_display() # Met à jour le label
-		await get_tree().create_timer(reload_time).timeout
+		
+		# Utiliser le Timer attaché à la scène
+		$ReloadTimer.start(reload_time)
+		await $ReloadTimer.timeout
+		
 		Global.current_ammo = Global.magazine_size
 		$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo) # Met à jour la barre après rechargement
 		$RayCast2D.update_ammo_display() # Met à jour le label
 		reloading = false
 		print("Chargeur rechargé :", Global.current_ammo)
+
 
 # Génére une Rocket
 func shoot(projectile: PackedScene) -> void:
