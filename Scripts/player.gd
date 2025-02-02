@@ -143,13 +143,8 @@ func resume_game():
 		# Enlever la pause globale
 		get_tree().paused = false
 
-		# Reprendre les Timers
+		# Reprendre tous les Timers
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
 		$BufferTimer.paused = false
 		$CoyoteTimer.paused = false
-
-		# Vérifier si le pistolet était en train de recharger
-		if $Arm.reloading and $Arm.remaining_reload_time > 0:
-			print("Reprise du rechargement après la pause...")
-			$Arm.reload_timer.start($Arm.remaining_reload_time)
