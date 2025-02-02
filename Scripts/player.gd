@@ -37,7 +37,6 @@ func _ready():
 	velocity = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	
 	# Direction que pointe le bras
 	var dir_arm = (Global.target_pos - arm.position).normalized()
 	
@@ -59,28 +58,34 @@ func _physics_process(delta: float) -> void:
 	
 	jump()
 	
-	# Détermine qu'elles animations doivent être jouées
-	if is_on_floor() :
+	# Détermine quelles animations doivent être jouées
+	if is_on_floor():
 		friction = 25
-		if input_dir == Vector2.ZERO :
-			animated_sprite.play("idle")
-		else :
-			animated_sprite.play("run")
-	else : 
+		if input_dir == Vector2.ZERO:
+			# Animation "idle" ou "idle_left" selon la direction du bras
+			if dir_arm.x > 0:
+				animated_sprite.play("idle")  # Animation "idle" quand le bras est à droite
+			else:
+				animated_sprite.play("idle_left")  # Animation "idle_left" quand le bras est à gauche
+		else:
+			# Animation "run" ou "run_left" selon la direction du bras
+			if dir_arm.x > 0:
+				animated_sprite.play("run")  # Animation "run" quand le bras est à droite
+			else:
+				animated_sprite.play("run_left")  # Animation "run_left" quand le bras est à gauche
+	else:
 		friction = 10
-		animated_sprite.play("jump")
-		
-	# le perso se tourne dans le sens du bras
-	if dir_arm.x > 0 :
-		animated_sprite.flip_h = false
-	if dir_arm.x < 0 :
-		animated_sprite.flip_h = true
-
+		# Animation "jump" ou "jump_left" selon la direction du bras
+		if dir_arm.x > 0:
+			animated_sprite.play("jump")  # Animation "jump" quand le bras est à droite
+		else:
+			animated_sprite.play("jump_left")  # Animation "jump_left" quand le bras est à gauche
+	
 	var was_on_floor = is_on_floor()
 	
 	move_and_slide()
 	
-	if was_on_floor && !is_on_floor() :
+	if was_on_floor && !is_on_floor():
 		coyote_timer.start()
 
 	# Gestion du menu pause

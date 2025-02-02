@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1oqe71ncqaed"]
+
+[ext_resource type="Script" path="res://Scripts/arm_sprite.gd" id="1_fohn8"]
+[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Andreï/Canon_seul_droite.png" id="1_hnmmi"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_hnmmi")
+script = ExtResource("1_fohn8")
