@@ -124,12 +124,14 @@ func _on_arm_projectile_fired() -> void:
 func pause_game():
 	print("Pausing game")
 	pause_instance = pause_menu.instantiate()
-	pause_instance.z_index = 100  # Place le menu pause au-dessus des autres éléments
+	pause_instance.z_index = 100  
 	add_child(pause_instance)
 
-	# Mettre en pause les Timers
-	$Arm/ReloadTimer.set_paused(true)
-	$Arm/Cooldown.set_paused(true)
+	# Mettre en pause tous les Timers
+	$Arm/ReloadTimer.paused = true
+	$Arm/Cooldown.paused = true
+	$BufferTimer.paused = true
+	$CoyoteTimer.paused = true
 
 	get_tree().paused = true
 
@@ -137,8 +139,17 @@ func resume_game():
 	if pause_instance != null:
 		pause_instance.queue_free()
 		pause_instance = null
+
+		# Enlever la pause globale
 		get_tree().paused = false
 
 		# Reprendre les Timers
-		$Arm/ReloadTimer.set_paused(false)
-		$Arm/Cooldown.set_paused(false)
+		$Arm/ReloadTimer.paused = false
+		$Arm/Cooldown.paused = false
+		$BufferTimer.paused = false
+		$CoyoteTimer.paused = false
+
+		# Vérifier si le pistolet était en train de recharger
+		if $Arm.reloading and $Arm.remaining_reload_time > 0:
+			print("Reprise du rechargement après la pause...")
+			$Arm.reload_timer.start($Arm.remaining_reload_time)
