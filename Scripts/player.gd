@@ -24,6 +24,9 @@ var recoiling : bool = false
 
 # Variables propres au bras
 @onready var arm = $Arm
+@onready var arm_sprite = $arm_sprite
+
+var arm_offset_x: float = 0.85  # Décalage du bras
 
 # Animations du Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -39,6 +42,15 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Direction que pointe le bras
 	var dir_arm = (Global.target_pos - arm.position).normalized()
+	
+	# Vérifier si arm_sprite est bien défini avant d'accéder à sa position
+	if arm_sprite:
+		if dir_arm.x < 0:
+			arm_sprite.position.x = -0.85
+		else:
+			arm_sprite.position.x = 0.85
+	else:
+		print("Erreur : arm_sprite est null")
 	
 	# Appliquer la gravité
 	velocity.y += calculate_gravity() * delta

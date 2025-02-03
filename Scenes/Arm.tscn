@@ -24,6 +24,7 @@ reload_time = 2.5
 explosion_scene = ExtResource("2_lv75f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = 7
 position = Vector2(8, -4)
 rotation = -0.157095

@@ -8,8 +8,8 @@ var is_using_gamepad = false
 var last_joystick_vector = Vector2.RIGHT
 
 # Position du bras
-@export var pos_arm_x: float = -4.0
-@export var pos_arm_y: float = 3.0
+@export var pos_arm_x: float = 0
+@export var pos_arm_y: float = 0
 
 # Le recul du tir
 signal projectile_fired

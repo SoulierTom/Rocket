@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=25 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Andreï/Chara_Walk_Animation.png" id="2_cqlv8"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Arm.tscn" id="3_n5sxh"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="3_nn84d"]
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
+[ext_resource type="PackedScene" uid="uid://b1oqe71ncqaed" path="res://Scenes/arm_sprite.tscn" id="6_8awid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -159,9 +160,7 @@ height = 17.0
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_li7m8")
-jump_height = 23.0
-jump_time_to_descent = 0.16
-max_fall_speed = 680.0
+max_fall_speed = 700.0
 recoil_force = 120
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -196,6 +195,8 @@ one_shot = true
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 position = Vector2(-6, 2)
 scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" parent="." instance=ExtResource("6_8awid")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
