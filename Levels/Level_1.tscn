@@ -405,10 +405,10 @@ tile_map_data = PackedByteArray("AABCAOj/AAAEAAQAAABCAOn/AAATAAAAAABCAOr/AAATAAA
 tile_set = SubResource("TileSet_p535v")
 
 [node name="ColorRect" type="ColorRect" parent="background_le_vrai"]
-offset_left = -1015.0
-offset_top = -901.0
-offset_right = 1720.0
-offset_bottom = 659.0
+offset_left = -549.0
+offset_top = -415.0
+offset_right = 1244.0
+offset_bottom = 376.0
 color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 
 [node name="Player" parent="." instance=ExtResource("4_ew0fu")]

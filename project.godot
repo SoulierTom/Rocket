@@ -24,6 +24,10 @@ Global="*res://Scripts/global.gd"
 window/size/mode=2
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ldtk-importer/plugin.cfg")
+
 [input]
 
 ui_cancel={
@@ -92,4 +96,5 @@ ok={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.243137, 0.207843, 0.27451, 1)
 2d/snap/snap_2d_vertices_to_pixel=true
