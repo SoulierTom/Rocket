@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
-[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Andreï/Canon_seul_droite.png" id="2_rt7fy"]
+[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="2_rt7fy"]
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
 [ext_resource type="AudioStream" uid="uid://ccm4n53mdbtdm" path="res://Audio/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]

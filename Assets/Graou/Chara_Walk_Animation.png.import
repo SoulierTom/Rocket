@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp18cajbe7scj"
-path="res://.godot/imported/Logo M-Corp.png-b2d34741d348307efcfb18a4dfe856cb.ctex"
+uid="uid://dbawyolt2qcih"
+path="res://.godot/imported/Chara_Walk_Animation.png-ecf71ec21df059a9ef7e919cebb484e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Andreï/Logo M-Corp.png"
-dest_files=["res://.godot/imported/Logo M-Corp.png-b2d34741d348307efcfb18a4dfe856cb.ctex"]
+source_file="res://Assets/Graou/Chara_Walk_Animation.png"
+dest_files=["res://.godot/imported/Chara_Walk_Animation.png-ecf71ec21df059a9ef7e919cebb484e4.ctex"]
 
 [params]
 

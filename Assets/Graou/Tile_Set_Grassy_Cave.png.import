@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dml5e465pty5w"
-path="res://.godot/imported/Canon_seul_droite.png-44803578312875f5726487a0e0d75f88.ctex"
+uid="uid://d1c2800ko30my"
+path="res://.godot/imported/Tile_Set_Grassy_Cave.png-6f0ef037f7d762a52b6463d1a84a2f80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Andreï/Canon_seul_droite.png"
-dest_files=["res://.godot/imported/Canon_seul_droite.png-44803578312875f5726487a0e0d75f88.ctex"]
+source_file="res://Assets/Graou/Tile_Set_Grassy_Cave.png"
+dest_files=["res://.godot/imported/Tile_Set_Grassy_Cave.png-6f0ef037f7d762a52b6463d1a84a2f80.ctex"]
 
 [params]
 

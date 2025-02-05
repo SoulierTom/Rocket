@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dum67dqcg8e6m"
-path="res://.godot/imported/TileSet_Acier.png-80a52f67c230821e8e44be672f1d7ff6.ctex"
+uid="uid://dn6byr1ntcpwh"
+path="res://.godot/imported/Crate.png-c960cc2c7846c0073f7715de47c31ee6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSet_Acier.png"
-dest_files=["res://.godot/imported/TileSet_Acier.png-80a52f67c230821e8e44be672f1d7ff6.ctex"]
+source_file="res://Assets/Graou/Crate.png"
+dest_files=["res://.godot/imported/Crate.png-c960cc2c7846c0073f7715de47c31ee6.ctex"]
 
 [params]
 

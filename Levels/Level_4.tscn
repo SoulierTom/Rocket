@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://betvgolbcs5cb"]
 
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="1_ya1ou"]
-[ext_resource type="Texture2D" uid="uid://d3x4sgfe06nms" path="res://Assets/Andreï/Tile_Set_Dirt_v2.png" id="2_ao1y4"]
-[ext_resource type="Texture2D" uid="uid://cx082va6fwehr" path="res://Assets/Andreï/TileSet_Acier.png" id="3_eylfg"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="2_ao1y4"]
+[ext_resource type="Texture2D" uid="uid://dum67dqcg8e6m" path="res://Assets/Graou/TileSet_Acier.png" id="3_eylfg"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_fc4kn"]
-[ext_resource type="PackedScene" path="res://Scenes/Finish.tscn" id="5_w0rci"]
+[ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="5_w0rci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2jk4"]
 texture = ExtResource("2_ao1y4")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://bcwbaj63pum7l"]
 
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="1_a5uhd"]
-[ext_resource type="Texture2D" uid="uid://d3x4sgfe06nms" path="res://Assets/Andreï/Tile_Set_Dirt_v2.png" id="2_3rfco"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="2_3rfco"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_p8n5o"]
-[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Tile_Set_Grassy_Cave.png" id="4_pccy3"]
+[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="4_pccy3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p04g2"]
 texture = ExtResource("2_3rfco")

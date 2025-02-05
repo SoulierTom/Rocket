@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1c2800ko30my"
-path="res://.godot/imported/Tile_Set_Grassy_Cave.png-041f5ad25d1fe168e8c4c45381cb6849.ctex"
+uid="uid://cp18cajbe7scj"
+path="res://.godot/imported/Logo M-Corp.png-1f2c786a3ea3ce5f76f1ed558c036962.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tile_Set_Grassy_Cave.png"
-dest_files=["res://.godot/imported/Tile_Set_Grassy_Cave.png-041f5ad25d1fe168e8c4c45381cb6849.ctex"]
+source_file="res://Assets/Graou/Logo M-Corp.png"
+dest_files=["res://.godot/imported/Logo M-Corp.png-1f2c786a3ea3ce5f76f1ed558c036962.ctex"]
 
 [params]
 
