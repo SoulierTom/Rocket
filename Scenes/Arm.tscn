@@ -15,8 +15,8 @@ outline_size = 7
 outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
-z_index = 7
 z_as_relative = false
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_t4ufm")
 recoil_force = 2
 recoil_duration = 0.1
@@ -24,11 +24,9 @@ reload_time = 2.5
 explosion_scene = ExtResource("2_lv75f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = 7
-position = Vector2(8, -4)
+position = Vector2(5.83333, -4.16667)
 rotation = -0.157095
-scale = Vector2(1.28235, 0.990353)
 texture = ExtResource("2_rt7fy")
 
 [node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]

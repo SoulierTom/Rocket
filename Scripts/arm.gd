@@ -8,8 +8,12 @@ var is_using_gamepad = false
 var last_joystick_vector = Vector2.RIGHT
 
 # Position du bras
-@export var pos_arm_x: float = 0
-@export var pos_arm_y: float = 0
+@export var pos_arm_x: float = -3.0
+@export var pos_arm_y: float = 3.0
+
+@export var arm_position_right: Vector2 = Vector2(2, 3)
+@export var arm_position_left: Vector2 = Vector2(-2, 3)
+
 
 # Le recul du tir
 signal projectile_fired
@@ -35,6 +39,9 @@ func _ready():
 	reload_timer.wait_time = reload_time  # Durée du rechargement
 	reload_timer.one_shot = true  # Le timer ne boucle pas
 	reload_timer.connect("timeout", Callable(self, "_on_ReloadTimer_timeout"))
+	
+	# Garde le RayCast2D en avant-plan
+	$RayCast2D.z_index = 10
 
 func _physics_process(_delta):
 	var character_pos = get_parent().position
@@ -61,6 +68,14 @@ func _physics_process(_delta):
 	else:
 		Global.target_pos = mouse_pos
 		look_at(Global.target_pos)
+
+	# Mise à jour de la position du bras en fonction de la direction
+	if dir_arm.x > 0:  # Le bras vise à droite
+		z_index = 1  # Derrière le personnage
+		$Sprite2D.z_index = 1
+	else:  # Le bras vise à gauche
+		z_index = -1  # Devant le personnage
+		$Sprite2D.z_index = -1
 
 func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
@@ -121,7 +136,6 @@ func _process(_delta):
 		if reloading and reload_timer.is_stopped() and remaining_reload_time > 0:
 			reload_timer.start(remaining_reload_time)
 			remaining_reload_time = 0  # On remet à zéro après avoir repris
-
 
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()

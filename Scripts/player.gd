@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Variable propre au mouvement du Player
+# Variables de mouvement du Player
 @export var speedGround = 140.0
 @export var speedAir = 200.0
 
@@ -24,7 +24,6 @@ var recoiling : bool = false
 
 # Variables propres au bras
 @onready var arm = $Arm
-@onready var arm_sprite = $arm_sprite
 
 var arm_offset_x: float = 0.85  # Décalage du bras
 
@@ -41,17 +40,8 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	# Direction que pointe le bras
-	var dir_arm = (Global.target_pos - arm.position).normalized()
-	
-	# Vérifier si arm_sprite est bien défini avant d'accéder à sa position
-	if arm_sprite:
-		if dir_arm.x < 0:
-			arm_sprite.position.x = -0.85
-		else:
-			arm_sprite.position.x = 0.85
-	else:
-		print("Erreur : arm_sprite est null")
-	
+	var dir_arm = (Global.target_pos - arm.global_position).normalized()
+
 	# Appliquer la gravité
 	velocity.y += calculate_gravity() * delta
 	
@@ -76,52 +66,49 @@ func _physics_process(delta: float) -> void:
 		if input_dir == Vector2.ZERO:
 			# Animation "idle" ou "idle_left" selon la direction du bras
 			if dir_arm.x > 0:
-				animated_sprite.play("idle")  # Animation "idle" quand le bras est à droite
+				animated_sprite.play("idle")
 			else:
-				animated_sprite.play("idle_left")  # Animation "idle_left" quand le bras est à gauche
+				animated_sprite.play("idle_left")
 		else:
 			# Animation "run" ou "run_left" selon la direction du bras
 			if dir_arm.x > 0:
-				animated_sprite.play("run")  # Animation "run" quand le bras est à droite
+				animated_sprite.play("run")
 			else:
-				animated_sprite.play("run_left")  # Animation "run_left" quand le bras est à gauche
+				animated_sprite.play("run_left")
 	else:
 		friction = 10
 		# Animation "jump" ou "jump_left" selon la direction du bras
 		if dir_arm.x > 0:
-			animated_sprite.play("jump")  # Animation "jump" quand le bras est à droite
+			animated_sprite.play("jump")
 		else:
-			animated_sprite.play("jump_left")  # Animation "jump_left" quand le bras est à gauche
+			animated_sprite.play("jump_left")
 	
 	var was_on_floor = is_on_floor()
-	
 	move_and_slide()
 	
 	if was_on_floor && !is_on_floor():
 		coyote_timer.start()
 
 	# Gestion du menu pause
-	if Input.is_action_just_pressed("ui_cancel"):  # "ui_cancel" correspond à la touche Échap
+	if Input.is_action_just_pressed("ui_cancel"):
 		if pause_instance == null:
 			pause_game()
 		else:
 			resume_game()
 
 func calculate_gravity() -> float:
-	# Retourne la gravité appropriée
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
-func jump() :
-
-	if Input.is_action_just_pressed("Jump") :
+func jump():
+	if Input.is_action_just_pressed("Jump"):
 		buffer_timer.start()
 
-	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()) :
+	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
 
 func input() -> Vector2:
 	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("Move_Left","Move_Right")
+	input_dir.x = Input.get_axis("Move_Left", "Move_Right")
 	return input_dir
 	
 func accelerate_ground(direction):
