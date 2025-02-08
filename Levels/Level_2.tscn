@@ -396,7 +396,7 @@ tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_8poq0")
 sources/1 = SubResource("TileSetAtlasSource_hreob")
 
-[node name="Level 2" type="Node2D"]
+[node name="Level 3" type="Node2D"]
 
 [node name="background" type="TileMapLayer" parent="."]
 z_index = -9

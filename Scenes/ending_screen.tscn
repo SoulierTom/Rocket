@@ -15,7 +15,7 @@ script = ExtResource("1_vbw75")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(15, 66)
+position = Vector2(-1, 1.00003)
 scale = Vector2(0.791429, 0.791429)
 texture = ExtResource("1_ydy03")
 centered = false
@@ -33,3 +33,19 @@ offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_rbj3c")
+
+[node name="Main Menu" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = 76.0
+offset_right = 160.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/Main Menu" to="." method="_on_main_menu_pressed"]
