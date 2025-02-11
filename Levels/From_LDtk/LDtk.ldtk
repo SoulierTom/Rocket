@@ -11,9 +11,26 @@
 	"iid": "d5f6e3d0-c210-11ef-addc-a569f64555cf",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 131,
+	"nextUid": 134,
 	"identifierStyle": "Capitalize",
-	"toc": [],
+	"toc": [{
+		"identifier": "PlayerStart",
+		"instances": [],
+		"instancesData": [
+			{ "iids": {
+				"worldIid": "d5f70ae0-c210-11ef-addc-292dd5f6b25f",
+				"levelIid": "d5f75900-c210-11ef-addc-8d6461b641ac",
+				"layerIid": "7efc2de0-c210-11ef-9804-99dba6d0bf5c",
+				"entityIid": "cf08bba0-c210-11ef-9804-8146b9af5a29"
+			}, "worldX": 18, "worldY": 127, "widPx": 16, "heiPx": 17, "fields" : {} },
+			{ "iids": {
+				"worldIid": "d5f70ae0-c210-11ef-addc-292dd5f6b25f",
+				"levelIid": "c5193070-c210-11ef-afc4-47bacb52dbf0",
+				"layerIid": "7efc2de1-c210-11ef-9804-6183570e9ff9",
+				"entityIid": "b34f70d0-c210-11ef-9429-67eb21e4a883"
+			}, "worldX": 275, "worldY": 126, "widPx": 16, "heiPx": 17, "fields" : {} }
+		]
+	}],
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
 	"worldGridHeight": 256,
@@ -3245,7 +3262,7 @@
 			"identifier": "PlayerStart",
 			"uid": 124,
 			"tags": [],
-			"exportToToc": false,
+			"exportToToc": true,
 			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
@@ -3274,7 +3291,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0.5,
 			"pivotY": 0.5,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "spawn_0",
+					"doc": null,
+					"__type": "String",
+					"uid": 132,
+					"type": "F_String",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		},
 		{
 			"identifier": "Finish",
@@ -3309,7 +3364,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0.5,
 			"pivotY": 0.5,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "File_path",
+					"doc": null,
+					"__type": "FilePath",
+					"uid": 133,
+					"type": "F_Path",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -3415,7 +3508,7 @@
 							"height": 24,
 							"defUid": 129,
 							"px": [176,124],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "File_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] }],
 							"__worldX": 176,
 							"__worldY": 124
 						},
@@ -3431,7 +3524,7 @@
 							"height": 17,
 							"defUid": 124,
 							"px": [18,127],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "spawn_0", "__type": "String", "__value": null, "__tile": null, "defUid": 132, "realEditorValues": [] }],
 							"__worldX": 18,
 							"__worldY": 127
 						}
@@ -3549,7 +3642,7 @@
 						0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,0,0,0,0,0,0,0,0,0,
 						1,1,1,1,1,1,1,1,1,1,1,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,
 						0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,
 						0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -3936,8 +4029,6 @@
 						{ "px": [216,144], "src": [10,37], "f": 0, "t": 81, "d": [20,603], "a": 1 },
 						{ "px": [8,72], "src": [163,1], "f": 0, "t": 18, "d": [34,289], "a": 1 },
 						{ "px": [24,72], "src": [163,1], "f": 0, "t": 18, "d": [34,291], "a": 1 },
-						{ "px": [72,80], "src": [163,1], "f": 0, "t": 18, "d": [34,329], "a": 1 },
-						{ "px": [88,80], "src": [163,1], "f": 0, "t": 18, "d": [34,331], "a": 1 },
 						{ "px": [72,104], "src": [163,1], "f": 0, "t": 18, "d": [34,425], "a": 1 },
 						{ "px": [88,104], "src": [163,1], "f": 0, "t": 18, "d": [34,427], "a": 1 },
 						{ "px": [192,120], "src": [163,1], "f": 0, "t": 18, "d": [34,504], "a": 1 },
@@ -3946,6 +4037,7 @@
 						{ "px": [208,136], "src": [163,1], "f": 0, "t": 18, "d": [34,570], "a": 1 },
 						{ "px": [8,64], "src": [145,1], "f": 0, "t": 16, "d": [33,257], "a": 1 },
 						{ "px": [24,64], "src": [145,1], "f": 0, "t": 16, "d": [33,259], "a": 1 },
+						{ "px": [88,80], "src": [145,1], "f": 0, "t": 16, "d": [33,331], "a": 1 },
 						{ "px": [72,88], "src": [145,1], "f": 0, "t": 16, "d": [33,361], "a": 1 },
 						{ "px": [88,88], "src": [145,1], "f": 0, "t": 16, "d": [33,363], "a": 1 },
 						{ "px": [72,96], "src": [145,1], "f": 0, "t": 16, "d": [33,393], "a": 1 },
@@ -3968,7 +4060,6 @@
 						{ "px": [64,128], "src": [154,1], "f": 0, "t": 17, "d": [32,520], "a": 1 },
 						{ "px": [200,136], "src": [154,1], "f": 0, "t": 17, "d": [32,569], "a": 1 },
 						{ "px": [160,16], "src": [154,10], "f": 0, "t": 37, "d": [40,84], "a": 1 },
-						{ "px": [80,80], "src": [154,10], "f": 0, "t": 37, "d": [40,330], "a": 1 },
 						{ "px": [200,120], "src": [154,10], "f": 0, "t": 37, "d": [40,505], "a": 1 },
 						{ "px": [48,128], "src": [154,10], "f": 0, "t": 37, "d": [40,518], "a": 1 },
 						{ "px": [80,16], "src": [163,1], "f": 0, "t": 18, "d": [35,74], "a": 1 }
@@ -4615,7 +4706,7 @@
 							"height": 24,
 							"defUid": 129,
 							"px": [223,53],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "File_path", "__type": "FilePath", "__value": null, "__tile": null, "defUid": 133, "realEditorValues": [] }],
 							"__worldX": 479,
 							"__worldY": 53
 						},
@@ -4631,7 +4722,7 @@
 							"height": 17,
 							"defUid": 124,
 							"px": [19,126],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "spawn_0", "__type": "String", "__value": null, "__tile": null, "defUid": 132, "realEditorValues": [] }],
 							"__worldX": 275,
 							"__worldY": 126
 						}
