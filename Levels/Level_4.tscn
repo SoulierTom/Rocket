@@ -217,6 +217,7 @@ sources/3 = SubResource("TileSetAtlasSource_lbwsm")
 [node name="Player" parent="." instance=ExtResource("1_ya1ou")]
 
 [node name="TileMap" type="Node2D" parent="."]
+z_index = -2
 position = Vector2(153, -49)
 
 [node name="Background" type="TileMapLayer" parent="TileMap"]

@@ -396,7 +396,7 @@ tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_8poq0")
 sources/1 = SubResource("TileSetAtlasSource_hreob")
 
-[node name="Level 2" type="Node2D"]
+[node name="Level 3" type="Node2D"]
 
 [node name="background" type="TileMapLayer" parent="."]
 z_index = -9
@@ -423,4 +423,4 @@ color = Color(0.0455966, 0.129341, 0.221484, 0.392157)
 position = Vector2(0, -1)
 
 [node name="Area2D" parent="." instance=ExtResource("5_8ufrn")]
-position = Vector2(780, -77)
+position = Vector2(19, -285)
