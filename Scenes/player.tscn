@@ -157,6 +157,7 @@ height = 17.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
+scale = Vector2(2, 2)
 script = ExtResource("1_li7m8")
 max_fall_speed = 700.0
 recoil_force = 120
@@ -180,7 +181,8 @@ drag_top_margin = 0.02
 drag_right_margin = 0.02
 drag_bottom_margin = 0.02
 script = ExtResource("3_nn84d")
-zoom_level = Vector2(5, 5)
+base_width = 512
+base_height = 288
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1

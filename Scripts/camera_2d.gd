@@ -1,30 +1,18 @@
 extends Camera2D
 
-@export var target: NodePath
-@export var offset_y: float = 0.0
-@export var zoom_level: Vector2 = Vector2(1, 1)  # Contrôle du zoom par défaut
+@export var base_width: int = 256
+@export var base_height: int = 144
 
 func _ready():
-	if target == null:
-		print("Aucun personnage assigné à la caméra.")
-		return
+	update_camera_ratio()
+	get_viewport().size_changed.connect(update_camera_ratio)
 
-	# Appliquer le zoom initial
-	zoom = zoom_level
+func update_camera_ratio():
+	var viewport_size = get_viewport_rect().size
+	var target_aspect = float(base_width) / base_height
+	var current_aspect = float(viewport_size.x) / viewport_size.y
 
-func _process(_delta):
-	if not target:
-		return
-
-	# Suivre le personnage avec un décalage optionnel
-	global_position = get_node(target).global_position + Vector2(0, offset_y)
-
-	# Si tu veux permettre de modifier dynamiquement le zoom via des inputs :
-	handle_zoom_input()
-
-func handle_zoom_input():
-	# Augmenter ou réduire le zoom avec des inputs (par exemple : molette ou touches clavier)
-	if Input.is_action_just_pressed("zoom_in"):
-		zoom *= 0.9  # Réduire le zoom (rapprochement)
-	elif Input.is_action_just_pressed("zoom_out"):
-		zoom *= 1.1  # Augmenter le zoom (éloignement)
+	if current_aspect > target_aspect:
+		zoom.x = zoom.y * (current_aspect / target_aspect)
+	else:
+		zoom.y = zoom.x * (target_aspect / current_aspect)

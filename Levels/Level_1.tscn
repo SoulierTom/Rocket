@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkdrxjuikxq06"]
+[gd_scene load_steps=4 format=3 uid="uid://1cpnjqa57gkq"]
 
 [ext_resource type="PackedScene" uid="uid://dcgw5ija5psf8" path="res://Levels/From_LDtk/levels/Level_1.scn" id="1_bay44"]
 [ext_resource type="PackedScene" path="res://Scenes/Finish.tscn" id="3_vly2c"]
@@ -9,7 +9,7 @@
 [node name="Level_1" parent="." instance=ExtResource("1_bay44")]
 
 [node name="Player" parent="." instance=ExtResource("4_ew0fu")]
-position = Vector2(59, 119)
+position = Vector2(72, 96)
 
 [node name="Area2D" parent="." instance=ExtResource("3_vly2c")]
-position = Vector2(97, 102)
+position = Vector2(224, 54)
