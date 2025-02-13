@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://bcwbaj63pum7l"]
 
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="1_a5uhd"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/PlayerStart.tscn" id="1_a5uhd"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="2_3rfco"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_p8n5o"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="4_pccy3"]
@@ -172,7 +172,13 @@ tile_map_data = PackedByteArray("AABXAAAAAAAEAAEAAABYAAAAAAAEAAAAAABZAAAAAAAEAAA
 tile_set = SubResource("TileSet_ih5de")
 
 [node name="Player" parent="." instance=ExtResource("1_a5uhd")]
-position = Vector2(641, 138)
+position = Vector2(697, -93)
+speedGround = 120.0
+speedAir = 170.0
+jump_height = 16.0
+jump_time_to_peak = 0.17
+jump_time_to_descent = 0.13
+max_fall_speed = 600.0
 
 [node name="Caisse" parent="." instance=ExtResource("4_p8n5o")]
 position = Vector2(773, 219)
