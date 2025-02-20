@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Variable propre au mouvement du Player
+# Variables de mouvement du Player
 @export var speedGround = 140.0
 @export var speedAir = 200.0
 
@@ -25,18 +25,23 @@ var recoiling : bool = false
 # Variables propres au bras
 @onready var arm = $Arm
 
+var arm_offset_x: float = 0.85  # Décalage du bras
+
 # Animations du Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
+
+# Référence au menu pause
+@onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
+var pause_instance = null
 
 func _ready():
 	velocity = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	
 	# Direction que pointe le bras
-	var dir_arm = (Global.target_pos - arm.position).normalized()
-	
+	var dir_arm = (Global.target_pos - arm.global_position).normalized()
+
 	# Appliquer la gravité
 	velocity.y += calculate_gravity() * delta
 	
@@ -55,52 +60,55 @@ func _physics_process(delta: float) -> void:
 	
 	jump()
 	
-	# Détermine qu'elles animations doivent être jouées
-	if is_on_floor() :
+	# Détermine quelles animations doivent être jouées
+	if is_on_floor():
 		friction = 25
-		if input_dir == Vector2.ZERO :
-			animated_sprite.play("idle")
-		else :
-			animated_sprite.play("run")
-	else : 
+		if input_dir == Vector2.ZERO:
+			# Animation "idle" ou "idle_left" selon la direction du bras
+			if dir_arm.x > 0:
+				animated_sprite.play("idle")
+			else:
+				animated_sprite.play("idle_left")
+		else:
+			# Animation "run" ou "run_left" selon la direction du bras
+			if dir_arm.x > 0:
+				animated_sprite.play("run")
+			else:
+				animated_sprite.play("run_left")
+	else:
 		friction = 10
-		animated_sprite.play("jump")
-		
-	# le perso se tourne dans le sens du bras
-	if dir_arm.x > 0 :
-		animated_sprite.flip_h = false
-	if dir_arm.x < 0 :
-		animated_sprite.flip_h = true
-
-	#if recoiling:    # easter eggs :))))))))   recoil annulé :((((((
-		#velocity += -dir_arm * recoil_force
-
-	var was_on_floor = is_on_floor()
+		# Animation "jump" ou "jump_left" selon la direction du bras
+		if dir_arm.x > 0:
+			animated_sprite.play("jump")
+		else:
+			animated_sprite.play("jump_left")
 	
+	var was_on_floor = is_on_floor()
 	move_and_slide()
 	
-	if was_on_floor && !is_on_floor() :
+	if was_on_floor && !is_on_floor():
 		coyote_timer.start()
 
-	# Retour au menu principal
-	if Input.is_action_just_pressed("exit"):
-		get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	# Gestion du menu pause
+	if Input.is_action_just_pressed("ui_cancel"):
+		if pause_instance == null:
+			pause_game()
+		else:
+			resume_game()
 
 func calculate_gravity() -> float:
-	# Retourne la gravité appropriée
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
-func jump() :
-
-	if Input.is_action_just_pressed("Jump") :
+func jump():
+	if Input.is_action_just_pressed("Jump"):
 		buffer_timer.start()
 
-	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()) :
+	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
 
 func input() -> Vector2:
 	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("Move_Left","Move_Right")
+	input_dir.x = Input.get_axis("Move_Left", "Move_Right")
 	return input_dir
 	
 func accelerate_ground(direction):
@@ -109,7 +117,6 @@ func accelerate_ground(direction):
 func accelerate_air(direction):
 	velocity = velocity.move_toward(speedAir * direction, acceleration_air)
 
-
 func add_friction():
 	velocity = velocity.move_toward(Vector2.ZERO, friction)
 
@@ -117,3 +124,31 @@ func _on_arm_projectile_fired() -> void:
 	recoiling = true
 	await get_tree().create_timer(recoil_duration).timeout
 	recoiling = false
+
+func pause_game():
+	print("Pausing game")
+	pause_instance = pause_menu.instantiate()
+	pause_instance.z_index = 100  
+	add_child(pause_instance)
+
+	# Mettre en pause tous les Timers
+	$Arm/ReloadTimer.paused = true
+	$Arm/Cooldown.paused = true
+	$BufferTimer.paused = true
+	$CoyoteTimer.paused = true
+
+	get_tree().paused = true
+
+func resume_game():
+	if pause_instance != null:
+		pause_instance.queue_free()
+		pause_instance = null
+
+		# Enlever la pause globale
+		get_tree().paused = false
+
+		# Reprendre tous les Timers
+		$Arm/ReloadTimer.paused = false
+		$Arm/Cooldown.paused = false
+		$BufferTimer.paused = false
+		$CoyoteTimer.paused = false

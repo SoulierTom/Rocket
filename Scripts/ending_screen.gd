@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var main_menu = $"CanvasLayer/Main Menu"
+
 func _ready():
 	# Récupérer le Label
 	var label = $CanvasLayer/Label
@@ -13,3 +15,8 @@ func _ready():
 		
 		# Afficher le temps final depuis la variable globale
 		label.text = "Temps final : " + formatted_time + " minutes"
+
+func _on_main_menu_pressed():
+	print("Quit button pressed")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
