@@ -30,13 +30,13 @@ region = Rect2(54, 36, 18, 18)
 atlas = ExtResource("2_cqlv8")
 region = Rect2(18, 36, 18, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xt5ne"]
-atlas = ExtResource("2_cqlv8")
-region = Rect2(18, 54, 18, 18)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr7gj"]
 atlas = ExtResource("2_cqlv8")
 region = Rect2(54, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt5ne"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(18, 54, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_os05q"]
 atlas = ExtResource("2_cqlv8")
@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -103,14 +103,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xt5ne")
+"texture": SubResource("AtlasTexture_pr7gj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pr7gj")
+"texture": SubResource("AtlasTexture_xt5ne")
 }],
 "loop": true,
 "name": &"jump_left",
@@ -148,7 +148,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_left",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxwuh"]
@@ -158,12 +158,13 @@ height = 17.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 script = ExtResource("1_li7m8")
+JUMP_VELOCITY = -500.0
 max_fall_speed = 700.0
 recoil_force = 120
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
-animation = &"run_left"
+animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -171,6 +172,7 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_sxwuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 17.0
 drag_horizontal_offset = 0.01
@@ -181,14 +183,6 @@ drag_right_margin = 0.02
 drag_bottom_margin = 0.02
 script = ExtResource("3_nn84d")
 zoom_level = Vector2(5, 5)
-
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
-[node name="BufferTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
 
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 position = Vector2(-6, 2)

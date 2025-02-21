@@ -1,20 +1,18 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var speedGround = 140.0
-@export var speedAir = 200.0
+@export var SPEED = 200 # Base horizontal movement speed
+@export var ACCELERATION = 500.0 # Base acceleration
+@export var FRICTION = 800.0 # Base friction
+@export var GRAVITY = 2000.0 # Gravity when moving upwards
+@export var FALL_GRAVITY = 3000.0 # Gravity when falling downwards
+@export var JUMP_VELOCITY = -300.0 # Maximum jump strength
+@export var BUFFER_PATIENCE = 0.08 # Input queue patience time
+@export var COYOTE_TIME = 0.08 # Coyote patience time
 
-@export var jump_height : float = 25
-@export var jump_time_to_peak : float = 0.2
-@export var jump_time_to_descent : float = 0.15
-@export var acceleration_ground = 9
-@export var acceleration_air = 9
-
-var friction : int
-@onready var buffer_timer: Timer = $BufferTimer
-@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+var input_buffer : Timer # Reference to the input queue timer
+var coyote_timer : Timer # Reference to the coyote timer
+var coyote_jump_available := true
 
 @export var max_fall_speed : float = 350.0  # Limite maximale de la vitesse de chute
 
@@ -29,41 +27,71 @@ var arm_offset_x: float = 0.85  # Décalage du bras
 
 # Animations du Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var coyote_timer: Timer = $CoyoteTimer
+
 
 # Référence au menu pause
 @onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var pause_instance = null
 
 func _ready():
-	velocity = Vector2.ZERO
+	# Set up input buffer timer
+	input_buffer = Timer.new()
+	input_buffer.wait_time = BUFFER_PATIENCE
+	input_buffer.one_shot = true
+	add_child(input_buffer)
+
+	# Set up coyote timer
+	coyote_timer = Timer.new()
+	coyote_timer.wait_time = COYOTE_TIME
+	coyote_timer.one_shot = true
+	add_child(coyote_timer)
+	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	# Direction que pointe le bras
-	var dir_arm = (Global.target_pos - arm.global_position).normalized()
-
-	# Appliquer la gravité
-	velocity.y += calculate_gravity() * delta
 	
-	# Limiter la vitesse de chute
+	# Get inputs
+	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
+	var jump_attempted := Input.is_action_just_pressed("Jump")
+
+	# Handle jumping
+	if jump_attempted or input_buffer.time_left > 0:
+		if coyote_jump_available: # If jumping on the ground
+			velocity.y = JUMP_VELOCITY
+			coyote_jump_available = false
+		elif jump_attempted: # Queue input buffer if jump was attempted
+			input_buffer.start()
+
+	# Apply gravity and reset coyote jump
+	if is_on_floor():
+		coyote_jump_available = true
+		coyote_timer.stop()
+	else:
+		if coyote_jump_available:
+			if coyote_timer.is_stopped():
+				coyote_timer.start()
+		velocity.y += add_gravity(horizontal_input) * delta
+
+	# Handle horizontal motion and friction
+	var floor_damping := 1.0 if is_on_floor() else 0.2 # Set floor damping, friction is less when in air
+	if horizontal_input:
+		if sign(velocity.x) != horizontal_input : # If you move at the opposite direction of your current movement, you will stop your movement quik.
+			velocity.x = move_toward(velocity.x, 0, FRICTION * delta * floor_damping * 2)
+		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
+	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
-
-	# Gérer les mouvements horizontaux
-	var input_dir: Vector2 = input()
-	if input_dir != Vector2.ZERO and is_on_floor():
-		accelerate_ground(input_dir)
-	elif input_dir != Vector2.ZERO and !is_on_floor():
-		accelerate_air(input_dir)
-	else:
-		add_friction()
 	
-	jump()
+	# Apply velocity
+	move_and_slide()
+	
+	# Direction que pointe le bras
+	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
 	# Détermine quelles animations doivent être jouées
 	if is_on_floor():
-		friction = 25
-		if input_dir == Vector2.ZERO:
+		if horizontal_input == 0:
 			# Animation "idle" ou "idle_left" selon la direction du bras
 			if dir_arm.x > 0:
 				animated_sprite.play("idle")
@@ -76,18 +104,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				animated_sprite.play("run_left")
 	else:
-		friction = 10
 		# Animation "jump" ou "jump_left" selon la direction du bras
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("jump_left")
-	
-	var was_on_floor = is_on_floor()
-	move_and_slide()
-	
-	if was_on_floor && !is_on_floor():
-		coyote_timer.start()
 
 	# Gestion du menu pause
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -95,30 +116,21 @@ func _physics_process(delta: float) -> void:
 			pause_game()
 		else:
 			resume_game()
-
-func calculate_gravity() -> float:
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
-
-func jump():
-	if Input.is_action_just_pressed("Jump"):
-		buffer_timer.start()
-
-	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()):
-		velocity.y = jump_velocity
-
-func input() -> Vector2:
-	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("Move_Left", "Move_Right")
-	return input_dir
 	
-func accelerate_ground(direction):
-	velocity = velocity.move_toward(speedGround * direction, acceleration_ground)
+	
+## Returns the gravity based on the state of the player
+func add_gravity(input_dir : float = 0) -> float:
+	return GRAVITY if velocity.y < 0 else FALL_GRAVITY
 
-func accelerate_air(direction):
-	velocity = velocity.move_toward(speedAir * direction, acceleration_air)
+## Reset coyote jump
+func coyote_timeout() -> void:
+	coyote_jump_available = false
+	
+# Limiter la vitesse de chute
 
-func add_friction():
-	velocity = velocity.move_toward(Vector2.ZERO, friction)
+
+
+
 
 func _on_arm_projectile_fired() -> void:
 	recoiling = true
@@ -134,8 +146,8 @@ func pause_game():
 	# Mettre en pause tous les Timers
 	$Arm/ReloadTimer.paused = true
 	$Arm/Cooldown.paused = true
-	$BufferTimer.paused = true
-	$CoyoteTimer.paused = true
+	input_buffer.paused = true
+	coyote_timer.paused = true
 
 	get_tree().paused = true
 
@@ -150,5 +162,5 @@ func resume_game():
 		# Reprendre tous les Timers
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
-		$BufferTimer.paused = false
-		$CoyoteTimer.paused = false
+		input_buffer.paused = false
+		coyote_timer.paused = false
