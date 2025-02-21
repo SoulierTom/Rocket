@@ -158,9 +158,9 @@ height = 17.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 script = ExtResource("1_li7m8")
-JUMP_VELOCITY = -500.0
-max_fall_speed = 700.0
-recoil_force = 120
+GRAVITY = 1700.0
+max_fall_speed = 1000.0
+min_floating_height = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
@@ -190,4 +190,9 @@ scale = Vector2(0.75, 0.75)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
+[node name="FloatingTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
+[connection signal="timeout" from="FloatingTime" to="." method="_on_floating_time_timeout"]

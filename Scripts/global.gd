@@ -8,3 +8,6 @@ var current_ammo: int = magazine_size  # Rockets restantes
 
 var speedrun_time = 0
 var timer_initialized = false  # Ajoutez cette variable pour contrôler l'initialisation
+
+var player_impulsed : bool = false
+var shooting_pos : Vector2 
