@@ -347,8 +347,9 @@ offset_right = 930.0
 offset_bottom = 278.0
 color = Color(0.0717672, 0.080948, 0.131723, 0.392157)
 
-[node name="Player" parent="." instance=ExtResource("4_hxpf3")]
-position = Vector2(0, -1)
+[node name="Player" parent="background_le_vrai" instance=ExtResource("4_hxpf3")]
+position = Vector2(-262, -519)
+GRAVITY = 1500.0
 
 [node name="Area2D" parent="." instance=ExtResource("5_kv4ol")]
 position = Vector2(-1012, -1028)
