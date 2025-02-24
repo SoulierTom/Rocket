@@ -27,6 +27,7 @@ var recoil_vector: Vector2 = Vector2.ZERO
 var reloading: bool = false # Indique si une recharge est en cours
 var remaining_reload_time: float = 0.0  # Temps restant du rechargement
 
+
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
 @onready var shooting_point: Marker2D = $Sprite2D/ShootingPoint
@@ -90,18 +91,17 @@ func _input(event):
 			Global.current_ammo -= 1
 			$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo)
 			$RayCast2D.update_ammo_display()
-			print("Munitions dans le chargeur :", Global.current_ammo)
+
 
 			if Global.current_ammo < 3 and not reloading:
-				print("Chargeur presque vide ! En cours de recharge...")
 				reloading = true
 				start_reload()
 
 			recoiling = true
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
-		else:
-			print("Chargeur vide ! En cours de recharge...")
+		#else: #Insérer ici le feedback qui indique que le chargeur est vide
+
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
@@ -109,15 +109,13 @@ func _notification(what):
 
 func reset_ammo():
 	Global.current_ammo = Global.magazine_size
-	print("Munitions réinitialisées :", Global.current_ammo)
 
 func start_reload():
 	if not reloading:
 		return
-
 	reload_timer.start()  # Démarrer le timer normalement
 	remaining_reload_time = reload_time  # Sauvegarde le temps total
-	print("Rechargement en cours...")
+
 
 func _on_reload_timer_timeout():
 	if not get_tree().paused:
@@ -125,7 +123,6 @@ func _on_reload_timer_timeout():
 		$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo)
 		$RayCast2D.update_ammo_display()
 		reloading = false
-		print("Chargeur rechargé :", Global.current_ammo)
 
 func _process(_delta):
 	if get_tree().paused:
@@ -143,7 +140,9 @@ func shoot(projectile: PackedScene) -> void:
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
 	$Tir.play()
+	Global.shooting_pos = player.position
 	cooldown.start()
+
 
 func create_explosion(explosion_position: Vector2) -> void:
 	if explosion_scene:

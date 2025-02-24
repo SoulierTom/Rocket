@@ -5,20 +5,20 @@ extends CharacterBody2D
 @export var ACCELERATION = 500.0 # Base acceleration
 @export var FRICTION = 800.0 # Base friction
 @export var GRAVITY = 2000.0 # Gravity when moving upwards
-@export var FALL_GRAVITY = 3000.0 # Gravity when falling downwards
 @export var JUMP_VELOCITY = -300.0 # Maximum jump strength
 @export var BUFFER_PATIENCE = 0.08 # Input queue patience time
 @export var COYOTE_TIME = 0.08 # Coyote patience time
+@export var max_fall_speed : float = 1000  # Limite maximale de la vitesse de chute
 
 var input_buffer : Timer # Reference to the input queue timer
 var coyote_timer : Timer # Reference to the coyote timer
 var coyote_jump_available := true
 
-@export var max_fall_speed : float = 350.0  # Limite maximale de la vitesse de chute
+# Variables dynamiques
+var gravity_scale = 1.0  # Facteur de gravité dynamique
+var was_going_up = false  # Indique si on était en montée
+var time_in_fall = 0.0  # Temps écoulé depuis le début de la chute
 
-var recoiling : bool = false
-@export var recoil_force : int = 100
-@export var recoil_duration : float = 0.025
 
 # Variables propres au bras
 @onready var arm = $Arm
@@ -34,6 +34,7 @@ var arm_offset_x: float = 0.85  # Décalage du bras
 var pause_instance = null
 
 func _ready():
+	
 	# Set up input buffer timer
 	input_buffer = Timer.new()
 	input_buffer.wait_time = BUFFER_PATIENCE
@@ -49,14 +50,17 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
+	
+	
 	# Get inputs
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-
+	
 	# Handle jumping
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available: # If jumping on the ground
 			velocity.y = JUMP_VELOCITY
+			Global.shooting_pos = position
 			coyote_jump_available = false
 		elif jump_attempted: # Queue input buffer if jump was attempted
 			input_buffer.start()
@@ -65,11 +69,12 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_jump_available = true
 		coyote_timer.stop()
+		Global.player_impulsed = false
 	else:
 		if coyote_jump_available:
 			if coyote_timer.is_stopped():
 				coyote_timer.start()
-		velocity.y += add_gravity(horizontal_input) * delta
+		velocity.y += add_gravity() * delta
 
 	# Handle horizontal motion and friction
 	var floor_damping := 1.0 if is_on_floor() else 0.2 # Set floor damping, friction is less when in air
@@ -118,24 +123,42 @@ func _physics_process(delta: float) -> void:
 			resume_game()
 	
 	
-## Returns the gravity based on the state of the player
-func add_gravity(input_dir : float = 0) -> float:
-	return GRAVITY if velocity.y < 0 else FALL_GRAVITY
+	
+func add_gravity() -> float:
+	# Calcul de la hauteur parcourue depuis le tir
+	
+	
+	### 📌 PHASE DE MONTÉE ###
+	if velocity.y < 0:
+		time_in_fall = 0  # Réinitialisation du temps de chute
+		var delta_height = Global.shooting_pos.y - position.y
+		var HEIGHT_THRESHOLD = 80.0 # Hauteur minimale pour activer la gravité progressive
+		print(delta_height)
+		# Si la hauteur est suffisante, réduire progressivement la gravité
+		if delta_height > HEIGHT_THRESHOLD:
+			# On réduit progressivement la gravité sans l'annuler complètement
+			var slowdown_factor = clamp(velocity.y / -300.0, 0.1, 1.0)
+			return GRAVITY * slowdown_factor  # Diminue la gravité proche de l'apex
+		else :
+			return GRAVITY  # Gravité normale si condition non remplie
+
+	### 📌 PHASE DE DESCENTE ###
+	if  velocity.y >= 0:
+		time_in_fall = 0  # Réinitialise le temps de chute
+		
+		# Augmentation progressive de la gravité
+		time_in_fall += get_physics_process_delta_time()
+		gravity_scale = clamp(0.1 + time_in_fall * 50, 0.1, 50)
+		return GRAVITY * gravity_scale
+
+	return GRAVITY
+	
 
 ## Reset coyote jump
 func coyote_timeout() -> void:
 	coyote_jump_available = false
-	
-# Limiter la vitesse de chute
 
 
-
-
-
-func _on_arm_projectile_fired() -> void:
-	recoiling = true
-	await get_tree().create_timer(recoil_duration).timeout
-	recoiling = false
 
 func pause_game():
 	print("Pausing game")

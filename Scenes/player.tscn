@@ -158,9 +158,7 @@ height = 17.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 script = ExtResource("1_li7m8")
-JUMP_VELOCITY = -500.0
-max_fall_speed = 700.0
-recoil_force = 120
+GRAVITY = 1700.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")

@@ -3,9 +3,9 @@ extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
-@export var force_player: int = 500
+
+@export var force_player: int = 450
 @export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
-@export var explosion_impulse_duration: float = 0.1  # Durée durant laquelle la poussée est appliquée
 @export var force_objet: int = 75
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
@@ -68,6 +68,7 @@ func apply_explosion_impulse():
 		if o is CharacterBody2D:
 			var push_direction = (o.global_position - global_position).normalized()
 			o.velocity = push_direction * force_player  # Ajuste la force de la poussée
+			Global.player_impulsed = true
 
 # Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
 func _on_timer_timeout() -> void:
