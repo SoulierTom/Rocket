@@ -27,6 +27,7 @@ var recoil_vector: Vector2 = Vector2.ZERO
 var reloading: bool = false # Indique si une recharge est en cours
 var remaining_reload_time: float = 0.0  # Temps restant du rechargement
 
+
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
 @onready var shooting_point: Marker2D = $Sprite2D/ShootingPoint
@@ -99,8 +100,8 @@ func _input(event):
 			recoiling = true
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
-		else: #Insérer ici le feedback qui indique que le chargeur est vide
-			print("Chargeur vide ! En cours de recharge...")
+		#else: #Insérer ici le feedback qui indique que le chargeur est vide
+
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
@@ -141,9 +142,7 @@ func shoot(projectile: PackedScene) -> void:
 	$Tir.play()
 	Global.shooting_pos = player.position
 	cooldown.start()
-	
-	if player.is_floating:  # Si on flotte déjà, on annule immédiatement
-		player.cancel_floating()
+
 
 func create_explosion(explosion_position: Vector2) -> void:
 	if explosion_scene:
