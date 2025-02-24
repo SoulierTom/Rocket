@@ -151,9 +151,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxwuh"]
-radius = 6.5
-height = 17.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bxff"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
@@ -166,8 +164,9 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_sxwuh")
+position = Vector2(0.41, 1.88)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_4bxff")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

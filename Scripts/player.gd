@@ -4,11 +4,11 @@ extends CharacterBody2D
 @export var SPEED = 200 # Base horizontal movement speed
 @export var ACCELERATION = 500.0 # Base acceleration
 @export var FRICTION = 800.0 # Base friction
-@export var GRAVITY = 2000.0 # Gravity when moving upwards
+@export var GRAVITY = 1500.0 # Gravity when moving upwards
 @export var JUMP_VELOCITY = -300.0 # Maximum jump strength
 @export var BUFFER_PATIENCE = 0.08 # Input queue patience time
 @export var COYOTE_TIME = 0.08 # Coyote patience time
-@export var max_fall_speed : float = 1000  # Limite maximale de la vitesse de chute
+@export var max_fall_speed : float = 750  # Limite maximale de la vitesse de chute
 
 var input_buffer : Timer # Reference to the input queue timer
 var coyote_timer : Timer # Reference to the coyote timer
@@ -50,12 +50,12 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	
+
 	
 	# Get inputs
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-	
+	print(horizontal_input)
 	# Handle jumping
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available: # If jumping on the ground
@@ -78,12 +78,19 @@ func _physics_process(delta: float) -> void:
 
 	# Handle horizontal motion and friction
 	var floor_damping := 1.0 if is_on_floor() else 0.2 # Set floor damping, friction is less when in air
+
 	if horizontal_input:
+		if Global.is_floating : 
+			velocity.x = move_toward(velocity.x, horizontal_input * SPEED * 0.4, ACCELERATION * delta)
 		if sign(velocity.x) != horizontal_input : # If you move at the opposite direction of your current movement, you will stop your movement quik.
 			velocity.x = move_toward(velocity.x, 0, FRICTION * delta * floor_damping * 2)
-		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+		if not Global.is_floating :
+			velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
+		if Global.is_floating : 
+			velocity.x = move_toward(velocity.x, 0, FRICTION * delta * floor_damping)
+		if not Global.is_floating :
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -125,17 +132,15 @@ func _physics_process(delta: float) -> void:
 	
 	
 func add_gravity() -> float:
-	# Calcul de la hauteur parcourue depuis le tir
-	
 	
 	### 📌 PHASE DE MONTÉE ###
 	if velocity.y < 0:
 		time_in_fall = 0  # Réinitialisation du temps de chute
 		var delta_height = Global.shooting_pos.y - position.y
-		var HEIGHT_THRESHOLD = 80.0 # Hauteur minimale pour activer la gravité progressive
-		print(delta_height)
+		var HEIGHT_THRESHOLD = 70.0 # Hauteur minimale pour activer la gravité progressive
 		# Si la hauteur est suffisante, réduire progressivement la gravité
 		if delta_height > HEIGHT_THRESHOLD:
+			Global.is_floating = true
 			# On réduit progressivement la gravité sans l'annuler complètement
 			var slowdown_factor = clamp(velocity.y / -300.0, 0.1, 1.0)
 			return GRAVITY * slowdown_factor  # Diminue la gravité proche de l'apex
@@ -145,10 +150,10 @@ func add_gravity() -> float:
 	### 📌 PHASE DE DESCENTE ###
 	if  velocity.y >= 0:
 		time_in_fall = 0  # Réinitialise le temps de chute
-		
+		Global.is_floating = false
 		# Augmentation progressive de la gravité
 		time_in_fall += get_physics_process_delta_time()
-		gravity_scale = clamp(0.1 + time_in_fall * 50, 0.1, 50)
+		gravity_scale = clamp(1 + time_in_fall * 50, 1, 100)
 		return GRAVITY * gravity_scale
 
 	return GRAVITY
@@ -161,7 +166,6 @@ func coyote_timeout() -> void:
 
 
 func pause_game():
-	print("Pausing game")
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  
 	add_child(pause_instance)

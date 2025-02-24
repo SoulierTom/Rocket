@@ -11,7 +11,6 @@ z_index = 6
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_u06mp")
-speed = 400
 explosion_notifier = NodePath(".")
 
 [node name="Existence" type="Timer" parent="."]
@@ -19,6 +18,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_7hl48")
 
 [node name="Bullet" type="Sprite2D" parent="."]
