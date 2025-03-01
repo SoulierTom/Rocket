@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://r15d64yvyjog"]
+[gd_scene load_steps=14 format=4 uid="uid://r15d64yvyjog"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_xgdrc"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_8y7xp"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_srbgm"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_d20fv"]
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_r2m33"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="6_8b32k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
@@ -423,56 +422,20 @@ color = Color(0.0455966, 0.129341, 0.221484, 0.392157)
 [node name="Player" parent="." instance=ExtResource("4_d20fv")]
 position = Vector2(0, -1)
 
-[node name="Area2D" parent="." instance=ExtResource("5_r2m33")]
-position = Vector2(251, -28)
+[node name="Area2D" parent="." instance=ExtResource("6_8b32k")]
+position = Vector2(112, 16)
 
 [node name="Area2D2" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(115, 15)
+position = Vector2(128, 16)
 
 [node name="Area2D3" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(121, 15)
+position = Vector2(144, 16)
 
 [node name="Area2D4" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(127, 15)
+position = Vector2(160, 16)
 
 [node name="Area2D5" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(133, 15)
+position = Vector2(176, 16)
 
 [node name="Area2D6" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(139, 15)
-
-[node name="Area2D7" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(145, 15)
-
-[node name="Area2D8" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(151, 15)
-
-[node name="Area2D9" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(157, 15)
-
-[node name="Area2D10" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(162, 15)
-
-[node name="Area2D11" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(168, 15)
-
-[node name="Area2D12" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(174, 15)
-
-[node name="Area2D13" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(180, 15)
-
-[node name="Area2D14" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(186, 15)
-
-[node name="Area2D15" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(192, 15)
-
-[node name="Area2D16" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(198, 15)
-
-[node name="Area2D17" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(204, 15)
-
-[node name="Area2D18" parent="." instance=ExtResource("6_8b32k")]
-position = Vector2(210, 15)
+position = Vector2(192, 16)

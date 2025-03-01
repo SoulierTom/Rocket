@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4yfhvifo5im8"]
 
-[ext_resource type="Script" path="res://Scenes/kill.gd" id="1_cu28q"]
-[ext_resource type="Texture2D" uid="uid://bhlsavaq8jvfu" path="res://Assets/56of7hsa.bmp" id="1_eeyth"]
+[ext_resource type="Script" path="res://Scripts/kill.gd" id="1_cu28q"]
+[ext_resource type="Texture2D" uid="uid://dweicsdmsbb5e" path="res://Assets/Corail.png" id="2_75pfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxw14"]
-size = Vector2(2.5, 3)
+size = Vector2(16, 4.5)
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_cu28q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
-scale = Vector2(0.06875, 0.06875)
-texture = ExtResource("1_eeyth")
+position = Vector2(8, -4)
+texture = ExtResource("2_75pfk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.25, -2)
+position = Vector2(8, -2.75)
 shape = SubResource("RectangleShape2D_xxw14")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,12 @@
 extends Camera2D
 
+class_name Camera
+
 @export var target: NodePath
 @export var offset_y: float = 0.0
 @export var zoom_level: Vector2 = Vector2(1, 1)  # Contrôle du zoom par défaut
+
+@onready var player = $Player
 
 func _ready():
 	if target == null:
