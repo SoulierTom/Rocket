@@ -433,6 +433,6 @@ limit_y = 2
 position = Vector2(-615, 133)
 
 [node name="LimitPosition" parent="CameraLimiters/CameraLimiter1" index="1"]
-position = Vector2(-748, 225)
+position = Vector2(-269, 302)
 
 [editable path="CameraLimiters/CameraLimiter1"]

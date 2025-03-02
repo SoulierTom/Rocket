@@ -32,6 +32,7 @@ var camera: Camera2D = null
 # Méthode pour définir la caméra
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
+	camera.make_current()  # Active cette caméra (Godot 4)
 	print("Camera set to:", camera)
 
 func _ready():

@@ -190,3 +190,5 @@ shape = SubResource("RectangleShape2D_bym3m")
 
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
+
+[editable path="Camera"]
