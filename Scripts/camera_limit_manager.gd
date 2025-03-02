@@ -3,7 +3,7 @@ extends Node2D
 class_name CameraLimitManager
 
 @onready var camera = $".."
-@onready var player = get_node("/root/NomDeLaScène/Player")  # Chemin absolu
+@onready var player = $"."
 
 @export var limit_transition_speed = 3
 
