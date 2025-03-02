@@ -5,7 +5,7 @@ class_name CameraLimitManager
 @onready var camera = $".."
 @onready var player = $"."
 
-@export var limit_transition_speed = 10
+@export var limit_transition_speed = 50
 
 const MAX_LIMIT = 100000
 

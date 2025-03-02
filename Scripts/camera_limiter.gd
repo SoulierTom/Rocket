@@ -28,6 +28,6 @@ func get_limit_left():
 	return marker.global_position.x
 
 func get_limit_right():
-	if limit_x != LimitX.LEFT:
+	if limit_x != LimitX.RIGHT:
 		return MAX_VAL
 	return marker.global_position.x

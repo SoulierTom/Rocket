@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/camera_limiter.gd" id="1_h5nro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mx0o"]
-size = Vector2(20, 182)
+size = Vector2(20, 219.75)
 
 [node name="Camera_Limiter" type="Area2D"]
 script = ExtResource("1_h5nro")
