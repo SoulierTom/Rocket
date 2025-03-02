@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://bkdutevph48gt"]
+[gd_scene load_steps=16 format=4 uid="uid://bkdutevph48gt"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_vvinu"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_qpv63"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_dnfgv"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_hgxuj"]
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_txdmf"]
 [ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="6_e61mr"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="7_u865l"]
+[ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="7_wxa6l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_vvinu")
@@ -419,9 +420,6 @@ color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 [node name="Player" parent="." instance=ExtResource("4_hgxuj")]
 position = Vector2(-14, -2)
 
-[node name="Area2D" parent="." instance=ExtResource("5_txdmf")]
-position = Vector2(875, -104)
-
 [node name="CameraLimiters" type="Node" parent="."]
 
 [node name="CameraLimiter1" parent="CameraLimiters" instance=ExtResource("6_e61mr")]
@@ -444,6 +442,41 @@ position = Vector2(-220, 64.25)
 
 [node name="LimitPosition" parent="CameraLimiters/CameraLimiter2" index="1"]
 position = Vector2(194, -57)
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Area2D3" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(152, 64)
+
+[node name="Area2D2" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(136, 64)
+
+[node name="Area2D4" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(320, 48)
+
+[node name="Area2D5" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(336, 48)
+
+[node name="Area2D6" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(352, 48)
+
+[node name="Area2D8" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(496, 16)
+
+[node name="Area2D9" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(512, 16)
+
+[node name="Area2D10" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(528, 16)
+
+[node name="Area2D11" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(544, 16)
+
+[node name="Area2D7" parent="Spikes" instance=ExtResource("7_u865l")]
+position = Vector2(368, 48)
+
+[node name="Finish" parent="." instance=ExtResource("7_wxa6l")]
+position = Vector2(897, -77)
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]
