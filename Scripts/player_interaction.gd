@@ -1,6 +1,7 @@
 extends Area2D
 
-@onready var player = $Player
+@onready var player = $".."
+
 @onready var collision_shape_2d = $CameraLimiters/CameraLimiter1/CollisionShape2D
 
 @onready var camera = $"../Camera2D"  # Ajustez le chemin selon votre scène

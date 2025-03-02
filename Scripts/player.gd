@@ -33,7 +33,7 @@ var arm_offset_x: float = 0.85  # Décalage du bras
 @onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var pause_instance = null
 
-@onready var camera: Camera2D = $Camera2D
+@onready var camera = $Camera
 
 func _ready():
 	# Set up input buffer timer
