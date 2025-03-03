@@ -19,6 +19,7 @@ config/icon="res://Assets/Graou/Logo M-Corp.png"
 
 Global="*res://Scripts/global.gd"
 TransitionScreen="*res://Scenes/Transition_Screen.tscn"
+DeathScreen="*res://Scenes/death_screen.tscn"
 
 [display]
 
