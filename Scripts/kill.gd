@@ -1,8 +1,12 @@
+# DeathArea.gd
 extends Area2D
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		print("Player entered death area")
+		body.set_process(false)  # Désactive _process du joueur
+		body.set_physics_process(false)  # Désactive _physics_process du joueur
+		
 		if is_instance_valid(DeathScreen):
 			print("DeathScreen is valid, playing death animation")
 			DeathScreen.death()
