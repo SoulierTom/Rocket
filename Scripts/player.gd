@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var SPEED = 200
+@export var SPEED = 175
 @export var ACCELERATION = 500.0
 @export var FRICTION = 800.0
 @export var GRAVITY = 1500.0
+@export var GRAVITY_IMPULSED = 2000.0
 @export var JUMP_VELOCITY = -300.0
 @export var BUFFER_PATIENCE = 0.08
 @export var COYOTE_TIME = 0.08
-@export var max_fall_speed : float = 750
+@export var max_fall_speed : float = 500
 
 var input_buffer : Timer
 var coyote_timer : Timer
@@ -48,6 +49,9 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
+	
+	print(abs(velocity.x))
+	
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 
@@ -69,20 +73,36 @@ func _physics_process(delta: float) -> void:
 				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
-	var floor_damping := 1.0 if is_on_floor() else 0.2
+	var drag_multiplier : float
+	if is_on_floor():
+		if abs(velocity.x) > SPEED :
+			drag_multiplier = 2
+		else :
+			drag_multiplier = 1
+	else : 
+		if abs(velocity.x) > SPEED+100:
+			drag_multiplier = 0.5
+		else :
+			drag_multiplier = 0.2
+	
+	1.0 if is_on_floor() else 0.2
 
-	if horizontal_input:
-		if Global.is_floating:
-			velocity.x = move_toward(velocity.x, horizontal_input * SPEED * 0.4, ACCELERATION * delta)
-		if sign(velocity.x) != horizontal_input:
-			velocity.x = move_toward(velocity.x, 0, FRICTION * delta * floor_damping * 2)
-		if not Global.is_floating:
+	if Global.player_impulsed:
+		if horizontal_input:
 			velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+			if sign(velocity.x) != horizontal_input:
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 2)
+		else :
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	else:
-		if Global.is_floating:
-			velocity.x = move_toward(velocity.x, 0, FRICTION * delta * floor_damping)
-		if not Global.is_floating:
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
+		if horizontal_input:
+			if not is_on_floor():
+				velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta * 1.5)
+			velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
+			if sign(velocity.x) != horizontal_input:
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 2)
+		else:
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -126,22 +146,10 @@ func _physics_process(delta: float) -> void:
 	
 
 func add_gravity() -> float:
-	if velocity.y < 0:
-		time_in_fall = 0
-		var delta_height = Global.shooting_pos.y - position.y
-		var HEIGHT_THRESHOLD = 70.0
-		if delta_height > HEIGHT_THRESHOLD:
-			Global.is_floating = true
-			var slowdown_factor = clamp(velocity.y / -300.0, 0.1, 1.0)
+	if Global.player_impulsed :
+			var slowdown_factor = clamp(velocity.length() / 250.0, 0.2, 1.0)
 			return GRAVITY * slowdown_factor
-		else:
-			return GRAVITY
-	if velocity.y >= 0:
-		time_in_fall = 0
-		Global.is_floating = false
-		time_in_fall += get_physics_process_delta_time()
-		gravity_scale = clamp(1 + time_in_fall * 50, 1, 100)
-		return GRAVITY * gravity_scale
+
 	return GRAVITY
 
 func coyote_timeout() -> void:
