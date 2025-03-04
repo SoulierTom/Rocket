@@ -1,26 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
 [ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="2_rt7fy"]
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
-[ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Audio/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
+[ext_resource type="AudioStream" uid="uid://ccm4n53mdbtdm" path="res://Levels/Explosion.wav" id="5_c0t1e"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
 [ext_resource type="Texture2D" uid="uid://ia20hwapr2iw" path="res://Assets/cercle.png" id="8_knd35"]
 [ext_resource type="Script" path="res://Scripts/texture_progress_bar.gd" id="9_558o2"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8wks"]
-random_pitch = 2.0
-streams_count = 2
-stream_0/stream = ExtResource("5_ria3t")
-stream_1/stream = ExtResource("5_ria3t")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eqsr6"]
-random_pitch = 1.5
-streams_count = 2
-stream_0/stream = ExtResource("6_7svj1")
-stream_1/stream = ExtResource("6_7svj1")
+[ext_resource type="Script" path="res://Scenes/explosion_v_1.gd" id="10_4qc75"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
 outline_size = 7
@@ -55,11 +44,11 @@ one_shot = true
 [node name="ReloadTimer" type="Timer" parent="."]
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_k8wks")
+stream = ExtResource("5_c0t1e")
 volume_db = -7.5
 
 [node name="Tir" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_eqsr6")
+stream = ExtResource("6_7svj1")
 volume_db = -7.5
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -114,5 +103,10 @@ fill_mode = 4
 texture_progress = ExtResource("8_knd35")
 script = ExtResource("9_558o2")
 reload_time = 2.5
+
+[node name="explosionV1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c0t1e")
+volume_db = -7.5
+script = ExtResource("10_4qc75")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -89,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	var current_frame = animated_sprite.frame
 	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
 	if is_on_floor():
@@ -100,8 +101,17 @@ func _physics_process(delta: float) -> void:
 		else:
 			if dir_arm.x > 0:
 				animated_sprite.play("run")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 			else:
 				animated_sprite.play("run_left")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+					
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -113,6 +123,7 @@ func _physics_process(delta: float) -> void:
 			pause_game()
 		else:
 			resume_game()
+	
 
 func add_gravity() -> float:
 	if velocity.y < 0:
