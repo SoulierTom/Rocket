@@ -67,6 +67,7 @@ func apply_explosion_impulse():
 		
 		if o is CharacterBody2D:
 			var push_direction = (o.global_position - global_position).normalized()
+			o.velocity = Vector2.ZERO
 			o.velocity = push_direction * force_player  # Ajuste la force de la poussée
 			Global.player_impulsed = true
 

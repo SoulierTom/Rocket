@@ -2,7 +2,7 @@ class_name Projectile
 extends CharacterBody2D
 
 var direction = Vector2.ZERO
-@export var speed = 400
+@export var speed = 750
 @export var explosion_notifier: Node
 @onready var existence: Timer = $Existence
 
