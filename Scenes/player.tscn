@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=28 format=3 uid="uid://yv1y2yu4g5vq"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
