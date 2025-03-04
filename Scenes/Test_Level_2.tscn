@@ -610,7 +610,7 @@ limit_x = 2
 limit_y = 1
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter" index="0"]
-position = Vector2(-183.5, -211.5)
+position = Vector2(-195, -187)
 
 [node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter" index="1"]
 position = Vector2(97, -443)
