@@ -441,7 +441,7 @@ limit_x = 2
 position = Vector2(-220, 64.25)
 
 [node name="LimitPosition" parent="CameraLimiters/CameraLimiter2" index="1"]
-position = Vector2(194, -57)
+position = Vector2(183, -58)
 
 [node name="Spikes" type="Node" parent="."]
 
@@ -476,7 +476,7 @@ position = Vector2(544, 16)
 position = Vector2(368, 48)
 
 [node name="Finish" parent="." instance=ExtResource("7_wxa6l")]
-position = Vector2(897, -77)
+position = Vector2(920, -78)
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]
