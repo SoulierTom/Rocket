@@ -143,9 +143,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			resume_game()
 	
-	if Global.player_impulsed == false :
+	#if Global.player_impulsed == false :
 		#print("hello world")
-		$fall_woosh.play()
+		#$fall_woosh.play()
+	
+	#if Global.player_impulsed == false and velocity.y < 0:
+		#print("hello world")
+		#$fall_woosh.play()
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
