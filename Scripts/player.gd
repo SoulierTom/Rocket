@@ -30,6 +30,11 @@ var pause_instance = null
 # Ajoutez une variable pour stocker la référence à la caméra
 var camera: Camera2D = null
 
+var can_jump := true
+
+# Ajoutez une référence au CanvasLayer
+@onready var canvas_layer = $CanvasLayer
+
 # Méthode pour définir la caméra
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
@@ -56,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 
 	if jump_attempted or input_buffer.time_left > 0:
-		if coyote_jump_available:
+		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
 			Global.shooting_pos = position
 			coyote_jump_available = false
@@ -109,6 +114,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	var current_frame = animated_sprite.frame
 	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
 	if is_on_floor():
@@ -120,8 +126,17 @@ func _physics_process(delta: float) -> void:
 		else:
 			if dir_arm.x > 0:
 				animated_sprite.play("run")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 			else:
 				animated_sprite.play("run_left")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+					
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -133,6 +148,7 @@ func _physics_process(delta: float) -> void:
 			pause_game()
 		else:
 			resume_game()
+	
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
@@ -147,7 +163,13 @@ func coyote_timeout() -> void:
 func pause_game():
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  
-	add_child(pause_instance)
+	canvas_layer.add_child(pause_instance)  # Ajoute le menu pause au CanvasLayer
+	
+	# Connecter le signal resume_requested du menu pause à la fonction resume_game
+	if pause_instance.has_signal("resume_requested"):
+		# Utiliser un Callable pour connecter le signal
+		pause_instance.connect("resume_requested", Callable(self, "resume_game"))
+	
 	$Arm/ReloadTimer.paused = true
 	$Arm/Cooldown.paused = true
 	input_buffer.paused = true
@@ -155,7 +177,9 @@ func pause_game():
 	get_tree().paused = true
 
 func resume_game():
+	print("Resume game function called")
 	if pause_instance != null:
+		print("Pause instance exists, freeing it")
 		pause_instance.queue_free()
 		pause_instance = null
 		get_tree().paused = false

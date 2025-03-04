@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yv1y2yu4g5vq"]
+[gd_scene load_steps=28 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/camera_2d.tscn" id="3_s4l33"]
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
+[ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Audio/Walk_sound.wav" id="7_71co6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -157,6 +158,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bym3m"]
 size = Vector2(15, 16)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dogjo"]
+random_pitch = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("7_71co6")
+stream_1/stream = ExtResource("7_71co6")
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 script = ExtResource("1_li7m8")
@@ -188,6 +195,9 @@ script = ExtResource("6_boj3a")
 z_index = 1
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_bym3m")
+
+[node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dogjo")
 
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
