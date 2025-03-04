@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn8846b01v84"
-path="res://.godot/imported/ldtk-level.svg-7c4c13bcdc12c18fc0e3338deb18be11.ctex"
+path="res://.godot/imported/ldtk-level.svg-4584556ec662499d62a9bb2f0bcc5bd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/ldtk-importer/src/components/ldtk-level.svg"
-dest_files=["res://.godot/imported/ldtk-level.svg-7c4c13bcdc12c18fc0e3338deb18be11.ctex"]
+source_file="res://Addons/ldtk-importer/src/components/ldtk-level.svg"
+dest_files=["res://.godot/imported/ldtk-level.svg-4584556ec662499d62a9bb2f0bcc5bd8.ctex"]
 
 [params]
 

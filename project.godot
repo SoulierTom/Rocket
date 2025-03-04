@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rocket"
-run/main_scene="res://Scenes/Main_Menu.tscn"
+run/main_scene="res://Levels/From_LDtk/levels/Level_0.scn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/Graou/Logo M-Corp.png"
 
