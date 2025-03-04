@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://o1v8u6mm7fut"]
+[gd_scene load_steps=16 format=4 uid="uid://o1v8u6mm7fut"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_f7fom"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_8vgao"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="4_qj5ia"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="5_3lkrf"]
 [ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="6_ka44o"]
+[ext_resource type="PackedScene" uid="uid://bbvibkmsbl1xg" path="res://Scenes/petrol.tscn" id="7_nancb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_f7fom")
@@ -443,6 +444,17 @@ position = Vector2(-674, 91)
 
 [node name="LimitPosition" parent="CameraLimiters/CameraLimiter2" index="1"]
 position = Vector2(-751, 75)
+
+[node name="petrol" type="Node" parent="."]
+
+[node name="Area2D" parent="petrol" instance=ExtResource("7_nancb")]
+position = Vector2(172, 4)
+
+[node name="Area2D14" parent="petrol" instance=ExtResource("7_nancb")]
+position = Vector2(84, 20)
+
+[node name="Area2D15" parent="petrol" instance=ExtResource("7_nancb")]
+position = Vector2(52, 20)
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]

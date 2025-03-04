@@ -30,6 +30,8 @@ var pause_instance = null
 # Ajoutez une variable pour stocker la référence à la caméra
 var camera: Camera2D = null
 
+var can_jump := true
+
 # Méthode pour définir la caméra
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
@@ -56,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 
 	if jump_attempted or input_buffer.time_left > 0:
-		if coyote_jump_available:
+		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
 			Global.shooting_pos = position
 			coyote_jump_available = false
