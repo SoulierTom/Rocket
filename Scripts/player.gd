@@ -50,7 +50,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	print(abs(velocity.x))
 	
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
@@ -144,6 +143,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			resume_game()
 	
+	if Global.player_impulsed == false :
+		#print("hello world")
+		$fall_woosh.play()
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
