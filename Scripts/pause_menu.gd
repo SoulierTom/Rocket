@@ -1,5 +1,7 @@
 extends Control
 
+signal resume_requested  # Ajoutez ce signal
+
 var is_using_gamepad = false
 
 func _ready():
@@ -52,13 +54,9 @@ func press_focused_button():
 
 func _on_resume_pressed():
 	print("Resume button pressed")
-	get_tree().paused = false
+	emit_signal("resume_requested")  # Émettre le signal
+	queue_free()  # Supprimer le menu pause
 	
-	# S'assurer que le menu pause est bien supprimé
-	get_parent().resume_game()
-	queue_free()
-
-
 func _on_quit_pressed():
 	print("Quit button pressed")
 	get_tree().paused = false

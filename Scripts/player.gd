@@ -32,6 +32,9 @@ var camera: Camera2D = null
 
 var can_jump := true
 
+# Ajoutez une référence au CanvasLayer
+@onready var canvas_layer = $CanvasLayer
+
 # Méthode pour définir la caméra
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
@@ -160,7 +163,13 @@ func coyote_timeout() -> void:
 func pause_game():
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  
-	add_child(pause_instance)
+	canvas_layer.add_child(pause_instance)  # Ajoute le menu pause au CanvasLayer
+	
+	# Connecter le signal resume_requested du menu pause à la fonction resume_game
+	if pause_instance.has_signal("resume_requested"):
+		# Utiliser un Callable pour connecter le signal
+		pause_instance.connect("resume_requested", Callable(self, "resume_game"))
+	
 	$Arm/ReloadTimer.paused = true
 	$Arm/Cooldown.paused = true
 	input_buffer.paused = true
@@ -168,7 +177,9 @@ func pause_game():
 	get_tree().paused = true
 
 func resume_game():
+	print("Resume game function called")
 	if pause_instance != null:
+		print("Pause instance exists, freeing it")
 		pause_instance.queue_free()
 		pause_instance = null
 		get_tree().paused = false
