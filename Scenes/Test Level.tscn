@@ -173,8 +173,6 @@ tile_set = SubResource("TileSet_ih5de")
 
 [node name="Player" parent="." instance=ExtResource("1_a5uhd")]
 position = Vector2(-813, -37)
-JUMP_VELOCITY = -300.0
-BUFFER_PATIENCE = 0.08
 
 [node name="Caisse" parent="." instance=ExtResource("4_p8n5o")]
 position = Vector2(773, 219)
