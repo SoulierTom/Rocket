@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcgw5ija5psf8" path="res://Levels/From_LDtk/levels/Level_1.scn" id="1_bay44"]
 [ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="3_vly2c"]
-[ext_resource type="PackedScene" uid="uid://yv1y2yu4g5vq" path="res://Scenes/player.tscn" id="4_ew0fu"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_ew0fu"]
 
 [node name="Level_1" type="Node2D"]
 
