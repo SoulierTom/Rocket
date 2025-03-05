@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var SPEED = 175
+@export var SPEED = 150
 @export var ACCELERATION = 500.0
 @export var FRICTION = 800.0
 @export var GRAVITY = 1500.0
@@ -93,26 +93,23 @@ func _physics_process(delta: float) -> void:
 	var speed_intensity : float
 	if abs(horizontal_input) <= 0.25 and abs(horizontal_input) >= 0.05:
 		speed_intensity = 0.25 * sign(horizontal_input) * SPEED
-	if abs(horizontal_input) <= 0.75 and abs(horizontal_input) > 0.25:
+	if abs(horizontal_input) <= 0.8 and abs(horizontal_input) > 0.25:
 		speed_intensity = horizontal_input * SPEED
-	if abs(horizontal_input) > 0.75 :
-		speed_intensity = 0.75 * sign(horizontal_input) * SPEED
+	if abs(horizontal_input) > 0.8 :
+		speed_intensity = 0.8 * sign(horizontal_input) * SPEED
 	
 	if Global.player_impulsed:
 		if horizontal_input:
-			velocity.x = move_toward(velocity.x, speed_intensity * 1.5, ACCELERATION * delta)
-			
-			if sign(velocity.x) != horizontal_input :
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)
+			velocity.x = move_toward(velocity.x, speed_intensity * 1.8 , ACCELERATION * delta)
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	else:
 		if horizontal_input:
-			velocity.x = move_toward(velocity.x, speed_intensity , ACCELERATION * delta)
+			velocity.x = speed_intensity
 			if not is_on_floor():
 				velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta * 1.5)
 			if sign(velocity.x) != horizontal_input:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 2)
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)
 		else:
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	
