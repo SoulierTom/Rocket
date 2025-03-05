@@ -798,5 +798,6 @@ position = Vector2(281, 599)
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Arm"]
 [editable path="Camera_Limiter/Camera_Limiter2"]
 [editable path="Camera_Limiter/Camera_Limiter3"]

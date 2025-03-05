@@ -187,6 +187,10 @@ shape = SubResource("CapsuleShape2D_4bxff")
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
 scale = Vector2(0.75, 0.75)
 
+[node name="ShootingPoint" parent="Arm" index="0"]
+position = Vector2(-4.76837e-07, 5.21541e-08)
+rotation = 0.0
+
 [node name="TextureProgressBar" parent="Arm/RayCast2D/Control" index="1"]
 offset_left = -256.402
 offset_top = -255.553
@@ -200,7 +204,7 @@ script = ExtResource("6_boj3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
 z_index = 1
-position = Vector2(1, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_bym3m")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
@@ -209,6 +213,7 @@ stream = SubResource("AudioStreamRandomizer_dogjo")
 
 [node name="Sprite2D" parent="." instance=ExtResource("8_i8xuy")]
 position = Vector2(-3, 2)
+rotation = -0.314159
 scale = Vector2(0.735294, 0.735294)
 
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]

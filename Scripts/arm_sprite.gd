@@ -15,19 +15,15 @@ var recoil_vector: Vector2 = Vector2.ZERO
 @export var pos_arm_x: float = -3.0
 @export var pos_arm_y: float = 3.0
 
-# Variables propres au mouvement du bras
-var is_using_gamepad = false
-var last_joystick_vector = Vector2.RIGHT
-
 func _physics_process(_delta):
 	# Orienter le sprite du bras vers la TextureProgressBar
 	look_at(texture_progress_bar.global_position)
 
-	# Calculer la direction du bras
-	var dir_arm = (texture_progress_bar.global_position - position).normalized()
+	# Calculer la direction du bras en utilisant les coordonnées globales
+	var dir_arm = (texture_progress_bar.global_position - global_position).normalized()
 
 	# Mise à jour de la position du bras en fonction de la direction
 	if dir_arm.x > 0:  # Le bras vise à droite
-		z_index = -1  # Devant le personnage
+		z_index = 1  # Devant le personnage
 	else:  # Le bras vise à gauche
-		z_index = 1  # Derrière le personnage
+		z_index = -1  # Derrière le personnage
