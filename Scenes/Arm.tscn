@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
-[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="2_rt7fy"]
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
 [ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Audio/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
@@ -35,14 +34,9 @@ recoil_duration = 0.1
 reload_time = 2.5
 explosion_scene = ExtResource("2_lv75f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 7
-position = Vector2(5.83333, -4.16667)
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(5.83059, -0.0718061)
 rotation = -0.157095
-texture = ExtResource("2_rt7fy")
-
-[node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-0.64335, 4.04401)
 
 [node name="Rocket" parent="." instance=ExtResource("3_2omhl")]
 visible = false
