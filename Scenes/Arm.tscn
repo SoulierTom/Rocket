@@ -49,7 +49,7 @@ visible = false
 speed = 1000
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]

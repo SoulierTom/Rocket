@@ -55,11 +55,11 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	print(abs(velocity.x))
+	
 	
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-
+	print(horizontal_input)
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
@@ -85,25 +85,32 @@ func _physics_process(delta: float) -> void:
 		else :
 			drag_multiplier = 1
 	else : 
-		if abs(velocity.x) > SPEED+100:
+		if abs(velocity.x) > SPEED + 100:
 			drag_multiplier = 0.5
 		else :
 			drag_multiplier = 0.2
-	
-	1.0 if is_on_floor() else 0.2
 
+	var speed_intensity : float
+	if abs(horizontal_input) <= 0.25 and abs(horizontal_input) >= 0.05:
+		speed_intensity = 0.25 * sign(horizontal_input) * SPEED
+	if abs(horizontal_input) <= 0.75 and abs(horizontal_input) > 0.25:
+		speed_intensity = horizontal_input * SPEED
+	if abs(horizontal_input) > 0.75 :
+		speed_intensity = 0.75 * sign(horizontal_input) * SPEED
+	
 	if Global.player_impulsed:
 		if horizontal_input:
-			velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
-			if sign(velocity.x) != horizontal_input:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 2)
+			velocity.x = move_toward(velocity.x, speed_intensity * 1.5, ACCELERATION * delta)
+			
+			if sign(velocity.x) != horizontal_input :
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	else:
 		if horizontal_input:
+			velocity.x = move_toward(velocity.x, speed_intensity , ACCELERATION * delta)
 			if not is_on_floor():
 				velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta * 1.5)
-			velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
 			if sign(velocity.x) != horizontal_input:
 				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 2)
 		else:
