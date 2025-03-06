@@ -40,7 +40,8 @@ func _on_play_pressed():
 	Global.timer_initialized = false  # Indique que le timer doit être réinitialisé
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
-	get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+	if get_tree() :
+		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
