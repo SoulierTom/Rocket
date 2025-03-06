@@ -41,7 +41,10 @@ func _on_play_pressed():
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 	print("Arbre de scène:", get_tree())
-	get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+	if get_tree():
+		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+	else:
+		print("Erreur: get_tree() est null")
 
 func _on_quit_pressed():
 	get_tree().quit()
