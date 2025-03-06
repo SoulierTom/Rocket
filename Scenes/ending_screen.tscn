@@ -14,9 +14,22 @@ script = ExtResource("1_vbw75")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(-1, 1.00003)
-scale = Vector2(0.791429, 0.791429)
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+position = Vector2(-1079, -497)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_ydy03")
 centered = false
 
@@ -26,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -119.5
-offset_top = -34.5
-offset_right = 119.5
-offset_bottom = 34.5
+offset_left = -619.0
+offset_top = -134.0
+offset_right = -380.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_rbj3c")
@@ -40,10 +53,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.0
-offset_top = 76.0
-offset_right = 160.0
-offset_bottom = 155.0
+offset_left = 266.0
+offset_top = -156.0
+offset_right = 674.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"

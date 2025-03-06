@@ -3,6 +3,7 @@ extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
+@onready var animation_player: AnimationPlayer = $AnimationPlayer  # Référence à l'AnimationPlayer
 
 @export var force_player : float = 400.0
 @export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
@@ -20,6 +21,12 @@ func _ready():
 		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
 	else:
 		print("Erreur : AnimatedSprite2D n'a pas été trouvé !")
+	
+	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
+	if animation_player:
+		animation_player.play("explosion")  # Lance l'animation "Explosion" dans l'AnimationPlayer
+	else:
+		print("Erreur : AnimationPlayer n'a pas été trouvé !")
 	
 	# Assurez-vous que le CollisionShape2D est désactivé au départ
 	if collision_shape:
