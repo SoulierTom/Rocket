@@ -1,25 +1,29 @@
 extends Sprite2D
 
 @onready var player = $".."
+@onready var sprite_2d = $"."
+@onready var texture_progress_bar = $"../Arm/RayCast2D/Control/TextureProgressBar"
 
-# Variables propres au mouvement du bras
-var is_using_gamepad = false
-var last_joystick_vector = Vector2.RIGHT
+# Le recul du tir
+signal projectile_fired
+var recoiling: bool = false
+@export var recoil_force: int = 25
+var recoil_vector: Vector2 = Vector2.ZERO
+@export var recoil_duration: float = 0.025
 
-func _process(_delta):
+# Position du bras
+@export var pos_arm_x: float = -3.0
+@export var pos_arm_y: float = 3.0
 
-	# Si le gamepad est utilisé, ajuster la position du bras en fonction du joystick
-	var mouse_pos = get_global_mouse_position()
-	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down")
+func _physics_process(_delta):
+	# Orienter le sprite du bras vers la TextureProgressBar
+	look_at(texture_progress_bar.global_position)
 
-	if is_using_gamepad:
-		if joystick_vector.length() > 0.1:
-			Global.target_pos = player.position + joystick_vector * 500
-			last_joystick_vector = joystick_vector
-			look_at(Global.target_pos)
-		else:
-			Global.target_pos = player.position + last_joystick_vector * 500
-			look_at(Global.target_pos)
-	else:
-		Global.target_pos = mouse_pos
-		look_at(Global.target_pos)
+	# Calculer la direction du bras en utilisant les coordonnées globales
+	var dir_arm = (texture_progress_bar.global_position - global_position).normalized()
+
+	# Mise à jour de la position du bras en fonction de la direction
+	if dir_arm.x > 0:  # Le bras vise à droite
+		z_index = 1  # Devant le personnage
+	else:  # Le bras vise à gauche
+		z_index = -1  # Derrière le personnage

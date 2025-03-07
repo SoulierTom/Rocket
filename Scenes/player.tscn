@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=29 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Audio/Walk_sound.wav" id="7_71co6"]
+[ext_resource type="PackedScene" uid="uid://b1oqe71ncqaed" path="res://Scenes/arm_sprite.tscn" id="8_i8xuy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -184,8 +185,17 @@ shape = SubResource("CapsuleShape2D_4bxff")
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
 
 [node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
-position = Vector2(-6, 2)
 scale = Vector2(0.75, 0.75)
+
+[node name="ShootingPoint" parent="Arm" index="0"]
+position = Vector2(-4.76837e-07, 5.21541e-08)
+rotation = 0.0
+
+[node name="TextureProgressBar" parent="Arm/RayCast2D/Control" index="1"]
+offset_left = -256.402
+offset_top = -255.553
+offset_right = 255.598
+offset_bottom = 256.447
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
@@ -194,13 +204,20 @@ script = ExtResource("6_boj3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
 z_index = 1
-position = Vector2(0.5, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_bym3m")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 8)
 stream = SubResource("AudioStreamRandomizer_dogjo")
+
+[node name="Sprite2D" parent="." instance=ExtResource("8_i8xuy")]
+position = Vector2(-3, 2)
+rotation = -0.314159
+scale = Vector2(0.735294, 0.735294)
 
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
 
 [editable path="Camera"]
+[editable path="Arm"]

@@ -4,13 +4,14 @@ const Util = preload("res://addons/ldtk-importer/src/util/util.gd")
 
 var player_scene = preload("res://Scenes/Player.tscn")  # Préchargez la scène Player
 var finish_scene = preload("res://Scenes/Next_Level.tscn")  # Préchargez la scène Arrivée
+var camera_scene = preload("res://Scenes/camera_limiter.tscn")
 
 
 func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
-	var definition: Dictionary = entity_layer.definition  # Liste une correspondance entre 2 éléments
 	var entities: Array = entity_layer.entities  # Stocke une liste d'éléments
 
 	for entity in entities:
+		
 		# Vérifiez que l'entité est bien celle que vous souhaitez traiter
 		if entity.identifier == "PlayerStart":  # Remplacez par l'identifiant de votre entité
 
@@ -45,5 +46,24 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 				if ref != null:
 					finish_spawn.ref = ref
 					Util.add_unresolved_reference(finish_spawn, "ref")
+
+		if entity.identifier == "Camera_Limiter":  # Remplacez par l'identifiant de votre entité
+
+			# Instanciez le nœud Camera_Limiter
+			var camera_limiter = camera_scene.instantiate()
+			camera_limiter.position = entity["position"]  # Positionnez Camera_Limiter
+
+			# Ajoutez Camera_Limiter à la scène
+			entity_layer.add_child(camera_limiter)
+
+			# Mettez à jour les références
+			Util.update_instance_reference(entity.iid, camera_limiter)
+
+			# Modifiez la position des enfants de Camera_Limiter
+			#var limit_position = camera_limiter.get_node("LimitPosition")  # Accédez à LimitPosition
+
+			# Définissez la position des enfants
+			#limit_position.position = entities["Camera_Border"]  # Déplacez LimitPosition de 20 pixels vers le bas
+
 
 	return entity_layer
