@@ -1,32 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbvibkmsbl1xg"]
+[gd_scene load_steps=3 format=3 uid="uid://bbvibkmsbl1xg"]
 
 [ext_resource type="Script" path="res://petrol.gd" id="1_usra3"]
-[ext_resource type="Texture2D" uid="uid://ducx1j4e0ac24" path="res://Assets/petrole.png" id="2_m4v1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgm4h"]
-size = Vector2(32, 5)
+size = Vector2(8, 5)
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_usra3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_sgm4h")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_m4v1t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(24, 0)
-texture = ExtResource("2_m4v1t")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(16, 0)
-texture = ExtResource("2_m4v1t")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(8, 0)
-texture = ExtResource("2_m4v1t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
