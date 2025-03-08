@@ -168,9 +168,6 @@ stream_1/stream = ExtResource("7_71co6")
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 script = ExtResource("1_li7m8")
-ACCELERATION = 1000.0
-GRAVITY = 1700.0
-max_fall_speed = 375.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
