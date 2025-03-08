@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bm8mltsrod3rr"]
+
+[node name="Viseur" type="RayCast2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -4.00013
+offset_top = 37.0
+offset_right = 35.9999
+offset_bottom = 60.0
