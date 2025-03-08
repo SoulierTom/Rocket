@@ -91,11 +91,7 @@ func _physics_process(delta: float) -> void:
 			drag_multiplier = 0.2
 
 	var speed_intensity : float
-	if abs(horizontal_input) <= 0.25 and abs(horizontal_input) >= 0.05:
-		speed_intensity = 0.25 * sign(horizontal_input) * SPEED
-	if abs(horizontal_input) <= 0.8 and abs(horizontal_input) > 0.25:
-		speed_intensity = horizontal_input * SPEED
-	if abs(horizontal_input) > 0.8 :
+	if abs(horizontal_input) >= 0.05:
 		speed_intensity = 0.8 * sign(horizontal_input) * SPEED
 	
 	if Global.player_impulsed:
