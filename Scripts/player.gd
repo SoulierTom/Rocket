@@ -53,8 +53,7 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	
-	
+
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 	print(velocity.length())
@@ -139,6 +138,7 @@ func _physics_process(delta: float) -> void:
 					
 				if current_frame >= 2 and current_frame < 3:
 					$walk_sound.play()
+		Global.current_ammo = Global.magazine_size
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")

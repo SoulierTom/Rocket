@@ -7,8 +7,8 @@ var is_using_gamepad = false
 var last_joystick_vector = Vector2.RIGHT
 
 # Position du bras
-@export var pos_arm_x: float = 0
-@export var pos_arm_y: float = 0
+@export var pos_arm_x: float = -3
+@export var pos_arm_y: float = 2
 
 @export var arm_position_right: Vector2 = Vector2(2, 3)
 @export var arm_position_left: Vector2 = Vector2(-2, 3)
@@ -63,6 +63,11 @@ func _physics_process(_delta):
 		look_at(Global.target_pos)
 	
 	$RayCast2D.update_ammo_display()
+	
+	if dir_arm.x > 0:  # Le bras vise à droite
+		z_index = 1  # Devant le personnage
+	else:  # Le bras vise à gauche
+		z_index = -1  # Derrière le personnage
 
 func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
