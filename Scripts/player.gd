@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var SPEED = 150
-@export var ACCELERATION = 500.0
-@export var FRICTION = 800.0
-@export var GRAVITY = 1500.0
-@export var GRAVITY_IMPULSED = 2000.0
-@export var JUMP_VELOCITY = -300.0
-@export var BUFFER_PATIENCE = 0.08
-@export var COYOTE_TIME = 0.08
-@export var max_fall_speed : float = 500
+var SPEED = 150
+var ACCELERATION = 175.0
+var FRICTION = 800.0
+var GRAVITY = 1500.0
+var JUMP_VELOCITY = -300.0
+var BUFFER_PATIENCE = 0.08
+var COYOTE_TIME = 0.08
+var max_fall_speed : float = 300
 
 var input_buffer : Timer
 var coyote_timer : Timer
@@ -42,7 +41,6 @@ func set_camera(new_camera: Camera2D):
 	print("Camera set to:", camera)
 
 func _ready():
-	var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 	input_buffer = Timer.new()
 	input_buffer.wait_time = BUFFER_PATIENCE
 	input_buffer.one_shot = true
@@ -56,9 +54,10 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
+	
+	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-	print(horizontal_input)
+	print(velocity.length())
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
@@ -89,34 +88,39 @@ func _physics_process(delta: float) -> void:
 		else :
 			drag_multiplier = 0.2
 
-	var speed_intensity : float
-	if abs(horizontal_input) >= 0.05:
-		speed_intensity = 0.8 * sign(horizontal_input) * SPEED
 	
-	if Global.player_impulsed:
-		if horizontal_input:
-			velocity.x = move_toward(velocity.x, speed_intensity * 1.8 , ACCELERATION * delta)
-		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
-	else:
-		if horizontal_input:
-			velocity.x = speed_intensity
-			if not is_on_floor():
-				velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta * 1.5)
-			if sign(velocity.x) != horizontal_input:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)
+	if not Global.player_impulsed:
+		if is_on_floor():
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 10)  #Au sol, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
 		else:
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)  #En sautant, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta ) #En sautant, avance de manière accéléré 
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+	else:
+		if abs(horizontal_input.x) >= 0.1:
+			
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
+		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
 	
 	move_and_slide()
+	
 	var current_frame = animated_sprite.frame
 	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
 	if is_on_floor():
-		if horizontal_input == 0:
+		if abs(horizontal_input.x) < 0.1:
 			if dir_arm.x > 0:
 				animated_sprite.play("idle")
 			else:
@@ -135,7 +139,6 @@ func _physics_process(delta: float) -> void:
 					
 				if current_frame >= 2 and current_frame < 3:
 					$walk_sound.play()
-		Global.current_ammo = Global.magazine_size
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -151,10 +154,11 @@ func _physics_process(delta: float) -> void:
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
-			var slowdown_factor = clamp(velocity.length() / 250.0, 0.2, 1.0)
-			return GRAVITY * slowdown_factor
-
-	return GRAVITY
+		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
+		return GRAVITY * impulsed_modifier
+	else:
+		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
+		return GRAVITY * jump_modifier
 
 func coyote_timeout() -> void:
 	coyote_jump_available = false
