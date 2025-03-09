@@ -137,6 +137,7 @@ func _physics_process(delta: float) -> void:
 					
 				if current_frame >= 2 and current_frame < 3:
 					$walk_sound.play()
+		Global.current_ammo = Global.magazine_size
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
