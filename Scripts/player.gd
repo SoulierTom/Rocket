@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Variables de mouvement du Player
 var SPEED = 150
-var ACCELERATION = 175.0
+var ACCELERATION = 190.0
 var FRICTION = 800.0
 var GRAVITY = 1500.0
 var JUMP_VELOCITY = -300.0
@@ -82,10 +82,10 @@ func _physics_process(delta: float) -> void:
 		else :
 			drag_multiplier = 1
 	else : 
-		if abs(velocity.x) > SPEED + 100:
-			drag_multiplier = 0.5
+		if Global.player_impulsed :
+			drag_multiplier = 0.35
 		else :
-			drag_multiplier = 0.2
+			drag_multiplier = 0.35
 
 	
 	if not Global.player_impulsed:
@@ -99,13 +99,14 @@ func _physics_process(delta: float) -> void:
 		else:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)  #En sautant, fais demi-tour rapidement
-				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta ) #En sautant, avance de manière accéléré 
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5)  #En sautant, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED * 0.85, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
 				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
 	else:
 		if abs(horizontal_input.x) >= 0.1:
-			
+			if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5) #Propulsé
 			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
