@@ -42,6 +42,7 @@ func set_camera(new_camera: Camera2D):
 	print("Camera set to:", camera)
 
 func _ready():
+	var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 	input_buffer = Timer.new()
 	input_buffer.wait_time = BUFFER_PATIENCE
 	input_buffer.one_shot = true
@@ -54,8 +55,6 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	
-	
 	
 	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
@@ -113,7 +112,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = max_fall_speed
 	
 	move_and_slide()
-	
 	var current_frame = animated_sprite.frame
 	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
