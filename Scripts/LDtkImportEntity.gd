@@ -58,12 +58,18 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 
 			# Mettez à jour les références
 			Util.update_instance_reference(entity.iid, camera_limiter)
-
+			
 			# Modifiez la position des enfants de Camera_Limiter
 			#var limit_position = camera_limiter.get_node("LimitPosition")  # Accédez à LimitPosition
 
 			# Définissez la position des enfants
 			#limit_position.position = entities["Camera_Border"]  # Déplacez LimitPosition de 20 pixels vers le bas
+			
+			if "Entity_ref" in entity.fields:
+				var ref = entity.fields.Entity_ref
+				if ref != null:
+					camera_limiter.ref = ref
+					Util.add_unresolved_reference(camera_limiter, "ref")
 
 
 	return entity_layer
