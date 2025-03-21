@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Variables de mouvement du Player
 var SPEED = 150
-var ACCELERATION = 190.0
+var ACCELERATION = 250.0
 var FRICTION = 800.0
 var GRAVITY = 1500.0
 var JUMP_VELOCITY = -300.0
@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5)  #En sautant, fais demi-tour rapidement
-				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED * 0.85, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
 				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
 	else:
