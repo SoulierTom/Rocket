@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var SPEED = 150
-@export var ACCELERATION = 500.0
-@export var FRICTION = 800.0
-@export var GRAVITY = 1500.0
-@export var GRAVITY_IMPULSED = 2000.0
-@export var JUMP_VELOCITY = -300.0
-@export var BUFFER_PATIENCE = 0.08
-@export var COYOTE_TIME = 0.08
-@export var max_fall_speed : float = 500
+var SPEED = 150
+var ACCELERATION = 190.0
+var FRICTION = 800.0
+var GRAVITY = 1500.0
+var JUMP_VELOCITY = -300.0
+var BUFFER_PATIENCE = 0.08
+var COYOTE_TIME = 0.08
+var max_fall_speed : float = 300
 
 var input_buffer : Timer
 var coyote_timer : Timer
@@ -54,12 +53,10 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	
-	
-	
-	var horizontal_input := Input.get_axis("Move_Left", "Move_Right")
+
+	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-	print(horizontal_input)
+	print(velocity.length())
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
@@ -85,32 +82,33 @@ func _physics_process(delta: float) -> void:
 		else :
 			drag_multiplier = 1
 	else : 
-		if abs(velocity.x) > SPEED + 100:
-			drag_multiplier = 0.5
+		if Global.player_impulsed :
+			drag_multiplier = 0.35
 		else :
-			drag_multiplier = 0.2
+			drag_multiplier = 0.35
 
-	var speed_intensity : float
-	if abs(horizontal_input) <= 0.25 and abs(horizontal_input) >= 0.05:
-		speed_intensity = 0.25 * sign(horizontal_input) * SPEED
-	if abs(horizontal_input) <= 0.8 and abs(horizontal_input) > 0.25:
-		speed_intensity = horizontal_input * SPEED
-	if abs(horizontal_input) > 0.8 :
-		speed_intensity = 0.8 * sign(horizontal_input) * SPEED
 	
-	if Global.player_impulsed:
-		if horizontal_input:
-			velocity.x = move_toward(velocity.x, speed_intensity * 1.8 , ACCELERATION * delta)
-		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
-	else:
-		if horizontal_input:
-			velocity.x = speed_intensity
-			if not is_on_floor():
-				velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta * 1.5)
-			if sign(velocity.x) != horizontal_input:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier)
+	if not Global.player_impulsed:
+		if is_on_floor():
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 10)  #Au sol, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
 		else:
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5)  #En sautant, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED * 0.85, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+	else:
+		if abs(horizontal_input.x) >= 0.1:
+			if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5) #Propulsé
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
+		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
 	
 	if velocity.y > max_fall_speed:
@@ -122,7 +120,7 @@ func _physics_process(delta: float) -> void:
 	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 	
 	if is_on_floor():
-		if horizontal_input == 0:
+		if abs(horizontal_input.x) < 0.1:
 			if dir_arm.x > 0:
 				animated_sprite.play("idle")
 			else:
@@ -141,6 +139,7 @@ func _physics_process(delta: float) -> void:
 					
 				if current_frame >= 2 and current_frame < 3:
 					$walk_sound.play()
+		Global.current_ammo = Global.magazine_size
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -156,10 +155,11 @@ func _physics_process(delta: float) -> void:
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
-			var slowdown_factor = clamp(velocity.length() / 250.0, 0.2, 1.0)
-			return GRAVITY * slowdown_factor
-
-	return GRAVITY
+		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
+		return GRAVITY * impulsed_modifier
+	else:
+		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
+		return GRAVITY * jump_modifier
 
 func coyote_timeout() -> void:
 	coyote_jump_available = false
