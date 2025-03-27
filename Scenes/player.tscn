@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Audio/Walk_sound.wav" id="7_71co6"]
-[ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/viseur.tscn" id="8_f2ryt"]
+[ext_resource type="PackedScene" path="res://Scenes/viseur.tscn" id="8_f2ryt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -208,9 +208,6 @@ rotation = 0.0
 
 [node name="RayCast2D" parent="Arm" index="6"]
 visible = false
-
-[node name="arm_sprite" parent="Arm" index="7"]
-position = Vector2(0, 0)
 
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
