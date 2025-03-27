@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bshoiniuykv5k"]
+[gd_scene load_steps=13 format=4 uid="uid://b328rseredp3l"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_ju8vp"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_08ubf"]
@@ -605,7 +605,7 @@ terrain_set_0/terrain_2/color = Color(0.607843, 0.670588, 0.698039, 1)
 sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
-[node name="Level 3" type="Node2D"]
+[node name="Level 4" type="Node2D"]
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -638,10 +638,10 @@ position = Vector2(8, -312)
 position = Vector2(88, -168)
 
 [node name="Area2D2" parent="Spike_Manager" instance=ExtResource("8_3gcbx")]
-position = Vector2(24, -312)
+position = Vector2(23, -312)
 
 [node name="Area2D3" parent="Spike_Manager" instance=ExtResource("8_3gcbx")]
-position = Vector2(-8, -312)
+position = Vector2(-7, -312)
 
 [node name="Player" parent="." instance=ExtResource("4_nrnsa")]
 position = Vector2(-3, -1)
