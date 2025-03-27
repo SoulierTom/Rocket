@@ -41,17 +41,15 @@ func _ready():
 	# Récupérer le Label
 	var label = $CanvasLayer/Label
 	if label:
-		# Convertir le temps en minutes, secondes et centièmes
-		var total_seconds = Global.speedrun_time
-		var minutes = int(total_seconds) / 60
-		var seconds = int(total_seconds) % 60
-		var centiseconds = int((total_seconds - int(total_seconds)) * 100)  # Centièmes de seconde
-		
-		# Formater le temps final sous la forme "minutes:secondes.centièmes"
-		var formatted_time = "%d:%02d.%02d" % [minutes, seconds, centiseconds]
+		# Convertir le temps en minutes et secondes
+		var minutes = int(Global.speedrun_time) / 60
+		var seconds = int(Global.speedrun_time) % 60
+
+		# Formater le temps final sous la forme "minutes:secondes"
+		var formatted_time = "%d:%02d" % [minutes, seconds]
 		
 		# Afficher le temps final depuis la variable globale
-		label.text = "Temps final : " + formatted_time
+		label.text = "Temps final : " + formatted_time + " minutes"
 
 func _on_main_menu_pressed():
 	print("Quit button pressed")
