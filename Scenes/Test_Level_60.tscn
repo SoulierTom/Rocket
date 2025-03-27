@@ -1,16 +1,16 @@
-[gd_scene load_steps=14 format=4 uid="uid://b328rseredp3l"]
+[gd_scene load_steps=14 format=4 uid="uid://uepbge3ax13q"]
 
-[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_gjng1"]
-[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_028mf"]
-[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_40pob"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_uo6ow"]
-[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="5_fgyx2"]
-[ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="6_pbqfv"]
-[ext_resource type="Script" path="res://Scripts/next_level.gd" id="7_m8lg8"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_l5d27"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_ju8vp"]
+[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_08ubf"]
+[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_ek2i2"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_nrnsa"]
+[ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="6_6ndgf"]
+[ext_resource type="Script" path="res://Scripts/next_level.gd" id="7_4ix2r"]
+[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_00xsy"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="8_3gcbx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
-texture = ExtResource("1_gjng1")
+texture = ExtResource("1_ju8vp")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -88,7 +88,7 @@ separation = Vector2i(1, 1)
 sources/1 = SubResource("TileSetAtlasSource_gbd66")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tadxp"]
-texture = ExtResource("2_028mf")
+texture = ExtResource("2_08ubf")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -493,7 +493,7 @@ texture_region_size = Vector2i(8, 8)
 19:1/0/terrains_peering_bit/top_right_corner = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47jt4"]
-texture = ExtResource("3_40pob")
+texture = ExtResource("3_ek2i2")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -629,294 +629,294 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="fill" type="TileMapLayer" parent="Tiles"]
 tile_set = SubResource("TileSet_vvb5x")
 
-[node name="Player" parent="Tiles" instance=ExtResource("4_uo6ow")]
+[node name="Player" parent="Tiles" instance=ExtResource("4_nrnsa")]
 position = Vector2(-168, -89)
 
 [node name="SpiekManager" type="Node" parent="Tiles"]
 
-[node name="Area2D" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-528, -64)
 
-[node name="Area2D13" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D13" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-512, -56)
 
-[node name="Area2D14" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D14" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-496, -56)
 
-[node name="Area2D15" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D15" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-480, -56)
 
-[node name="Area2D16" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D16" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-464, -56)
 
-[node name="Area2D17" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D17" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-448, -56)
 
-[node name="Area2D18" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D18" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-432, -56)
 
-[node name="Area2D19" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D19" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-416, -56)
 
-[node name="Area2D20" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D20" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-368, -56)
 
-[node name="Area2D23" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D23" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-352, -48)
 
-[node name="Area2D24" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D24" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-336, -48)
 
-[node name="Area2D25" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D25" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-320, -48)
 
-[node name="Area2D26" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D26" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-304, -48)
 
-[node name="Area2D27" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D27" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-288, -48)
 
-[node name="Area2D28" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D28" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-272, -48)
 
-[node name="Area2D29" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D29" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-256, -48)
 
-[node name="Area2D30" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D30" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-240, -32)
 
-[node name="Area2D31" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D31" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-224, -32)
 
-[node name="Area2D32" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D32" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-208, -32)
 
-[node name="Area2D33" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D33" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-192, -24)
 
-[node name="Area2D34" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D34" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-176, -24)
 
-[node name="Area2D35" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D35" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-160, -24)
 
-[node name="Area2D36" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D36" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-144, -24)
 
-[node name="Area2D37" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D37" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-128, -24)
 
-[node name="Area2D38" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D38" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-112, -24)
 
-[node name="Area2D39" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D39" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-96, -24)
 
-[node name="Area2D40" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D40" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-80, -24)
 
-[node name="Area2D41" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D41" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-64, -32)
 
-[node name="Area2D42" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D42" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-48, -16)
 
-[node name="Area2D43" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D43" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-32, 8)
 
-[node name="Area2D51" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D51" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(80, 0)
 
-[node name="Area2D52" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D52" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(96, -8)
 
-[node name="Area2D53" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D53" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(112, -8)
 
-[node name="Area2D54" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D54" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(128, 8)
 
-[node name="Area2D55" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D55" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(144, 16)
 
-[node name="Area2D56" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D56" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(160, 16)
 
-[node name="Area2D57" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D57" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(176, 16)
 
-[node name="Area2D58" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D58" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(192, 0)
 
-[node name="Area2D59" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D59" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(208, -16)
 
-[node name="Area2D60" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D60" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(224, -16)
 
-[node name="Area2D61" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D61" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(240, -16)
 
-[node name="Area2D68" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D68" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(352, -24)
 
-[node name="Area2D69" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D69" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(368, 0)
 
-[node name="Area2D70" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D70" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(384, 0)
 
-[node name="Area2D71" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D71" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(400, 8)
 
-[node name="Area2D72" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D72" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(416, 8)
 
-[node name="Area2D73" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D73" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(448, 8)
 
-[node name="Area2D75" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D75" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(432, 8)
 
-[node name="Area2D76" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D76" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(480, 0)
 
-[node name="Area2D77" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D77" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(496, 0)
 
-[node name="Area2D78" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D78" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(512, 0)
 
-[node name="Area2D79" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D79" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(528, -8)
 
-[node name="Area2D80" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D80" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(544, -8)
 
-[node name="Area2D81" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D81" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(560, -8)
 
-[node name="Area2D82" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D82" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(576, -8)
 
-[node name="Area2D83" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D83" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(592, -24)
 
-[node name="Area2D84" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D84" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(608, -24)
 
-[node name="Area2D85" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D85" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(624, -40)
 
-[node name="Area2D86" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D86" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(640, -40)
 
-[node name="Area2D87" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D87" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(656, -40)
 
-[node name="Area2D91" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D91" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(720, -40)
 
-[node name="Area2D99" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D99" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(704, -56)
 
-[node name="Area2D100" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D100" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(672, -56)
 
-[node name="Area2D101" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D101" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(688, -56)
 
-[node name="Area2D92" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D92" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(736, -40)
 
-[node name="Area2D93" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D93" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(752, -40)
 
-[node name="Area2D94" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D94" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(768, -40)
 
-[node name="Area2D95" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D95" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(784, -40)
 
-[node name="Area2D96" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D96" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(800, -40)
 
-[node name="Area2D97" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D97" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(816, -40)
 
-[node name="Area2D98" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D98" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(832, -40)
 
-[node name="Area2D74" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D74" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(464, 8)
 
-[node name="Area2D50" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D50" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(64, 0)
 
-[node name="Area2D49" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D49" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(48, 8)
 
-[node name="Area2D44" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D44" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-16, 8)
 
-[node name="Area2D46" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D46" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(32, 8)
 
-[node name="Area2D48" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D48" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(32, 8)
 
-[node name="Area2D47" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D47" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(16, 8)
 
-[node name="Area2D45" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D45" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(0, 8)
 
-[node name="Area2D21" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D21" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-384, -56)
 
-[node name="Area2D22" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D22" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-400, -56)
 
-[node name="Area2D2" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D2" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-544, -64)
 
-[node name="Area2D3" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D3" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-560, -64)
 
-[node name="Area2D4" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D4" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-576, -64)
 
-[node name="Area2D5" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D5" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-592, -64)
 
-[node name="Area2D6" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D6" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-608, -64)
 
-[node name="Area2D7" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D7" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-624, -64)
 
-[node name="Area2D8" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D8" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-640, -64)
 
-[node name="Area2D9" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D9" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-656, -64)
 
-[node name="Area2D10" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D10" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-672, -64)
 
-[node name="Area2D11" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D11" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-688, -64)
 
-[node name="Area2D12" parent="Tiles/SpiekManager" instance=ExtResource("5_fgyx2")]
+[node name="Area2D12" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-704, -64)
 
-[node name="Area2D2" parent="." instance=ExtResource("6_pbqfv")]
+[node name="Area2D2" parent="." instance=ExtResource("6_6ndgf")]
 position = Vector2(908, -105)
-script = ExtResource("7_m8lg8")
+script = ExtResource("7_4ix2r")
 
 [node name="Camera_Limiter" type="Node" parent="."]
 
-[node name="Camera_Limiter" parent="Camera_Limiter" instance=ExtResource("8_l5d27")]
+[node name="Camera_Limiter" parent="Camera_Limiter" instance=ExtResource("8_00xsy")]
 position = Vector2(569, -117)
 limit_x = 2
 

@@ -87,6 +87,7 @@ label_settings = SubResource("LabelSettings_d5mv8")
 
 [node name="arm_sprite" type="Sprite2D" parent="."]
 position = Vector2(2.38419e-07, 0)
+rotation = -0.226893
 texture = ExtResource("9_xu18f")
 offset = Vector2(6, -3)
 

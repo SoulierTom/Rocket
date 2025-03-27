@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	time += delta
-	Global.speedrun_time = time
+	Global.speedrun_time = time  # Met à jour la variable globale
 	update_ui()
 
 func reset_timer():
@@ -22,5 +22,4 @@ func reset_timer():
 func update_ui():
 	var minutes = int(time) / 60
 	var seconds = int(time) % 60
-	var centiseconds = int((time - int(time)) * 100)
-	$Label.text = "%02d:%02d.%02d" % [minutes, seconds, centiseconds]  # Format à 2 chiffres partout
+	$Label.text = "%d:%02d" % [minutes, seconds]
