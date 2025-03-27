@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_pa2lh"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_wgoud"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_xlrxg"]
-[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="4_hxpf3"]
-[ext_resource type="PackedScene" path="res://Scenes/Next_Level.tscn" id="5_kv4ol"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_hxpf3"]
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kv4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_pa2lh")
@@ -349,7 +349,6 @@ color = Color(0.0717672, 0.080948, 0.131723, 0.392157)
 
 [node name="Player" parent="background_le_vrai" instance=ExtResource("4_hxpf3")]
 position = Vector2(6, -9)
-GRAVITY = 1500.0
 
 [node name="Area2D" parent="." instance=ExtResource("5_kv4ol")]
 position = Vector2(-1012, -1028)
