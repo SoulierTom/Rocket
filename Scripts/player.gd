@@ -53,7 +53,9 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-
+	if Input.is_action_just_pressed("reset"):
+		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+		Global.speedrun_time = 0
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 	print(velocity.length())
@@ -139,7 +141,6 @@ func _physics_process(delta: float) -> void:
 					
 				if current_frame >= 2 and current_frame < 3:
 					$walk_sound.play()
-		Global.current_ammo = Global.magazine_size
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -151,7 +152,11 @@ func _physics_process(delta: float) -> void:
 			pause_game()
 		else:
 			resume_game()
-	
+
+	if Global.current_ammo <= 3 :
+		await get_tree().create_timer(0.5).timeout
+		if is_on_floor():
+			reload()
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
@@ -191,3 +196,6 @@ func resume_game():
 		$Arm/Cooldown.paused = false
 		input_buffer.paused = false
 		coyote_timer.paused = false
+
+func reload():
+	Global.current_ammo = Global.magazine_size
