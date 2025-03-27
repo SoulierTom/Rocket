@@ -146,7 +146,7 @@ _data = {
 "explosion": SubResource("Animation_357bs")
 }
 
-[node name="Explosion" type="Area2D"]
+[node name="Explosion" type="Area2D" groups=["boom"]]
 z_index = 10
 scale = Vector2(2, 2)
 script = ExtResource("1_6xgrk")
