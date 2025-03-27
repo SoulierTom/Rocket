@@ -153,9 +153,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			resume_game()
 
-	if Global.current_ammo <= 3 :
-		await get_tree().create_timer(0.5).timeout
-		if is_on_floor():
+	if is_on_floor():
 			reload()
 
 func add_gravity() -> float:
