@@ -56,6 +56,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
 		Global.speedrun_time = 0
+	# Toggle des vibrations
+	if Input.is_action_just_pressed("toggle_vibration"):
+		Global.VBR = !Global.VBR
+		print("Vibration toggled: ", Global.VBR)
+		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
 	print(velocity.length())
