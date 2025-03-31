@@ -704,7 +704,7 @@ position = Vector2(-377, 31)
 visible = false
 
 [node name="CollisionShape2D" parent="Tiles/Area2D2" index="1"]
-position = Vector2(157.5, 104)
+position = Vector2(167, 86)
 scale = Vector2(14.705, 14.705)
 
 [node name="Player" parent="." instance=ExtResource("4_nrnsa")]
