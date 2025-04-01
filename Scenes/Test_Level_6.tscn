@@ -666,7 +666,7 @@ terrain_set_0/terrain_2/color = Color(0.607843, 0.670588, 0.698039, 1)
 sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
-[node name="Level 3" type="Node2D"]
+[node name="Level 5" type="Node2D"]
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -698,13 +698,14 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Spikes" type="Node" parent="Tiles"]
 
 [node name="Area2D2" parent="Tiles" instance=ExtResource("8_sh0jm")]
-position = Vector2(-377, 31)
+position = Vector2(-367, 22)
 
 [node name="Sprite2D" parent="Tiles/Area2D2" index="0"]
-visible = false
+position = Vector2(125, 117.5)
+scale = Vector2(52, 7.625)
 
 [node name="CollisionShape2D" parent="Tiles/Area2D2" index="1"]
-position = Vector2(167, 86)
+position = Vector2(122, 115)
 scale = Vector2(14.705, 14.705)
 
 [node name="Player" parent="." instance=ExtResource("4_nrnsa")]
@@ -730,7 +731,7 @@ limit_x = 2
 limit_y = 1
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter3" index="0"]
-position = Vector2(472.001, 247.498)
+position = Vector2(472.001, 253.248)
 
 [node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter3" index="1"]
 position = Vector2(222, 52.9992)
