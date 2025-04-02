@@ -53,6 +53,9 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
+	
+	
+	
 	if Input.is_action_just_pressed("reset"):
 		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
 		Global.speedrun_time = 0
@@ -63,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
-	print(velocity.length())
+	
 	if jump_attempted or input_buffer.time_left > 0:
 		if coyote_jump_available and can_jump:
 			velocity.y = JUMP_VELOCITY
@@ -82,41 +85,31 @@ func _physics_process(delta: float) -> void:
 				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
-	var drag_multiplier : float
-	if is_on_floor():
-		if abs(velocity.x) > SPEED :
-			drag_multiplier = 2
-		else :
-			drag_multiplier = 1
-	else : 
-		if Global.player_impulsed :
-			drag_multiplier = 0.35
-		else :
-			drag_multiplier = 0.35
+	
 
 	
 	if not Global.player_impulsed:
 		if is_on_floor():
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 10)  #Au sol, fais demi-tour rapidement
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)  #Au sol, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta) #Au sol, Friction
 		else:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5)  #En sautant, fais demi-tour rapidement
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)  #En sautant, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.5) #en l'air, Friction
 	else:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5) #Propulsé
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
 			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
 		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.05)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed

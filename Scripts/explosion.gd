@@ -42,6 +42,8 @@ func _ready():
 
 func _process(_delta):
 	# Vérifier si l'animation est en cours et obtenir la frame actuelle
+	
+	
 	if animated_sprite:
 		var current_frame = animated_sprite.frame
 		
@@ -74,9 +76,21 @@ func apply_explosion_impulse():
 		
 		if o is CharacterBody2D:
 			var push_direction = (o.global_position - global_position).normalized()
-			o.velocity = Vector2.ZERO
+			push_direction.x *= 0.60
+			if push_direction.y <=0:
+				if push_direction.x <=0:
+					push_direction.y = -(push_direction.x + 1)
+				else:
+					push_direction.y = -(1 - push_direction.x)
+			else:
+				push_direction.y *= 0.0
+			
+			print("push.x =" + str(push_direction.x))
+			print("push.y =" + str(push_direction.y))
 			o.velocity = push_direction * force_player  # Ajuste la force de la poussée
 			Global.player_impulsed = true
+	
+		
 
 # Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
 func _on_timer_timeout() -> void:
