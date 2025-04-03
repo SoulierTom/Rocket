@@ -727,14 +727,13 @@ position = Vector2(528.001, 251.998)
 [node name="Camera_Limiter3" parent="Camera_Limiter" instance=ExtResource("8_00xsy")]
 position = Vector2(49, -564)
 rotation = 1.5708
-limit_x = 2
 limit_y = 1
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter3" index="0"]
 position = Vector2(472.001, 253.248)
 
 [node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter3" index="1"]
-position = Vector2(222, 52.9992)
+position = Vector2(299.001, 325.999)
 
 [editable path="Tiles/Area2D2"]
 [editable path="Camera_Limiter/Camera_Limiter2"]
