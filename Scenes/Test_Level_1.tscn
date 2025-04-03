@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bkrkuvq5hopoi"]
+[gd_scene load_steps=15 format=4 uid="uid://c67fyef8jrkk2"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_f7fom"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_8vgao"]
