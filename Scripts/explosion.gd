@@ -82,7 +82,7 @@ func apply_explosion_impulse():
 			print("push.x = " + str(push_pow_x))
 			print("push.y = " + str(push_pow_y))
 			
-			push_pow_x *= 0.75
+			push_pow_x *= 0.7
 			if push_direction.y <=0:
 				if push_direction.x <=0:
 					push_pow_y = -(push_pow_x + 1)

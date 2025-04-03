@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)  #Au sol, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
 			else:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta) #Au sol, Friction
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2) #Au sol, Friction
 		else:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
