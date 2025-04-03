@@ -53,8 +53,7 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	
-	
+
 	
 	if Input.is_action_just_pressed("reset"):
 		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
@@ -107,7 +106,7 @@ func _physics_process(delta: float) -> void:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
-			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2)
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.01)
 	
