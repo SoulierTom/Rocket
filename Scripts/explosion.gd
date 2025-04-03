@@ -84,9 +84,6 @@ func apply_explosion_impulse():
 					push_direction.y = -(1 - push_direction.x)
 			else:
 				push_direction.y *= 0.0
-			
-			print("push.x =" + str(push_direction.x))
-			print("push.y =" + str(push_direction.y))
 			o.velocity = push_direction * force_player  # Ajuste la force de la poussée
 			Global.player_impulsed = true
 	

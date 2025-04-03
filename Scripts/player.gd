@@ -4,7 +4,7 @@ extends CharacterBody2D
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
-var GRAVITY = 1500.0
+var GRAVITY = 1250.0
 var JUMP_VELOCITY = -300.0
 var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
@@ -107,9 +107,9 @@ func _physics_process(delta: float) -> void:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
-			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2)
 		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.05)
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.01)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -156,7 +156,10 @@ func _physics_process(delta: float) -> void:
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
+		print(velocity.length())
 		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
+		if velocity.y < -350:
+			GRAVITY = 1750
 		return GRAVITY * impulsed_modifier
 	else:
 		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)

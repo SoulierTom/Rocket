@@ -152,6 +152,11 @@ scale = Vector2(2, 2)
 script = ExtResource("1_6xgrk")
 force_objet = 150
 
+[node name="Rond" type="Sprite2D" parent="."]
+position = Vector2(-1.04308e-06, 7.7486e-07)
+scale = Vector2(0.525391, 0.525391)
+texture = ExtResource("3_le5k6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1u4h7")
 
@@ -168,10 +173,5 @@ animation = &"Explosion"
 libraries = {
 "": SubResource("AnimationLibrary_pql3b")
 }
-
-[node name="Rond" type="Sprite2D" parent="."]
-position = Vector2(-1.04308e-06, 7.7486e-07)
-scale = Vector2(0.525391, 0.525391)
-texture = ExtResource("3_le5k6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
