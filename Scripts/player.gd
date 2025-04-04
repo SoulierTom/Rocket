@@ -4,7 +4,7 @@ extends CharacterBody2D
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
-var GRAVITY = 1250.0
+var GRAVITY = 1500.0
 var JUMP_VELOCITY = -300.0
 var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
@@ -38,7 +38,7 @@ var can_jump := true
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
 	camera.make_current()  # Active cette caméra (Godot 4)
-	print("Camera set to:", camera)
+
 
 func _ready():
 	input_buffer = Timer.new()
@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	# Toggle des vibrations
 	if Input.is_action_just_pressed("toggle_vibration"):
 		Global.VBR = !Global.VBR
-		print("Vibration toggled: ", Global.VBR)
+
 		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	var jump_attempted := Input.is_action_just_pressed("Jump")
@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
 			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
 		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.01)
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -155,11 +155,9 @@ func _physics_process(delta: float) -> void:
 
 func add_gravity() -> float:
 	if Global.player_impulsed :
-		print(velocity.length())
 		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
-		if velocity.y < -350:
-			GRAVITY = 1750
 		return GRAVITY * impulsed_modifier
+	
 	else:
 		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
 		return GRAVITY * jump_modifier
@@ -184,9 +182,9 @@ func pause_game():
 	get_tree().paused = true
 
 func resume_game():
-	print("Resume game function called")
+
 	if pause_instance != null:
-		print("Pause instance exists, freeing it")
+
 		pause_instance.queue_free()
 		pause_instance = null
 		get_tree().paused = false

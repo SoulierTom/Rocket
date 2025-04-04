@@ -19,26 +19,23 @@ func _ready():
 		# Arrêter toute animation en cours et lancer l'animation "Explosion"
 		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
 		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
-	else:
-		print("Erreur : AnimatedSprite2D n'a pas été trouvé !")
+
 	
 	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
 	if animation_player:
 		animation_player.play("explosion")  # Lance l'animation "Explosion" dans l'AnimationPlayer
-	else:
-		print("Erreur : AnimationPlayer n'a pas été trouvé !")
-	
+
 	# Assurez-vous que le CollisionShape2D est désactivé au départ
 	if collision_shape:
 		collision_shape.disabled = true
-	else:
-		print("Erreur : CollisionShape2D n'a pas été trouvé !")
+
+
 	
 	# Démarrer le timer avec la durée de l'animation pour supprimer l'explosion
 	if timer:
 		timer.start(animation_duration)  # La durée est maintenant la durée de l'animation
-	else:
-		print("Erreur : Timer n'a pas été trouvé !")
+
+
 
 func _process(_delta):
 	# Vérifier si l'animation est en cours et obtenir la frame actuelle
@@ -75,26 +72,31 @@ func apply_explosion_impulse():
 			o.apply_central_impulse(force)
 		
 		if o is CharacterBody2D:
+			var modif_force = 1.0
 			var push_direction = (o.global_position - global_position).normalized()
-			var push_pow_x = pow(push_direction.x,2) * sign(push_direction.x)
-			var push_pow_y = pow(push_direction.y,2) * sign(push_direction.y)
 
-			print("push.x = " + str(push_pow_x))
-			print("push.y = " + str(push_pow_y))
+
+			print("push.dir = " + str(push_direction))
 			
-			push_pow_x *= 0.7
-			if push_direction.y <=0:
-				if push_direction.x <=0:
-					push_pow_y = -(push_pow_x + 1)
+
+			if abs(push_direction.x) >= 0.5:
+				var calc_modif_force = clamp(0.5/abs(push_direction.x), 0.5, 1)
+				modif_force = 0.70 + ((calc_modif_force - 0.5) / 0.5 ) * 0.3     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.75, plus l'horientation est horizontale
+				
+				var calc_modif_push = clamp(abs(push_direction.x)/0.92, 0.76, 1.086)
+				if calc_modif_push <= 1:
+					push_direction.x *= 0.75 - ((calc_modif_push - 0.76) / (1 - 0.76)) * (0.75 - 0.6)
 				else:
-					push_pow_y = -(1 - push_pow_x)
-			else:
-				push_pow_y *= 0.0
-			print("new.push.x = " + str(push_pow_x))
-			print("new.push.y = " + str(push_pow_y))
-			var new_push_dir = Vector2(push_pow_x,push_pow_y)
-			print("new dir = " + str(new_push_dir))
-			o.velocity = new_push_dir * force_player  # Ajuste la force de la poussée
+					push_direction.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.75 - 0.6)
+					
+				if push_direction.y <= 0:
+					push_direction.y = -sqrt(1-pow(push_direction.x,2))
+				else:
+					push_direction.y *= 0.2
+					
+			print("new push.dir = " + str(push_direction))
+			print("modif force = " + str(modif_force))
+			o.velocity = push_direction * force_player * modif_force # Ajuste la force de la poussée
 			Global.player_impulsed = true
 	
 		
