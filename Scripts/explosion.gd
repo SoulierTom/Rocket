@@ -3,6 +3,7 @@ extends Area2D
 @onready var arm: Node2D = $"."
 
 
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
@@ -79,6 +80,7 @@ func apply_explosion_impulse():
 			var modif_force = 1.0
 			var joystick_vect = - joy_vect.normalized()
 			print("joystick_vect = " + str(joystick_vect))
+			
 			if abs(joystick_vect.x) >= 0.5:
 				var calc_modif_force1 = clamp(0.5/abs(joystick_vect.x), 0.5, 1)
 				modif_force = 0.70 + ((calc_modif_force1 - 0.5) / 0.5 ) * 0.3     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.70, plus l'horientation est horizontale
@@ -89,14 +91,14 @@ func apply_explosion_impulse():
 				else:
 					joystick_vect.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.75 - 0.6)
 					
-				if joystick_vect.y <= 0:
+				if joystick_vect.y <= 0.1:
 					joystick_vect.y = -sqrt(1-pow(joystick_vect.x,2))
 				else:
 					joystick_vect.y *= 0.2
 					
 			else:
 				var calc_modif_force2 = clamp(0.866/abs(joystick_vect.y), 0.866, 1)
-				modif_force = 0.75 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.75)
+				modif_force = 0.85 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.85)
 				
 
 
