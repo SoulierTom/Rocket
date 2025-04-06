@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cwluy74qleb1j"]
+[gd_scene load_steps=14 format=4 uid="uid://bmaehojhbsphp"]
 
 [ext_resource type="Script" path="res://Scripts/test_level_2.gd" id="1_kx3ts"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_rdu16"]

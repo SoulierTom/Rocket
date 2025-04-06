@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d0xpjhfkqs1pd"]
+[gd_scene load_steps=12 format=4 uid="uid://df8yqvouw3ug2"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_qagos"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="2_h8cid"]

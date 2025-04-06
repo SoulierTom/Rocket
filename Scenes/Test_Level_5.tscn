@@ -1,16 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://drbuwfescgwst"]
+[gd_scene load_steps=15 format=4 uid="uid://ci03e6xtqty73"]
 
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_htppc"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_ju8vp"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_08ubf"]
-[ext_resource type="Texture2D" uid="uid://hisufxsm86ub" path="res://Assets/Graou/Tile_set_tuto_3.png" id="2_tx1nv"]
+[ext_resource type="Texture2D" uid="uid://hisufxsm86ub" path="res://Assets/Graou/Tile_set_tuto_3.png" id="2_g6n05"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_ek2i2"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_nrnsa"]
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="6_xseto"]
 [ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_00xsy"]
-[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="8_sh0jm"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="8_3gcbx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulruk"]
-texture = ExtResource("2_tx1nv")
+texture = ExtResource("2_g6n05")
 texture_region_size = Vector2i(8, 8)
 1:5/0 = 0
 2:5/0 = 0
@@ -670,7 +670,7 @@ sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Area2D" parent="Tiles" instance=ExtResource("6_xseto")]
+[node name="Area2D" parent="Tiles" instance=ExtResource("1_htppc")]
 position = Vector2(9.49, -272.185)
 rotation = 1.5708
 
@@ -697,7 +697,7 @@ tile_set = SubResource("TileSet_vvb5x")
 
 [node name="Spikes" type="Node" parent="Tiles"]
 
-[node name="Area2D2" parent="Tiles" instance=ExtResource("8_sh0jm")]
+[node name="Area2D2" parent="Tiles" instance=ExtResource("8_3gcbx")]
 position = Vector2(-367, 22)
 
 [node name="Sprite2D" parent="Tiles/Area2D2" index="0"]
