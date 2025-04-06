@@ -638,6 +638,9 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(-3, -1)
 
+[node name="Cooldown" parent="Player/Arm" index="2"]
+wait_time = 0.3
+
 [node name="Area2D" parent="." instance=ExtResource("5_kanfh")]
 visible = false
 position = Vector2(93, -316)

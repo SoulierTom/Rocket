@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=4 uid="uid://c67fyef8jrkk2"]
 
-[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_f7fom"]
-[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_8vgao"]
-[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_40ftr"]
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="4_qj5ia"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="5_3lkrf"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="6_ka44o"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_o1vmf"]
+[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_fkyli"]
+[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Graou/Tuto picture set.png" id="3_58qrk"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_go5t5"]
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_b8y0w"]
+[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="6_5sd1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
-texture = ExtResource("1_f7fom")
+texture = ExtResource("1_o1vmf")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -86,7 +86,7 @@ separation = Vector2i(1, 1)
 sources/1 = SubResource("TileSetAtlasSource_gbd66")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tadxp"]
-texture = ExtResource("2_8vgao")
+texture = ExtResource("2_fkyli")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -162,7 +162,7 @@ texture_region_size = Vector2i(8, 8)
 19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47jt4"]
-texture = ExtResource("3_40ftr")
+texture = ExtResource("3_58qrk")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -269,7 +269,7 @@ sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8poq0"]
-texture = ExtResource("2_8vgao")
+texture = ExtResource("2_fkyli")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -321,7 +321,7 @@ texture_region_size = Vector2i(8, 8)
 19:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hreob"]
-texture = ExtResource("3_40ftr")
+texture = ExtResource("3_58qrk")
 texture_region_size = Vector2i(8, 8)
 1:0/0 = 0
 2:0/0 = 0
@@ -424,15 +424,15 @@ offset_right = 1059.0
 offset_bottom = 419.0
 color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 
-[node name="Player" parent="." instance=ExtResource("5_3lkrf")]
+[node name="Player" parent="." instance=ExtResource("4_go5t5")]
 position = Vector2(-1, -1)
 
-[node name="Area2D" parent="." instance=ExtResource("4_qj5ia")]
+[node name="Area2D" parent="." instance=ExtResource("5_b8y0w")]
 position = Vector2(853, -103)
 
 [node name="CameraLimiters" type="Node" parent="."]
 
-[node name="CameraLimiter1" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
+[node name="CameraLimiter1" parent="CameraLimiters" instance=ExtResource("6_5sd1e")]
 position = Vector2(674, -154)
 limit_x = 2
 
@@ -442,7 +442,7 @@ position = Vector2(-220, 58)
 [node name="LimitPosition" parent="CameraLimiters/CameraLimiter1" index="1"]
 position = Vector2(185, 53)
 
-[node name="CameraLimiter2" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
+[node name="CameraLimiter2" parent="CameraLimiters" instance=ExtResource("6_5sd1e")]
 position = Vector2(674, -154)
 limit_x = 1
 
