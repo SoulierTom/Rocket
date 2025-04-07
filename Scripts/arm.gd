@@ -4,7 +4,7 @@ extends Node2D
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
-var last_joystick_vector = Vector2.RIGHT
+var last_joystick_vector = Vector2(0.5,0.866)
 
 # Position du bras
 @export var pos_arm_x: float = -3
@@ -52,11 +52,11 @@ func _physics_process(_delta):
 
 	if is_using_gamepad:
 		if joystick_vector.length() > 0.1:
-			Global.target_pos = character_pos + joystick_vector * 500
+			Global.target_pos = character_pos + joystick_vector * 1000000
 			last_joystick_vector = joystick_vector
 			look_at(Global.target_pos)
 		else:
-			Global.target_pos = character_pos + last_joystick_vector * 500
+			Global.target_pos = character_pos + last_joystick_vector * 1000000
 			look_at(Global.target_pos)
 	else:
 		Global.target_pos = mouse_pos
@@ -68,7 +68,7 @@ func _physics_process(_delta):
 		z_index = 1  # Devant le personnage
 	else:  # Le bras vise à gauche
 		z_index = -1  # Derrière le personnage
-
+	
 func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		is_using_gamepad = true

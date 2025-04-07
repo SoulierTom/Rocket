@@ -23,7 +23,7 @@ DeathScreen="*res://Scenes/death_screen.tscn"
 
 [display]
 
-window/size/mode=3
+window/size/initial_position_type=0
 window/stretch/scale_mode="integer"
 
 [editor_plugins]
