@@ -36,6 +36,7 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 
 			var finish_spawn = finish_scene.instantiate()
 			finish_spawn.position = entity["position"]
+			finish_spawn.next_level_number =entity["fields"]["Next_Level"]
 
 			entity_layer.add_child(finish_spawn)
 
@@ -52,9 +53,16 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 			# Instanciez le nœud Camera_Limiter
 			var camera_limiter = camera_scene.instantiate()
 			camera_limiter.position = entity["position"]  # Positionnez Camera_Limiter
+			camera_limiter.limit_x = entity["fields"]["BorderX"]
+			camera_limiter.limit_y = entity["fields"]["BorderY"]
 
 			# Ajoutez Camera_Limiter à la scène
 			entity_layer.add_child(camera_limiter)
+			
+			var new_node = Node2D.new()  # Crée un nouveau nœud
+			new_node.name = "LimitPosition"  # Optionnel : renomme le nœud
+			camera_limiter.add_child(new_node)        # Ajoute le nœud comme enfant du nœud actuel
+			new_node.global_position = (entity["fields"]["Camera_Border"] * 8)
 
 			# Mettez à jour les références
 			Util.update_instance_reference(entity.iid, camera_limiter)
