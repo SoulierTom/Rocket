@@ -67,24 +67,11 @@ func _physics_process(delta: float) -> void:
 
 		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
-	var jump_attempted := Input.is_action_just_pressed("Jump")
 	
-	if jump_attempted or input_buffer.time_left > 0:
-		if coyote_jump_available and can_jump:
-			velocity.y = JUMP_VELOCITY
-			Global.shooting_pos = position
-			coyote_jump_available = false
-		elif jump_attempted:
-			input_buffer.start()
-
+	
 	if is_on_floor():
-		coyote_jump_available = true
-		coyote_timer.stop()
 		Global.player_impulsed = false
 	else:
-		if coyote_jump_available:
-			if coyote_timer.is_stopped():
-				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
 	wall_slide(delta)
