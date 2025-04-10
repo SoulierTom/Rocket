@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var arm: Node2D = $"."
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
@@ -10,6 +12,7 @@ extends Area2D
 @export var force_objet: int = 75
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
+var joy_vect = Global.target_pos
 
 func _ready():
 	set_as_top_level(true)
@@ -19,29 +22,28 @@ func _ready():
 		# Arrêter toute animation en cours et lancer l'animation "Explosion"
 		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
 		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
-	else:
-		print("Erreur : AnimatedSprite2D n'a pas été trouvé !")
+
 	
 	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
 	if animation_player:
 		animation_player.play("explosion")  # Lance l'animation "Explosion" dans l'AnimationPlayer
-	else:
-		print("Erreur : AnimationPlayer n'a pas été trouvé !")
-	
+
 	# Assurez-vous que le CollisionShape2D est désactivé au départ
 	if collision_shape:
 		collision_shape.disabled = true
-	else:
-		print("Erreur : CollisionShape2D n'a pas été trouvé !")
+
+
 	
 	# Démarrer le timer avec la durée de l'animation pour supprimer l'explosion
 	if timer:
 		timer.start(animation_duration)  # La durée est maintenant la durée de l'animation
-	else:
-		print("Erreur : Timer n'a pas été trouvé !")
+
+
 
 func _process(_delta):
 	# Vérifier si l'animation est en cours et obtenir la frame actuelle
+
+	
 	if animated_sprite:
 		var current_frame = animated_sprite.frame
 		
@@ -73,10 +75,36 @@ func apply_explosion_impulse():
 			o.apply_central_impulse(force)
 		
 		if o is CharacterBody2D:
-			var push_direction = (o.global_position - global_position).normalized()
-			o.velocity = Vector2.ZERO
-			o.velocity = push_direction * force_player  # Ajuste la force de la poussée
+			var modif_force = 1.0
+			var joystick_vect = - joy_vect.normalized()
+			print("joystick_vect = " + str(joystick_vect))
+			
+			if abs(joystick_vect.x) >= 0.5:
+				var calc_modif_force1 = clamp(0.5/abs(joystick_vect.x), 0.5, 1)
+				modif_force = 0.80 + ((calc_modif_force1 - 0.5) / 0.5 ) * (1 - 0.85)     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.80, plus l'horientation est horizontale
+				
+				var calc_modif_push = clamp(abs(joystick_vect.x)/0.92, 0.76, 1.086)
+				if calc_modif_push <= 1:
+					joystick_vect.x *= 0.85 - ((calc_modif_push - 0.76) / (1 - 0.76)) * (0.85 - 0.6)
+				else:
+					joystick_vect.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.85 - 0.6)
+					
+				if joystick_vect.y <= 0.15:
+					joystick_vect.y = -sqrt(1-pow(joystick_vect.x,2))
+				else:
+					joystick_vect.y *= 0.1
+					
+			else:
+				var calc_modif_force2 = clamp(0.866/abs(joystick_vect.y), 0.866, 1)
+				modif_force = 0.80 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.80)
+			
+			print("modif force = " + str(modif_force))
+			print(" new joystick_vect = " + str(joystick_vect))
+			
+			o.velocity =  joystick_vect * force_player * modif_force  # Ajuste la force de la poussée
 			Global.player_impulsed = true
+	
+		
 
 # Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
 func _on_timer_timeout() -> void:

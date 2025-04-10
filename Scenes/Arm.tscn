@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=11 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
@@ -6,8 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Audio/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
-[ext_resource type="Texture2D" uid="uid://ia20hwapr2iw" path="res://Assets/cercle.png" id="8_knd35"]
-[ext_resource type="Script" path="res://Scripts/texture_progress_bar.gd" id="9_558o2"]
+[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="9_xu18f"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8wks"]
 random_pitch = 2.0
@@ -31,7 +30,6 @@ scale = Vector2(1.2, 1.2)
 script = ExtResource("1_t4ufm")
 recoil_force = 2
 recoil_duration = 0.1
-reload_time = 2.5
 explosion_scene = ExtResource("2_lv75f")
 
 [node name="ShootingPoint" type="Marker2D" parent="."]
@@ -43,7 +41,7 @@ visible = false
 speed = 1000
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
@@ -87,26 +85,10 @@ pivot_offset = Vector2(5, 12)
 text = "1"
 label_settings = SubResource("LabelSettings_d5mv8")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="RayCast2D/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -255.999
-offset_top = -256.001
-offset_right = 256.001
-offset_bottom = 255.999
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5708
-scale = Vector2(0.05, 0.05)
-pivot_offset = Vector2(256, 256)
-value = 100.0
-fill_mode = 4
-texture_progress = ExtResource("8_knd35")
-script = ExtResource("9_558o2")
-reload_time = 2.5
+[node name="arm_sprite" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+rotation = -0.226893
+texture = ExtResource("9_xu18f")
+offset = Vector2(6, -3)
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

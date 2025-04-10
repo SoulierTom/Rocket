@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://hluix5ipxkis"]
+[gd_scene load_steps=14 format=4 uid="uid://1cpnjqa57gkq"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Graou/Tile_Set_Dirt_v2.png" id="1_rpqsp"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Graou/Tile_Set_Grassy_Cave.png" id="2_sqopw"]
@@ -416,7 +416,7 @@ offset_bottom = 376.0
 color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 
 [node name="Area2D" parent="." instance=ExtResource("4_lu80m")]
-position = Vector2(780, -76)
+position = Vector2(82, 3)
 
 [node name="Player" parent="." instance=ExtResource("5_kynak")]
 position = Vector2(0, -1)
