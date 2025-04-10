@@ -42,7 +42,7 @@ func _on_play_pressed():
 	await TransitionScreen.on_transition_finished
 	print("Arbre de scène:", get_tree())
 	if get_tree():
-		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
 	else:
 		print("Erreur: get_tree() est null")
 
