@@ -10,6 +10,9 @@ var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
 var max_fall_speed : float = 300
 
+var is_wall_sliding = false
+const wall_slide_gravity = 30
+
 var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available := true
@@ -84,7 +87,7 @@ func _physics_process(delta: float) -> void:
 				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
-	
+	wall_slide(delta)
 
 	
 	if not Global.player_impulsed:
@@ -161,6 +164,19 @@ func add_gravity() -> float:
 	else:
 		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
 		return GRAVITY * jump_modifier
+
+func wall_slide(delta):
+	if is_on_wall() and not is_on_floor():
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
+
+	if is_wall_sliding:
+		velocity.y += wall_slide_gravity * delta
+		velocity.y = min(velocity.y, wall_slide_gravity)
 
 func coyote_timeout() -> void:
 	coyote_jump_available = false
