@@ -10,6 +10,9 @@ var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
 var max_fall_speed : float = 300
 
+var is_wall_sliding = false
+const wall_slide_gravity = 30
+
 var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available := true
@@ -38,7 +41,7 @@ var can_jump := true
 func set_camera(new_camera: Camera2D):
 	camera = new_camera
 	camera.make_current()  # Active cette caméra (Godot 4)
-	print("Camera set to:", camera)
+
 
 func _ready():
 	input_buffer = Timer.new()
@@ -53,70 +56,49 @@ func _ready():
 	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
+
+	
 	if Input.is_action_just_pressed("reset"):
 		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
 		Global.speedrun_time = 0
 	# Toggle des vibrations
 	if Input.is_action_just_pressed("toggle_vibration"):
 		Global.VBR = !Global.VBR
-		print("Vibration toggled: ", Global.VBR)
+
 		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
-	var jump_attempted := Input.is_action_just_pressed("Jump")
-	print(velocity.length())
-	if jump_attempted or input_buffer.time_left > 0:
-		if coyote_jump_available and can_jump:
-			velocity.y = JUMP_VELOCITY
-			Global.shooting_pos = position
-			coyote_jump_available = false
-		elif jump_attempted:
-			input_buffer.start()
-
+	
+	
 	if is_on_floor():
-		coyote_jump_available = true
-		coyote_timer.stop()
 		Global.player_impulsed = false
 	else:
-		if coyote_jump_available:
-			if coyote_timer.is_stopped():
-				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
-	var drag_multiplier : float
-	if is_on_floor():
-		if abs(velocity.x) > SPEED :
-			drag_multiplier = 2
-		else :
-			drag_multiplier = 1
-	else : 
-		if Global.player_impulsed :
-			drag_multiplier = 0.35
-		else :
-			drag_multiplier = 0.35
+	wall_slide(delta)
 
 	
 	if not Global.player_impulsed:
 		if is_on_floor():
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 10)  #Au sol, fais demi-tour rapidement
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)  #Au sol, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2) #Au sol, Friction
 		else:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5)  #En sautant, fais demi-tour rapidement
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)  #En sautant, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier) #Au sol, Friction
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.5) #en l'air, Friction
 	else:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * drag_multiplier * 1.5) #Propulsé
-			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta * 2)
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
 		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * drag_multiplier)
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -165,9 +147,23 @@ func add_gravity() -> float:
 	if Global.player_impulsed :
 		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
 		return GRAVITY * impulsed_modifier
+	
 	else:
 		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
 		return GRAVITY * jump_modifier
+
+func wall_slide(delta):
+	if is_on_wall() and not is_on_floor():
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
+
+	if is_wall_sliding:
+		velocity.y += wall_slide_gravity * delta
+		velocity.y = min(velocity.y, wall_slide_gravity)
 
 func coyote_timeout() -> void:
 	coyote_jump_available = false
@@ -189,9 +185,9 @@ func pause_game():
 	get_tree().paused = true
 
 func resume_game():
-	print("Resume game function called")
+
 	if pause_instance != null:
-		print("Pause instance exists, freeing it")
+
 		pause_instance.queue_free()
 		pause_instance = null
 		get_tree().paused = false

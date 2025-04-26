@@ -2,32 +2,29 @@ extends Area2D
 
 class_name CameraLimiter
 
-enum LimitX {NONE, LEFT, RIGHT}
-enum LimitY {NONE, TOP, BOTTOM}
-
 const MAX_VAL = 100000
 
-@export var limit_x: LimitX = LimitX.NONE
-@export var limit_y: LimitY = LimitY.NONE
+@export var limit_x = "CameraBorderX.None"
+@export var limit_y = "CameraBorderY.None"
 
-@onready var marker = $LimitPosition
+@onready var marker = get_node("LimitPosition")
 
 func get_limit_top():
-	if limit_y != LimitY.TOP:
+	if limit_y != "CameraBorderY.Top":
 		return -MAX_VAL
 	return marker.global_position.y
 
 func get_limit_bottom():
-	if limit_y != LimitY.BOTTOM:
+	if limit_y != "CameraBorderY.Bottom":
 		return MAX_VAL
 	return marker.global_position.y
 
 func get_limit_left():
-	if limit_x != LimitX.LEFT:
+	if limit_x != "CameraBorderX.Left":
 		return -MAX_VAL
 	return marker.global_position.x
 
 func get_limit_right():
-	if limit_x != LimitX.RIGHT:
+	if limit_x != "CameraBorderX.Right":
 		return MAX_VAL
 	return marker.global_position.x
