@@ -13,30 +13,7 @@
 	"appBuildId": 473703,
 	"nextUid": 189,
 	"identifierStyle": "Capitalize",
-	"toc": [{
-		"identifier": "PlayerStart",
-		"instances": [],
-		"instancesData": [
-			{ "iids": {
-				"worldIid": "d5f70ae0-c210-11ef-addc-292dd5f6b25f",
-				"levelIid": "d5f75900-c210-11ef-addc-8d6461b641ac",
-				"layerIid": "7efc2de0-c210-11ef-9804-99dba6d0bf5c",
-				"entityIid": "4b4f3500-e920-11ef-82af-91bc121fc2dd"
-			}, "worldX": 111, "worldY": 258, "widPx": 16, "heiPx": 17, "fields" : {} },
-			{ "iids": {
-				"worldIid": "d5f70ae0-c210-11ef-addc-292dd5f6b25f",
-				"levelIid": "c5193070-c210-11ef-afc4-47bacb52dbf0",
-				"layerIid": "7efc2de1-c210-11ef-9804-6183570e9ff9",
-				"entityIid": "b34f70d0-c210-11ef-9429-67eb21e4a883"
-			}, "worldX": 1065, "worldY": 215, "widPx": 16, "heiPx": 17, "fields" : {} },
-			{ "iids": {
-				"worldIid": "d5f70ae0-c210-11ef-addc-292dd5f6b25f",
-				"levelIid": "de464f60-e920-11ef-91e2-dd16d5f3d5d2",
-				"layerIid": "de464f61-e920-11ef-91e2-3d84d6590ffe",
-				"entityIid": "2f513000-1030-11f0-8c93-1569a820f80e"
-			}, "worldX": 968, "worldY": -354, "widPx": 16, "heiPx": 17, "fields" : {} }
-		]
-	}],
+	"toc": [],
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
 	"worldGridHeight": 256,
@@ -4179,7 +4156,7 @@
 			"identifier": "PlayerStart",
 			"uid": 124,
 			"tags": [],
-			"exportToToc": true,
+			"exportToToc": false,
 			"allowOutOfBounds": false,
 			"doc": null,
 			"width": 16,
@@ -4314,8 +4291,8 @@
 			"maxCount": 0,
 			"limitScope": "PerLevel",
 			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
+			"pivotX": 0.5,
+			"pivotY": 0.5,
 			"fieldDefs": [
 				{
 					"identifier": "Camera_Border",
@@ -4557,8 +4534,8 @@
 						},
 						{
 							"__identifier": "Camera_Limiter",
-							"__grid": [12,21],
-							"__pivot": [0,0],
+							"__grid": [13,29],
+							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#4798E8",
@@ -4566,7 +4543,7 @@
 							"width": 16,
 							"height": 96,
 							"defUid": 134,
-							"px": [102,173],
+							"px": [110,237],
 							"fieldInstances": [
 								{ "__identifier": "Camera_Border", "__type": "Point", "__value": { "cx": 0, "cy": 25 }, "__tile": null, "defUid": 135, "realEditorValues": [{
 									"id": "V_String",
@@ -4578,13 +4555,13 @@
 								}] },
 								{ "__identifier": "BorderY", "__type": "LocalEnum.CameraBorderY", "__value": "None", "__tile": null, "defUid": 187, "realEditorValues": [] }
 							],
-							"__worldX": 102,
-							"__worldY": 173
+							"__worldX": 110,
+							"__worldY": 237
 						},
 						{
 							"__identifier": "Camera_Limiter",
-							"__grid": [33,19],
-							"__pivot": [0,0],
+							"__grid": [33,27],
+							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#4798E8",
@@ -4592,7 +4569,7 @@
 							"width": 16,
 							"height": 96,
 							"defUid": 134,
-							"px": [269,156],
+							"px": [269,220],
 							"fieldInstances": [
 								{ "__identifier": "Camera_Border", "__type": "Point", "__value": { "cx": 33, "cy": 13 }, "__tile": null, "defUid": 135, "realEditorValues": [{
 									"id": "V_String",
@@ -4605,12 +4582,12 @@
 								}] }
 							],
 							"__worldX": 269,
-							"__worldY": 156
+							"__worldY": 220
 						},
 						{
 							"__identifier": "Camera_Limiter",
-							"__grid": [60,13],
-							"__pivot": [0,0],
+							"__grid": [61,19],
+							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#4798E8",
@@ -4618,7 +4595,7 @@
 							"width": 16,
 							"height": 96,
 							"defUid": 134,
-							"px": [483,105],
+							"px": [491,153],
 							"fieldInstances": [
 								{ "__identifier": "Camera_Border", "__type": "Point", "__value": { "cx": 61, "cy": 27 }, "__tile": null, "defUid": 135, "realEditorValues": [{
 									"id": "V_String",
@@ -4630,13 +4607,13 @@
 								}] },
 								{ "__identifier": "BorderY", "__type": "LocalEnum.CameraBorderY", "__value": "None", "__tile": null, "defUid": 187, "realEditorValues": [] }
 							],
-							"__worldX": 483,
-							"__worldY": 105
+							"__worldX": 491,
+							"__worldY": 153
 						},
 						{
 							"__identifier": "Camera_Limiter",
-							"__grid": [102,14],
-							"__pivot": [0,0],
+							"__grid": [99,18],
+							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#4798E8",
@@ -4644,11 +4621,11 @@
 							"width": 16,
 							"height": 96,
 							"defUid": 134,
-							"px": [820,119],
+							"px": [796,151],
 							"fieldInstances": [
-								{ "__identifier": "Camera_Border", "__type": "Point", "__value": { "cx": 128, "cy": 31 }, "__tile": null, "defUid": 135, "realEditorValues": [{
+								{ "__identifier": "Camera_Border", "__type": "Point", "__value": { "cx": 128, "cy": 32 }, "__tile": null, "defUid": 135, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["128,31"]
+									"params": ["128,32"]
 								}] },
 								{ "__identifier": "BorderX", "__type": "LocalEnum.CameraBorderX", "__value": "Right", "__tile": null, "defUid": 186, "realEditorValues": [{
 									"id": "V_String",
@@ -4659,8 +4636,8 @@
 									"params": ["Bottom"]
 								}] }
 							],
-							"__worldX": 820,
-							"__worldY": 119
+							"__worldX": 796,
+							"__worldY": 151
 						},
 						{
 							"__identifier": "Finish",
@@ -16807,7 +16784,7 @@
 						{
 							"__identifier": "Camera_Limiter",
 							"__grid": [72,3],
-							"__pivot": [0,0],
+							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#4798E8",
