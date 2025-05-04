@@ -10,22 +10,41 @@ var camera_scene = preload("res://Scenes/camera_limiter.tscn")
 func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 	var entities: Array = entity_layer.entities  # Stocke une liste d'éléments
 
-	for entity in entities:
+
+	# Script exécuté par chacun des niveaux (depuis le Node "Entities") :
+	
+	entity_layer.get_node("../Collisions").z_index = 2
+	entity_layer.get_node("../Background").z_index = -2
+	
+	# Création des Color_Rects :
+	var color_rect = ColorRect.new()
+	entity_layer.add_child(color_rect)
+	var size_cr = Vector2(entity_layer.get_node("../Collisions").get_used_rect().size)*8 # définit la taille des colors rects à celle de la tilemap du niveau actuel
+	color_rect.size = size_cr
+	color_rect.color = Color(0, 0, 0, 0.2)
+	color_rect.z_index = -1
+
+	var color_rect2 = ColorRect.new()
+	entity_layer.add_child(color_rect2)
+	color_rect2.size = size_cr
+	color_rect2.color = Color(0, 0, 0, 0.2)
+	color_rect2.z_index = -3
+
+
+	for entity in entities: # C'est ici que les entitées vont être créés en fonction de leurs noms
 		
-		# Vérifiez que l'entité est bien celle que vous souhaitez traiter
-		if entity.identifier == "PlayerStart":  # Remplacez par l'identifiant de votre entité
+		if entity.identifier == "PlayerStart": 
 
-			# Instanciez le nœud Player
+			# Instancie le Joueur
 			var player_spawn = player_scene.instantiate()
-			player_spawn.position = entity["position"]  # Positionnez le joueur
+			player_spawn.position = entity["position"]  # Positionne le joueur
 
-			# Ajoutez le nœud Player à la scène
+			# Ajoute le node Player à la scène
 			entity_layer.add_child(player_spawn)
 
-			# Mettez à jour les références
+			# Met à jour les références (me demandez pas c'est quoi une référence)
 			Util.update_instance_reference(entity.iid, player_spawn)
 
-			# Gérez les références supplémentaires si nécessaire
 			if "Entity_ref" in entity.fields:
 				var ref = entity.fields.Entity_ref
 				if ref != null:
@@ -48,30 +67,28 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 					finish_spawn.ref = ref
 					Util.add_unresolved_reference(finish_spawn, "ref")
 
-		if entity.identifier == "Camera_Limiter":  # Remplacez par l'identifiant de votre entité
+		if entity.identifier == "Camera_Limiter":
 
-			# Instanciez le nœud Camera_Limiter
 			var camera_limiter = camera_scene.instantiate()
-			camera_limiter.position = entity["position"]  # Positionnez Camera_Limiter
+			camera_limiter.position = entity["position"]
 			camera_limiter.limit_x = entity["fields"]["BorderX"]
 			camera_limiter.limit_y = entity["fields"]["BorderY"]
 
-			# Ajoutez Camera_Limiter à la scène
 			entity_layer.add_child(camera_limiter)
 			
-			var new_node = Node2D.new()  # Crée un nouveau nœud
-			new_node.name = "LimitPosition"  # Optionnel : renomme le nœud
-			camera_limiter.add_child(new_node)        # Ajoute le nœud comme enfant du nœud actuel
+			# Setup des caméra limiters :
+			var new_node = Node2D.new()
+			new_node.name = "LimitPosition" 
+			camera_limiter.add_child(new_node)
 			new_node.global_position = (entity["fields"]["Camera_Border"] * 8)
 
-			# Mettez à jour les références
 			Util.update_instance_reference(entity.iid, camera_limiter)
 			
-			# Modifiez la position des enfants de Camera_Limiter
+			# Modifier la position des enfants de Camera_Limiter
 			#var limit_position = camera_limiter.get_node("LimitPosition")  # Accédez à LimitPosition
 
-			# Définissez la position des enfants
-			#limit_position.position = entities["Camera_Border"]  # Déplacez LimitPosition de 20 pixels vers le bas
+			# Définit la position des enfants
+			#limit_position.position = entities["Camera_Border"]  # Déplace LimitPosition de 20 pixels vers le bas
 			
 			if "Entity_ref" in entity.fields:
 				var ref = entity.fields.Entity_ref
@@ -79,5 +96,6 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 					camera_limiter.ref = ref
 					Util.add_unresolved_reference(camera_limiter, "ref")
 
+	print("Import Réussi")
 
 	return entity_layer
