@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnjmr4evohsr4"]
+[gd_scene load_steps=21 format=3 uid="uid://cnjmr4evohsr4"]
 
 [ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_6xgrk"]
 [ext_resource type="Texture2D" uid="uid://c45efj6718jl4" path="res://Assets/Explosion_sheet.png" id="2_np5ux"]
@@ -146,6 +146,15 @@ _data = {
 "explosion": SubResource("Animation_357bs")
 }
 
+[sub_resource type="Curve" id="Curve_l6dob"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0407876, 2.45074), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_fe2vh"]
+_data = [Vector2(0, 0.676847), 0.0, 0.0, 0, 0, Vector2(0.751055, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.002841), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Explosion" type="Area2D" groups=["boom"]]
 z_index = 10
 scale = Vector2(2, 2)
@@ -153,6 +162,7 @@ script = ExtResource("1_6xgrk")
 force_objet = 150
 
 [node name="Rond" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-1.04308e-06, 7.7486e-07)
 scale = Vector2(0.525391, 0.525391)
 texture = ExtResource("3_le5k6")
@@ -174,5 +184,20 @@ animation = &"Explosion"
 libraries = {
 "": SubResource("AnimationLibrary_pql3b")
 }
+
+[node name="Explo" type="CPUParticles2D" parent="."]
+amount = 100
+lifetime = 0.6
+explosiveness = 0.82
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+damping_min = 500.0
+damping_max = 500.0
+damping_curve = SubResource("Curve_l6dob")
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_fe2vh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

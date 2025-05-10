@@ -6,6 +6,7 @@ extends Area2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
 @onready var animation_player: AnimationPlayer = $AnimationPlayer  # Référence à l'AnimationPlayer
+@onready var explo = $Explo
 
 @export var force_player : float = 400.0
 @export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
@@ -16,12 +17,13 @@ var joy_vect = Global.target_pos
 
 func _ready():
 	set_as_top_level(true)
-	
+	explo.emitting = true
 	# Assurez-vous que le nœud AnimatedSprite2D existe
 	if animated_sprite:
 		# Arrêter toute animation en cours et lancer l'animation "Explosion"
 		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
 		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
+
 
 	
 	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
