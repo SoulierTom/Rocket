@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx3e2lh8fkea7"]
+[gd_scene load_steps=2 format=3 uid="uid://dmq6qu2aror20"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_82a23"]
 
@@ -11,6 +11,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_82a23")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1779.0
+offset_top = -1572.0
+offset_right = 2308.0
+offset_bottom = 1034.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.233925, 0.233925, 0.233925, 0.6)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,12 +33,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -33.0
-offset_right = 35.0
-offset_bottom = 33.0
+offset_left = -141.0
+offset_top = -134.0
+offset_right = -71.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

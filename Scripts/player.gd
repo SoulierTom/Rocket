@@ -1,154 +1,200 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-@export var speedGround = 140.0
-@export var speedAir = 200.0
+var SPEED = 150
+var ACCELERATION = 250.0
+var FRICTION = 800.0
+var GRAVITY = 1500.0
+var JUMP_VELOCITY = -300.0
+var BUFFER_PATIENCE = 0.08
+var COYOTE_TIME = 0.08
+var max_fall_speed : float = 300
 
-@export var jump_height : float = 25
-@export var jump_time_to_peak : float = 0.2
-@export var jump_time_to_descent : float = 0.15
-@export var acceleration_ground = 9
-@export var acceleration_air = 9
+var is_wall_sliding = false
+const wall_slide_gravity = 30
 
-var friction : int
-@onready var buffer_timer: Timer = $BufferTimer
-@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+var input_buffer : Timer
+var coyote_timer : Timer
+var coyote_jump_available := true
 
-@export var max_fall_speed : float = 350.0  # Limite maximale de la vitesse de chute
+var gravity_scale = 1.0
+var was_going_up = false
+var time_in_fall = 0.0
 
-var recoiling : bool = false
-@export var recoil_force : int = 100
-@export var recoil_duration : float = 0.025
-
-# Variables propres au bras
 @onready var arm = $Arm
+var arm_offset_x: float = 0.85
 
-var arm_offset_x: float = 0.85  # Décalage du bras
-
-# Animations du Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var coyote_timer: Timer = $CoyoteTimer
 
-# Référence au menu pause
 @onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var pause_instance = null
 
+# Ajoutez une variable pour stocker la référence à la caméra
+var camera: Camera2D = null
+
+var can_jump := true
+
+# Ajoutez une référence au CanvasLayer
+@onready var canvas_layer = $CanvasLayer
+
+# Méthode pour définir la caméra
+func set_camera(new_camera: Camera2D):
+	camera = new_camera
+	camera.make_current()  # Active cette caméra (Godot 4)
+
+
 func _ready():
-	velocity = Vector2.ZERO
+	input_buffer = Timer.new()
+	input_buffer.wait_time = BUFFER_PATIENCE
+	input_buffer.one_shot = true
+	add_child(input_buffer)
+
+	coyote_timer = Timer.new()
+	coyote_timer.wait_time = COYOTE_TIME
+	coyote_timer.one_shot = true
+	add_child(coyote_timer)
+	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
-	# Direction que pointe le bras
-	var dir_arm = (Global.target_pos - arm.global_position).normalized()
 
-	# Appliquer la gravité
-	velocity.y += calculate_gravity() * delta
 	
-	# Limiter la vitesse de chute
+	if Input.is_action_just_pressed("reset"):
+		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+		Global.speedrun_time = 0
+	# Toggle des vibrations
+	if Input.is_action_just_pressed("toggle_vibration"):
+		Global.VBR = !Global.VBR
+
+		
+	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
+	
+	
+	if is_on_floor():
+		Global.player_impulsed = false
+	else:
+		velocity.y += add_gravity() * delta
+
+	wall_slide(delta)
+
+	
+	if not Global.player_impulsed:
+		if is_on_floor():
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)  #Au sol, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta) #Au sol, avance de manière accéléré
+			else:
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2) #Au sol, Friction
+		else:
+			if abs(horizontal_input.x) >= 0.1:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)  #En sautant, fais demi-tour rapidement
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.5) #en l'air, Friction
+	else:
+		if abs(horizontal_input.x) >= 0.1:
+			if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1) #Propulsé
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
+		else :
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
+	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
-
-	# Gérer les mouvements horizontaux
-	var input_dir: Vector2 = input()
-	if input_dir != Vector2.ZERO and is_on_floor():
-		accelerate_ground(input_dir)
-	elif input_dir != Vector2.ZERO and !is_on_floor():
-		accelerate_air(input_dir)
-	else:
-		add_friction()
 	
-	jump()
+	move_and_slide()
 	
-	# Détermine quelles animations doivent être jouées
+	var current_frame = animated_sprite.frame
+	var dir_arm = (Global.target_pos - arm.global_position).normalized()
+	
 	if is_on_floor():
-		friction = 25
-		if input_dir == Vector2.ZERO:
-			# Animation "idle" ou "idle_left" selon la direction du bras
+		if abs(horizontal_input.x) < 0.1:
 			if dir_arm.x > 0:
 				animated_sprite.play("idle")
 			else:
 				animated_sprite.play("idle_left")
 		else:
-			# Animation "run" ou "run_left" selon la direction du bras
 			if dir_arm.x > 0:
 				animated_sprite.play("run")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 			else:
 				animated_sprite.play("run_left")
+				if current_frame >= 0 and current_frame < 1:
+					$walk_sound.play()
+					
+				if current_frame >= 2 and current_frame < 3:
+					$walk_sound.play()
 	else:
-		friction = 10
-		# Animation "jump" ou "jump_left" selon la direction du bras
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("jump_left")
-	
-	var was_on_floor = is_on_floor()
-	move_and_slide()
-	
-	if was_on_floor && !is_on_floor():
-		coyote_timer.start()
 
-	# Gestion du menu pause
 	if Input.is_action_just_pressed("ui_cancel"):
 		if pause_instance == null:
 			pause_game()
 		else:
 			resume_game()
 
-func calculate_gravity() -> float:
-	return jump_gravity if velocity.y < 0.0 else fall_gravity
+	if is_on_floor():
+			reload()
 
-func jump():
-	if Input.is_action_just_pressed("Jump"):
-		buffer_timer.start()
-
-	if !buffer_timer.is_stopped() and (is_on_floor() || !coyote_timer.is_stopped()):
-		velocity.y = jump_velocity
-
-func input() -> Vector2:
-	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("Move_Left", "Move_Right")
-	return input_dir
+func add_gravity() -> float:
+	if Global.player_impulsed :
+		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
+		return GRAVITY * impulsed_modifier
 	
-func accelerate_ground(direction):
-	velocity = velocity.move_toward(speedGround * direction, acceleration_ground)
+	else:
+		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
+		return GRAVITY * jump_modifier
 
-func accelerate_air(direction):
-	velocity = velocity.move_toward(speedAir * direction, acceleration_air)
+func wall_slide(delta):
+	if is_on_wall() and not is_on_floor():
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
 
-func add_friction():
-	velocity = velocity.move_toward(Vector2.ZERO, friction)
+	if is_wall_sliding:
+		velocity.y += wall_slide_gravity * delta
+		velocity.y = min(velocity.y, wall_slide_gravity)
 
-func _on_arm_projectile_fired() -> void:
-	recoiling = true
-	await get_tree().create_timer(recoil_duration).timeout
-	recoiling = false
+func coyote_timeout() -> void:
+	coyote_jump_available = false
 
 func pause_game():
-	print("Pausing game")
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100  
-	add_child(pause_instance)
-
-	# Mettre en pause tous les Timers
+	canvas_layer.add_child(pause_instance)  # Ajoute le menu pause au CanvasLayer
+	
+	# Connecter le signal resume_requested du menu pause à la fonction resume_game
+	if pause_instance.has_signal("resume_requested"):
+		# Utiliser un Callable pour connecter le signal
+		pause_instance.connect("resume_requested", Callable(self, "resume_game"))
+	
 	$Arm/ReloadTimer.paused = true
 	$Arm/Cooldown.paused = true
-	$BufferTimer.paused = true
-	$CoyoteTimer.paused = true
-
+	input_buffer.paused = true
+	coyote_timer.paused = true
 	get_tree().paused = true
 
 func resume_game():
+
 	if pause_instance != null:
+
 		pause_instance.queue_free()
 		pause_instance = null
-
-		# Enlever la pause globale
 		get_tree().paused = false
-
-		# Reprendre tous les Timers
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
-		$BufferTimer.paused = false
-		$CoyoteTimer.paused = false
+		input_buffer.paused = false
+		coyote_timer.paused = false
+
+func reload():
+	Global.current_ammo = Global.magazine_size

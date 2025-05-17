@@ -1,15 +1,14 @@
 extends Node2D
 
 @onready var player = $".."
-@onready var reload_timer: Timer = $ReloadTimer  # Timer de rechargement
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = false
-var last_joystick_vector = Vector2.RIGHT
+var last_joystick_vector = Vector2(0.5,0.866)
 
 # Position du bras
-@export var pos_arm_x: float = -3.0
-@export var pos_arm_y: float = 3.0
+@export var pos_arm_x: float = -3
+@export var pos_arm_y: float = 2
 
 @export var arm_position_right: Vector2 = Vector2(2, 3)
 @export var arm_position_left: Vector2 = Vector2(-2, 3)
@@ -22,10 +21,9 @@ var recoiling: bool = false
 var recoil_vector: Vector2 = Vector2.ZERO
 @export var recoil_duration: float = 0.025
 
-@export var reload_time: float = 3.0 # Temps de recharge en secondes
+
 @onready var cooldown: Timer = $Cooldown # Cooldown entre 2 tirs
-var reloading: bool = false # Indique si une recharge est en cours
-var remaining_reload_time: float = 0.0  # Temps restant du rechargement
+
 
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Rocket.tscn")
@@ -36,11 +34,6 @@ const RocketScene = preload("res://Scenes/Rocket.tscn")
 
 func _ready():
 	set_as_top_level(true)  # Dessine l'objet devant les autres
-	reload_timer.wait_time = reload_time  # Durée du rechargement
-	reload_timer.one_shot = true  # Le timer ne boucle pas
-	reload_timer.connect("timeout", Callable(self, "_on_ReloadTimer_timeout"))
-	
-	# Garde le RayCast2D en avant-plan
 	$RayCast2D.z_index = 10
 
 func _physics_process(_delta):
@@ -59,24 +52,23 @@ func _physics_process(_delta):
 
 	if is_using_gamepad:
 		if joystick_vector.length() > 0.1:
-			Global.target_pos = character_pos + joystick_vector * 500
+			Global.target_pos = character_pos + joystick_vector * 1000000
 			last_joystick_vector = joystick_vector
 			look_at(Global.target_pos)
 		else:
-			Global.target_pos = character_pos + last_joystick_vector * 500
+			Global.target_pos = character_pos + last_joystick_vector * 1000000
 			look_at(Global.target_pos)
 	else:
 		Global.target_pos = mouse_pos
 		look_at(Global.target_pos)
-
-	# Mise à jour de la position du bras en fonction de la direction
+	
+	$RayCast2D.update_ammo_display()
+	
 	if dir_arm.x > 0:  # Le bras vise à droite
-		z_index = 1  # Derrière le personnage
-		$Sprite2D.z_index = 1
+		z_index = 1  # Devant le personnage
 	else:  # Le bras vise à gauche
-		z_index = -1  # Devant le personnage
-		$Sprite2D.z_index = -1
-
+		z_index = -1  # Derrière le personnage
+	
 func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		is_using_gamepad = true
@@ -88,54 +80,13 @@ func _input(event):
 			shoot(RocketScene)
 			projectile_fired.emit()
 			Global.current_ammo -= 1
-			$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo)
 			$RayCast2D.update_ammo_display()
-			print("Munitions dans le chargeur :", Global.current_ammo)
-
-			if Global.current_ammo < 3 and not reloading:
-				print("Chargeur presque vide ! En cours de recharge...")
-				reloading = true
-				start_reload()
 
 			recoiling = true
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
-		else:
-			print("Chargeur vide ! En cours de recharge...")
+		#else: #Insérer ici le feedback qui indique que le chargeur est vide
 
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		reset_ammo()
-
-func reset_ammo():
-	Global.current_ammo = Global.magazine_size
-	print("Munitions réinitialisées :", Global.current_ammo)
-
-func start_reload():
-	if not reloading:
-		return
-
-	reload_timer.start()  # Démarrer le timer normalement
-	remaining_reload_time = reload_time  # Sauvegarde le temps total
-	print("Rechargement en cours...")
-
-func _on_reload_timer_timeout():
-	if not get_tree().paused:
-		Global.current_ammo = Global.magazine_size
-		$RayCast2D/Control/TextureProgressBar.update_progress(Global.current_ammo)
-		$RayCast2D.update_ammo_display()
-		reloading = false
-		print("Chargeur rechargé :", Global.current_ammo)
-
-func _process(_delta):
-	if get_tree().paused:
-		if reload_timer.time_left > 0:
-			remaining_reload_time = reload_timer.time_left
-			reload_timer.stop()
-	else:
-		if reloading and reload_timer.is_stopped() and remaining_reload_time > 0:
-			reload_timer.start(remaining_reload_time)
-			remaining_reload_time = 0  # On remet à zéro après avoir repris
 
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
@@ -143,7 +94,9 @@ func shoot(projectile: PackedScene) -> void:
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
 	$Tir.play()
+	Global.shooting_pos = player.position
 	cooldown.start()
+
 
 func create_explosion(explosion_position: Vector2) -> void:
 	if explosion_scene:

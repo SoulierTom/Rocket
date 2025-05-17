@@ -36,9 +36,16 @@ func press_focused_button():
 			break
 
 func _on_play_pressed():
-	Global.speedrun_time = 0.0  # Réinitialise le temps global
-	Global.timer_initialized = false  # Indique que le timer doit être réinitialisé
-	get_tree().change_scene_to_file("res://Levels/Level_1.tscn")
+	Global.speedrun_time = 0.0
+	Global.timer_initialized = false
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+
+	print("Arbre de scène:", get_tree())
+	if get_tree():
+		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
+	else:
+		print("Erreur: get_tree() est null")
 
 func _on_quit_pressed():
 	get_tree().quit()

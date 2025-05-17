@@ -3,8 +3,15 @@ extends Node
 # Le point que regarde le bras (soit la souris, soit le joystick)
 var target_pos = Vector2.RIGHT
 
+
 @export var magazine_size: int = 3  # Taille du chargeur (ex: 3 rockets)
 var current_ammo: int = magazine_size  # Rockets restantes
 
 var speedrun_time = 0
 var timer_initialized = false  # Ajoutez cette variable pour contrôler l'initialisation
+
+var player_impulsed : bool = false
+var shooting_pos : Vector2 
+var is_floating : bool = false
+
+var VBR = true
