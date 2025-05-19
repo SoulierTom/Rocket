@@ -1,114 +1,99 @@
 extends Area2D
 
 @onready var arm: Node2D = $"."
-
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
-@onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
-@onready var animation_player: AnimationPlayer = $AnimationPlayer  # Référence à l'AnimationPlayer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer: Timer = $Timer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var explo = $Explo
+@onready var rigid_body: RigidBody2D = $RigidBody2D
+@onready var rigid_shape: CollisionShape2D = $RigidBody2D/CollisionShape2D
+@onready var centre: Marker2D = $centre
 
-@export var force_player : float = 400.0
-@export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
+@export var force_player: float = 400.0
+@export var animation_duration: float = 0.5
 @export var force_objet: int = 75
+@export var start_radius: float = 1
+@export var end_radius: float = 37
+@export var radius_curve: Curve
 
-var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
 var joy_vect = Global.target_pos
+var elapsed_time: float = 0.0
+var already_impulsed := {}
 
 func _ready():
 	set_as_top_level(true)
 	explo.emitting = true
-	# Assurez-vous que le nœud AnimatedSprite2D existe
+
 	if animated_sprite:
-		# Arrêter toute animation en cours et lancer l'animation "Explosion"
-		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
-		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
+		animated_sprite.stop()
+		animated_sprite.play("Explosion")
 
-
-	
-	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
 	if animation_player:
-		animation_player.play("explosion")  # Lance l'animation "Explosion" dans l'AnimationPlayer
+		animation_player.play("explosion")
 
-	# Assurez-vous que le CollisionShape2D est désactivé au départ
-	if collision_shape:
-		collision_shape.disabled = true
+	if rigid_shape and rigid_shape.shape is CircleShape2D:
+		rigid_shape.shape.radius = start_radius
 
-
-	
-	# Démarrer le timer avec la durée de l'animation pour supprimer l'explosion
 	if timer:
-		timer.start(animation_duration)  # La durée est maintenant la durée de l'animation
+		timer.start(animation_duration)
 
+	# Gèle le rigidbody pour l’empêcher de bouger
+	rigid_body.freeze = true
+	rigid_body.gravity_scale = 0
+	rigid_body.linear_velocity = Vector2.ZERO
+	rigid_body.angular_velocity = 0
+	rigid_body.set_deferred("can_sleep", true)
+	rigid_body.set_deferred("sleeping", true)
 
+func _process(delta):
+	elapsed_time += delta
 
-func _process(_delta):
-	# Vérifier si l'animation est en cours et obtenir la frame actuelle
+	# Garde le rigidbody à la position du marker
+	rigid_body.global_position = centre.global_position
 
-	
-	if animated_sprite:
-		var current_frame = animated_sprite.frame
-		
-		# Activer la zone de collision entre certaines frames
-		if current_frame >= 0 and current_frame <= 1:
-			if not explosion_active:
-				# Active la collision et marque l'explosion comme active
-				collision_shape.disabled = false
-				explosion_active = true
-				
-		# Désactiver la zone de collision après la frame 5
-		if current_frame > 1:
-			if explosion_active:
-				 #Désactive la collision et marque l'explosion comme inactive
-				collision_shape.disabled = true
-				explosion_active = false
-		
-		# Appliquer l'impulsion de l'explosion aux objets dans la zone
-		if explosion_active:
-			apply_explosion_impulse()
+	# Grandissement du CollisionShape du RigidBody2D selon la courbe
+	if rigid_shape and rigid_shape.shape is CircleShape2D and radius_curve:
+		var t = clamp(elapsed_time / animation_duration, 0.0, 1.0)
+		var curve_value = radius_curve.sample(t)
+		rigid_shape.shape.radius = lerp(start_radius, end_radius, curve_value)
 
-# Applique une impulsion aux objets dans la zone de l'explosion
+	apply_explosion_impulse()
+
 func apply_explosion_impulse():
-	# Applique une impulsion aux objets dans la zone de collision
-	for o in get_overlapping_bodies():
+	for o in rigid_body.get_colliding_bodies():
+		if already_impulsed.has(o.get_instance_id()):
+			continue
+
+		already_impulsed[o.get_instance_id()] = true
+
 		if o is RigidBody2D:
 			var force = (o.global_position - global_position).normalized() * force_objet
-			  # Applique une force à l'objet
 			o.apply_central_impulse(force)
-		
-		if o is CharacterBody2D:
+
+		elif o is CharacterBody2D:
 			var modif_force = 1.0
-			var joystick_vect = - joy_vect.normalized()
-			print("joystick_vect = " + str(joystick_vect))
-			
+			var joystick_vect = -joy_vect.normalized()
+
 			if abs(joystick_vect.x) >= 0.5:
-				var calc_modif_force1 = clamp(0.5/abs(joystick_vect.x), 0.5, 1)
-				modif_force = 0.80 + ((calc_modif_force1 - 0.5) / 0.5 ) * (1 - 0.85)     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.80, plus l'horientation est horizontale
-				
-				var calc_modif_push = clamp(abs(joystick_vect.x)/0.92, 0.76, 1.086)
+				var calc_modif_force1 = clamp(0.5 / abs(joystick_vect.x), 0.5, 1)
+				modif_force = 0.80 + ((calc_modif_force1 - 0.5) / 0.5) * (1 - 0.85)
+
+				var calc_modif_push = clamp(abs(joystick_vect.x) / 0.92, 0.76, 1.086)
 				if calc_modif_push <= 1:
 					joystick_vect.x *= 0.85 - ((calc_modif_push - 0.76) / (1 - 0.76)) * (0.85 - 0.6)
 				else:
 					joystick_vect.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.85 - 0.6)
-					
+
 				if joystick_vect.y <= 0.15:
-					joystick_vect.y = -sqrt(1-pow(joystick_vect.x,2))
+					joystick_vect.y = -sqrt(1 - pow(joystick_vect.x, 2))
 				else:
 					joystick_vect.y *= 0.1
-					
 			else:
-				var calc_modif_force2 = clamp(0.866/abs(joystick_vect.y), 0.866, 1)
+				var calc_modif_force2 = clamp(0.866 / abs(joystick_vect.y), 0.866, 1)
 				modif_force = 0.80 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.80)
-			
-			print("modif force = " + str(modif_force))
-			print(" new joystick_vect = " + str(joystick_vect))
-			
-			o.velocity =  joystick_vect * force_player * modif_force  # Ajuste la force de la poussée
-			Global.player_impulsed = true
-	
-		
 
-# Fonction appelée lorsque le timer se termine (l'explosion est supprimée)
+			o.velocity = joystick_vect * force_player * modif_force
+			Global.player_impulsed = true
+
 func _on_timer_timeout() -> void:
-	# Supprime l'explosion après la durée définie
 	queue_free()
