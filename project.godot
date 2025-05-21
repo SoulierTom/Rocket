@@ -123,4 +123,5 @@ Move_Down={
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.243137, 0.207843, 0.27451, 1)
+viewport/hdr_2d=true
 2d/snap/snap_2d_vertices_to_pixel=true
