@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=32 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Audio/Walk_sound.wav" id="7_71co6"]
 [ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/viseur.tscn" id="8_f2ryt"]
+[ext_resource type="Shader" path="res://Scripts/CRT.gdshader" id="9_sqnx8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -156,6 +157,12 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bxff"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lb11"]
+shader = ExtResource("9_sqnx8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xlldw"]
+size = Vector2(4000, 2000)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bym3m"]
 size = Vector2(15, 16)
 
@@ -180,6 +187,13 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_4bxff")
 
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Camera"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/CanvasLayer2"]
+material = SubResource("ShaderMaterial_2lb11")
+position = Vector2(-2, -26)
+mesh = SubResource("QuadMesh_xlldw")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
