@@ -1,6 +1,7 @@
-extends CanvasLayer
+extends Control
 
 var time: float = 0.0
+@onready var label: Label = $CanvasLayer/Label
 
 func _ready():
 	if not Global.timer_initialized:
@@ -23,4 +24,4 @@ func update_ui():
 	var minutes = int(time) / 60
 	var seconds = int(time) % 60
 	var centiseconds = int((time - int(time)) * 100)
-	$Label.text = "%02d:%02d.%02d" % [minutes, seconds, centiseconds]  # Format à 2 chiffres partout
+	label.text = "%02d:%02d.%02d" % [minutes, seconds, centiseconds]  # Format à 2 chiffres partout

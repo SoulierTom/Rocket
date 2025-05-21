@@ -6,17 +6,21 @@
 outline_size = 5
 outline_color = Color(0.113725, 0.133333, 0.160784, 1)
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_jkgkb")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 22.0
 offset_top = 21.0
 offset_right = 220.0
 offset_bottom = 88.0
 color = Color(0.129412, 0.14902, 0.180392, 0.568627)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 26.0
 offset_top = 19.0
 offset_right = 90.0
