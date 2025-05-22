@@ -2,9 +2,10 @@
 
 const Util = preload("res://addons/ldtk-importer/src/util/util.gd")
 
-var player_scene = preload("res://Scenes/Player.tscn")  # Préchargez la scène Player
-var finish_scene = preload("res://Scenes/Next_Level.tscn")  # Préchargez la scène Arrivée
+var player_scene = preload("res://Scenes/Player.tscn")  # Précharge la scène Player
+var finish_scene = preload("res://Scenes/Next_Level.tscn")  # Précharge la scène Finish
 var camera_scene = preload("res://Scenes/camera_limiter.tscn")
+var coin_scene = preload("res://Scenes/Coin.tscn")
 
 
 func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
@@ -30,6 +31,39 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 	color_rect2.color = Color(0, 0, 0, 0.2)
 	color_rect2.z_index = -3
 
+# Post-process :
+	var canvas = CanvasLayer.new()
+	var color_rect3 = ColorRect.new()
+	var screen_size = Vector2(DisplayServer.window_get_size())
+	entity_layer.add_child(canvas)
+	canvas.add_child(color_rect3)
+	canvas.name = "Canvas_layer"
+	color_rect3.size = screen_size # remplacer la taille de l'écran par la taille du viewport ici !!
+	color_rect3.position = Vector2(-32, -32)
+	color_rect3.name = "ShockwaveShader"
+	color_rect3.color = Color(1, 1, 1, 1)
+	color_rect3.z_index = 2
+
+	var shockwave = ShaderMaterial.new()
+	shockwave.shader = load("res://Shaders/Shockwave.gdshader")
+	shockwave.set_shader_parameter("radius", 0.0)
+	color_rect3.material = shockwave
+
+
+# Parallax
+	var parallax = Parallax2D.new()
+	entity_layer.add_child(parallax)
+	var background = Sprite2D.new()
+	parallax.add_child(background)
+	background.texture = load("res://Assets/Graou/Background/Level_1 background-export.png")
+	background.position = (size_cr)/2
+	parallax.repeat_size = Vector2(384*3, 0)
+	parallax.scroll_scale = Vector2(1.2, 1.2)
+	parallax.repeat_times = 2
+	parallax.z_index = -4
+
+
+# Note à moi-même : Rename tous les nodes parceque les nodes qui commencent avec un @ c'est pas ouf
 
 	for entity in entities: # C'est ici que les entitées vont être créés en fonction de leurs noms
 		
@@ -96,6 +130,22 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 					camera_limiter.ref = ref
 					Util.add_unresolved_reference(camera_limiter, "ref")
 
+		if entity.identifier == "Coin": 
+
+			var coin_spawn = coin_scene.instantiate()
+			coin_spawn.position = entity["position"]
+
+			entity_layer.add_child(coin_spawn)
+
+			Util.update_instance_reference(entity.iid, coin_spawn)
+
+			if "Entity_ref" in entity.fields:
+				var ref = entity.fields.Entity_ref
+				if ref != null:
+					coin_spawn.ref = ref
+					Util.add_unresolved_reference(coin_spawn, "ref")
+
 	print("Import Réussi")
 
 	return entity_layer
+# Be yourself, or die trying.
