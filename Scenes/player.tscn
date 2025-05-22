@@ -178,7 +178,7 @@ script = ExtResource("1_li7m8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
-animation = &"run"
+animation = &"jump_left"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
