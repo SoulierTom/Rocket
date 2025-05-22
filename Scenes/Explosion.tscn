@@ -175,7 +175,6 @@ force_objet = 150
 [node name="Explo" type="CPUParticles2D" parent="."]
 self_modulate = Color(1.5, 1, 1, 1)
 position = Vector2(-1.13687e-13, 5.68434e-14)
-scale = Vector2(1, 1)
 emitting = false
 amount = 150
 lifetime = 0.25
