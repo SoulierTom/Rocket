@@ -31,6 +31,7 @@ text = "00:00.00"
 label_settings = SubResource("LabelSettings_vhmu8")
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552956, 0.552956, 0.552956, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 26.0
 offset_top = 971.0
@@ -38,6 +39,7 @@ offset_right = 42.0
 offset_bottom = 1051.0
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 106.0
 offset_top = 1035.0
@@ -46,6 +48,7 @@ offset_bottom = 1115.0
 rotation = 1.5708
 
 [node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 1880.0
 offset_top = 971.0
@@ -53,6 +56,7 @@ offset_right = 1896.0
 offset_bottom = 1051.0
 
 [node name="ColorRect5" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 1896.0
 offset_top = 1035.0
@@ -61,6 +65,7 @@ offset_bottom = 1115.0
 rotation = 1.5708
 
 [node name="ColorRect6" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 1880.0
 offset_top = 24.0
@@ -68,6 +73,7 @@ offset_right = 1896.0
 offset_bottom = 104.0
 
 [node name="ColorRect7" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.552941, 0.552941, 0.552941, 1)
 self_modulate = Color(1.3, 1.3, 1.3, 1)
 offset_left = 1896.0
 offset_top = 24.0
