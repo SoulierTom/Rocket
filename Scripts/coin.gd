@@ -8,7 +8,8 @@ var shockwave = ""
 
 
 func _ready() -> void:
-	shockwave = get_node("../Canvas_layer/ShockwaveShader").material
+	# shockwave = get_node("../Canvas_layer/ShockwaveShader").material
+	pass
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	is_on_screen = true

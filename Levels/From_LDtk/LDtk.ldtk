@@ -4634,7 +4634,7 @@
 							"height": 48,
 							"defUid": 129,
 							"px": [1381,192],
-							"fieldInstances": [{ "__identifier": "Next_Level", "__type": "Int", "__value": 0, "__tile": null, "defUid": 188, "realEditorValues": [{ "id": "V_Int", "params": [0] }] }],
+							"fieldInstances": [{ "__identifier": "Next_Level", "__type": "Int", "__value": 1, "__tile": null, "defUid": 188, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }],
 							"__worldX": 1013,
 							"__worldY": 192
 						},
