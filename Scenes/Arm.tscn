@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br48rbyr8k4q"]
+[gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
 
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Audio/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
 [ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
+[ext_resource type="Texture2D" uid="uid://dir6lbemh5vop" path="res://Assets/Curseur.png" id="7_73eg5"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/circle-xxl.png" id="7_a1xb5"]
 [ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="9_xu18f"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8wks"]
@@ -19,10 +21,6 @@ random_pitch = 1.5
 streams_count = 2
 stream_0/stream = ExtResource("6_7svj1")
 stream_1/stream = ExtResource("6_7svj1")
-
-[sub_resource type="LabelSettings" id="LabelSettings_d5mv8"]
-outline_size = 7
-outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
 z_as_relative = false
@@ -58,6 +56,16 @@ volume_db = -7.5
 rotation = -1.39626
 script = ExtResource("7_7ctjl")
 
+[node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
+position = Vector2(-0.101035, 33.0192)
+scale = Vector2(0.0238692, 0.0238692)
+texture = ExtResource("7_a1xb5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="RayCast2D"]
+position = Vector2(0.237925, 25.3437)
+scale = Vector2(0.0114268, 0.0114268)
+texture = ExtResource("7_a1xb5")
+
 [node name="Control" type="Control" parent="RayCast2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -68,23 +76,9 @@ offset_bottom = 63.0
 pivot_offset = Vector2(10, 10)
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="RayCast2D/Control"]
-self_modulate = Color(1.4, 1.4, 1.4, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.99999
-offset_top = -12.0
-offset_right = 5.00001
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(5, 12)
-text = "1"
-label_settings = SubResource("LabelSettings_d5mv8")
+[node name="Sprite2D" type="Sprite2D" parent="RayCast2D/Control"]
+position = Vector2(10.2838, 1.79803)
+texture = ExtResource("7_73eg5")
 
 [node name="arm_sprite" type="Sprite2D" parent="."]
 position = Vector2(2.38419e-07, 0)
