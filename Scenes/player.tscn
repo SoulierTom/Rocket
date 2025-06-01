@@ -161,7 +161,7 @@ animations = [{
 shader = ExtResource("9_sqnx8")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xlldw"]
-size = Vector2(4000, 4000)
+size = Vector2(10000, 10000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bym3m"]
 size = Vector2(15, 16)
