@@ -40,7 +40,7 @@ func update_sprite_based_on_ammo():
 	match Global.current_ammo:
 		0:
 			# Aucune munition - rouge ou texture vide
-			ammo_sprite.modulate = Color.RED
+			ammo_sprite.visible = false
 			# ammo_sprite.texture = load("res://sprites/ammo_empty.png")
 		1:
 			# 1 munition - orange
@@ -52,6 +52,7 @@ func update_sprite_based_on_ammo():
 			# ammo_sprite.texture = load("res://sprites/ammo_medium.png")
 		3:
 			# 3 munitions (max) - vert ou blanc
+			ammo_sprite.visible = true
 			ammo_sprite.modulate = Color.GREEN
 			# ammo_sprite.texture = load("res://sprites/ammo_full.png")
 		_:
