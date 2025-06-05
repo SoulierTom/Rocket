@@ -7,10 +7,10 @@ path="res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn"
 
 [deps]
 
-files=["res://Levels/From_LDtk/tilesets/tileset_8px.res", "res://Levels/From_LDtk/levels/Level_0.scn", "res://Levels/From_LDtk/levels/Level_1.scn", "res://Levels/From_LDtk/levels/Level_2.scn", "res://Levels/From_LDtk/levels/Level_3.scn", "res://Levels/From_LDtk/levels/Level_4.scn", "res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn"]
+files=["res://Levels/From_LDtk/tilesets/tileset_8px.res", "res://Levels/From_LDtk/levels/Level_0.scn", "res://Levels/From_LDtk/levels/Level_1.scn", "res://Levels/From_LDtk/levels/Level_2.scn", "res://Levels/From_LDtk/levels/Level_3.scn", "res://Levels/From_LDtk/levels/Level_4.scn", "res://Levels/From_LDtk/levels/Level_5.scn", "res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn"]
 
 source_file="res://Levels/From_LDtk/LDtk.ldtk"
-dest_files=["res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn", "res://Levels/From_LDtk/tilesets/tileset_8px.res", "res://Levels/From_LDtk/levels/Level_0.scn", "res://Levels/From_LDtk/levels/Level_1.scn", "res://Levels/From_LDtk/levels/Level_2.scn", "res://Levels/From_LDtk/levels/Level_3.scn", "res://Levels/From_LDtk/levels/Level_4.scn", "res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn"]
+dest_files=["res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn", "res://Levels/From_LDtk/tilesets/tileset_8px.res", "res://Levels/From_LDtk/levels/Level_0.scn", "res://Levels/From_LDtk/levels/Level_1.scn", "res://Levels/From_LDtk/levels/Level_2.scn", "res://Levels/From_LDtk/levels/Level_3.scn", "res://Levels/From_LDtk/levels/Level_4.scn", "res://Levels/From_LDtk/levels/Level_5.scn", "res://.godot/imported/LDtk.ldtk-8bda275a80ce72bf549cfaf6d1a49563.scn"]
 
 [params]
 
