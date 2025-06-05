@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm8mltsrod3rr"]
+[gd_scene load_steps=3 format=3 uid="uid://bm8mltsrod3rr"]
 
 [ext_resource type="Script" path="res://viseur.gd" id="1_sm52v"]
+[ext_resource type="Texture2D" uid="uid://dir6lbemh5vop" path="res://Assets/Curseur.png" id="2_gibqu"]
 
 [node name="Viseur" type="RayCast2D"]
 target_position = Vector2(50, 0)
@@ -13,10 +14,28 @@ offset_top = -60.0
 offset_right = 40.0
 offset_bottom = -20.0
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 4.0
-offset_bottom = 11.0
-pivot_offset = Vector2(4, 12)
+[node name="arm_sprite" type="Sprite2D" parent="Control"]
+position = Vector2(5.96046e-08, -0.999999)
+scale = Vector2(1, 1)
+texture = ExtResource("2_gibqu")
+
+[node name="Carré1" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = -1.0
+offset_right = 18.0
+offset_bottom = 1.0
+pivot_offset = Vector2(1, 1)
+
+[node name="Carré2" type="ColorRect" parent="."]
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 26.0
+offset_bottom = 2.0
+pivot_offset = Vector2(2, 2)
+
+[node name="Carré3" type="ColorRect" parent="."]
+offset_left = 30.0
+offset_top = -3.0
+offset_right = 36.0
+offset_bottom = 3.0
+pivot_offset = Vector2(3, 3)

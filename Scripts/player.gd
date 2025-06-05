@@ -10,6 +10,9 @@ var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
 var max_fall_speed : float = 300
 
+var is_wall_sliding = false
+const wall_slide_gravity = 30
+
 var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available := true
@@ -56,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("reset"):
-		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
 		Global.speedrun_time = 0
 	# Toggle des vibrations
 	if Input.is_action_just_pressed("toggle_vibration"):
@@ -64,27 +67,14 @@ func _physics_process(delta: float) -> void:
 
 		
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
-	var jump_attempted := Input.is_action_just_pressed("Jump")
 	
-	if jump_attempted or input_buffer.time_left > 0:
-		if coyote_jump_available and can_jump:
-			velocity.y = JUMP_VELOCITY
-			Global.shooting_pos = position
-			coyote_jump_available = false
-		elif jump_attempted:
-			input_buffer.start()
-
+	
 	if is_on_floor():
-		coyote_jump_available = true
-		coyote_timer.stop()
 		Global.player_impulsed = false
 	else:
-		if coyote_jump_available:
-			if coyote_timer.is_stopped():
-				coyote_timer.start()
 		velocity.y += add_gravity() * delta
 
-	
+	wall_slide(delta)
 
 	
 	if not Global.player_impulsed:
@@ -161,6 +151,19 @@ func add_gravity() -> float:
 	else:
 		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
 		return GRAVITY * jump_modifier
+
+func wall_slide(delta):
+	if is_on_wall() and not is_on_floor():
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
+
+	if is_wall_sliding:
+		velocity.y += wall_slide_gravity * delta
+		velocity.y = min(velocity.y, wall_slide_gravity)
 
 func coyote_timeout() -> void:
 	coyote_jump_available = false

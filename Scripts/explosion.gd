@@ -2,28 +2,28 @@ extends Area2D
 
 @onready var arm: Node2D = $"."
 
-
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D  # Référence au noeud AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Référence à la zone de collision
 @onready var timer: Timer = $Timer  # Timer pour gérer la durée de l'explosion
 @onready var animation_player: AnimationPlayer = $AnimationPlayer  # Référence à l'AnimationPlayer
+@onready var explo = $Explo
 
 @export var force_player : float = 400.0
 @export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
 @export var force_objet: int = 75
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
-var joy_vect = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down")
+var joy_vect = Global.target_pos
 
 func _ready():
 	set_as_top_level(true)
-	
+	explo.emitting = true
 	# Assurez-vous que le nœud AnimatedSprite2D existe
 	if animated_sprite:
 		# Arrêter toute animation en cours et lancer l'animation "Explosion"
 		animated_sprite.stop()  # Arrête l'animation en cours, si elle existe
 		animated_sprite.play("Explosion")  # Lance l'animation "Explosion"
+
 
 	
 	# Assurez-vous que l'AnimationPlayer existe et joue l'animation
@@ -83,28 +83,27 @@ func apply_explosion_impulse():
 			
 			if abs(joystick_vect.x) >= 0.5:
 				var calc_modif_force1 = clamp(0.5/abs(joystick_vect.x), 0.5, 1)
-				modif_force = 0.70 + ((calc_modif_force1 - 0.5) / 0.5 ) * 0.3     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.70, plus l'horientation est horizontale
+				modif_force = 0.80 + ((calc_modif_force1 - 0.5) / 0.5 ) * (1 - 0.85)     #la propulsion horizontale est modifié d'un facteur compris entre 1 et 0.80, plus l'horientation est horizontale
 				
 				var calc_modif_push = clamp(abs(joystick_vect.x)/0.92, 0.76, 1.086)
 				if calc_modif_push <= 1:
-					joystick_vect.x *= 0.75 - ((calc_modif_push - 0.76) / (1 - 0.76)) * (0.75 - 0.6)
+					joystick_vect.x *= 0.85 - ((calc_modif_push - 0.76) / (1 - 0.76)) * (0.85 - 0.6)
 				else:
-					joystick_vect.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.75 - 0.6)
+					joystick_vect.x *= 0.6 + ((calc_modif_push - 1) / (1.086 - 1)) * (0.85 - 0.6)
 					
-				if joystick_vect.y <= 0.1:
+				if joystick_vect.y <= 0.15:
 					joystick_vect.y = -sqrt(1-pow(joystick_vect.x,2))
 				else:
-					joystick_vect.y *= 0.2
+					joystick_vect.y *= 0.1
 					
 			else:
 				var calc_modif_force2 = clamp(0.866/abs(joystick_vect.y), 0.866, 1)
-				modif_force = 0.85 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.85)
-				
-
-
+				modif_force = 0.80 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.80)
+			
 			print("modif force = " + str(modif_force))
 			print(" new joystick_vect = " + str(joystick_vect))
-			o.velocity =  joystick_vect * force_player * modif_force # Ajuste la force de la poussée
+			
+			o.velocity =  joystick_vect * force_player * modif_force  # Ajuste la force de la poussée
 			Global.player_impulsed = true
 	
 		

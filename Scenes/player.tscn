@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=33 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
+[ext_resource type="Script" path="res://Scripts/spike_interact_box.gd" id="3_htni6"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Arm.tscn" id="3_n5sxh"]
 [ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/camera_2d.tscn" id="3_s4l33"]
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
+[ext_resource type="Shader" path="res://Scripts/CRT.gdshader" id="5_l6ddu"]
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Audio/Walk_sound.wav" id="7_71co6"]
 [ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/viseur.tscn" id="8_f2ryt"]
@@ -156,6 +158,12 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bxff"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idu3p"]
+shader = ExtResource("5_l6ddu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3burj"]
+size = Vector2(10000, 10000)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bym3m"]
 size = Vector2(15, 16)
 
@@ -175,15 +183,33 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.41, 1.88)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_4bxff")
+
+[node name="SpikeInteractBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_htni6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
 position = Vector2(0.41, 1.88)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_4bxff")
 
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
 
+[node name="Crt" type="CanvasLayer" parent="Camera"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
+material = SubResource("ShaderMaterial_idu3p")
+mesh = SubResource("QuadMesh_3burj")
+
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="InteractionBox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("6_boj3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
@@ -209,6 +235,7 @@ rotation = 0.0
 [node name="RayCast2D" parent="Arm" index="6"]
 visible = false
 
+[connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 
