@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn8846b01v84"
-path="res://.godot/imported/ldtk-level.svg-4584556ec662499d62a9bb2f0bcc5bd8.ctex"
+uid="uid://b00sk6o36oq0v"
+path="res://.godot/imported/Level_1 background-export.png-24378d42b532784db18ed3ae72053d88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/ldtk-importer/src/components/ldtk-level.svg"
-dest_files=["res://.godot/imported/ldtk-level.svg-4584556ec662499d62a9bb2f0bcc5bd8.ctex"]
+source_file="res://Assets/Graou/Background/Level_1 background-export.png"
+dest_files=["res://.godot/imported/Level_1 background-export.png-24378d42b532784db18ed3ae72053d88.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

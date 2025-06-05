@@ -11,5 +11,3 @@ script = ExtResource("1_h5nro")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 shape = SubResource("RectangleShape2D_2mx0o")
-
-[node name="LimitPosition" type="Marker2D" parent="."]

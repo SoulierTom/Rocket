@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("reset"):
-		get_tree().change_scene_to_file("res://Scenes/Test_Level_1.tscn")
+		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
 		Global.speedrun_time = 0
 	# Toggle des vibrations
 	if Input.is_action_just_pressed("toggle_vibration"):
