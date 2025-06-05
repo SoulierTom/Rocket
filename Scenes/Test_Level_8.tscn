@@ -655,9 +655,5 @@ rotation = 1.5708
 [node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("7_q5mum")]
 position = Vector2(41, -445)
 rotation = 1.5708
-limit_y = 1
-
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter2" index="1"]
-position = Vector2(-204, -6.99999)
 
 [editable path="Camera_Limiter/Camera_Limiter2"]

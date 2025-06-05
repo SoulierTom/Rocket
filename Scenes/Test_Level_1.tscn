@@ -438,23 +438,15 @@ position = Vector2(853, -103)
 
 [node name="CameraLimiter1" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
 position = Vector2(674, -154)
-limit_x = 2
 
 [node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter1" index="0"]
 position = Vector2(-220, 58)
 
-[node name="LimitPosition" parent="CameraLimiters/CameraLimiter1" index="1"]
-position = Vector2(185, 53)
-
 [node name="CameraLimiter2" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
 position = Vector2(674, -154)
-limit_x = 1
 
 [node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter2" index="0"]
 position = Vector2(-674, 91)
-
-[node name="LimitPosition" parent="CameraLimiters/CameraLimiter2" index="1"]
-position = Vector2(-751, 75)
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]

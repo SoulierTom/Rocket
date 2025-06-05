@@ -646,24 +646,15 @@ position = Vector2(93, -316)
 
 [node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("6_bisjw")]
 position = Vector2(-15, -4)
-limit_y = 1
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter2" index="0"]
 position = Vector2(14, 2)
 
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter2" index="1"]
-position = Vector2(-167, -124)
-
 [node name="Camera_Limiter3" parent="Camera_Limiter" instance=ExtResource("6_bisjw")]
 position = Vector2(-15, -9)
-limit_x = 2
-limit_y = 2
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter3" index="0"]
 position = Vector2(-13, 453)
-
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter3" index="1"]
-position = Vector2(282, 687)
 
 [node name="Spike_Manager" type="Node" parent="."]
 

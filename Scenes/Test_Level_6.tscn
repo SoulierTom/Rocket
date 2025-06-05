@@ -884,17 +884,14 @@ position = Vector2(-704, -24)
 [node name="Area2D2" parent="." instance=ExtResource("6_6ndgf")]
 position = Vector2(908, -105)
 script = ExtResource("7_y5tj1")
+next_level_number = 0
 
 [node name="Camera_Limiter" type="Node" parent="."]
 
 [node name="Camera_Limiter" parent="Camera_Limiter" instance=ExtResource("8_00xsy")]
 position = Vector2(569, -117)
-limit_x = 2
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter" index="0"]
 position = Vector2(-69, -5.0625)
-
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter" index="1"]
-position = Vector2(304, 33)
 
 [editable path="Camera_Limiter/Camera_Limiter"]

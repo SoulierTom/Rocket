@@ -760,21 +760,11 @@ position = Vector2(0, -1)
 [node name="Camera_Limiter" type="Node" parent="."]
 
 [node name="Camera_Limiter" parent="Camera_Limiter" instance=ExtResource("7_1pna8")]
-limit_x = 2
-limit_y = 1
 
 [node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter" index="0"]
 position = Vector2(-195, -187)
 
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter" index="1"]
-position = Vector2(97, -443)
-
 [node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("7_1pna8")]
-limit_x = 2
-limit_y = 2
-
-[node name="LimitPosition" parent="Camera_Limiter/Camera_Limiter2" index="1"]
-position = Vector2(117, 69)
 
 [node name="Area2D" parent="." instance=ExtResource("5_kanfh")]
 visible = false
