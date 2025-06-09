@@ -8,7 +8,7 @@ var GRAVITY = 1500.0
 var JUMP_VELOCITY = -300.0
 var BUFFER_PATIENCE = 0.08
 var COYOTE_TIME = 0.08
-var max_fall_speed : float = 300
+var max_fall_speed : float = 250
 
 var is_wall_sliding = false
 const wall_slide_gravity = 30
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_vibration"):
 		Global.VBR = !Global.VBR
 
-		
+	
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	
 	
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)  #En sautant, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.5) #en l'air, Friction
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.15) #en l'air, Friction
 	else:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
@@ -154,7 +154,7 @@ func add_gravity() -> float:
 
 func wall_slide(delta):
 	if is_on_wall() and not is_on_floor():
-		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("Grab"):
 			is_wall_sliding = true
 		else:
 			is_wall_sliding = false
