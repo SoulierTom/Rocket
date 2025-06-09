@@ -5,17 +5,15 @@ var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
 var GRAVITY = 1500.0
-var JUMP_VELOCITY = -300.0
-var BUFFER_PATIENCE = 0.08
-var COYOTE_TIME = 0.08
 var max_fall_speed : float = 250
 
-var is_wall_sliding = false
-const wall_slide_gravity = 30
+var is_wall_sliding := false
+const wall_slide_gravity := 30
 
-var input_buffer : Timer
-var coyote_timer : Timer
-var coyote_jump_available := true
+var fall_time := 0.0
+const FALL_ACCEL_TIME := 1.0  # durée avant chute pleine vitesse
+var bonk_freeze_timer: float = 0.0
+const BONK_FREEZE_TIME := 0.24  # Ajuste pour le feeling
 
 var gravity_scale = 1.0
 var was_going_up = false
@@ -32,7 +30,6 @@ var pause_instance = null
 # Ajoutez une variable pour stocker la référence à la caméra
 var camera: Camera2D = null
 
-var can_jump := true
 
 # Ajoutez une référence au CanvasLayer
 @onready var canvas_layer = $CanvasLayer
@@ -42,18 +39,6 @@ func set_camera(new_camera: Camera2D):
 	camera = new_camera
 	camera.make_current()  # Active cette caméra (Godot 4)
 
-
-func _ready():
-	input_buffer = Timer.new()
-	input_buffer.wait_time = BUFFER_PATIENCE
-	input_buffer.one_shot = true
-	add_child(input_buffer)
-
-	coyote_timer = Timer.new()
-	coyote_timer.wait_time = COYOTE_TIME
-	coyote_timer.one_shot = true
-	add_child(coyote_timer)
-	coyote_timer.timeout.connect(coyote_timeout)
 
 func _physics_process(delta: float) -> void:
 
@@ -65,20 +50,22 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_vibration"):
 		Global.VBR = !Global.VBR
 
-	
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
 	
+	if bonk_freeze_timer > 0.0:
+		bonk_freeze_timer -= delta
+		velocity.y *= 0.75
+		velocity.x *= 0.75  
 	
 	if is_on_floor():
 		Global.player_impulsed = false
+		fall_time = 0.0
 	else:
+		fall_time += delta
 		velocity.y += add_gravity() * delta
 	
-	if is_on_ceiling() and velocity.y < 0:
-		velocity.y = 0
-	
-		if velocity.y > max_fall_speed:
-			velocity.y = max_fall_speed
+	if is_on_ceiling():
+		bonk_freeze_timer = BONK_FREEZE_TIME  # Active le freeze
 		
 	wall_slide(delta)
 		
@@ -96,7 +83,7 @@ func _physics_process(delta: float) -> void:
 					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)  #En sautant, fais demi-tour rapidement
 				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 ) #En sautant, avance de manière accéléré 
 			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.15) #en l'air, Friction
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.25) #en l'air, Friction
 	else:
 		if abs(horizontal_input.x) >= 0.1:
 			if sign(velocity.x) != sign(horizontal_input.x):
@@ -105,7 +92,8 @@ func _physics_process(delta: float) -> void:
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 	
-
+	if velocity.y > max_fall_speed:
+		velocity.y = max_fall_speed
 	
 	move_and_slide()
 	
@@ -148,13 +136,17 @@ func _physics_process(delta: float) -> void:
 			reload()
 
 func add_gravity() -> float:
-	if Global.player_impulsed :
-		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.2, 1.0)
-		return GRAVITY * impulsed_modifier
+	var fall_progress: float = clamp(fall_time / FALL_ACCEL_TIME, 0.0, 1.0)
+	var fall_ease := ease_out(fall_progress)
 	
+	if Global.player_impulsed :
+		var impulsed_modifier = clamp(velocity.length() / 275.0, 0.15, 1.0)
+		return GRAVITY * impulsed_modifier 
 	else:
-		var jump_modifier = clamp(abs(velocity.y) / 100.0, 0.15, 1.0)
-		return GRAVITY * jump_modifier
+		return GRAVITY * fall_ease
+
+func ease_out(t: float) -> float:
+	return sin(t * PI * 0.5)
 
 func wall_slide(delta):
 	if is_on_wall() and not is_on_floor():
@@ -169,8 +161,6 @@ func wall_slide(delta):
 		velocity.y += wall_slide_gravity * delta
 		velocity.y = min(velocity.y, wall_slide_gravity)
 
-func coyote_timeout() -> void:
-	coyote_jump_available = false
 
 func pause_game():
 	pause_instance = pause_menu.instantiate()
@@ -184,8 +174,6 @@ func pause_game():
 	
 	$Arm/ReloadTimer.paused = true
 	$Arm/Cooldown.paused = true
-	input_buffer.paused = true
-	coyote_timer.paused = true
 	get_tree().paused = true
 
 func resume_game():
@@ -197,8 +185,7 @@ func resume_game():
 		get_tree().paused = false
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
-		input_buffer.paused = false
-		coyote_timer.paused = false
+
 
 func reload():
 	Global.current_ammo = Global.magazine_size

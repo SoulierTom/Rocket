@@ -79,7 +79,7 @@ func apply_explosion_impulse():
 		if o is CharacterBody2D:
 			var modif_force = 1.0
 			var joystick_vect = - joy_vect.normalized()
-			print("joystick_vect = " + str(joystick_vect))
+			
 			
 			if abs(joystick_vect.x) >= 0.5:
 				var calc_modif_force1 = clamp(0.5/abs(joystick_vect.x), 0.5, 1)
@@ -99,9 +99,6 @@ func apply_explosion_impulse():
 			else:
 				var calc_modif_force2 = clamp(0.866/abs(joystick_vect.y), 0.866, 1)
 				modif_force = 0.80 + ((calc_modif_force2 - 0.866) / (1 - 0.866)) * (1 - 0.80)
-			
-			print("modif force = " + str(modif_force))
-			print(" new joystick_vect = " + str(joystick_vect))
 			
 			o.velocity =  joystick_vect * force_player * modif_force  # Ajuste la force de la poussée
 			Global.player_impulsed = true
