@@ -73,10 +73,15 @@ func _physics_process(delta: float) -> void:
 		Global.player_impulsed = false
 	else:
 		velocity.y += add_gravity() * delta
-
-	wall_slide(delta)
-
 	
+	if is_on_ceiling() and velocity.y < 0:
+		velocity.y = 0
+	
+		if velocity.y > max_fall_speed:
+			velocity.y = max_fall_speed
+		
+	wall_slide(delta)
+		
 	if not Global.player_impulsed:
 		if is_on_floor():
 			if abs(horizontal_input.x) >= 0.1:
@@ -100,8 +105,7 @@ func _physics_process(delta: float) -> void:
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 	
-	if velocity.y > max_fall_speed:
-		velocity.y = max_fall_speed
+
 	
 	move_and_slide()
 	

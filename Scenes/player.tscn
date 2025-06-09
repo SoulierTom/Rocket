@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=34 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Graou/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -157,6 +157,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bxff"]
+radius = 9.18
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncomj"]
+radius = 9.18
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_idu3p"]
 shader = ExtResource("5_l6ddu")
@@ -175,6 +179,7 @@ stream_1/stream = ExtResource("7_71co6")
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
+floor_stop_on_slope = false
 script = ExtResource("1_li7m8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -183,7 +188,6 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.41, 1.88)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_4bxff")
@@ -196,7 +200,7 @@ script = ExtResource("3_htni6")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
 position = Vector2(0.41, 1.88)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_4bxff")
+shape = SubResource("CapsuleShape2D_ncomj")
 
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
 
