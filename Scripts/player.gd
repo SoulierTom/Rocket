@@ -8,7 +8,7 @@ var GRAVITY = 1500.0
 var max_fall_speed : float = 250
 
 var is_wall_sliding := false
-const wall_slide_gravity := 30
+const wall_slide_gravity := 25
 
 var fall_time := 0.0
 const FALL_ACCEL_TIME := 1.0  # durée avant chute pleine vitesse

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnjmr4evohsr4"]
+[gd_scene load_steps=24 format=3 uid="uid://cnjmr4evohsr4"]
 
 [ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_6xgrk"]
 [ext_resource type="Texture2D" uid="uid://c45efj6718jl4" path="res://Assets/Explosion_sheet.png" id="2_np5ux"]
@@ -166,9 +166,13 @@ glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 1.5
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ma04u"]
+
 [node name="Explosion" type="Area2D" groups=["boom"]]
 z_index = 10
 scale = Vector2(2, 2)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_6xgrk")
 force_objet = 150
 
@@ -204,7 +208,6 @@ scale = Vector2(1.05, 1.05)
 shape = SubResource("CircleShape2D_1u4h7")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -221,5 +224,10 @@ libraries = {
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ma124")
+
+[node name="Area2D" type="Area2D" parent="." groups=["destruction"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ma04u")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

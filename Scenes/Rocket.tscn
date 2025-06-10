@@ -9,7 +9,7 @@ size = Vector2(10, 6)
 [sub_resource type="Gradient" id="Gradient_slfmi"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Rocket" type="CharacterBody2D" node_paths=PackedStringArray("explosion_notifier")]
+[node name="Rocket" type="CharacterBody2D" node_paths=PackedStringArray("explosion_notifier") groups=["Rocket"]]
 z_index = 6
 collision_layer = 0
 collision_mask = 2
@@ -26,6 +26,8 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_7hl48")
 
