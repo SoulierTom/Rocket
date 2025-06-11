@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbvibkmsbl1xg"]
 
-[ext_resource type="Script" path="res://petrol.gd" id="1_usra3"]
+[ext_resource type="Script" path="res://Scripts/petrol.gd" id="1_usra3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgm4h"]
 size = Vector2(8, 5)

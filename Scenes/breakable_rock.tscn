@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://djx8g733c018p"]
 
 [ext_resource type="Script" path="res://Scripts/breakable_rock.gd" id="1_xpxs2"]
-[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/brackeys_platformer_assets/icon.svg" id="2_gk5yl"]
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_gk5yl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
@@ -51,7 +51,6 @@ texture = ExtResource("2_gk5yl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(259, -8.9407e-07)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_player" type="Area2D" parent="."]
@@ -60,11 +59,9 @@ shape = SubResource("RectangleShape2D_uf8v0")
 visible = false
 light_mask = 3
 position = Vector2(260, -13.8889)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_r2xqy")
 
 [node name="Area_rocket" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]

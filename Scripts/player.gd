@@ -42,10 +42,13 @@ func set_camera(new_camera: Camera2D):
 
 func _physics_process(delta: float) -> void:
 
-	
-	if Input.is_action_just_pressed("reset"):
-		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
+	if Input.is_action_just_pressed("Reset_Chapter"):
+		get_tree().change_scene_to_file("res://Levels/From_Godot/Test_Level_1.tscn")
 		Global.speedrun_time = 0
+		
+	if Input.is_action_just_pressed("Reset_Level"):
+		get_tree().reload_current_scene()
+		
 	# Toggle des vibrations
 	if Input.is_action_just_pressed("toggle_vibration"):
 		Global.VBR = !Global.VBR

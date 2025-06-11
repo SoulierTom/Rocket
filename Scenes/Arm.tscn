@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Explosion.tscn" id="2_lv75f"]
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Rocket.tscn" id="3_2omhl"]
-[ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Audio/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
-[ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Audio/Tir.wav" id="6_7svj1"]
+[ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Assets/Audio/sounds/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
+[ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Assets/Audio/sounds/Tir.wav" id="6_7svj1"]
 [ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
-[ext_resource type="Texture2D" uid="uid://dir6lbemh5vop" path="res://Assets/Curseur.png" id="7_73eg5"]
-[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/circle-xxl.png" id="7_a1xb5"]
-[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Graou/Canon_seul_droite.png" id="9_xu18f"]
+[ext_resource type="Texture2D" uid="uid://dir6lbemh5vop" path="res://Assets/Images/Divers/Curseur.png" id="7_73eg5"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="7_a1xb5"]
+[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Images/Divers/Canon_seul_droite.png" id="9_xu18f"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8wks"]
 random_pitch = 2.0

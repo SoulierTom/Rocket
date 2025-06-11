@@ -13,7 +13,7 @@ config_version=5
 config/name="Rocket"
 run/main_scene="res://Scenes/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/Graou/Logo M-Corp.png"
+config/icon="res://Assets/Images/Divers/Logo M-Corp.png"
 
 [autoload]
 
@@ -110,9 +110,14 @@ ok={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
-reset={
+Reset_Chapter={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":4,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+Reset_Level={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
 toggle_vibration={

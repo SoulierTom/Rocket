@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://cnjmr4evohsr4"]
 
 [ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_6xgrk"]
-[ext_resource type="Texture2D" uid="uid://c45efj6718jl4" path="res://Assets/Explosion_sheet.png" id="2_np5ux"]
-[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/circle-xxl.png" id="3_le5k6"]
+[ext_resource type="Texture2D" uid="uid://c45efj6718jl4" path="res://Assets/Images/Divers/Explosion_sheet.png" id="2_np5ux"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="3_le5k6"]
 
 [sub_resource type="Curve" id="Curve_l6dob"]
 max_value = 10.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bohkwkmnjdgbv"]
 
-[ext_resource type="Texture2D" uid="uid://bn58j0u22rx0y" path="res://Assets/Graou/Gold Coin SpriteSheet.png" id="1_71lwh"]
+[ext_resource type="Texture2D" uid="uid://bn58j0u22rx0y" path="res://Assets/Images/Tilesets/Gold Coin SpriteSheet.png" id="1_71lwh"]
 [ext_resource type="Script" path="res://Scripts/coin.gd" id="1_uwp0g"]
 
 [sub_resource type="GDScript" id="GDScript_p2eiq"]
