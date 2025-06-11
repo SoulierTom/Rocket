@@ -6,7 +6,7 @@ class_name Camera
 @export var offset_y: float = 0.0
 @export var zoom_level: Vector2 = Vector2(1, 1)  # Contrôle du zoom par défaut
 
-@onready var player = get_node("/root/Level 2/Player")  # Chemin absolu
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
 	if target == null:

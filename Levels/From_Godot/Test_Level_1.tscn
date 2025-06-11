@@ -437,16 +437,29 @@ position = Vector2(853, -103)
 [node name="CameraLimiters" type="Node" parent="."]
 
 [node name="CameraLimiter1" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
-position = Vector2(674, -154)
+position = Vector2(869, 32)
+limit_x = "CameraBorderX.ight"
 
 [node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter1" index="0"]
-position = Vector2(-220, 58)
+position = Vector2(-396, -133)
 
 [node name="CameraLimiter2" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
-position = Vector2(674, -154)
+position = Vector2(-87, 108)
+limit_x = "CameraBorderX.Left"
+limit_y = "CameraBorderY.Bottom"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter2" index="0"]
-position = Vector2(-674, 91)
+position = Vector2(85, -113)
+
+[node name="CameraLimiter3" parent="CameraLimiters" instance=ExtResource("6_ka44o")]
+position = Vector2(-87, 108)
+limit_x = "CameraBorderX.Left"
+limit_y = "CameraBorderY.Bottom"
+
+[node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter3" index="0"]
+position = Vector2(537, -209)
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]
+[editable path="CameraLimiters/CameraLimiter3"]

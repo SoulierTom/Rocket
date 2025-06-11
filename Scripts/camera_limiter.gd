@@ -7,7 +7,8 @@ const MAX_VAL = 100000
 @export var limit_x = "CameraBorderX.None"
 @export var limit_y = "CameraBorderY.None"
 
-@onready var marker = get_node("LimitPosition")
+@onready var marker: CameraLimiter = $"."
+
 
 func get_limit_top():
 	if limit_y != "CameraBorderY.Top":
