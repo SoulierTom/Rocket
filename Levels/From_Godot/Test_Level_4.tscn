@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_rdu16"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_vq1js"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="3_gvwt7"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="4_uodr6"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="4_uodr6"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kanfh"]
 [ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="7_1pna8"]
-[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/Spike.tscn" id="9_3kq1b"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="9_3kq1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_rdu16")

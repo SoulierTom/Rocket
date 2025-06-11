@@ -26,7 +26,7 @@ var recoil_vector: Vector2 = Vector2.ZERO
 
 
 # Permet d'utiliser la Scene Rocket
-const RocketScene = preload("res://Scenes/Rocket.tscn")
+const RocketScene = preload("res://Scenes/Player/Rocket.tscn")
 @onready var shooting_point: Marker2D = $Sprite2D/ShootingPoint
 
 # Permet de générer l'explosion

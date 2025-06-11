@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_fs4rm"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_iga8p"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="3_offp7"]
-[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/Caisse.tscn" id="4_2guvc"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="3_offp7"]
+[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Caisse.tscn" id="4_2guvc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p04g2"]
 texture = ExtResource("1_fs4rm")

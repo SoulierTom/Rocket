@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
 [ext_resource type="Script" path="res://Scripts/spike_interact_box.gd" id="3_htni6"]
-[ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Arm.tscn" id="3_n5sxh"]
+[ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Player/Arm.tscn" id="3_n5sxh"]
 [ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/camera_2d.tscn" id="3_s4l33"]
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="5_l6ddu"]
 [ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Assets/Audio/sounds/Walk_sound.wav" id="7_71co6"]
-[ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/viseur.tscn" id="8_f2ryt"]
+[ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/Player/viseur.tscn" id="8_f2ryt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")

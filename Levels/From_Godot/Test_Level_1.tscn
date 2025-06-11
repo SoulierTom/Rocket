@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://c67fyef8jrkk2"]
+[gd_scene load_steps=16 format=4 uid="uid://c67fyef8jrkk2"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_f7fom"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_8vgao"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="3_40ftr"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="4_qj5ia"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/player.tscn" id="5_3lkrf"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="5_3lkrf"]
 [ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="6_ka44o"]
+[ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/breakable_8_blocks.tscn" id="7_s2xvj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_f7fom")
@@ -459,6 +460,17 @@ limit_y = "CameraBorderY.Bottom"
 
 [node name="CollisionShape2D" parent="CameraLimiters/CameraLimiter3" index="0"]
 position = Vector2(537, -209)
+
+[node name="Breakable_small_platform" parent="." instance=ExtResource("7_s2xvj")]
+position = Vector2(110, 15)
+
+[node name="Breakable_small_platform3" parent="." instance=ExtResource("7_s2xvj")]
+position = Vector2(255, -49)
+rotation = -0.162801
+
+[node name="Breakable_small_platform2" parent="." instance=ExtResource("7_s2xvj")]
+position = Vector2(177, -16)
+rotation = -1.57609
 
 [editable path="CameraLimiters/CameraLimiter1"]
 [editable path="CameraLimiters/CameraLimiter2"]
