@@ -8,7 +8,7 @@ var GRAVITY = 1500.0
 var max_fall_speed : float = 250
 
 var is_wall_sliding := false
-const wall_slide_gravity := 25
+const wall_slide_gravity := 0
 
 var fall_time := 0.0
 const FALL_ACCEL_TIME := 1.0  # durée avant chute pleine vitesse
@@ -57,8 +57,8 @@ func _physics_process(delta: float) -> void:
 	
 	if bonk_freeze_timer > 0.0:
 		bonk_freeze_timer -= delta
-		velocity.y *= 0.75
-		velocity.x *= 0.75  
+		velocity.y *= 0.9
+		velocity.x *= 0.9  
 	
 	if is_on_floor():
 		Global.player_impulsed = false
