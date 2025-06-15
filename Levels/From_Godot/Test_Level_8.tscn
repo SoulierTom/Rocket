@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="5_uqknc"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="6_ppp2v"]
 [ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="7_0k38a"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_u427a"]
+[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="7_obv5d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_wqtf2")
@@ -646,14 +646,9 @@ position = Vector2(-7, -312)
 [node name="Player" parent="." instance=ExtResource("6_ppp2v")]
 position = Vector2(2, -2)
 
-[node name="Area2D2" parent="." instance=ExtResource("7_0k38a")]
+[node name="Finish" parent="." instance=ExtResource("7_0k38a")]
 position = Vector2(26, -659)
 rotation = 1.5708
 
-[node name="Camera_Limiter" type="Node" parent="."]
-
-[node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("8_u427a")]
-position = Vector2(41, -445)
-rotation = 1.5708
-
-[editable path="Camera_Limiter/Camera_Limiter2"]
+[node name="LevelCamManager" parent="." instance=ExtResource("7_obv5d")]
+camera_vertical_offset = -40.0

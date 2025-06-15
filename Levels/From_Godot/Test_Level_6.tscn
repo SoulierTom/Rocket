@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="4_nrnsa"]
 [ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/Finish.tscn" id="6_6ndgf"]
 [ext_resource type="Script" path="res://Scripts/next_level.gd" id="7_y5tj1"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_00xsy"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="8_3gcbx"]
+[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="8_aqlli"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_ju8vp")
@@ -881,17 +881,9 @@ position = Vector2(-688, -24)
 [node name="Area2D12" parent="Tiles/SpiekManager" instance=ExtResource("8_3gcbx")]
 position = Vector2(-704, -24)
 
-[node name="Area2D2" parent="." instance=ExtResource("6_6ndgf")]
+[node name="Finish" parent="." instance=ExtResource("6_6ndgf")]
 position = Vector2(908, -105)
 script = ExtResource("7_y5tj1")
 next_level_number = 0
 
-[node name="Camera_Limiter" type="Node" parent="."]
-
-[node name="Camera_Limiter" parent="Camera_Limiter" instance=ExtResource("8_00xsy")]
-position = Vector2(569, -117)
-
-[node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter" index="0"]
-position = Vector2(-69, -5.0625)
-
-[editable path="Camera_Limiter/Camera_Limiter"]
+[node name="LevelCamManager" parent="." instance=ExtResource("8_aqlli")]

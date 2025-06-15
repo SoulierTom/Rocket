@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0in7tulhw8b5"]
 
-[ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_u06mp"]
+[ext_resource type="Script" path="res://Scripts/Player/rocket.gd" id="1_u06mp"]
 [ext_resource type="Texture2D" uid="uid://bxha3w1wrebwu" path="res://Assets/Images/Divers/Bullet.png" id="2_6y0mm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://d0xpjhfkqs1pd"]
+[gd_scene load_steps=13 format=4 uid="uid://d0xpjhfkqs1pd"]
 
+[ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="1_42xig"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_h2g4d"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_wk2u3"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_ejbu0"]
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="3_1q0ft"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="5_kiihq"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="8_h0qsq"]
+[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="7_i6atm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_h2g4d")
@@ -605,10 +606,12 @@ sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
 [node name="Level 3" type="Node2D"]
+script = ExtResource("1_42xig")
+camera_vertical_offset = -40.0
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Area2D" parent="Tiles" instance=ExtResource("1_wk2u3")]
+[node name="Finish" parent="Tiles" instance=ExtResource("1_wk2u3")]
 position = Vector2(412.535, -470.03)
 
 [node name="background" type="TileMapLayer" parent="Tiles"]
@@ -634,21 +637,5 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("5_kiihq")]
 position = Vector2(-225.775, -2)
 
-[node name="Camera_Limiter" type="Node" parent="."]
-
-[node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("8_h0qsq")]
-position = Vector2(41, -445)
-rotation = 1.5708
-
-[node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter2" index="0"]
-position = Vector2(445.001, 185.998)
-
-[node name="Camera_Limiter3" parent="Camera_Limiter" instance=ExtResource("8_h0qsq")]
-position = Vector2(41, -445)
-rotation = 1.5708
-
-[node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter3" index="0"]
-position = Vector2(164.999, -195.001)
-
-[editable path="Camera_Limiter/Camera_Limiter2"]
-[editable path="Camera_Limiter/Camera_Limiter3"]
+[node name="LevelCamManager" parent="." instance=ExtResource("7_i6atm")]
+camera_vertical_offset = -40.0

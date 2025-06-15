@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://djx8g733c018p"]
 
-[ext_resource type="Script" path="res://Scripts/breakable_rock.gd" id="1_xpxs2"]
+[ext_resource type="Script" path="res://Scripts/GPE/breakable_rock.gd" id="1_xpxs2"]
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_gk5yl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]

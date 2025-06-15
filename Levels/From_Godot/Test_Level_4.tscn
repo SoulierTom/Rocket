@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="3_gvwt7"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="4_uodr6"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kanfh"]
-[ext_resource type="PackedScene" uid="uid://bpomgfp4ef7bd" path="res://Scenes/camera_limiter.tscn" id="7_1pna8"]
+[ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="7_48i5o"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="9_3kq1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
@@ -671,16 +671,8 @@ position = Vector2(448, -72)
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(320, -201)
 
-[node name="Camera_Limiter" type="Node" parent="."]
-
-[node name="Camera_Limiter2" parent="Camera_Limiter" instance=ExtResource("7_1pna8")]
-position = Vector2(413, -426)
-
-[node name="CollisionShape2D" parent="Camera_Limiter/Camera_Limiter2" index="0"]
-position = Vector2(-83, 303)
-rotation = 1.5708
-
-[node name="Area2D" parent="." instance=ExtResource("5_kanfh")]
+[node name="Finish" parent="." instance=ExtResource("5_kanfh")]
 position = Vector2(32, -67)
 
-[editable path="Camera_Limiter/Camera_Limiter2"]
+[node name="CameraManager" type="Node2D" parent="."]
+script = ExtResource("7_48i5o")

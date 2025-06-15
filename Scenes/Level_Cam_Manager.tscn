@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6nfj5gnt2jf"]
+
+[ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="1_llkc6"]
+
+[node name="LevelCamManager" type="Node2D"]
+script = ExtResource("1_llkc6")

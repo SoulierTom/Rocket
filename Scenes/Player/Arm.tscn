@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
 
-[ext_resource type="Script" path="res://Scripts/arm.gd" id="1_t4ufm"]
+[ext_resource type="Script" path="res://Scripts/Player/arm.gd" id="1_t4ufm"]
 [ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Player/Explosion.tscn" id="2_lv75f"]
 [ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Player/Rocket.tscn" id="3_2omhl"]
 [ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Assets/Audio/sounds/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
