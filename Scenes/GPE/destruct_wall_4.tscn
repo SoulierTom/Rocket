@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://djx8g733c018p"]
+[gd_scene load_steps=8 format=3 uid="uid://lxj8vlgkljex"]
 
-[ext_resource type="Script" path="res://Scripts/GPE/breakable_rock.gd" id="1_xpxs2"]
-[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_gk5yl"]
+[ext_resource type="Script" path="res://Scripts/GPE/breakable_rock.gd" id="1_c0aha"]
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_p8r45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
@@ -38,22 +38,27 @@ scale_max = 0.18
 scale_over_velocity_max = 37.85
 anim_offset_max = 1.0
 
-[node name="Breakable Block" type="StaticBody2D"]
-scale = Vector2(0.012, 0.06)
+[node name="Breakable_small_platform" type="StaticBody2D"]
+rotation = 1.5708
+scale = Vector2(0.048, 0.06)
 collision_layer = 3
 collision_mask = 0
-script = ExtResource("1_xpxs2")
+script = ExtResource("1_c0aha")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.927704, 0.19367, 0.705834, 1)
 position = Vector2(258, 0)
 scale = Vector2(5.03125, 1)
-texture = ExtResource("2_gk5yl")
+texture = ExtResource("2_p8r45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(259, -8.9407e-07)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_player" type="Area2D" parent="."]
+position = Vector2(-41.6667, 16.6667)
+scale = Vector2(1.04, 1.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_player"]
 light_mask = 3
@@ -61,6 +66,7 @@ position = Vector2(260, -13.8889)
 shape = SubResource("RectangleShape2D_r2xqy")
 
 [node name="Area_rocket" type="Area2D" parent="."]
+visible = false
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
@@ -77,7 +83,7 @@ emitting = false
 amount = 10
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_x6u7k")
-texture = ExtResource("2_gk5yl")
+texture = ExtResource("2_p8r45")
 one_shot = true
 explosiveness = 1.0
 

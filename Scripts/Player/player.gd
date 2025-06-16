@@ -30,15 +30,8 @@ var pause_instance = null
 # Ajoutez une variable pour stocker la référence à la caméra
 var camera: Camera2D = null
 
-
 # Ajoutez une référence au CanvasLayer
 @onready var canvas_layer = $CanvasLayer
-
-# Méthode pour définir la caméra
-func set_camera(new_camera: Camera2D):
-	camera = new_camera
-	camera.make_current()  # Active cette caméra (Godot 4)
-
 
 func _physics_process(delta: float) -> void:
 

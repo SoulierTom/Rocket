@@ -143,21 +143,11 @@ func show_medal_and_animate(medal_type: String):
 
 func display_required_times():
 	var player_time = Global.speedrun_time
-	
 	print("Affichage des temps requis pour le temps joueur: ", player_time)
-	
-	# Afficher les temps requis pour les médailles non obtenues
-	if player_time > bronze_time_threshold:
-		show_required_time("bronze", bronze_time_threshold)
-	
-	if player_time > silver_time_threshold:
-		show_required_time("argent", silver_time_threshold)
-	
-	if player_time > gold_time_threshold:
-		show_required_time("or", gold_time_threshold)
-	
-	if player_time > dev_time_threshold:
-		show_required_time("dev", dev_time_threshold)
+	show_required_time("bronze", bronze_time_threshold)
+	show_required_time("argent", silver_time_threshold)
+	show_required_time("or", gold_time_threshold)
+	show_required_time("dev", dev_time_threshold)
 
 func show_required_time(medal_type: String, required_time: float):
 	var temps_container = $CanvasLayer/temps_medaille

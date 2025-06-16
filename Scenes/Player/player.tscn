@@ -206,7 +206,6 @@ shape = SubResource("RectangleShape2D_o7auy")
 target = NodePath("..")
 
 [node name="Crt" type="CanvasLayer" parent="Camera"]
-
 layer = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
