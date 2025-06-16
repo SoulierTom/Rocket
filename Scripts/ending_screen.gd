@@ -119,27 +119,45 @@ func show_medal_and_animate(medal_type: String):
 			animation_player.play(medal_type, 0.5)
 			await animation_player.animation_finished
 			
-			# Jouer le son approprié après l'animation
-			if medal_type == "dev":
-				var dev_sound = get_node_or_null("dev_medal_sound")
-				if dev_sound:
-					dev_sound.play()
-					print("Son dev_medal_sound joué")
-				else:
-					print("dev_medal_sound non trouvé")
-			else:
-				var medal_sound = get_node_or_null("medal_sound")
-				if medal_sound:
-					medal_sound.play()
-					print("Son medal_sound joué")
-				else:
-					print("medal_sound non trouvé")
+			# Jouer le son approprié avec le pitch selon la médaille
+			play_medal_sound(medal_type)
 		else:
 			print("Animation ", medal_type, " non trouvée dans AnimationPlayer")
 			# Attendre un délai par défaut si pas d'animation
 			await get_tree().create_timer(0.5).timeout
 	else:
 		print("AnimationPlayer non trouvé")
+
+func play_medal_sound(medal_type: String):
+	if medal_type == "dev":
+		# Son spécial pour la médaille développeur
+		var dev_sound = get_node_or_null("dev_medal_sound")
+		if dev_sound:
+			dev_sound.play()
+			print("Son dev_medal_sound joué")
+		else:
+			print("dev_medal_sound non trouvé")
+	else:
+		# Sons des médailles normales avec pitch différent
+		var medal_sound = get_node_or_null("medal_sound")
+		if medal_sound:
+			# Définir le pitch selon le type de médaille
+			match medal_type:
+				"bronze":
+					medal_sound.pitch_scale = 0.8  # Plus grave
+					print("Son medal_sound joué avec pitch grave (0.8)")
+				"argent":
+					medal_sound.pitch_scale = 1.0  # Neutre
+					print("Son medal_sound joué avec pitch neutre (1.0)")
+				"or":
+					medal_sound.pitch_scale = 1.2  # Plus aigu
+					print("Son medal_sound joué avec pitch aigu (1.2)")
+				_:
+					medal_sound.pitch_scale = 1.0  # Par défaut
+			
+			medal_sound.play()
+		else:
+			print("medal_sound non trouvé")
 
 func display_required_times():
 	var player_time = Global.speedrun_time
