@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bay45tlsap6u7"]
+[gd_scene load_steps=20 format=3 uid="uid://bay45tlsap6u7"]
 
 [ext_resource type="Script" path="res://Scripts/ending_screen.gd" id="1_vbw75"]
 [ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="2_svmx2"]
 [ext_resource type="Texture2D" uid="uid://dvkhpjmiublea" path="res://Assets/Images/Divers/medaille_bronze.png" id="2_xmghj"]
 [ext_resource type="Texture2D" uid="uid://bksg1y36mw66t" path="res://Assets/Images/Divers/medaille_argent.png" id="3_47a57"]
+[ext_resource type="AudioStream" uid="uid://bqtkkhprd8gbr" path="res://Assets/Audio/sounds/badge-coin-win.mp3" id="3_ddnqx"]
 [ext_resource type="Texture2D" uid="uid://swomfadh0onv" path="res://Assets/Images/Divers/medaille_or.png" id="4_ldsag"]
 [ext_resource type="Texture2D" uid="uid://cpbxy2dexlh6" path="res://Assets/Images/Divers/medaille_dev.png" id="5_6h2vg"]
+[ext_resource type="AudioStream" uid="uid://etc5bax732s6" path="res://Assets/Audio/sounds/metallic-clang.mp3" id="7_ida1h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rbj3c"]
 font_size = 50
@@ -28,7 +30,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_nt83a"]
-resource_name = "apparition_medaille_argent"
+resource_name = "argent"
 length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,7 +46,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_kn3jh"]
-resource_name = "apparition_medaille_bronze"
+resource_name = "bronze"
 length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -60,7 +62,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_r5lrt"]
-resource_name = "apparition_medaille_dev"
+resource_name = "dev"
 length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -76,7 +78,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_30wx3"]
-resource_name = "apparition_medaille_or"
+resource_name = "or"
 length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -94,11 +96,27 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p03p2"]
 _data = {
 "RESET": SubResource("Animation_c6f22"),
-"apparition_medaille_argent": SubResource("Animation_nt83a"),
-"apparition_medaille_bronze": SubResource("Animation_kn3jh"),
-"apparition_medaille_dev": SubResource("Animation_r5lrt"),
-"apparition_medaille_or": SubResource("Animation_30wx3")
+"argent": SubResource("Animation_nt83a"),
+"bronze": SubResource("Animation_kn3jh"),
+"dev": SubResource("Animation_r5lrt"),
+"or": SubResource("Animation_30wx3")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_k37jj"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvm42"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83mof"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_easgr"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
 [node name="Ending_Screen" type="Control"]
 layout_mode = 3
@@ -106,6 +124,12 @@ anchors_preset = 0
 offset_left = -7.0
 offset_right = -7.0
 script = ExtResource("1_vbw75")
+
+[node name="medal_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ida1h")
+
+[node name="dev_medal_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ddnqx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -196,22 +220,68 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="medaille_bronze" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
 position = Vector2(770, 441)
 texture = ExtResource("2_xmghj")
 
 [node name="medaille_argent" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
 position = Vector2(932, 441)
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 texture = ExtResource("3_47a57")
 
 [node name="medaille_or" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
 position = Vector2(1099, 441)
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 texture = ExtResource("4_ldsag")
 
 [node name="medaille_dev" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
 position = Vector2(932, 667)
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 texture = ExtResource("5_6h2vg")
+
+[node name="temps_medaille" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="temps_bronze" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 507.0
+offset_right = 825.0
+offset_bottom = 530.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_k37jj")
+
+[node name="temps_argent" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 505.0
+offset_right = 988.0
+offset_bottom = 528.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_yvm42")
+
+[node name="temps_or" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 504.0
+offset_right = 1154.0
+offset_bottom = 527.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_83mof")
+
+[node name="temps_dev" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 730.0
+offset_right = 988.0
+offset_bottom = 753.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_easgr")
 
 [connection signal="pressed" from="CanvasLayer/Main Menu" to="." method="_on_main_menu_pressed"]
