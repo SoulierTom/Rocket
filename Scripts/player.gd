@@ -95,6 +95,10 @@ func _physics_process(delta: float) -> void:
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 	
+	if is_on_floor():
+		if horizontal_input.y > 0.95:
+			position.y += 1
+	
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
 	

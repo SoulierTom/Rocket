@@ -205,6 +205,7 @@ shape = SubResource("RectangleShape2D_o7auy")
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
 
 [node name="Crt" type="CanvasLayer" parent="Camera"]
+visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
 material = SubResource("ShaderMaterial_idu3p")
