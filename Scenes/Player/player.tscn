@@ -206,12 +206,11 @@ shape = SubResource("RectangleShape2D_o7auy")
 target = NodePath("..")
 
 [node name="Crt" type="CanvasLayer" parent="Camera"]
+layer = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
 material = SubResource("ShaderMaterial_idu3p")
 mesh = SubResource("QuadMesh_3burj")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 8)
@@ -239,6 +238,8 @@ visible = false
 z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
