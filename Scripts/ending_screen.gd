@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 
-@onready var ending_screen: Node2D = $"."
+@onready var ending_screen: Control = $"."
 
 var is_using_gamepad = false
 
@@ -39,7 +39,7 @@ func press_focused_button():
 
 func _ready():
 	# Récupérer le Label
-	var label = $CanvasLayer/Label
+	var label = $CanvasLayer/temps_final
 	if label:
 		# Convertir le temps en minutes, secondes et centièmes
 		var total_seconds = Global.speedrun_time
@@ -51,7 +51,7 @@ func _ready():
 		var formatted_time = "%d:%02d.%02d" % [minutes, seconds, centiseconds]
 		
 		# Afficher le temps final depuis la variable globale
-		label.text = "Temps final : " + formatted_time
+		label.text = formatted_time
 
 func _on_main_menu_pressed():
 	print("Quit button pressed")
