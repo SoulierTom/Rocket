@@ -125,6 +125,9 @@ offset_left = -7.0
 offset_right = -7.0
 script = ExtResource("1_vbw75")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(969, 542)
+
 [node name="medal_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ida1h")
 
@@ -139,6 +142,7 @@ offset_top = 142.0
 offset_right = 1186.0
 offset_bottom = 966.0
 color = Color(0.355314, 0.355314, 0.355314, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="temps_final" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -154,6 +158,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "00:00:00"
 label_settings = SubResource("LabelSettings_rbj3c")
+metadata/_edit_use_anchors_ = true
 
 [node name="texte_temps_final" type="Label" parent="CanvasLayer"]
 offset_left = 823.0
@@ -162,6 +167,7 @@ offset_right = 1049.0
 offset_bottom = 234.0
 text = "Resultat :"
 label_settings = SubResource("LabelSettings_rbj3c")
+metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
@@ -176,6 +182,7 @@ offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath("../..")
@@ -188,6 +195,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="fond_medaille_bronze" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
 modulate = Color(0.237539, 0.237539, 0.237539, 1)
@@ -218,6 +226,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="medaille_bronze" type="Sprite2D" parent="CanvasLayer/medaille"]
 visible = false
@@ -247,6 +256,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="temps_bronze" type="Label" parent="CanvasLayer/temps_medaille"]
 layout_mode = 0
@@ -256,6 +266,7 @@ offset_right = 825.0
 offset_bottom = 530.0
 text = "Requis : 00:00"
 label_settings = SubResource("LabelSettings_k37jj")
+metadata/_edit_use_anchors_ = true
 
 [node name="temps_argent" type="Label" parent="CanvasLayer/temps_medaille"]
 layout_mode = 0
@@ -265,6 +276,7 @@ offset_right = 988.0
 offset_bottom = 528.0
 text = "Requis : 00:00"
 label_settings = SubResource("LabelSettings_yvm42")
+metadata/_edit_use_anchors_ = true
 
 [node name="temps_or" type="Label" parent="CanvasLayer/temps_medaille"]
 layout_mode = 0
@@ -274,6 +286,7 @@ offset_right = 1154.0
 offset_bottom = 527.0
 text = "Requis : 00:00"
 label_settings = SubResource("LabelSettings_83mof")
+metadata/_edit_use_anchors_ = true
 
 [node name="temps_dev" type="Label" parent="CanvasLayer/temps_medaille"]
 layout_mode = 0
@@ -283,5 +296,6 @@ offset_right = 988.0
 offset_bottom = 753.0
 text = "Requis : 00:00"
 label_settings = SubResource("LabelSettings_easgr")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/Main Menu" to="." method="_on_main_menu_pressed"]
