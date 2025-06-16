@@ -6,7 +6,6 @@ var initial_vibration_strength: float = 0.6  # Vibration forte au début
 var vibration_decay_rate: float = 0.1  # Vitesse de diminution
 
 @onready var player: CharacterBody2D = $".."
-@onready var camera_limit_manager = $"../Camera/CameraLimitManager"
 
 func _ready():
 	# Initialisation
@@ -19,25 +18,13 @@ func _ready():
 	else:
 		print("Player initialized successfully:", player.name)
 
-	if camera_limit_manager == null:
-		printerr("CameraLimitManager is null in _ready(). Check the path!")
-	else:
-		print("CameraLimitManager initialized successfully:", camera_limit_manager.name)
-
 func _on_area_entered(area):
 	# Gestion des impacts
 	if area.is_in_group("boom"):
 		print("Impact detected!")
 		if Global.VBR:
 			_trigger_decaying_vibration()
-	
-	# Gestion des limiteurs de caméra
-	if player == null or camera_limit_manager == null:
-		return
-		
-	if area is CameraLimiter:
-		print("CameraLimiter detected!")
-		camera_limit_manager.set_limiter(area)
+
 
 func _trigger_decaying_vibration():
 	if not Global.VBR:

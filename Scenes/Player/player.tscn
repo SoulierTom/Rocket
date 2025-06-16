@@ -1,13 +1,13 @@
 [gd_scene load_steps=34 format=3 uid="uid://dqod2t2tuu181"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_li7m8"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
-[ext_resource type="Script" path="res://Scripts/spike_interact_box.gd" id="3_htni6"]
+[ext_resource type="Script" path="res://Scripts/GPE/spike_interact_box.gd" id="3_htni6"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Player/Arm.tscn" id="3_n5sxh"]
-[ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/camera_2d.tscn" id="3_s4l33"]
+[ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/Player/camera_2d.tscn" id="3_s4l33"]
 [ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="5_l6ddu"]
-[ext_resource type="Script" path="res://Scripts/player_interaction.gd" id="6_boj3a"]
+[ext_resource type="Script" path="res://Scripts/Player/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Assets/Audio/sounds/Walk_sound.wav" id="7_71co6"]
 [ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/Player/viseur.tscn" id="8_f2ryt"]
 
@@ -203,15 +203,15 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_o7auy")
 
 [node name="Camera" parent="." instance=ExtResource("3_s4l33")]
+target = NodePath("..")
 
 [node name="Crt" type="CanvasLayer" parent="Camera"]
-visible = false
+
+layer = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
 material = SubResource("ShaderMaterial_idu3p")
 mesh = SubResource("QuadMesh_3burj")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 8)
@@ -239,6 +239,8 @@ visible = false
 z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
