@@ -30,7 +30,7 @@ func _input(event):
 
 func _enable_buttons_focus(focus: bool):
 	# Parcourir tous les descendants de la hiérarchie pour trouver les boutons
-	for child in $CanvasLayer.get_children():
+	for child in $CanvasLayer/autre.get_children():
 		if child is Button:
 			if focus:
 				child.grab_focus()
@@ -39,7 +39,7 @@ func _enable_buttons_focus(focus: bool):
 
 func press_focused_button():
 	# Trouver le bouton actuellement sélectionné et simuler un appui
-	for child in $CanvasLayer.get_children():
+	for child in $CanvasLayer/autre.get_children():
 		if child is Button and child.has_focus():
 			child.emit_signal("pressed")
 			break
@@ -68,7 +68,7 @@ func hide_all_medals():
 			child.visible = false
 	
 	# Cacher le label temps final au début
-	var temps_final_label = $CanvasLayer/temps_final
+	var temps_final_label = $CanvasLayer/autre/temps_final
 	if temps_final_label:
 		temps_final_label.visible = false
 
@@ -185,7 +185,7 @@ func show_required_time(medal_type: String, required_time: float):
 
 func display_final_time():
 	# Récupérer le Label du temps final
-	var label = $CanvasLayer/temps_final
+	var label = $CanvasLayer/autre/temps_final
 	if label:
 		# Convertir le temps en minutes, secondes et centièmes
 		var total_seconds = Global.speedrun_time

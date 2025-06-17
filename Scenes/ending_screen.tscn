@@ -9,11 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cpbxy2dexlh6" path="res://Assets/Images/Divers/medaille_dev.png" id="5_6h2vg"]
 [ext_resource type="AudioStream" uid="uid://etc5bax732s6" path="res://Assets/Audio/sounds/metallic-clang.mp3" id="7_ida1h"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rbj3c"]
-font_size = 50
-outline_size = 25
-outline_color = Color(0.196078, 0.215686, 0.317647, 1)
-
 [sub_resource type="Animation" id="Animation_c6f22"]
 length = 0.001
 tracks/0/type = "value"
@@ -102,6 +97,11 @@ _data = {
 "or": SubResource("Animation_30wx3")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_rbj3c"]
+font_size = 50
+outline_size = 25
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_k37jj"]
 outline_size = 10
 outline_color = Color(0.196078, 0.215686, 0.317647, 1)
@@ -132,6 +132,12 @@ stream = ExtResource("7_ida1h")
 stream = ExtResource("3_ddnqx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p03p2")
+}
 
 [node name="autre" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -168,6 +174,7 @@ label_settings = SubResource("LabelSettings_rbj3c")
 metadata/_edit_use_anchors_ = true
 
 [node name="texte_temps_final" type="Label" parent="CanvasLayer/autre"]
+z_index = 1
 offset_left = 823.0
 offset_top = 160.0
 offset_right = 1049.0
@@ -191,12 +198,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
 metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/autre"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_p03p2")
-}
 
 [node name="fond_medaille" type="Control" parent="CanvasLayer"]
 layout_mode = 3
