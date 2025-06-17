@@ -58,9 +58,9 @@ func _physics_process(_delta):
 		else:
 			Global.target_pos = character_pos + last_joystick_vector * 1000000
 			look_at(Global.target_pos)
-	else:
-		Global.target_pos = mouse_pos
-		look_at(Global.target_pos)
+	#else:    #desactivation temporaire de la souris
+		#Global.target_pos = mouse_pos
+		#look_at(Global.target_pos)
 	
 	$RayCast2D.update_ammo_display()
 	
