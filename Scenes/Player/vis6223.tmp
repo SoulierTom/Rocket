@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm8mltsrod3rr"]
+[gd_scene load_steps=7 format=3 uid="uid://bm8mltsrod3rr"]
 
 [ext_resource type="Script" path="res://Scripts/Player/viseur.gd" id="1_sm52v"]
 [ext_resource type="Texture2D" uid="uid://baihjuhvixvlq" path="res://Assets/Images/Divers/cursor_middle 2.png" id="2_8kmi8"]
@@ -15,36 +15,18 @@ shader_parameter/current_ammo = 3
 shader_parameter/angle_id = 1
 shader_parameter/normal_alpha = 1.0
 shader_parameter/transparent_alpha = 0.3
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_06c4x"]
-shader = ExtResource("3_e6814")
-shader_parameter/current_ammo = 3
-shader_parameter/angle_id = 1
-shader_parameter/normal_alpha = 1.0
-shader_parameter/transparent_alpha = 0.3
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uxfb"]
-shader = ExtResource("3_e6814")
-shader_parameter/current_ammo = 3
-shader_parameter/angle_id = 1
-shader_parameter/normal_alpha = 1.0
-shader_parameter/transparent_alpha = 0.3
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2uer"]
-shader = ExtResource("3_e6814")
-shader_parameter/current_ammo = 3
-shader_parameter/angle_id = 1
-shader_parameter/normal_alpha = 1.0
-shader_parameter/transparent_alpha = 0.3
-shader_parameter/tint_color = Color(1, 1, 1, 1)
 
 [node name="Viseur" type="RayCast2D"]
 target_position = Vector2(50, 0)
 script = ExtResource("1_sm52v")
+pos_viseur_x = null
+pos_viseur_y = null
+recoil_distance = null
+recoil_duration = null
+return_duration = null
 spread_curve = SubResource("Curve_ne6dx")
+max_spread_distance = null
+spread_recovery_speed = null
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -66,19 +48,16 @@ position = Vector2(4, 4)
 texture = ExtResource("3_g1dfp")
 
 [node name="CursorAngle2" type="Sprite2D" parent="Control"]
-material = SubResource("ShaderMaterial_06c4x")
 position = Vector2(12, 4)
 rotation = 1.5708
 texture = ExtResource("3_g1dfp")
 
 [node name="CursorAngle3" type="Sprite2D" parent="Control"]
-material = SubResource("ShaderMaterial_7uxfb")
 position = Vector2(12, 12)
 rotation = 3.14159
 texture = ExtResource("3_g1dfp")
 
 [node name="CursorAngle4" type="Sprite2D" parent="Control"]
-material = SubResource("ShaderMaterial_n2uer")
 position = Vector2(4, 12)
 rotation = -1.5708
 texture = ExtResource("3_g1dfp")
