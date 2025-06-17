@@ -89,7 +89,6 @@ func initialize_spread_curve():
 
 func setup_shaders():
 	"""Récupère les shaders déjà attachés manuellement"""
-	print("Récupération des shaders existants...")
 	angle_materials.clear()
 	
 	for i in range(cursor_angles.size()):
@@ -102,12 +101,9 @@ func setup_shaders():
 				existing_material.set_shader_parameter("current_ammo", Global.current_ammo)
 				# Assure-toi que le shader supporte jusqu'à 4 munitions
 				angle_materials.append(existing_material)
-				print("Shader existant trouvé pour angle ", i + 1, " avec ID: ", i + 1)
 			else:
-				print("Aucun shader trouvé pour l'angle ", i + 1)
 				angle_materials.append(null)
 		else:
-			print("Angle ", i + 1, " non trouvé")
 			angle_materials.append(null)
 
 # === GESTION DE LA POSITION ET DU MOUVEMENT ===
@@ -136,13 +132,11 @@ func update_ui_rotation():
 func handle_shooting_detection():
 	"""Détecte automatiquement les tirs"""
 	if Global.current_ammo < last_ammo_count:
-		print("Tir détecté! Munitions: ", last_ammo_count, " -> ", Global.current_ammo)
 		trigger_recoil()
 	last_ammo_count = Global.current_ammo
 
 func trigger_recoil():
 	"""Déclenche l'effet de recul"""
-	print("Recul déclenché!")
 	current_spread_time = 0.0
 	# Force une mise à jour immédiate des shaders
 	update_shader_parameters()
@@ -195,15 +189,11 @@ func create_angle_material(angle_id: int) -> ShaderMaterial:
 func apply_material_to_angle(angle_node: Node2D, material: ShaderMaterial):
 	"""Applique un matériel à un angle"""
 	if not angle_node or not material:
-		print("Erreur: angle_node ou material null")
 		return
 	
 	var renderable = find_renderable_node(angle_node)
 	if renderable:
 		renderable.material = material
-		print("Matériel appliqué à: ", renderable.name)
-	else:
-		print("Erreur: aucun Sprite2D trouvé dans ", angle_node.name)
 
 func find_renderable_node(node: Node2D) -> Node:
 	"""Trouve le nœud qui peut recevoir un matériel"""
@@ -221,18 +211,15 @@ func find_renderable_node(node: Node2D) -> Node:
 func update_shader_parameters():
 	"""Met à jour les paramètres des shaders"""
 	var current_ammo = Global.current_ammo
-	print("Mise à jour shaders - Munitions actuelles: ", current_ammo)
 	
 	for i in range(angle_materials.size()):
 		if angle_materials[i] and angle_materials[i].shader:
 			angle_materials[i].set_shader_parameter("current_ammo", current_ammo)
-			print("Shader angle ", i + 1, " mis à jour avec ", current_ammo, " munitions")
 
 # === GESTION DE L'AFFICHAGE DES MUNITIONS ===
 
 func update_ammo_display():
 	"""Met à jour l'affichage selon les munitions"""
-	print("Mise à jour affichage munitions: ", Global.current_ammo)
 	update_shader_parameters()
 	update_crosshair_appearance()
 
