@@ -672,29 +672,17 @@ position = Vector2(446, -390)
 [node name="Breakable_small_platform5" parent="Tiles/destruct_Platforms" instance=ExtResource("7_dk4ty")]
 position = Vector2(379, -449)
 
-[node name="Breakable Block" parent="Tiles/destruct_Platforms" instance=ExtResource("8_xjlag")]
-position = Vector2(-64, -285)
-
 [node name="Breakable Block5" parent="Tiles/destruct_Platforms" instance=ExtResource("8_xjlag")]
 position = Vector2(-32, -270)
 
 [node name="Breakable Block2" parent="Tiles/destruct_Platforms" instance=ExtResource("8_xjlag")]
 position = Vector2(16, -269)
 
-[node name="Breakable Block3" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
-position = Vector2(-53, -261)
-
 [node name="Breakable Block10" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
 position = Vector2(-5, -261)
 
 [node name="Breakable Block11" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
 position = Vector2(-5, -277)
-
-[node name="Breakable Block7" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
-position = Vector2(-53, -309)
-
-[node name="Breakable Block6" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
-position = Vector2(-37, -309)
 
 [node name="Breakable Block9" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
 position = Vector2(-37, -293)

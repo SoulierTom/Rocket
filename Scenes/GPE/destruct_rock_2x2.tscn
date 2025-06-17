@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_53lbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
-size = Vector2(642, 120)
+size = Vector2(1142.86, 228.571)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkyip"]
-size = Vector2(640, 120)
+size = Vector2(1142.86, 228.571)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_flabj"]
 particles_animation = true
@@ -49,15 +49,16 @@ texture = ExtResource("2_53lbw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(259, -8.9407e-07)
+position = Vector2(285.714, 1.70299e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_rocket" type="Area2D" parent="."]
-visible = false
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
-position = Vector2(260, -2.98023e-07)
+position = Vector2(285.714, 3.40598e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lkyip")
 
 [node name="Timer" type="Timer" parent="."]

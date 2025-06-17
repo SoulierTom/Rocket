@@ -435,7 +435,7 @@ position = Vector2(-1, -1)
 bounds_node_path = NodePath("../../CameraLimiters/Line2D")
 
 [node name="Area2D" parent="." instance=ExtResource("4_qj5ia")]
-position = Vector2(853, -103)
+position = Vector2(884, -103)
 
 [node name="CameraLimiters" type="Node" parent="."]
 

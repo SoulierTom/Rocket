@@ -658,7 +658,6 @@ position = Vector2(26, -659)
 rotation = 1.5708
 
 [node name="LevelCamManager" parent="." instance=ExtResource("7_obv5d")]
-camera_vertical_offset = -40.0
 
 [editable path="Player"]
 [editable path="Player/Camera"]
