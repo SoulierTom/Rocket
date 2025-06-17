@@ -10,7 +10,6 @@ class_name Camera
 @export_group("Bounds Settings")
 @export var bounds_enabled: bool = true
 @export var bounds_node_path: NodePath  # Chemin vers le node CameraBounds
-@export var bounds_margin: Vector2 = Vector2(50, 50)  # Marge depuis les bords
 
 # Paramètres de suivi
 @export_group("Follow Settings")
@@ -93,27 +92,36 @@ func _ready():
 		target_offset_y = 0.0
 
 func _find_bounds_node():
+	print("DEBUG: Recherche du node de limites...")
+	
 	# Chercher le node de limites
 	if bounds_node_path != NodePath():
+		print("DEBUG: Tentative de récupération via bounds_node_path: ", bounds_node_path)
 		bounds_node = get_node(bounds_node_path) as CameraBounds
 	else:
+		print("DEBUG: bounds_node_path vide, recherche automatique...")
 		# Chercher automatiquement dans la scène
 		bounds_node = get_tree().get_first_node_in_group("camera_bounds") as CameraBounds
 		if not bounds_node:
+			print("DEBUG: Pas trouvé dans le groupe 'camera_bounds', recherche par type...")
 			# Chercher par type
 			var nodes = get_tree().get_nodes_in_group("camera_bounds")
+			print("DEBUG: Nodes dans le groupe camera_bounds: ", nodes.size())
 			for node in nodes:
+				print("DEBUG: Node trouvé: ", node.name, " Type: ", node.get_class())
 				if node is CameraBounds:
 					bounds_node = node
 					break
 	
 	if bounds_node:
-		print("Limites de caméra trouvées : ", bounds_node.name)
+		print("DEBUG: Limites de caméra trouvées : ", bounds_node.name)
+		print("DEBUG: Nombre de points: ", bounds_node.get_point_count())
+		print("DEBUG: Points: ", bounds_node.points if bounds_node.get_point_count() > 0 else "Aucun point")
 		# Connecter le signal de changement des limites
 		if not bounds_node.is_connected("bounds_changed", _on_bounds_changed):
 			bounds_node.connect("bounds_changed", _on_bounds_changed)
 	else:
-		print("Aucune limite de caméra trouvée")
+		print("DEBUG: ERREUR - Aucune limite de caméra trouvée")
 
 func _on_bounds_changed():
 	# Réappliquer les limites quand elles changent
@@ -137,7 +145,9 @@ func _process(delta):
 	
 	# Appliquer les limites si activées
 	if bounds_enabled and bounds_node:
+		print("DEBUG: Application des limites à target_position: ", target_position)
 		target_position = _apply_bounds_to_position(target_position)
+		print("DEBUG: target_position après limites: ", target_position)
 	
 	# Appliquer le suivi fluide
 	var next_position: Vector2
@@ -148,7 +158,9 @@ func _process(delta):
 	
 	# Appliquer les limites à la position finale pour s'assurer qu'elle ne dépasse jamais
 	if bounds_enabled and bounds_node:
+		print("DEBUG: Application des limites à next_position: ", next_position)
 		next_position = _apply_bounds_to_position(next_position)
+		print("DEBUG: next_position après limites: ", next_position)
 	
 	global_position = next_position
 	
@@ -157,23 +169,38 @@ func _process(delta):
 		_apply_smooth_shake()
 
 func _apply_bounds_to_position(pos: Vector2) -> Vector2:
-	if not bounds_node or bounds_node.get_point_count() < 2:
+	if not bounds_node:
+		print("DEBUG: bounds_node est null")
+		return pos
+	
+	if bounds_node.get_point_count() < 2:
+		print("DEBUG: Pas assez de points dans bounds_node: ", bounds_node.get_point_count())
 		return pos
 	
 	var bounds_rect = bounds_node.get_bounds_rect()
+	print("DEBUG: bounds_rect = ", bounds_rect)
+	
 	if bounds_rect.size == Vector2.ZERO:
+		print("DEBUG: bounds_rect.size est zéro")
 		return pos
 	
-	# Calculer la taille de la vue de la caméra
+	# Calculer la taille de l'écran visible par la caméra
 	var viewport_size = get_viewport().get_visible_rect().size
 	var camera_size = viewport_size / zoom
 	var half_camera_size = camera_size / 2.0
 	
-	# Calculer les limites strictes
-	var min_x = bounds_rect.position.x + half_camera_size.x + bounds_margin.x
-	var max_x = bounds_rect.position.x + bounds_rect.size.x - half_camera_size.x - bounds_margin.x
-	var min_y = bounds_rect.position.y + half_camera_size.y + bounds_margin.y
-	var max_y = bounds_rect.position.y + bounds_rect.size.y - half_camera_size.y - bounds_margin.y
+	print("DEBUG: viewport_size = ", viewport_size)
+	print("DEBUG: zoom = ", zoom)
+	print("DEBUG: camera_size = ", camera_size)
+	print("DEBUG: half_camera_size = ", half_camera_size)
+	
+	# Calculer les limites pour que les BORDS de l'écran correspondent à la Line2D
+	var min_x = bounds_rect.position.x + half_camera_size.x
+	var max_x = bounds_rect.position.x + bounds_rect.size.x - half_camera_size.x
+	var min_y = bounds_rect.position.y + half_camera_size.y
+	var max_y = bounds_rect.position.y + bounds_rect.size.y - half_camera_size.y
+	
+	print("DEBUG: Limites calculées - min_x: ", min_x, " max_x: ", max_x, " min_y: ", min_y, " max_y: ", max_y)
 	
 	# S'assurer que les limites sont cohérentes
 	if max_x < min_x:
@@ -185,12 +212,13 @@ func _apply_bounds_to_position(pos: Vector2) -> Vector2:
 		min_y = center_y
 		max_y = center_y
 	
-	# Appliquer les limites de manière stricte
+	# Contraindre la position du centre de la caméra
 	var constrained_pos = Vector2(
 		clamp(pos.x, min_x, max_x),
 		clamp(pos.y, min_y, max_y)
 	)
 	
+	print("DEBUG: Position originale: ", pos, " -> Position contrainte: ", constrained_pos)
 	return constrained_pos
 
 # Fonction pour définir manuellement les limites
@@ -203,7 +231,6 @@ func set_bounds_node(bounds: CameraBounds):
 func set_bounds_enabled(enabled: bool):
 	bounds_enabled = enabled
 
-# Reste de votre code existant...
 func _update_offset_y(delta):
 	# Calculer l'offset Y total cible
 	target_total_offset_y = base_offset_y + dynamic_offset_y

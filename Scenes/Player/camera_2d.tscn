@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/camera_2d.gd" id="1_bd862"]
 
-[node name="Camera" type="Camera2D" groups=["Camera"]]
+[node name="Camera" type="Camera2D" groups=["Camera", "camera_bounds"]]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 17.0

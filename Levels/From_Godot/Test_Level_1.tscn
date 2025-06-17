@@ -431,12 +431,19 @@ color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 [node name="Player" parent="." instance=ExtResource("5_3lkrf")]
 position = Vector2(-1, -1)
 
+[node name="Camera" parent="Player" index="3"]
+bounds_node_path = NodePath("../../CameraLimiters/Line2D")
+
 [node name="Area2D" parent="." instance=ExtResource("4_qj5ia")]
 position = Vector2(853, -103)
 
 [node name="CameraLimiters" type="Node" parent="."]
 
 [node name="Line2D" parent="CameraLimiters" instance=ExtResource("6_bkvj5")]
-position = Vector2(-81, -109.207)
-scale = Vector2(1, 1.46743)
-points = PackedVector2Array(917, -237, -122, -242, -127, 255, 934, 260, 940, -236)
+position = Vector2(32, -88)
+scale = Vector2(0.888385, 0.533498)
+points = PackedVector2Array(936.531, -434.866, -180.102, -434.866, -180.102, 404.875, 936.531, 404.875, 936.531, -434.866)
+
+[editable path="Player"]
+[editable path="Player/Camera"]
+[editable path="Player/Arm"]
