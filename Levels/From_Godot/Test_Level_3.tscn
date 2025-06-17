@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d0xpjhfkqs1pd"]
+[gd_scene load_steps=14 format=4 uid="uid://d0xpjhfkqs1pd"]
 
 [ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="1_42xig"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_h2g4d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="3_1q0ft"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="5_kiihq"]
 [ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="7_i6atm"]
+[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/CameraBounds.tscn" id="8_h54nx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_h2g4d")
@@ -637,5 +638,15 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("5_kiihq")]
 position = Vector2(-225.775, -2)
 
+[node name="Camera" parent="Player" index="3"]
+bounds_node_path = NodePath("../../Line2D")
+
 [node name="LevelCamManager" parent="." instance=ExtResource("7_i6atm")]
 camera_vertical_offset = -40.0
+
+[node name="Line2D" parent="." instance=ExtResource("8_h54nx")]
+points = PackedVector2Array(-308, -420, -320, 64, 384, 64, 384, -536)
+
+[editable path="Player"]
+[editable path="Player/Camera"]
+[editable path="Player/Arm"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cwluy74qleb1j"]
+[gd_scene load_steps=15 format=4 uid="uid://cwluy74qleb1j"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_qagos"]
 [ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="1_vrwrq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="5_cp4a2"]
 [ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="8_l2ixk"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="8_ycgf5"]
+[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/CameraBounds.tscn" id="9_8xt2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("2_h8cid")
@@ -639,6 +640,9 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("5_cp4a2")]
 position = Vector2(27, -1)
 
+[node name="Camera" parent="Player" index="3"]
+bounds_node_path = NodePath("../../Line2D")
+
 [node name="Spike_Manager" type="Node" parent="."]
 
 [node name="Area2D22" parent="Spike_Manager" instance=ExtResource("8_ycgf5")]
@@ -742,6 +746,9 @@ position = Vector2(280, 600)
 
 [node name="LevelCamManager" parent="." instance=ExtResource("8_l2ixk")]
 camera_vertical_offset = 40.0
+
+[node name="Line2D" parent="." instance=ExtResource("9_8xt2x")]
+points = PackedVector2Array(272, -128, -192, -128, -192, 800, 272, 800, 272, -128)
 
 [editable path="Player"]
 [editable path="Player/Camera"]

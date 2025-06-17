@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b328rseredp3l"]
+[gd_scene load_steps=14 format=4 uid="uid://b328rseredp3l"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_rdu16"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_vq1js"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="4_uodr6"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kanfh"]
 [ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="7_48i5o"]
+[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/CameraBounds.tscn" id="8_o6ebm"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="9_3kq1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
@@ -671,8 +672,18 @@ position = Vector2(448, -72)
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(320, -201)
 
+[node name="Camera" parent="Player" index="3"]
+bounds_node_path = NodePath("../../Line2D")
+
 [node name="Finish" parent="." instance=ExtResource("5_kanfh")]
 position = Vector2(32, -67)
 
 [node name="CameraManager" type="Node2D" parent="."]
 script = ExtResource("7_48i5o")
+
+[node name="Line2D" parent="." instance=ExtResource("8_o6ebm")]
+points = PackedVector2Array(32, 64, 32, -320, 576, -320, 576, 64, 32, 64)
+
+[editable path="Player"]
+[editable path="Player/Camera"]
+[editable path="Player/Arm"]

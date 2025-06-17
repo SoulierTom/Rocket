@@ -765,5 +765,8 @@ position = Vector2(114, -316)
 camera_vertical_offset = -30.0
 
 [node name="Line2D" parent="." instance=ExtResource("10_qhwb0")]
-position = Vector2(116, 3)
-points = PackedVector2Array(-633, -575, 340, -610, 325, 165, -644, 165, -640, -589)
+points = PackedVector2Array(128, 64, 128, -448, -448, -448, -448, 64, 128, 64)
+
+[editable path="Player"]
+[editable path="Player/Camera"]
+[editable path="Player/Arm"]
