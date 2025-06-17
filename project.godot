@@ -35,6 +35,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/ldtk-importer/plugin.cfg")
 
+[global_group]
+
+camera_bounds=""
+
 [input]
 
 ui_accept={

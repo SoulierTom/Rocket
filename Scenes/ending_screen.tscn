@@ -149,6 +149,7 @@ offset_bottom = 40.0
 position = Vector2(962, 542)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/autre"]
+layout_mode = 0
 offset_left = 679.0
 offset_top = 142.0
 offset_right = 1186.0
@@ -175,6 +176,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="texte_temps_final" type="Label" parent="CanvasLayer/autre"]
 z_index = 1
+layout_mode = 0
 offset_left = 823.0
 offset_top = 160.0
 offset_right = 1049.0

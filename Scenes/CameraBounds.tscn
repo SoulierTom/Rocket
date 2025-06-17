@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtxvg447byeme"]
+
+[ext_resource type="Script" path="res://Scripts/camera_bounds.gd" id="1_dwsh5"]
+
+[node name="Line2D" type="Line2D" groups=["camera_bounds"]]
+script = ExtResource("1_dwsh5")
