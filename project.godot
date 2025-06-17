@@ -20,6 +20,7 @@ config/icon="res://Assets/Images/Divers/Logo M-Corp.png"
 Global="*res://Scripts/global.gd"
 TransitionScreen="*res://Scenes/Transition_Screen.tscn"
 DeathScreen="*res://Scenes/death_screen.tscn"
+LevelManager="*res://Scripts/LevelManager.gd"
 
 [display]
 
