@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rocket"
-run/main_scene="res://Levels/From_Godot/Test_Level_1.tscn"
+run/main_scene="res://Scenes/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/Images/Divers/Logo M-Corp.png"
 
@@ -25,6 +25,7 @@ DeathScreen="*res://Scenes/death_screen.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/aspect="expand"
