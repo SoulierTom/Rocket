@@ -227,7 +227,7 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(5.33333, -1.33333)
 rotation = 0.0
 
-[node name="RayCast2D" parent="Arm" index="6"]
+[node name="RayCast2D" parent="Arm" index="7"]
 visible = false
 
 [node name="InteractionBox" type="Area2D" parent="."]

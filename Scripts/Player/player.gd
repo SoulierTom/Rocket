@@ -132,9 +132,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			resume_game()
 
-	if is_on_floor():
-			reload()
-
 func add_gravity() -> float:
 	var fall_progress: float = clamp(fall_time / FALL_ACCEL_TIME, 0.0, 1.0)
 	var fall_ease := ease_out(fall_progress)
@@ -185,7 +182,3 @@ func resume_game():
 		get_tree().paused = false
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
-
-
-func reload():
-	Global.current_ammo = Global.magazine_size
