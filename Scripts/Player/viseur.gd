@@ -97,9 +97,10 @@ func setup_shaders():
 			var renderable = find_renderable_node(cursor_angles[i])
 			if renderable and renderable.material and renderable.material is ShaderMaterial:
 				var existing_material = renderable.material as ShaderMaterial
-				# Configure les paramètres initiaux
+				# Configure les paramètres initiaux pour 4 roquettes
 				existing_material.set_shader_parameter("angle_id", i + 1)
 				existing_material.set_shader_parameter("current_ammo", Global.current_ammo)
+				# Assure-toi que le shader supporte jusqu'à 4 munitions
 				angle_materials.append(existing_material)
 				print("Shader existant trouvé pour angle ", i + 1, " avec ID: ", i + 1)
 			else:
@@ -185,6 +186,9 @@ func create_angle_material(angle_id: int) -> ShaderMaterial:
 	if material:
 		material.set_shader_parameter("angle_id", angle_id)
 		material.set_shader_parameter("current_ammo", Global.current_ammo)
+		# Paramètres par défaut pour la transparence
+		material.set_shader_parameter("normal_alpha", 1.0)
+		material.set_shader_parameter("transparent_alpha", 0.3)
 	
 	return material
 
@@ -241,12 +245,14 @@ func update_crosshair_appearance():
 
 	match Global.current_ammo:
 		0:
-			color = Color(1.0, 0.0, 0.0, 0.6)  # Rouge semi-transparent
+			color = Color(0.5, 0.5, 0.5, 0.8)  # Gris avec un peu de transparence
 		1:
-			color = Color.ORANGE
+			color = Color(1.0, 0.0, 0.0, 0.8)  # Rouge avec transparence
 		2:
-			color = Color.YELLOW
+			color = Color.ORANGE
 		3:
+			color = Color.YELLOW
+		4:
 			color = Color.GREEN
 		_:
 			color = Color.WHITE
