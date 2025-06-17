@@ -39,6 +39,15 @@ const RocketScene = preload("res://Scenes/Player/Rocket.tscn")
 func _ready():
 	set_as_top_level(true)  # Dessine l'objet devant les autres
 	$RayCast2D.z_index = 10
+	
+	# Réinitialisation du système de rechargement au début de chaque niveau
+	shot_in_air = false
+	shot_on_ground = false
+	reload_timer = 0.0
+	shot_time = 0.0
+	
+	# S'assurer que le joueur commence avec un chargeur plein
+	Global.current_ammo = Global.magazine_size
 
 func _physics_process(_delta):
 	var character_pos = get_parent().position
