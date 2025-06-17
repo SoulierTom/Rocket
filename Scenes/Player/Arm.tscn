@@ -44,6 +44,8 @@ one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
 
+[node name="Reload_delay" type="Timer" parent="."]
+
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_k8wks")
 volume_db = -7.5
@@ -85,5 +87,3 @@ position = Vector2(2.38419e-07, 0)
 rotation = -0.226893
 texture = ExtResource("9_xu18f")
 offset = Vector2(6, -3)
-
-[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
