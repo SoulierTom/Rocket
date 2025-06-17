@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxha3w1wrebwu" path="res://Assets/Images/Divers/Bullet.png" id="2_6y0mm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]
-size = Vector2(10, 6)
+size = Vector2(100, 60)
 
 [sub_resource type="Gradient" id="Gradient_slfmi"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -14,7 +14,7 @@ z_index = 6
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_u06mp")
-speed = 600
+speed = 500
 explosion_notifier = NodePath(".")
 
 [node name="Existence" type="Timer" parent="."]
