@@ -125,9 +125,6 @@ offset_left = -7.0
 offset_right = -7.0
 script = ExtResource("1_vbw75")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(969, 542)
-
 [node name="medal_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ida1h")
 
@@ -136,7 +133,16 @@ stream = ExtResource("3_ddnqx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="autre" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/autre"]
+position = Vector2(962, 542)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/autre"]
 offset_left = 679.0
 offset_top = 142.0
 offset_right = 1186.0
@@ -144,23 +150,24 @@ offset_bottom = 966.0
 color = Color(0.355314, 0.355314, 0.355314, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="temps_final" type="Label" parent="CanvasLayer"]
+[node name="temps_final" type="Label" parent="CanvasLayer/autre"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -313.0
-offset_right = 74.0
-offset_bottom = -244.0
+offset_left = 815.0
+offset_top = 207.0
+offset_right = 1014.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "00:00:00"
 label_settings = SubResource("LabelSettings_rbj3c")
 metadata/_edit_use_anchors_ = true
 
-[node name="texte_temps_final" type="Label" parent="CanvasLayer"]
+[node name="texte_temps_final" type="Label" parent="CanvasLayer/autre"]
 offset_left = 823.0
 offset_top = 160.0
 offset_right = 1049.0
@@ -169,30 +176,32 @@ text = "Resultat :"
 label_settings = SubResource("LabelSettings_rbj3c")
 metadata/_edit_use_anchors_ = true
 
-[node name="Main Menu" type="Button" parent="CanvasLayer"]
+[node name="Main Menu" type="Button" parent="CanvasLayer/autre"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = 255.0
-offset_right = 184.0
-offset_bottom = 384.0
+offset_left = 716.0
+offset_top = 775.0
+offset_right = 1124.0
+offset_bottom = 904.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/autre"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_p03p2")
 }
 
 [node name="fond_medaille" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.982813
+anchor_bottom = 0.968518
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
@@ -223,7 +232,8 @@ texture = ExtResource("2_svmx2")
 
 [node name="medaille" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.982813
+anchor_bottom = 0.962037
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
@@ -253,7 +263,8 @@ texture = ExtResource("5_6h2vg")
 
 [node name="temps_medaille" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.984375
+anchor_bottom = 0.962963
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
@@ -298,4 +309,4 @@ text = "Requis : 00:00"
 label_settings = SubResource("LabelSettings_easgr")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/autre/Main Menu" to="." method="_on_main_menu_pressed"]
