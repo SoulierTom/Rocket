@@ -40,6 +40,7 @@ TransitionScreen="*res://Scenes/Transition_Screen.tscn"
 DeathScreen="*res://Scenes/death_screen.tscn"
 LevelManager="*res://Scripts/LevelManager.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+FmodMasterBanksLoad="*res://Scenes/FmodMasterBanksLoad.tscn"
 
 [display]
 

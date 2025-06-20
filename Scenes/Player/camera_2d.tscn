@@ -10,3 +10,5 @@ drag_horizontal_offset = 0.01
 drag_vertical_offset = 0.01
 script = ExtResource("1_bd862")
 zoom_level = Vector2(5, 5)
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]

@@ -230,4 +230,9 @@ environment = SubResource("Environment_ma124")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ma04u")
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/TestExplosion"
+event_guid = "{931df8b7-6fa7-4d8d-9e32-593a5951b041}"
+autoplay = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
