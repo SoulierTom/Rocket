@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Reset_Chapter"):
 		get_tree().change_scene_to_file("res://Levels/From_Godot/Test_Level_1.tscn")
+		LevelManager.current_level_index = 0
 		Global.speedrun_time = 0
 
 	if Input.is_action_just_pressed("Reset_Level"):
