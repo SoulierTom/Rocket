@@ -38,6 +38,7 @@ func press_focused_button():
 func _on_play_pressed():
 	Global.speedrun_time = 0.0
 	Global.timer_initialized = false
+	LevelManager.current_level_index = 0
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 
