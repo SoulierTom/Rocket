@@ -118,9 +118,14 @@ func _input(event):
 	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
 		if Global.current_ammo > 0:
 			shoot(RocketScene)
+			# Son / FMOD : lancement de la lecture de l'Event "tir" depuis son Emitter
+			$FmodEventEmitterShot.play()
 			projectile_fired.emit()
 			Global.current_ammo -= 1
 			$RayCast2D.update_ammo_display()
+		# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
+		else: 
+			$FmodEventEmitterNoAmmo.play()
 
 			# NOUVEAU: Déterminer le type de tir
 			var current_grounded = player.is_on_floor()

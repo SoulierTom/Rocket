@@ -87,3 +87,11 @@ position = Vector2(2.38419e-07, 0)
 rotation = -0.226893
 texture = ExtResource("9_xu18f")
 offset = Vector2(6, -3)
+
+[node name="FmodEventEmitterShot" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/ShootingSequence/Shot"
+event_guid = "{953a8764-4b85-4885-928c-ec4da014f9a6}"
+
+[node name="FmodEventEmitterNoAmmo" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/ShootingSequence/ShotNoAmmo"
+event_guid = "{49be5e6e-eee0-47e5-b4fa-ca7b943a53ed}"
