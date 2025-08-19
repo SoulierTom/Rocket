@@ -123,6 +123,8 @@ func _input(event):
 			projectile_fired.emit()
 			Global.current_ammo -= 1
 			$RayCast2D.update_ammo_display()
+			# Son $Fmod : lancement de la lecture de l'Event "trajet roquette" depuis son Emitter
+			$Rocket/FmodEventEmitterRocketTravel.play()
 		# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
 		else: 
 			$FmodEventEmitterNoAmmo.play()
@@ -149,13 +151,16 @@ func shoot(projectile: PackedScene) -> void:
 	projectile_instance.position = player.global_position
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
-	$Tir.play()
+	## Ancien code lancement son
+	## $Tir.play()
 	Global.shooting_pos = player.position
 	cooldown.start()
 
 func reload():
 	Global.current_ammo = Global.magazine_size
 	$RayCast2D.update_ammo_display()
+	# FMOD son lancement recharge munitions depuis son Emitter
+	$FmodEventEmitterRefill.play()
 	print("Munitions rechargées !")
 	
 	# NOUVEAU: Reset des états de tir
@@ -168,4 +173,8 @@ func create_explosion(explosion_position: Vector2) -> void:
 		var explosion_instance = explosion_scene.instantiate()
 		explosion_instance.global_position = explosion_position
 		add_child(explosion_instance)
-		$Explosion.play()
+		## FMOD son Bug : tenter de kill l'Event ici s'il ne joue pas fait crasher le jeu
+		##if $Rocket/FmodEventEmitterRocketTravel.isPlaying:
+			##$Rocket/FmodEventEmitterRocketTravel.stop()
+		### Ancien code lancement son
+		### $Explosion.play()

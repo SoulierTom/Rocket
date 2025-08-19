@@ -231,7 +231,7 @@ environment = SubResource("Environment_ma124")
 shape = SubResource("CircleShape2D_ma04u")
 
 [node name="FmodExplosionEventEmitter" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/ShootingSequence/Xplosion"
+event_name = "event:/WeaponsSystems/ShootingSequence/Xplosion"
 event_guid = "{43cde0d8-1266-4f18-b36b-1407cf01fc58}"
 autoplay = true
 fmod_parameters/RocketNumber/id = 2022905473231445046

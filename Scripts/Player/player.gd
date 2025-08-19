@@ -147,6 +147,11 @@ func ease_out(t: float) -> float:
 
 func wall_slide(delta):
 	if is_on_wall() and not is_on_floor():
+		## Son Fmod lancement du SFX de grab lorsque la touche est pressée
+		## Bug : si le joueur presse Grab en l'air et le maintient pressé lors du contact avec le mur
+		## alors le perso va grabber le mur mais le son se jouera pas
+		if Input.is_action_just_pressed("Grab"):
+			$FmodWallgrab.play()
 		if Input.is_action_pressed("Grab"):
 			is_wall_sliding = true
 		else:
