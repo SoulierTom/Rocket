@@ -110,16 +110,19 @@ func _physics_process(delta: float) -> void:
 			if dir_arm.x > 0:
 				animated_sprite.play("run")
 				if current_frame >= 0 and current_frame < 1:
-					$walk_sound.play()
-				if current_frame >= 2 and current_frame < 3:
-					$walk_sound.play()
+					$FmodWalk.play_one_shot()
+				# $walk_sound.play()
+				#if current_frame >= 2 and current_frame < 3:
+					# $walk_sound.play()
+					#$FmodWalk.play_one_shot()
 			else:
 				animated_sprite.play("run_left")
 				if current_frame >= 0 and current_frame < 1:
-					$walk_sound.play()
-					
-				if current_frame >= 2 and current_frame < 3:
-					$walk_sound.play()
+					$FmodWalk.play_one_shot()
+					# $walk_sound.play()
+				#if current_frame >= 2 and current_frame < 3:
+					# $walk_sound.play()
+					#$FmodWalk.play_one_shot()
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")

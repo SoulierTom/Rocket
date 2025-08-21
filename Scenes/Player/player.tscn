@@ -250,6 +250,10 @@ event_name = "event:/PlayerMovements/WallGrab"
 event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
 allow_fadeout = false
 
+[node name="FmodWalk" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/Walking"
+event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
+
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
