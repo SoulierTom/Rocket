@@ -12,8 +12,8 @@ func _ready():
 func _on_animation_finished(anim_name):
 		if anim_name == "fade_to_black":
 			on_death_finished.emit()
-			# Fmod son lancement respawn en direct (l'Emitter est sur la scène death_screen)
-			$FmodRespawn.play_one_shot()
+			#Fmod Son : lancement de l'Event Respawn en direct sans passer par un Emitter Node
+			FmodServer.play_one_shot("event:/UI-and-Events/Respawn")
 			animation_player.play("fade_to_normal")
 		elif anim_name == "fade_to_normal":
 			color_rect.visible = false
@@ -21,5 +21,5 @@ func _on_animation_finished(anim_name):
 func death():
 	color_rect.visible = true
 	animation_player.play("fade_to_black")
-	# Fmod son lancement death en direct (l'Emitter est sur la scène death_screen)
-	$FmodDeath.play_one_shot()
+	#Fmod Son : lancement de l'Event Death en direct sans passer par un Emitter Node
+	FmodServer.play_one_shot("event:/UI-and-Events/Death")

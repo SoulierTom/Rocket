@@ -72,16 +72,3 @@ color = Color(0.496686, 0.439819, 0.547821, 1)
 libraries = {
 "": SubResource("AnimationLibrary_wiera")
 }
-
-[node name="FmodDeath" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/UI-and-Events/Death"
-event_guid = "{ba03f5de-9250-4cea-9cea-d345f0a65103}"
-attached = false
-auto_release = true
-
-[node name="FmodRespawn" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/UI-and-Events/Respawn"
-event_guid = "{9b660d22-1049-417c-bfe0-0caaf5971818}"
-attached = false
-auto_release = true
-preload_event = false

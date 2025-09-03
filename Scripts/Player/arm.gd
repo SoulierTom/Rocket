@@ -125,8 +125,9 @@ func _input(event):
 			$RayCast2D.update_ammo_display()
 			# Son $Fmod : lancement de la lecture de l'Event "trajet roquette" depuis son Emitter
 			$Rocket/FmodEventEmitterRocketTravel.play()
-		# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
+			# FmodServer.play_one_shot_attached("event:/WeaponsSystems/ShootingSequence/RocketTravel", $Rocket)
 		else: 
+			# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
 			$FmodEventEmitterNoAmmo.play()
 
 			# NOUVEAU: Déterminer le type de tir
@@ -161,6 +162,7 @@ func reload():
 	$RayCast2D.update_ammo_display()
 	# FMOD son lancement recharge munitions depuis son Emitter
 	$FmodEventEmitterRefill.play()
+	FmodServer.set_global_parameter_by_name("GlobalRocketNumber", 1)
 	print("Munitions rechargées !")
 	
 	# NOUVEAU: Reset des états de tir

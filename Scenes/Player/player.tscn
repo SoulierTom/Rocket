@@ -254,6 +254,10 @@ allow_fadeout = false
 event_name = "event:/PlayerMovements/Walking"
 event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
 
+[node name="FmodBonk" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/PlayerMovements/Bonk"
+event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
+
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]

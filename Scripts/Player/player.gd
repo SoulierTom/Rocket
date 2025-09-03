@@ -62,6 +62,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_ceiling():
 		bonk_freeze_timer = BONK_FREEZE_TIME  # Active le freeze
+		# Fmod Son : lancement Event Bonk depuis l'Emitter sur Playernode
+		$FmodBonk.play()
 		
 	wall_slide(delta)
 		
