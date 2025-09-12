@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		Global.player_impulsed = false
 		fall_time = 0.0
+		Global.current_ammo = Global.magazine_size
 	else:
 		fall_time += delta
 		velocity.y += add_gravity() * delta
