@@ -64,6 +64,7 @@ alpha_curve = SubResource("CurveTexture_fw3sb")
 anim_offset_max = 1.0
 
 [node name="Breakable_small_platform" type="StaticBody2D"]
+position = Vector2(4, -54)
 rotation = 1.5708
 scale = Vector2(0.1, 0.125)
 collision_layer = 3
@@ -77,6 +78,7 @@ scale = Vector2(5.03125, 1)
 texture = ExtResource("2_frsqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(259, -8.9407e-07)
 shape = SubResource("RectangleShape2D_uf8v0")
 
@@ -85,6 +87,7 @@ position = Vector2(-41.6667, 16.6667)
 scale = Vector2(1.04, 1.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_player"]
+visible = false
 light_mask = 3
 position = Vector2(260, -13.8889)
 shape = SubResource("RectangleShape2D_r2xqy")
@@ -93,6 +96,7 @@ shape = SubResource("RectangleShape2D_r2xqy")
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
+visible = false
 position = Vector2(260, -2.98023e-07)
 shape = SubResource("RectangleShape2D_lkyip")
 

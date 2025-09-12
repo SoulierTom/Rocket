@@ -64,6 +64,7 @@ alpha_curve = SubResource("CurveTexture_xgmd3")
 anim_offset_max = 1.0
 
 [node name="Breakable_small_platform" type="StaticBody2D"]
+position = Vector2(0, -24)
 rotation = 1.5708
 scale = Vector2(0.048, 0.06)
 collision_layer = 3

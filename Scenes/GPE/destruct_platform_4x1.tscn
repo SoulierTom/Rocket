@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c24n1lawsjlrw"]
+[gd_scene load_steps=13 format=3 uid="uid://c24n1lawsjlrw"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_platform.gd" id="1_icfg5"]
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_fvp2o"]
+[ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_kd2gm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
@@ -64,6 +65,7 @@ alpha_curve = SubResource("CurveTexture_fpn70")
 anim_offset_max = 1.0
 
 [node name="Breakable_small_platform" type="StaticBody2D"]
+position = Vector2(-1, 0)
 scale = Vector2(0.048, 0.06)
 collision_layer = 3
 collision_mask = 0
@@ -71,8 +73,8 @@ script = ExtResource("1_icfg5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
-texture = ExtResource("2_fvp2o")
+scale = Vector2(2.891, 0.575)
+texture = ExtResource("2_kd2gm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(259, -8.9407e-07)
