@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfn383r81c0w2"]
+
+[sub_resource type="Curve" id="Curve_sbhl4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ps053"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 40
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, 0)
+angle_min = -92.4
+angle_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 6.5
+scale_amount_curve = SubResource("Curve_sbhl4")
+color = Color(1, 1, 1, 0.211)
+color_ramp = SubResource("Gradient_ps053")

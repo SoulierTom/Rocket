@@ -10,7 +10,7 @@ uniform vec4 tint_color : source_color = vec4(1.0);
 void fragment() {
 	vec4 tex_color = texture(TEXTURE, UV);
 	bool should_be_transparent = false;
-	
+
 	// Logique de transparence pour 4 roquettes
 	if (current_ammo == 3 && angle_id == 1) {
 		should_be_transparent = true;
@@ -24,7 +24,7 @@ void fragment() {
 	else if (current_ammo == 0 && (angle_id == 1 || angle_id == 2 || angle_id == 3 || angle_id == 4)) {
 		should_be_transparent = true;
 	}
-	
+
 	float alpha = should_be_transparent ? transparent_alpha : normal_alpha;
 	COLOR = vec4(tint_color.rgb * tex_color.rgb, tex_color.a * alpha * tint_color.a);
 }

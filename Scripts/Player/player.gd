@@ -23,6 +23,8 @@ var time_in_fall = 0.0
 var arm_offset_x: float = 0.85
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var dust_trail: CPUParticles2D = $CPUParticles2D
+@onready var dust_timer: Timer = $Dust_timer
 
 @onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
 var pause_instance = null
@@ -32,6 +34,9 @@ var camera: Camera2D = null
 
 # Ajoutez une référence au CanvasLayer
 @onready var canvas_layer = $CanvasLayer
+
+func _ready() -> void:
+	dust_trail.emitting = false
 
 func _physics_process(delta: float) -> void:
 
@@ -193,3 +198,14 @@ func resume_game():
 		get_tree().paused = false
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
+
+
+
+func _on_spike_interact_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("boom"):
+		print("youpi")
+		dust_trail.emitting = true
+		dust_timer.start()  # Il manquait les parenthèses ici
+
+func _on_dust_timer_timeout() -> void:
+	dust_trail.emitting = false

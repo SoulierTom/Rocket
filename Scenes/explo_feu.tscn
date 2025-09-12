@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgm4xyrdc7ywx"]
+
+[sub_resource type="Curve" id="Curve_jl4ar"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.168966, 21.9274), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_14104"]
+offsets = PackedFloat32Array(0, 0.164122, 0.389313, 0.507634, 1)
+colors = PackedColorArray(1, 0.870588, 0.4, 1, 1, 0.870588, 0.4, 1, 0.834478, 0, 0.0734887, 1, 0.462745, 0.494118, 0.486275, 0.458824, 0.462745, 0.494118, 0.486275, 0.458824)
+
+[node name="Explo_feu" type="CPUParticles2D"]
+amount = 50
+lifetime = 0.2
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_jl4ar")
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_14104")
