@@ -52,4 +52,9 @@ scale_amount_min = 1.2
 scale_amount_max = 1.2
 color_ramp = SubResource("Gradient_slfmi")
 
+[node name="FmodEventEmitterRocketTravel" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/WeaponsSystems/ShootingSequence/RocketTravel"
+event_guid = "{f7f9c812-b4cf-4f05-83f8-76d70c6c0ff5}"
+allow_fadeout = false
+
 [connection signal="timeout" from="TrailTimer" to="." method="_on_trail_timer_timeout"]
