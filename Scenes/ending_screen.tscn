@@ -1,64 +1,315 @@
-[gd_scene load_steps=4 format=3 uid="uid://bay45tlsap6u7"]
+[gd_scene load_steps=20 format=3 uid="uid://bay45tlsap6u7"]
 
 [ext_resource type="Script" path="res://Scripts/ending_screen.gd" id="1_vbw75"]
-[ext_resource type="Texture2D" uid="uid://fwgii5dbk1sf" path="res://Assets/brackeys_platformer_assets/ynf0qhxz.bmp" id="1_ydy03"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="2_svmx2"]
+[ext_resource type="Texture2D" uid="uid://dvkhpjmiublea" path="res://Assets/Images/Divers/medaille_bronze.png" id="2_xmghj"]
+[ext_resource type="Texture2D" uid="uid://bksg1y36mw66t" path="res://Assets/Images/Divers/medaille_argent.png" id="3_47a57"]
+[ext_resource type="AudioStream" uid="uid://bqtkkhprd8gbr" path="res://Assets/Audio/sounds/badge-coin-win.mp3" id="3_ddnqx"]
+[ext_resource type="Texture2D" uid="uid://swomfadh0onv" path="res://Assets/Images/Divers/medaille_or.png" id="4_ldsag"]
+[ext_resource type="Texture2D" uid="uid://cpbxy2dexlh6" path="res://Assets/Images/Divers/medaille_dev.png" id="5_6h2vg"]
+[ext_resource type="AudioStream" uid="uid://etc5bax732s6" path="res://Assets/Audio/sounds/metallic-clang.mp3" id="7_ida1h"]
+
+[sub_resource type="Animation" id="Animation_c6f22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/medaille/medaille_bronze:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nt83a"]
+resource_name = "argent"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/medaille/medaille_argent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8.2, 8.2), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_kn3jh"]
+resource_name = "bronze"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/medaille/medaille_bronze:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8.2, 8.2), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_r5lrt"]
+resource_name = "dev"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/medaille/medaille_dev:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8.2, 8.2), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_30wx3"]
+resource_name = "or"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/medaille/medaille_or:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8.2, 8.2), Vector2(4, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p03p2"]
+_data = {
+"RESET": SubResource("Animation_c6f22"),
+"argent": SubResource("Animation_nt83a"),
+"bronze": SubResource("Animation_kn3jh"),
+"dev": SubResource("Animation_r5lrt"),
+"or": SubResource("Animation_30wx3")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_rbj3c"]
 font_size = 50
 outline_size = 25
 outline_color = Color(0.196078, 0.215686, 0.317647, 1)
 
-[node name="Ending_Screen" type="Node2D"]
-position = Vector2(625, 350)
+[sub_resource type="LabelSettings" id="LabelSettings_k37jj"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvm42"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83mof"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_easgr"]
+outline_size = 10
+outline_color = Color(0.196078, 0.215686, 0.317647, 1)
+
+[node name="Ending_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -7.0
+offset_right = -7.0
 script = ExtResource("1_vbw75")
+
+[node name="medal_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ida1h")
+
+[node name="dev_medal_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ddnqx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p03p2")
+}
+
+[node name="autre" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/autre"]
+position = Vector2(962, 542)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/autre"]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 142.0
+offset_right = 1186.0
+offset_bottom = 966.0
+color = Color(0.355314, 0.355314, 0.355314, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="temps_final" type="Label" parent="CanvasLayer/autre"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 815.0
+offset_top = 207.0
+offset_right = 1014.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
-position = Vector2(-1079, -497)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_ydy03")
-centered = false
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -619.0
-offset_top = -134.0
-offset_right = -380.0
-offset_bottom = -65.0
-grow_horizontal = 2
-grow_vertical = 2
+text = "00:00:00"
 label_settings = SubResource("LabelSettings_rbj3c")
+metadata/_edit_use_anchors_ = true
 
-[node name="Main Menu" type="Button" parent="CanvasLayer"]
+[node name="texte_temps_final" type="Label" parent="CanvasLayer/autre"]
+z_index = 1
+layout_mode = 0
+offset_left = 823.0
+offset_top = 160.0
+offset_right = 1049.0
+offset_bottom = 234.0
+text = "Resultat :"
+label_settings = SubResource("LabelSettings_rbj3c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/autre"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 266.0
-offset_top = -156.0
-offset_right = 674.0
-offset_bottom = -27.0
+offset_left = 716.0
+offset_top = 775.0
+offset_right = 1124.0
+offset_bottom = 904.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/Main Menu" to="." method="_on_main_menu_pressed"]
+[node name="fond_medaille" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.982813
+anchor_bottom = 0.968518
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="fond_medaille_bronze" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
+modulate = Color(0.237539, 0.237539, 0.237539, 1)
+position = Vector2(770, 441)
+scale = Vector2(0.492187, 0.492187)
+texture = ExtResource("2_svmx2")
+
+[node name="fond_medaille_argent" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
+modulate = Color(0.237539, 0.237539, 0.237539, 1)
+position = Vector2(931, 441)
+scale = Vector2(0.492187, 0.492187)
+texture = ExtResource("2_svmx2")
+
+[node name="fond_medaille_or" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
+modulate = Color(0.237539, 0.237539, 0.237539, 1)
+position = Vector2(1098, 441)
+scale = Vector2(0.492187, 0.492187)
+texture = ExtResource("2_svmx2")
+
+[node name="fond_medaille_dev" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
+modulate = Color(0.237539, 0.237539, 0.237539, 1)
+position = Vector2(932, 667)
+scale = Vector2(0.492187, 0.492187)
+texture = ExtResource("2_svmx2")
+
+[node name="medaille" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.982813
+anchor_bottom = 0.962037
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="medaille_bronze" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
+position = Vector2(770, 441)
+texture = ExtResource("2_xmghj")
+
+[node name="medaille_argent" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
+position = Vector2(932, 441)
+scale = Vector2(8, 8)
+texture = ExtResource("3_47a57")
+
+[node name="medaille_or" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
+position = Vector2(1099, 441)
+scale = Vector2(8, 8)
+texture = ExtResource("4_ldsag")
+
+[node name="medaille_dev" type="Sprite2D" parent="CanvasLayer/medaille"]
+visible = false
+position = Vector2(932, 667)
+scale = Vector2(8, 8)
+texture = ExtResource("5_6h2vg")
+
+[node name="temps_medaille" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.984375
+anchor_bottom = 0.962963
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="temps_bronze" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 507.0
+offset_right = 825.0
+offset_bottom = 530.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_k37jj")
+metadata/_edit_use_anchors_ = true
+
+[node name="temps_argent" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 505.0
+offset_right = 988.0
+offset_bottom = 528.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_yvm42")
+metadata/_edit_use_anchors_ = true
+
+[node name="temps_or" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 504.0
+offset_right = 1154.0
+offset_bottom = 527.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_83mof")
+metadata/_edit_use_anchors_ = true
+
+[node name="temps_dev" type="Label" parent="CanvasLayer/temps_medaille"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 730.0
+offset_right = 988.0
+offset_bottom = 753.0
+text = "Requis : 00:00"
+label_settings = SubResource("LabelSettings_easgr")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/autre/Main Menu" to="." method="_on_main_menu_pressed"]

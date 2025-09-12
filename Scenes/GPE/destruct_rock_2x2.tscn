@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4qys3gs8tdew"]
+
+[ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_s81ia"]
+[ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_53lbw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
+size = Vector2(1142.86, 228.571)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkyip"]
+size = Vector2(1142.86, 228.571)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_flabj"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 6
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vpcld"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 30, 1)
+angle_min = -83.6
+angle_max = 153.6
+velocity_pivot = Vector3(100, 200, 0)
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 0.44
+initial_velocity_max = 52.12
+angular_velocity_min = -14.6
+angular_velocity_max = 253.6
+gravity = Vector3(0, 300, 0)
+scale_min = 0.1
+scale_max = 0.18
+scale_over_velocity_max = 37.85
+anim_offset_max = 1.0
+
+[node name="Breakable Block" type="StaticBody2D"]
+scale = Vector2(0.014, 0.07)
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_s81ia")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.687486, 0.417779, 0.0987657, 1)
+position = Vector2(258, 0)
+scale = Vector2(5.03125, 1)
+texture = ExtResource("2_53lbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(285.714, 1.70299e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uf8v0")
+
+[node name="Area_rocket" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
+position = Vector2(285.714, 3.40598e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lkyip")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GPUParticles_normal" type="GPUParticles2D" parent="."]
+modulate = Color(0.686275, 0.419608, 0.0980392, 1)
+z_index = -3
+material = SubResource("CanvasItemMaterial_flabj")
+position = Vector2(260, 5.68434e-14)
+scale = Vector2(9.39999, 0.600005)
+emitting = false
+amount = 20
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_vpcld")
+texture = ExtResource("2_53lbw")
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="area_entered" from="Area_rocket" to="." method="_on_area_rocket_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

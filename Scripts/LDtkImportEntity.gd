@@ -6,7 +6,8 @@ var player_scene = preload("res://Scenes/Player.tscn")  # Précharge la scène P
 var finish_scene = preload("res://Scenes/Next_Level.tscn")  # Précharge la scène Finish
 var camera_scene = preload("res://Scenes/camera_limiter.tscn")
 var coin_scene = preload("res://Scenes/Coin.tscn")
-
+var crate_scene = preload("res://Scenes/Caisse.tscn")
+var breakable_rock_scene = preload("res://Scenes/breakable_rock.tscn")
 
 func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 	var entities: Array = entity_layer.entities  # Stocke une liste d'éléments
@@ -150,6 +151,36 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 				if ref != null:
 					coin_spawn.ref = ref
 					Util.add_unresolved_reference(coin_spawn, "ref")
+
+		if entity.identifier == "Crate": 
+
+			var crate_spawn = crate_scene.instantiate()
+			crate_spawn.position = entity["position"]
+
+			entity_layer.add_child(crate_spawn)
+
+			Util.update_instance_reference(entity.iid, crate_spawn)
+
+			if "Entity_ref" in entity.fields:
+				var ref = entity.fields.Entity_ref
+				if ref != null:
+					crate_spawn.ref = ref
+					Util.add_unresolved_reference(crate_spawn, "ref")
+
+		if entity.identifier == "Breakable_Rock": 
+
+			var breakable_rock_spawn = breakable_rock_scene.instantiate()
+			breakable_rock_spawn.position = entity["position"]
+
+			entity_layer.add_child(breakable_rock_spawn)
+
+			Util.update_instance_reference(entity.iid, breakable_rock_spawn)
+
+			if "Entity_ref" in entity.fields:
+				var ref = entity.fields.Entity_ref
+				if ref != null:
+					breakable_rock_spawn.ref = ref
+					Util.add_unresolved_reference(breakable_rock_spawn, "ref")
 
 	print("Import Réussi")
 

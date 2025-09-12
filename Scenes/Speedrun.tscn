@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxq632opcv5qe"]
+[gd_scene load_steps=5 format=3 uid="uid://cxq632opcv5qe"]
 
 [ext_resource type="Script" path="res://Scripts/speedrun.gd" id="1_jkgkb"]
+[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/FieldGuide.ttf" id="2_yei8v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vhmu8"]
+font = ExtResource("2_yei8v")
+font_size = 30
 outline_size = 5
 outline_color = Color(0.113725, 0.133333, 0.160784, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ct5te"]
+font = ExtResource("2_yei8v")
+font_size = 30
+
 [node name="CanvasLayer" type="Control"]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jkgkb")
@@ -14,75 +22,27 @@ script = ExtResource("1_jkgkb")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_left = 19.0
-offset_top = 14.0
-offset_right = 296.0
-offset_bottom = 104.0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 305.0
+offset_bottom = 113.0
 color = Color(0.129412, 0.14902, 0.180392, 0.568627)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 self_modulate = Color(1.4, 1.4, 1.4, 1)
-offset_left = 32.0
-offset_top = 12.0
-offset_right = 96.0
-offset_bottom = 35.0
-scale = Vector2(4, 4)
-text = "00:00.00"
+offset_left = 45.0
+offset_top = 4.0
+offset_right = 129.0
+offset_bottom = 41.0
+scale = Vector2(3, 3)
+text = "00:00"
 label_settings = SubResource("LabelSettings_vhmu8")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552956, 0.552956, 0.552956, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 26.0
-offset_top = 971.0
-offset_right = 42.0
-offset_bottom = 1051.0
-
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552941, 0.552941, 0.552941, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 106.0
-offset_top = 1035.0
-offset_right = 122.0
-offset_bottom = 1115.0
-rotation = 1.5708
-
-[node name="ColorRect4" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552941, 0.552941, 0.552941, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 1880.0
-offset_top = 971.0
-offset_right = 1896.0
-offset_bottom = 1051.0
-
-[node name="ColorRect5" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552941, 0.552941, 0.552941, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 1896.0
-offset_top = 1035.0
-offset_right = 1912.0
-offset_bottom = 1115.0
-rotation = 1.5708
-
-[node name="ColorRect6" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552941, 0.552941, 0.552941, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 1880.0
-offset_top = 24.0
-offset_right = 1896.0
-offset_bottom = 104.0
-
-[node name="ColorRect7" type="ColorRect" parent="CanvasLayer"]
-visible = false
-modulate = Color(0.552941, 0.552941, 0.552941, 1)
-self_modulate = Color(1.3, 1.3, 1.3, 1)
-offset_left = 1896.0
-offset_top = 24.0
-offset_right = 1912.0
-offset_bottom = 104.0
-rotation = 1.5708
+[node name="centieme" type="Label" parent="CanvasLayer"]
+offset_left = 237.0
+offset_top = 47.0
+offset_right = 277.0
+offset_bottom = 84.0
+scale = Vector2(1.5, 1.5)
+text = ".00"
+label_settings = SubResource("LabelSettings_ct5te")

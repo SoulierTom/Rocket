@@ -1,0 +1,266 @@
+[gd_scene load_steps=34 format=3 uid="uid://dqod2t2tuu181"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
+[ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
+[ext_resource type="Script" path="res://Scripts/GPE/spike_interact_box.gd" id="3_htni6"]
+[ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Player/Arm.tscn" id="3_n5sxh"]
+[ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/Player/camera_2d.tscn" id="3_s4l33"]
+[ext_resource type="PackedScene" uid="uid://cxq632opcv5qe" path="res://Scenes/Speedrun.tscn" id="5_4metu"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="5_l6ddu"]
+[ext_resource type="Script" path="res://Scripts/Player/player_interaction.gd" id="6_boj3a"]
+[ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Assets/Audio/sounds/Walk_sound.wav" id="7_71co6"]
+[ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/Player/viseur.tscn" id="8_f2ryt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(0, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqycc"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umm2w"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(0, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2jws"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk0nr"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(54, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8caa"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(18, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr7gj"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(54, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt5ne"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(18, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os05q"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(0, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1274"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(18, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkjwg"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6hvi"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(54, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1o58"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(0, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p350r"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(18, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umwd5"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqop6"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(54, 54, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd5hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eljve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqycc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umm2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2jws")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk0nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8caa")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr7gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt5ne")
+}],
+"loop": true,
+"name": &"jump_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os05q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1274")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkjwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6hvi")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1o58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p350r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umwd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqop6")
+}],
+"loop": true,
+"name": &"run_left",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq3ek"]
+size = Vector2(18.82, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7auy"]
+size = Vector2(17.41, 24.12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idu3p"]
+shader = ExtResource("5_l6ddu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3burj"]
+size = Vector2(10000, 10000)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dogjo"]
+random_pitch = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("7_71co6")
+stream_1/stream = ExtResource("7_71co6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymg54"]
+size = Vector2(9, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_as_relative = false
+floor_stop_on_slope = false
+script = ExtResource("1_li7m8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kd5hf")
+animation = &"run"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.705, 3)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_fq3ek")
+
+[node name="SpikeInteractBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_htni6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
+position = Vector2(0.3525, 3.03)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_o7auy")
+
+[node name="Camera" parent="." instance=ExtResource("3_s4l33")]
+target = NodePath("..")
+
+[node name="Crt" type="CanvasLayer" parent="Camera"]
+layer = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
+material = SubResource("ShaderMaterial_idu3p")
+mesh = SubResource("QuadMesh_3burj")
+
+[node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 8)
+stream = SubResource("AudioStreamRandomizer_dogjo")
+
+[node name="Viseur" parent="." instance=ExtResource("8_f2ryt")]
+position = Vector2(-1.49012e-08, 1)
+
+[node name="Arm" parent="." instance=ExtResource("3_n5sxh")]
+position = Vector2(-4, 2)
+scale = Vector2(0.75, 0.75)
+
+[node name="ShootingPoint" parent="Arm" index="0"]
+position = Vector2(5.33333, -1.33333)
+rotation = 0.0
+
+[node name="RayCast2D" parent="Arm" index="7"]
+visible = false
+
+[node name="FmodEventEmitterRefill" parent="Arm" index="11"]
+event_name = "event:/WeaponsSystems/Refill"
+event_guid = "{4bfa9494-d6a2-4d33-b9a4-8650ca83a151}"
+
+[node name="InteractionBox" type="Area2D" parent="."]
+script = ExtResource("6_boj3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
+visible = false
+z_index = 1
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_ymg54")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
+
+[node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/WallGrab"
+event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
+allow_fadeout = false
+
+[node name="FmodWalk" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/Walking"
+event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
+
+[node name="FmodBonk" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/PlayerMovements/Bonk"
+event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
+
+[connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
+[connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
+[connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
+
+[editable path="Camera"]
+[editable path="Arm"]

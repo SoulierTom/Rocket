@@ -38,12 +38,13 @@ func press_focused_button():
 func _on_play_pressed():
 	Global.speedrun_time = 0.0
 	Global.timer_initialized = false
+	LevelManager.current_level_index = 0
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 
 	print("Arbre de scène:", get_tree())
 	if get_tree():
-		get_tree().change_scene_to_file("res://Levels/From_LDtk/levels/Level_0.scn")
+		get_tree().change_scene_to_file("res://Levels/From_Godot/Test_Level_1.tscn")
 	else:
 		print("Erreur: get_tree() est null")
 

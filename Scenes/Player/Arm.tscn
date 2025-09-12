@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://br48rbyr8k4q"]
+
+[ext_resource type="Script" path="res://Scripts/Player/arm.gd" id="1_t4ufm"]
+[ext_resource type="PackedScene" uid="uid://cnjmr4evohsr4" path="res://Scenes/Player/Explosion.tscn" id="2_lv75f"]
+[ext_resource type="PackedScene" uid="uid://0in7tulhw8b5" path="res://Scenes/Player/Rocket.tscn" id="3_2omhl"]
+[ext_resource type="AudioStream" uid="uid://b15hexxu430tj" path="res://Assets/Audio/sounds/Terraria_Explosion_Soundmp3.wav" id="5_ria3t"]
+[ext_resource type="AudioStream" uid="uid://bb1rrnijkx7f" path="res://Assets/Audio/sounds/Tir.wav" id="6_7svj1"]
+[ext_resource type="Script" path="res://Scripts/ray_cast_2d.gd" id="7_7ctjl"]
+[ext_resource type="Texture2D" uid="uid://dir6lbemh5vop" path="res://Assets/Images/Divers/Curseur.png" id="7_73eg5"]
+[ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="7_a1xb5"]
+[ext_resource type="Texture2D" uid="uid://dml5e465pty5w" path="res://Assets/Images/Divers/Canon_seul_droite.png" id="9_xu18f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k8wks"]
+random_pitch = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("5_ria3t")
+stream_1/stream = ExtResource("5_ria3t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eqsr6"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("6_7svj1")
+stream_1/stream = ExtResource("6_7svj1")
+
+[node name="Arm" type="Node2D" groups=["arm_group"]]
+z_as_relative = false
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_t4ufm")
+recoil_force = 2
+recoil_duration = 0.1
+explosion_scene = ExtResource("2_lv75f")
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(5.83059, -0.0718061)
+rotation = -0.157095
+
+[node name="Rocket" parent="." instance=ExtResource("3_2omhl")]
+visible = false
+speed = 1000
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="Reload_delay" type="Timer" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_k8wks")
+volume_db = -7.5
+
+[node name="Tir" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_eqsr6")
+volume_db = -7.5
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.39626
+script = ExtResource("7_7ctjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
+position = Vector2(-0.101035, 33.0192)
+scale = Vector2(0.0238692, 0.0238692)
+texture = ExtResource("7_a1xb5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="RayCast2D"]
+position = Vector2(0.237925, 25.3437)
+scale = Vector2(0.0114268, 0.0114268)
+texture = ExtResource("7_a1xb5")
+
+[node name="Control" type="Control" parent="RayCast2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0002
+offset_top = 43.0
+offset_right = 9.99984
+offset_bottom = 63.0
+pivot_offset = Vector2(10, 10)
+size_flags_horizontal = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="RayCast2D/Control"]
+position = Vector2(10.2838, 1.79803)
+texture = ExtResource("7_73eg5")
+
+[node name="arm_sprite" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+rotation = -0.226893
+texture = ExtResource("9_xu18f")
+offset = Vector2(6, -3)
+
+[node name="FmodEventEmitterShot" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/WeaponsSystems/ShootingSequence/Shot"
+event_guid = "{953a8764-4b85-4885-928c-ec4da014f9a6}"
+
+[node name="FmodEventEmitterNoAmmo" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/WeaponsSystems/ShootingSequence/ShotNoAmmo"
+event_guid = "{49be5e6e-eee0-47e5-b4fa-ca7b943a53ed}"
+
+[node name="FmodEventEmitterRefill" type="FmodEventEmitter2D" parent="."]
