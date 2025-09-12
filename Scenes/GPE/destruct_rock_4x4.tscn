@@ -36,6 +36,7 @@ scale_over_velocity_max = 37.85
 anim_offset_max = 1.0
 
 [node name="Breakable Block" type="StaticBody2D"]
+position = Vector2(5, -12)
 scale = Vector2(0.028, 0.146)
 collision_layer = 3
 collision_mask = 0
@@ -50,7 +51,6 @@ texture = ExtResource("2_vvkp7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(250, -6.53202e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_rocket" type="Area2D" parent="."]
@@ -58,7 +58,6 @@ collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
 position = Vector2(250, -4.89901e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lkyip")
 
 [node name="Timer" type="Timer" parent="."]
