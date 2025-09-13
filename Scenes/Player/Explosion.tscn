@@ -230,4 +230,12 @@ environment = SubResource("Environment_ma124")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ma04u")
 
+[node name="FmodExplosionEventEmitter" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/WeaponsSystems/ShootingSequence/Xplosion"
+event_guid = "{43cde0d8-1266-4f18-b36b-1407cf01fc58}"
+autoplay = true
+fmod_parameters/RocketNumber/id = 2022905473231445046
+fmod_parameters/RocketNumber = 1
+fmod_parameters/RocketNumber/variant_type = 2
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

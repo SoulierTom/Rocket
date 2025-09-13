@@ -61,7 +61,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y += add_gravity() * delta
 
 	if is_on_ceiling():
-		bonk_freeze_timer = BONK_FREEZE_TIME
+		bonk_freeze_timer = BONK_FREEZE_TIME  # Active le freeze
+		# Fmod Son : lancement Event Bonk depuis l'Emitter sur Playernode
+		$FmodBonk.play()
 
 	wall_slide(delta)
 
@@ -110,15 +112,16 @@ func _physics_process(delta: float) -> void:
 			if dir_arm.x > 0:
 				animated_sprite.play("run")
 				if current_frame >= 0 and current_frame < 1:
-					$walk_sound.play()
-				if current_frame >= 2 and current_frame < 3:
-					$walk_sound.play()
+					$FmodWalk.play_one_shot()
+				# $walk_sound.play()
+				#if current_frame >= 2 and current_frame < 3:
+					# $walk_sound.play()
+					#$FmodWalk.play_one_shot()
 			else:
 				animated_sprite.play("run_left")
 				if current_frame >= 0 and current_frame < 1:
-					$walk_sound.play()
-				if current_frame >= 2 and current_frame < 3:
-					$walk_sound.play()
+					$FmodWalk.play_one_shot()
+
 	else:
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
@@ -146,6 +149,11 @@ func ease_out(t: float) -> float:
 
 func wall_slide(delta):
 	if is_on_wall() and not is_on_floor():
+		## Son Fmod lancement du SFX de grab lorsque la touche est pressée
+		## Bug : si le joueur presse Grab en l'air et le maintient pressé lors du contact avec le mur
+		## alors le perso va grabber le mur mais le son se jouera pas
+		if Input.is_action_just_pressed("Grab"):
+			$FmodWallgrab.play()
 		if Input.is_action_pressed("Grab"):
 			is_wall_sliding = true
 		else:

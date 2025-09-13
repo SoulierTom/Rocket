@@ -12,6 +12,7 @@ func _on_body_entered(body):
 			await DeathScreen.on_death_finished
 			print("Death animation finished, reloading scene")
 			call_deferred("reload_scene")
+			## son-FMOD play Respawn event
 		else:
 			print("Error: DeathScreen is not valid.")
 

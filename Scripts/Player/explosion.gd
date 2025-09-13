@@ -102,6 +102,7 @@ func apply_explosion_impulse():
 			
 			o.velocity =  joystick_vect * force_player * modif_force  # Ajuste la force de la poussée
 			Global.player_impulsed = true
+			FmodServer.play_one_shot("event:/PlayerMovements/Pushed")
 	
 		
 

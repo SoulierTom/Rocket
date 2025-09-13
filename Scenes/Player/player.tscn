@@ -230,6 +230,10 @@ rotation = 0.0
 [node name="RayCast2D" parent="Arm" index="7"]
 visible = false
 
+[node name="FmodEventEmitterRefill" parent="Arm" index="11"]
+event_name = "event:/WeaponsSystems/Refill"
+event_guid = "{4bfa9494-d6a2-4d33-b9a4-8650ca83a151}"
+
 [node name="InteractionBox" type="Area2D" parent="."]
 script = ExtResource("6_boj3a")
 
@@ -240,6 +244,19 @@ position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
+
+[node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/WallGrab"
+event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
+allow_fadeout = false
+
+[node name="FmodWalk" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/Walking"
+event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
+
+[node name="FmodBonk" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/PlayerMovements/Bonk"
+event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
 
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
