@@ -501,6 +501,10 @@ texture_region_size = Vector2i(8, 8)
 16:0/0/physics_layer_0/polygon_0/one_way = true
 16:0/0/terrains_peering_bit/bottom_side = 2
 16:0/0/terrains_peering_bit/top_side = 2
+16:3/next_alternative_id = 2
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47jt4"]
 texture = ExtResource("4_qif71")

@@ -157,10 +157,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq3ek"]
-size = Vector2(18.82, 24)
+size = Vector2(20.82, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7auy"]
-size = Vector2(17.41, 24.12)
+size = Vector2(19.41, 24.12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_idu3p"]
 shader = ExtResource("5_l6ddu")
@@ -180,6 +180,7 @@ size = Vector2(9, 12)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 floor_stop_on_slope = false
+safe_margin = 0.1
 script = ExtResource("1_li7m8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -188,7 +189,7 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.705, 3)
+position = Vector2(0.205, 3)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fq3ek")
 
@@ -198,7 +199,7 @@ collision_mask = 8
 script = ExtResource("3_htni6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
-position = Vector2(0.3525, 3.03)
+position = Vector2(-0.1475, 3.03)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_o7auy")
 
@@ -210,6 +211,7 @@ layer = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
 material = SubResource("ShaderMaterial_idu3p")
+position = Vector2(0, -1)
 mesh = SubResource("QuadMesh_3burj")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
@@ -257,6 +259,9 @@ event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
 [node name="FmodBonk" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/PlayerMovements/Bonk"
 event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
+
+[node name="RocketSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 3)
 
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
