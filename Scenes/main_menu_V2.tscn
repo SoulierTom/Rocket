@@ -1,0 +1,238 @@
+[gd_scene load_steps=30 format=3 uid="uid://b4ab8mv5n4god"]
+
+[ext_resource type="Script" path="res://Assets/Menu/main_menu.gd" id="1_flytq"]
+[ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_r66qg"]
+[ext_resource type="Texture2D" uid="uid://cyrypfpv76j14" path="res://Assets/Menu/Play_V3/Play_V3_0001.png" id="4_sqp5k"]
+[ext_resource type="Texture2D" uid="uid://jqtaeqvxhnce" path="res://Assets/Menu/Play_V3/Play_V3_0002.png" id="5_425f4"]
+[ext_resource type="Texture2D" uid="uid://b3s8ny5rjyyno" path="res://Assets/Menu/RnJ.png" id="5_rfryb"]
+[ext_resource type="Texture2D" uid="uid://jr064dnor47g" path="res://Assets/Menu/Play_V3/Play_V3_0003.png" id="6_0gvkt"]
+[ext_resource type="Shader" path="res://Assets/Menu/crt.gdshader" id="6_waeoh"]
+[ext_resource type="Texture2D" uid="uid://p8b851u2jawc" path="res://Assets/Menu/Play_V3/Play_V3_0004.png" id="7_hs0kw"]
+[ext_resource type="Texture2D" uid="uid://bikxdpox27dmr" path="res://Assets/Menu/Play_V3/Play_V3_0005.png" id="8_08ga7"]
+[ext_resource type="Script" path="res://Assets/Menu/crt.gd" id="8_alrad"]
+[ext_resource type="Texture2D" uid="uid://bjxl5npf47uke" path="res://Assets/Menu/Play_V3/Play_V3_0006.png" id="9_1w5ou"]
+[ext_resource type="Texture2D" uid="uid://cex81dems2pua" path="res://Assets/Menu/Play_V3/Play_V3_0007.png" id="10_uepbi"]
+[ext_resource type="AudioStream" uid="uid://s3dtm0e0ukpn" path="res://Assets/Menu/wallace cleaver + notinbed type beat ESPOIR PERDU (kayce!).mp3" id="10_vlxob"]
+[ext_resource type="Texture2D" uid="uid://buges17otxwbl" path="res://Assets/Menu/Quit_V3/Quit_V2_0001.png" id="11_1iqxc"]
+[ext_resource type="Texture2D" uid="uid://culfcnikrai52" path="res://Assets/Menu/Quit_V3/Quit_V2_0002.png" id="12_yjwj7"]
+[ext_resource type="Texture2D" uid="uid://b2xdfuiekluw" path="res://Assets/Menu/Quit_V3/Quit_V2_0003.png" id="13_kr20n"]
+[ext_resource type="Texture2D" uid="uid://d24lfdt7w31ef" path="res://Assets/Menu/Quit_V3/Quit_V2_0004.png" id="14_k2vv5"]
+[ext_resource type="Texture2D" uid="uid://j7qg1rldka6m" path="res://Assets/Menu/Quit_V3/Quit_V2_0005.png" id="15_6706j"]
+[ext_resource type="Texture2D" uid="uid://lju0d4my8x68" path="res://Assets/Menu/Quit_V3/Quit_V2_0006.png" id="16_vx1cj"]
+[ext_resource type="Texture2D" uid="uid://q22s7sejd0wx" path="res://Assets/Menu/Quit_V3/Quit_V2_0007.png" id="17_hiu0x"]
+
+[sub_resource type="Animation" id="Animation_u2785"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qh31p"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvh5q"]
+_data = {
+"RESET": SubResource("Animation_u2785"),
+"fade_in": SubResource("Animation_qh31p")
+}
+
+[sub_resource type="Curve" id="Curve_ow4pr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_orcqd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1fdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sqp5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_425f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0gvkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hs0kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_08ga7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1w5ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uepbi")
+}],
+"loop": false,
+"name": &"Play",
+"speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpjfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_1iqxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yjwj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kr20n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k2vv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6706j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vx1cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hiu0x")
+}],
+"loop": false,
+"name": &"Quit",
+"speed": 20.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etnmc"]
+shader = ExtResource("6_waeoh")
+shader_parameter/resolution = Vector2(540, 360)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.005
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 3.8e-07
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -3.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_uxu3n"]
+size = Vector2(5000, 5000)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flytq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvh5q")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RnJ" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(965, 375)
+scale = Vector2(10, 10)
+texture = ExtResource("5_rfryb")
+offset = Vector2(6.86, 22.11)
+
+[node name="Play" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(20, 20)
+focus_neighbor_bottom = NodePath("../Quit")
+script = ExtResource("3_r66qg")
+focus_scale_curve = SubResource("Curve_ow4pr")
+press_scale_curve = SubResource("Curve_orcqd")
+
+[node name="ButtonPlayAnim" type="AnimatedSprite2D" parent="CanvasLayer/Play"]
+position = Vector2(13.4286, 23.1429)
+sprite_frames = SubResource("SpriteFrames_r1fdq")
+animation = &"Play"
+frame = 6
+frame_progress = 1.0
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 160.0
+offset_right = 20.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(20, 20)
+focus_neighbor_top = NodePath("../Play")
+script = ExtResource("3_r66qg")
+focus_scale_curve = SubResource("Curve_ow4pr")
+press_scale_curve = SubResource("Curve_orcqd")
+
+[node name="ButtonQuitAnim" type="AnimatedSprite2D" parent="CanvasLayer/Quit"]
+position = Vector2(7.42857, 5.42857)
+sprite_frames = SubResource("SpriteFrames_dpjfi")
+animation = &"Quit"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_etnmc")
+mesh = SubResource("QuadMesh_uxu3n")
+script = ExtResource("8_alrad")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0616706, 0.116051, 0.0600491, 1)
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_vlxob")
+parameters/looping = true
+
+[connection signal="focus_exited" from="CanvasLayer/Play" to="." method="_on_play_focus_exited"]
+[connection signal="focus_exited" from="CanvasLayer/Quit" to="." method="_on_quit_focus_exited"]
