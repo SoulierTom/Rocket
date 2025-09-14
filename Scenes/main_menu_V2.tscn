@@ -151,9 +151,10 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RnJ" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1040, 506)
+position = Vector2(965, 375)
 scale = Vector2(10, 10)
 texture = ExtResource("5_rfryb")
+offset = Vector2(6.86, 22.11)
 
 [node name="Play" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 8
@@ -227,7 +228,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.254902, 0.172549, 0.223529, 1)
+color = Color(0.0616706, 0.116051, 0.0600491, 1)
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_vlxob")
