@@ -1,10 +1,24 @@
-[gd_scene load_steps=28 format=3 uid="uid://cey7fjnvdhrdu"]
+[gd_scene load_steps=30 format=3 uid="uid://cey7fjnvdhrdu"]
 
 [ext_resource type="Script" path="res://Assets/Menu/Pause Menu/death_screen.gd" id="1_mkif6"]
 [ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/FieldGuide.ttf" id="2_s7nmx"]
 [ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_8vi3w"]
-[ext_resource type="Texture2D" uid="uid://dk2dig8xa2baa" path="res://Assets/Menu/Quit.png" id="4_goibc"]
-[ext_resource type="Texture2D" uid="uid://dpkaap4jl2yyo" path="res://Assets/Menu/PlayV2.png" id="5_7l04x"]
+[ext_resource type="Texture2D" uid="uid://dookwvw8tm2d3" path="res://Assets/Menu/resume/Resume_0001.png" id="4_n7oeo"]
+[ext_resource type="Texture2D" uid="uid://dagqyguv75h3p" path="res://Assets/Menu/resume/Resume_0002.png" id="5_li5jm"]
+[ext_resource type="Texture2D" uid="uid://nmsha53xvuvk" path="res://Assets/Menu/resume/Resume_0003.png" id="6_cvyvt"]
+[ext_resource type="Texture2D" uid="uid://djs8tdyr6ml3i" path="res://Assets/Menu/resume/Resume_0004.png" id="7_rxe62"]
+[ext_resource type="Texture2D" uid="uid://domgjrnwbjpa7" path="res://Assets/Menu/resume/Resume_0005.png" id="8_cgi6l"]
+[ext_resource type="Texture2D" uid="uid://d2by8ou31d6ci" path="res://Assets/Menu/resume/Resume_0006.png" id="9_agk17"]
+[ext_resource type="Texture2D" uid="uid://c4esbf0mjsl0w" path="res://Assets/Menu/resume/Resume_0007.png" id="10_7211s"]
+[ext_resource type="Texture2D" uid="uid://dodansmywoj7v" path="res://Assets/Menu/resume/Resume_0008.png" id="11_kr1o8"]
+[ext_resource type="Texture2D" uid="uid://blgca1owbcq5x" path="res://Assets/Menu/resume/Resume_0009.png" id="12_vskqq"]
+[ext_resource type="Texture2D" uid="uid://buges17otxwbl" path="res://Assets/Menu/Quit_V3/Quit_V2_0001.png" id="13_5kxem"]
+[ext_resource type="Texture2D" uid="uid://culfcnikrai52" path="res://Assets/Menu/Quit_V3/Quit_V2_0002.png" id="14_cfvll"]
+[ext_resource type="Texture2D" uid="uid://b2xdfuiekluw" path="res://Assets/Menu/Quit_V3/Quit_V2_0003.png" id="15_xicrr"]
+[ext_resource type="Texture2D" uid="uid://d24lfdt7w31ef" path="res://Assets/Menu/Quit_V3/Quit_V2_0004.png" id="16_qduwg"]
+[ext_resource type="Texture2D" uid="uid://j7qg1rldka6m" path="res://Assets/Menu/Quit_V3/Quit_V2_0005.png" id="17_j3p1j"]
+[ext_resource type="Texture2D" uid="uid://lju0d4my8x68" path="res://Assets/Menu/Quit_V3/Quit_V2_0006.png" id="18_foegy"]
+[ext_resource type="Texture2D" uid="uid://q22s7sejd0wx" path="res://Assets/Menu/Quit_V3/Quit_V2_0007.png" id="19_8cqrs"]
 
 [sub_resource type="Animation" id="Animation_u2785"]
 length = 0.001
@@ -51,54 +65,39 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtosk"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67woi"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_06uos"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln7hv"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c7wa"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo6br"]
-atlas = ExtResource("5_7l04x")
-region = Rect2(64, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_xclrc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtosk")
+"texture": ExtResource("4_n7oeo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_67woi")
+"texture": ExtResource("5_li5jm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06uos")
+"texture": ExtResource("6_cvyvt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ln7hv")
+"texture": ExtResource("7_rxe62")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4c7wa")
+"texture": ExtResource("8_cgi6l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jo6br")
+"texture": ExtResource("9_agk17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7211s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kr1o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vskqq")
 }],
 "loop": false,
 "name": &"Play",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="Curve" id="Curve_d1yv3"]
@@ -109,54 +108,33 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_817de"]
-atlas = ExtResource("4_goibc")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn0oi"]
-atlas = ExtResource("4_goibc")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fg5gy"]
-atlas = ExtResource("4_goibc")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vk2cc"]
-atlas = ExtResource("4_goibc")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0oqju"]
-atlas = ExtResource("4_goibc")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsnb4"]
-atlas = ExtResource("4_goibc")
-region = Rect2(64, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_lq8f7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_817de")
+"texture": ExtResource("13_5kxem")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vn0oi")
+"texture": ExtResource("14_cfvll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fg5gy")
+"texture": ExtResource("15_xicrr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vk2cc")
+"texture": ExtResource("16_qduwg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0oqju")
+"texture": ExtResource("17_j3p1j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gsnb4")
+"texture": ExtResource("18_foegy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8cqrs")
 }],
 "loop": false,
 "name": &"Quit",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="Pause_Menu" type="Control"]
@@ -203,7 +181,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.184, 0.184, 0.184, 0.25)
 
-[node name="Play" type="TextureButton" parent="CanvasLayer"]
+[node name="Resume" type="TextureButton" parent="CanvasLayer"]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,7 +201,7 @@ script = ExtResource("3_8vi3w")
 focus_scale_curve = SubResource("Curve_5w5ug")
 press_scale_curve = SubResource("Curve_02ksn")
 
-[node name="ButtonPlayAnim" type="AnimatedSprite2D" parent="CanvasLayer/Play"]
+[node name="ButtonPlayAnim" type="AnimatedSprite2D" parent="CanvasLayer/Resume"]
 position = Vector2(20.75, 26)
 sprite_frames = SubResource("SpriteFrames_xclrc")
 animation = &"Play"
@@ -242,15 +220,19 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.5, 3.5)
 pivot_offset = Vector2(20, 20)
-focus_neighbor_top = NodePath("../Play")
+focus_neighbor_top = NodePath("../Resume")
 script = ExtResource("3_8vi3w")
 focus_scale_curve = SubResource("Curve_d1yv3")
 press_scale_curve = SubResource("Curve_5q61k")
 
 [node name="ButtonQuitAnim" type="AnimatedSprite2D" parent="CanvasLayer/Quit"]
-position = Vector2(19, 25)
+position = Vector2(-13.7143, 10.2857)
 sprite_frames = SubResource("SpriteFrames_lq8f7")
 animation = &"Quit"
 
-[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/Resume" to="." method="_on_resume_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/Resume" to="." method="_on_resume_focus_exited"]
+[connection signal="pressed" from="CanvasLayer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/Quit" to="." method="_on_quit_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/Quit" to="." method="_on_quit_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

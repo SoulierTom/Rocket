@@ -20,7 +20,9 @@ func _ready() -> void:
 	
 	# Connecter les signaux pour les animations des AnimatedSprite2D
 	play.focus_entered.connect(_on_play_focus_entered)
+	play.focus_exited.connect(_on_play_focus_exited)
 	quit.focus_entered.connect(_on_quit_focus_entered)
+	quit.focus_exited.connect(_on_quit_focus_exited)
 	
 	# Configuration de la navigation manette
 	setup_controller_navigation()
@@ -46,9 +48,17 @@ func _on_play_focus_entered() -> void:
 	# Lancer l'animation de l'AnimatedSprite2D
 	button_play_anim.play("Play")
 
+func _on_play_focus_exited() -> void:
+	# Remettre à la première frame
+	button_play_anim.frame = 0
+
 func _on_quit_focus_entered() -> void:
 	# Lancer l'animation de l'AnimatedSprite2D
 	button_quit_anim.play("Quit")
+
+func _on_quit_focus_exited() -> void:
+	# Remettre à la première frame
+	button_quit_anim.frame = 0
 
 func _on_play_pressed() -> void:
 	TransitionScreen.transition()

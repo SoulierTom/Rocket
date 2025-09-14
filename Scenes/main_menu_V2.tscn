@@ -1,15 +1,25 @@
-[gd_scene load_steps=32 format=3 uid="uid://b4ab8mv5n4god"]
+[gd_scene load_steps=30 format=3 uid="uid://b4ab8mv5n4god"]
 
 [ext_resource type="Script" path="res://Assets/Menu/main_menu.gd" id="1_flytq"]
-[ext_resource type="Texture2D" uid="uid://dpkaap4jl2yyo" path="res://Assets/Menu/PlayV2.png" id="3_2cldk"]
 [ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_r66qg"]
-[ext_resource type="Texture2D" uid="uid://dk2dig8xa2baa" path="res://Assets/Menu/Quit.png" id="4_x1bcu"]
-[ext_resource type="Texture2D" uid="uid://ck3yekb3uet4m" path="res://Assets/Menu/Chimera_Title_1.png" id="5_e20i8"]
+[ext_resource type="Texture2D" uid="uid://cyrypfpv76j14" path="res://Assets/Menu/Play_V3/Play_V3_0001.png" id="4_sqp5k"]
+[ext_resource type="Texture2D" uid="uid://jqtaeqvxhnce" path="res://Assets/Menu/Play_V3/Play_V3_0002.png" id="5_425f4"]
+[ext_resource type="Texture2D" uid="uid://b3s8ny5rjyyno" path="res://Assets/Menu/RnJ.png" id="5_rfryb"]
+[ext_resource type="Texture2D" uid="uid://jr064dnor47g" path="res://Assets/Menu/Play_V3/Play_V3_0003.png" id="6_0gvkt"]
 [ext_resource type="Shader" path="res://Assets/Menu/crt.gdshader" id="6_waeoh"]
-[ext_resource type="Texture2D" uid="uid://bbvuqnt6apvx8" path="res://Assets/Menu/ascii-art.png" id="7_m4p2i"]
+[ext_resource type="Texture2D" uid="uid://p8b851u2jawc" path="res://Assets/Menu/Play_V3/Play_V3_0004.png" id="7_hs0kw"]
+[ext_resource type="Texture2D" uid="uid://bikxdpox27dmr" path="res://Assets/Menu/Play_V3/Play_V3_0005.png" id="8_08ga7"]
 [ext_resource type="Script" path="res://Assets/Menu/crt.gd" id="8_alrad"]
-[ext_resource type="Texture2D" uid="uid://c2hnwwm5x5k34" path="res://Assets/Menu/ascii-art(1).png" id="9_ly8b6"]
+[ext_resource type="Texture2D" uid="uid://bjxl5npf47uke" path="res://Assets/Menu/Play_V3/Play_V3_0006.png" id="9_1w5ou"]
+[ext_resource type="Texture2D" uid="uid://cex81dems2pua" path="res://Assets/Menu/Play_V3/Play_V3_0007.png" id="10_uepbi"]
 [ext_resource type="AudioStream" uid="uid://s3dtm0e0ukpn" path="res://Assets/Menu/wallace cleaver + notinbed type beat ESPOIR PERDU (kayce!).mp3" id="10_vlxob"]
+[ext_resource type="Texture2D" uid="uid://buges17otxwbl" path="res://Assets/Menu/Quit_V3/Quit_V2_0001.png" id="11_1iqxc"]
+[ext_resource type="Texture2D" uid="uid://culfcnikrai52" path="res://Assets/Menu/Quit_V3/Quit_V2_0002.png" id="12_yjwj7"]
+[ext_resource type="Texture2D" uid="uid://b2xdfuiekluw" path="res://Assets/Menu/Quit_V3/Quit_V2_0003.png" id="13_kr20n"]
+[ext_resource type="Texture2D" uid="uid://d24lfdt7w31ef" path="res://Assets/Menu/Quit_V3/Quit_V2_0004.png" id="14_k2vv5"]
+[ext_resource type="Texture2D" uid="uid://j7qg1rldka6m" path="res://Assets/Menu/Quit_V3/Quit_V2_0005.png" id="15_6706j"]
+[ext_resource type="Texture2D" uid="uid://lju0d4my8x68" path="res://Assets/Menu/Quit_V3/Quit_V2_0006.png" id="16_vx1cj"]
+[ext_resource type="Texture2D" uid="uid://q22s7sejd0wx" path="res://Assets/Menu/Quit_V3/Quit_V2_0007.png" id="17_hiu0x"]
 
 [sub_resource type="Animation" id="Animation_u2785"]
 length = 0.001
@@ -46,104 +56,62 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtosk"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67woi"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_06uos"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln7hv"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c7wa"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo6br"]
-atlas = ExtResource("3_2cldk")
-region = Rect2(64, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_r1fdq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtosk")
+"texture": ExtResource("4_sqp5k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_67woi")
+"texture": ExtResource("5_425f4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06uos")
+"texture": ExtResource("6_0gvkt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ln7hv")
+"texture": ExtResource("7_hs0kw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4c7wa")
+"texture": ExtResource("8_08ga7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jo6br")
+"texture": ExtResource("9_1w5ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uepbi")
 }],
 "loop": false,
 "name": &"Play",
-"speed": 10.0
+"speed": 20.0
 }]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_817de"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn0oi"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fg5gy"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vk2cc"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0oqju"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsnb4"]
-atlas = ExtResource("4_x1bcu")
-region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpjfi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_817de")
+"texture": ExtResource("11_1iqxc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vn0oi")
+"texture": ExtResource("12_yjwj7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fg5gy")
+"texture": ExtResource("13_kr20n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vk2cc")
+"texture": ExtResource("14_k2vv5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0oqju")
+"texture": ExtResource("15_6706j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gsnb4")
+"texture": ExtResource("16_vx1cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hiu0x")
 }],
 "loop": false,
 "name": &"Quit",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etnmc"]
@@ -182,16 +150,10 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Ascii-art" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1084, 402)
-scale = Vector2(0.610272, 0.610272)
-texture = ExtResource("7_m4p2i")
-
-[node name="Ascii-art(1)" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(309, 342)
-rotation = -0.00133073
-scale = Vector2(0.355148, 0.355148)
-texture = ExtResource("9_ly8b6")
+[node name="RnJ" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1040, 506)
+scale = Vector2(10, 10)
+texture = ExtResource("5_rfryb")
 
 [node name="Play" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 8
@@ -213,9 +175,10 @@ focus_scale_curve = SubResource("Curve_ow4pr")
 press_scale_curve = SubResource("Curve_orcqd")
 
 [node name="ButtonPlayAnim" type="AnimatedSprite2D" parent="CanvasLayer/Play"]
-position = Vector2(20.75, 26)
+position = Vector2(13.4286, 23.1429)
 sprite_frames = SubResource("SpriteFrames_r1fdq")
 animation = &"Play"
+frame = 6
 frame_progress = 1.0
 
 [node name="Quit" type="TextureButton" parent="CanvasLayer"]
@@ -238,7 +201,7 @@ focus_scale_curve = SubResource("Curve_ow4pr")
 press_scale_curve = SubResource("Curve_orcqd")
 
 [node name="ButtonQuitAnim" type="AnimatedSprite2D" parent="CanvasLayer/Quit"]
-position = Vector2(19, 25)
+position = Vector2(7.42857, 5.42857)
 sprite_frames = SubResource("SpriteFrames_dpjfi")
 animation = &"Quit"
 
@@ -252,11 +215,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
-[node name="Title" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(556, 213)
-scale = Vector2(7, 7)
-texture = ExtResource("5_e20i8")
-
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_etnmc")
 mesh = SubResource("QuadMesh_uxu3n")
@@ -269,7 +227,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.254902, 0.172549, 0.223529, 1)
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_vlxob")
 parameters/looping = true
+
+[connection signal="focus_exited" from="CanvasLayer/Play" to="." method="_on_play_focus_exited"]
+[connection signal="focus_exited" from="CanvasLayer/Quit" to="." method="_on_quit_focus_exited"]
