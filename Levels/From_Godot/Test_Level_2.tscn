@@ -757,15 +757,18 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(0, -1)
 
+[node name="Camera" parent="Player" index="3"]
+bounds_node_path = NodePath("../../Line2D")
+
 [node name="finish" parent="." instance=ExtResource("5_kanfh")]
-position = Vector2(92, -312)
+position = Vector2(134, -312)
 scale = Vector2(1, 1.68)
 
 [node name="LevelCamManager" parent="." instance=ExtResource("9_woubr")]
 camera_vertical_offset = -30.0
 
 [node name="Line2D" parent="." instance=ExtResource("10_qhwb0")]
-points = PackedVector2Array(128, 64, 128, -448, -448, -448, -448, 64, 128, 64)
+points = PackedVector2Array(128, 64, 128, -448, -373, -447, -371, 66, 128, 64)
 
 [editable path="Player"]
 [editable path="Player/Camera"]
