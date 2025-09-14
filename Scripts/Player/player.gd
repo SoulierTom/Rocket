@@ -33,7 +33,7 @@ var pause_instance = null
 var camera: Camera2D = null
 
 # Ajoutez une référence au CanvasLayer
-@onready var canvas_layer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 func _ready() -> void:
 	dust_trail.emitting = false

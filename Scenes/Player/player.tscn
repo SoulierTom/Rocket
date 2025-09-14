@@ -246,7 +246,7 @@ z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
+[node name="Speedrun" parent="." instance=ExtResource("5_4metu")]
 
 [node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/PlayerMovements/WallGrab"
@@ -264,6 +264,8 @@ event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
 [node name="Dust_timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]

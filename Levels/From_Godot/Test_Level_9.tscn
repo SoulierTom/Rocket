@@ -640,7 +640,7 @@ points = PackedVector2Array(-256, -384, -256, -192, 160, -192, 160, -128, 600, -
 [node name="Player" parent="." instance=ExtResource("5_fb1i3")]
 position = Vector2(178, -330)
 
-[node name="Camera" parent="Player" index="3"]
+[node name="Camera" parent="Player" index="4"]
 bounds_node_path = NodePath("../../Line2D")
 
 [node name="Tiles" type="Node" parent="."]
