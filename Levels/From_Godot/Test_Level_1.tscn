@@ -431,7 +431,7 @@ color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 [node name="Player" parent="." instance=ExtResource("5_3lkrf")]
 position = Vector2(-1, -1)
 
-[node name="Camera" parent="Player" index="4"]
+[node name="Camera" parent="Player" index="3"]
 bounds_node_path = NodePath("../../CameraLimiters/Line2D")
 
 [node name="Area2D" parent="." instance=ExtResource("4_qj5ia")]

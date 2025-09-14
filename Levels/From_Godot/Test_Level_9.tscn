@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bo01vmxbggn2w" path="res://Scenes/GPE/destruct_wall_8x2.tscn" id="7_dk4ty"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="8_l511l"]
 [ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="8_xjlag"]
-[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Caisse.tscn" id="9_c58gm"]
+[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="9_c58gm"]
 [ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="9_ulpa2"]
 [ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="10_1r8cl"]
 [ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_1x1.tscn" id="11_6g76b"]
@@ -644,7 +644,7 @@ points = PackedVector2Array(-256, -384, -256, -192, 160, -192, 160, -128, 600, -
 [node name="Player" parent="." instance=ExtResource("5_fb1i3")]
 position = Vector2(178, -330)
 
-[node name="Camera" parent="Player" index="4"]
+[node name="Camera" parent="Player" index="3"]
 bounds_node_path = NodePath("../../Line2D")
 
 [node name="Tiles" type="Node" parent="."]
