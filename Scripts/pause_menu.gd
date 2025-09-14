@@ -87,4 +87,4 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	print("Quit button pressed")
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main_menu_V2.tscn")
