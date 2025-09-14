@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://djx8g733c018p"]
+[gd_scene load_steps=11 format=3 uid="uid://djx8g733c018p"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_ye2u5"]
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_fv4mx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2xqy"]
-size = Vector2(620, 127.778)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkyip"]
 size = Vector2(640, 120)
@@ -64,6 +61,7 @@ alpha_curve = SubResource("CurveTexture_y5yff")
 anim_offset_max = 1.0
 
 [node name="Breakable Block" type="StaticBody2D"]
+position = Vector2(-3, 0)
 scale = Vector2(0.012, 0.06)
 collision_layer = 3
 collision_mask = 0
@@ -77,13 +75,6 @@ texture = ExtResource("2_fv4mx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(259, -8.9407e-07)
 shape = SubResource("RectangleShape2D_uf8v0")
-
-[node name="Area_player" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_player"]
-light_mask = 3
-position = Vector2(260, -13.8889)
-shape = SubResource("RectangleShape2D_r2xqy")
 
 [node name="Area_rocket" type="Area2D" parent="."]
 collision_layer = 3
@@ -118,6 +109,5 @@ process_material = SubResource("ParticleProcessMaterial_1an5h")
 texture = ExtResource("2_fv4mx")
 one_shot = true
 
-[connection signal="body_entered" from="Area_player" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area_rocket" to="." method="_on_area_rocket_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

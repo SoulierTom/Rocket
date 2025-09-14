@@ -171,10 +171,9 @@ glow_hdr_threshold = 1.5
 [node name="Explosion" type="Area2D" groups=["boom"]]
 z_index = 10
 scale = Vector2(2, 2)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_6xgrk")
-force_objet = 150
 
 [node name="Explo" type="CPUParticles2D" parent="."]
 self_modulate = Color(1.5, 1, 1, 1)

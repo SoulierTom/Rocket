@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://duch1ixhvbekr"]
 
-[ext_resource type="Texture2D" uid="uid://dn6byr1ntcpwh" path="res://Assets/Images/Divers/Crate.png" id="1_c8nxr"]
+[ext_resource type="Texture2D" uid="uid://dn6byr1ntcpwh" path="res://Assets/Images/Divers/Crate.png" id="1_u0jo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ewu"]
-size = Vector2(100, 100)
+size = Vector2(114.286, 114.286)
 
 [node name="Caisse" type="RigidBody2D"]
+position = Vector2(4, -4)
 collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_c8nxr")
+texture = ExtResource("1_u0jo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.14, 0.14)

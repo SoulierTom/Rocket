@@ -64,6 +64,7 @@ alpha_curve = SubResource("CurveTexture_dr8pp")
 anim_offset_max = 1.0
 
 [node name="Breakable_small_platform" type="StaticBody2D"]
+position = Vector2(2, -4)
 scale = Vector2(0.1, 0.125)
 collision_layer = 3
 collision_mask = 0
