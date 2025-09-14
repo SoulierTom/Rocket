@@ -888,7 +888,6 @@ position = Vector2(-704, -24)
 [node name="Finish" parent="." instance=ExtResource("6_6ndgf")]
 position = Vector2(908, -105)
 script = ExtResource("7_y5tj1")
-next_level_number = 0
 
 [node name="LevelCamManager" parent="." instance=ExtResource("8_aqlli")]
 

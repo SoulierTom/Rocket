@@ -1,7 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=34 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
-[ext_resource type="PackedScene" uid="uid://bfn383r81c0w2" path="res://Scenes/dust_trail.tscn" id="2_63ig0"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
 [ext_resource type="Script" path="res://Scripts/GPE/spike_interact_box.gd" id="3_htni6"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Player/Arm.tscn" id="3_n5sxh"]
@@ -158,10 +157,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq3ek"]
-size = Vector2(18.82, 24)
+size = Vector2(20.82, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7auy"]
-size = Vector2(17.41, 24.12)
+size = Vector2(19.41, 24.12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_idu3p"]
 shader = ExtResource("5_l6ddu")
@@ -181,9 +180,8 @@ size = Vector2(9, 12)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 floor_stop_on_slope = false
+safe_margin = 0.1
 script = ExtResource("1_li7m8")
-
-[node name="CPUParticles2D" parent="." instance=ExtResource("2_63ig0")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
@@ -191,17 +189,17 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.705, 3)
+position = Vector2(0.205, 3)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fq3ek")
 
 [node name="SpikeInteractBox" type="Area2D" parent="."]
-collision_layer = 2048
-collision_mask = 2056
+collision_layer = 0
+collision_mask = 8
 script = ExtResource("3_htni6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
-position = Vector2(0.3525, 3.03)
+position = Vector2(-0.1475, 3.03)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_o7auy")
 
@@ -213,6 +211,7 @@ layer = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/Crt"]
 material = SubResource("ShaderMaterial_idu3p")
+position = Vector2(0, -1)
 mesh = SubResource("QuadMesh_3burj")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
@@ -246,7 +245,7 @@ z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
 
-[node name="Speedrun" parent="." instance=ExtResource("5_4metu")]
+[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/PlayerMovements/WallGrab"
@@ -261,17 +260,12 @@ event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
 event_name = "event:/PlayerMovements/Bonk"
 event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
 
-[node name="Dust_timer" type="Timer" parent="."]
-wait_time = 0.7
-one_shot = true
+[node name="RocketSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 3)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
-[connection signal="timeout" from="Dust_timer" to="." method="_on_dust_timer_timeout"]
 
 [editable path="Camera"]
 [editable path="Arm"]

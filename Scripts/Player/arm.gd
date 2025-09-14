@@ -29,6 +29,10 @@ const RELOAD_DELAY: float = 0.5     # Délai de 0.5 seconde
 
 @onready var cooldown: Timer = $Cooldown # Cooldown entre 2 tirs
 
+#Son du rocket traveling
+var rocket_traveling: bool = false
+var rocket_sound_started = false
+
 # Permet d'utiliser la Scene Rocket
 const RocketScene = preload("res://Scenes/Player/Rocket.tscn")
 @onready var shooting_point: Marker2D = $Sprite2D/ShootingPoint
@@ -85,6 +89,13 @@ func _physics_process(_delta):
 	else:  # Le bras vise à gauche
 		z_index = -1  # Derrière le personnage
 
+
+	if rocket_traveling and not rocket_sound_started:
+		$Rocket/FmodEventEmitterRocketTravel.play()
+		rocket_sound_started = true
+	elif not rocket_traveling:
+		rocket_sound_started = false  # Reset quand la roquette n'est plus en voyage
+
 # NOUVELLE FONCTION DE GESTION DU RECHARGEMENT
 func update_reload_system():
 	var current_grounded = player.is_on_floor()
@@ -123,13 +134,8 @@ func _input(event):
 			projectile_fired.emit()
 			Global.current_ammo -= 1
 			$RayCast2D.update_ammo_display()
-			# Son $Fmod : lancement de la lecture de l'Event "trajet roquette" depuis son Emitter
-			$Rocket/FmodEventEmitterRocketTravel.play()
-			# FmodServer.play_one_shot_attached("event:/WeaponsSystems/ShootingSequence/RocketTravel", $Rocket)
-		else: 
-			# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
-			$FmodEventEmitterNoAmmo.play()
-
+			rocket_traveling = true
+			
 			# NOUVEAU: Déterminer le type de tir
 			var current_grounded = player.is_on_floor()
 			if current_grounded:
@@ -147,9 +153,13 @@ func _input(event):
 			await get_tree().create_timer(recoil_duration).timeout
 			recoiling = false
 
+		else: 
+			# Son / FMOD : lancement de la lecture de l'Event "pas de munitions" depuis son Emitter
+			$FmodEventEmitterNoAmmo.play()
+
 func shoot(projectile: PackedScene) -> void:
 	var projectile_instance = projectile.instantiate()
-	projectile_instance.position = player.global_position
+	projectile_instance.position = player.get_node("RocketSpawnPoint").global_position
 	projectile_instance.direction = global_position.direction_to(Global.target_pos)
 	add_child(projectile_instance)
 	## Ancien code lancement son
@@ -175,8 +185,4 @@ func create_explosion(explosion_position: Vector2) -> void:
 		var explosion_instance = explosion_scene.instantiate()
 		explosion_instance.global_position = explosion_position
 		add_child(explosion_instance)
-		## FMOD son Bug : tenter de kill l'Event ici s'il ne joue pas fait crasher le jeu
-		##if $Rocket/FmodEventEmitterRocketTravel.isPlaying:
-			##$Rocket/FmodEventEmitterRocketTravel.stop()
-		### Ancien code lancement son
-		### $Explosion.play()
+		rocket_traveling = false

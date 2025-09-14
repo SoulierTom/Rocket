@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_y7mtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
-size = Vector2(642, 120)
+size = Vector2(663.333, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2xqy"]
-size = Vector2(620, 127.778)
+size = Vector2(630.096, 127.778)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkyip"]
-size = Vector2(640, 120)
+size = Vector2(663.333, 120)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bofiw"]
 particles_animation = true
@@ -74,12 +74,12 @@ script = ExtResource("1_s03ti")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.927704, 0.19367, 0.705834, 1)
 position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
+scale = Vector2(5.211, 1)
 texture = ExtResource("2_y7mtf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(259, -8.9407e-07)
+position = Vector2(248.333, -8.9407e-07)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_player" type="Area2D" parent="."]
@@ -88,15 +88,16 @@ scale = Vector2(1.04, 1.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_player"]
 light_mask = 3
-position = Vector2(260, -13.8889)
+position = Vector2(254.952, -13.8889)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_r2xqy")
 
 [node name="Area_rocket" type="Area2D" parent="."]
-visible = false
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
-position = Vector2(260, -2.98023e-07)
+visible = false
+position = Vector2(248.333, -2.98023e-07)
 shape = SubResource("RectangleShape2D_lkyip")
 
 [node name="Timer" type="Timer" parent="."]
