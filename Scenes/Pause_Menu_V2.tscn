@@ -1,0 +1,256 @@
+[gd_scene load_steps=28 format=3 uid="uid://cey7fjnvdhrdu"]
+
+[ext_resource type="Script" path="res://Assets/Menu/Pause Menu/death_screen.gd" id="1_mkif6"]
+[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/FieldGuide.ttf" id="2_s7nmx"]
+[ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_8vi3w"]
+[ext_resource type="Texture2D" uid="uid://dk2dig8xa2baa" path="res://Assets/Menu/Quit.png" id="4_goibc"]
+[ext_resource type="Texture2D" uid="uid://dpkaap4jl2yyo" path="res://Assets/Menu/PlayV2.png" id="5_7l04x"]
+
+[sub_resource type="Animation" id="Animation_u2785"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qh31p"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvh5q"]
+_data = {
+"RESET": SubResource("Animation_u2785"),
+"fade_in": SubResource("Animation_qh31p")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvlux"]
+font = ExtResource("2_s7nmx")
+font_size = 150
+font_color = Color(0, 0.591646, 0.740356, 1)
+outline_size = 10
+outline_color = Color(0.186689, 0.38528, 0.538338, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.913725)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Curve" id="Curve_5w5ug"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_02ksn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtosk"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67woi"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06uos"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln7hv"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c7wa"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo6br"]
+atlas = ExtResource("5_7l04x")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xclrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtosk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67woi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06uos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln7hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c7wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo6br")
+}],
+"loop": false,
+"name": &"Play",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve" id="Curve_d1yv3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5q61k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50289, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_817de"]
+atlas = ExtResource("4_goibc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn0oi"]
+atlas = ExtResource("4_goibc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg5gy"]
+atlas = ExtResource("4_goibc")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk2cc"]
+atlas = ExtResource("4_goibc")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oqju"]
+atlas = ExtResource("4_goibc")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsnb4"]
+atlas = ExtResource("4_goibc")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lq8f7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_817de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn0oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg5gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk2cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oqju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsnb4")
+}],
+"loop": false,
+"name": &"Quit",
+"speed": 10.0
+}]
+
+[node name="Pause_Menu" type="Control"]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mkif6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tvh5q")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -286.0
+offset_right = 175.5
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_rvlux")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.184, 0.184, 0.184, 0.25)
+
+[node name="Play" type="TextureButton" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(20, 20)
+focus_neighbor_bottom = NodePath("../Quit")
+script = ExtResource("3_8vi3w")
+focus_scale_curve = SubResource("Curve_5w5ug")
+press_scale_curve = SubResource("Curve_02ksn")
+
+[node name="ButtonPlayAnim" type="AnimatedSprite2D" parent="CanvasLayer/Play"]
+position = Vector2(20.75, 26)
+sprite_frames = SubResource("SpriteFrames_xclrc")
+animation = &"Play"
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.9999
+offset_top = 142.0
+offset_right = 24.0001
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(20, 20)
+focus_neighbor_top = NodePath("../Play")
+script = ExtResource("3_8vi3w")
+focus_scale_curve = SubResource("Curve_d1yv3")
+press_scale_curve = SubResource("Curve_5q61k")
+
+[node name="ButtonQuitAnim" type="AnimatedSprite2D" parent="CanvasLayer/Quit"]
+position = Vector2(19, 25)
+sprite_frames = SubResource("SpriteFrames_lq8f7")
+animation = &"Quit"
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

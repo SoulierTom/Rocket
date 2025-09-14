@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="Rocket"
-run/main_scene="res://Scenes/Main_Menu.tscn"
+run/main_scene="res://Scenes/main_menu_V2.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/Images/Divers/Logo M-Corp.png"
 
@@ -41,6 +41,7 @@ DeathScreen="*res://Scenes/death_screen.tscn"
 LevelManager="*res://Scripts/LevelManager.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 FmodMasterBanksLoad="*res://Scenes/FmodMasterBanksLoad.tscn"
+MusicManager="*res://Scripts/MusicManager.gd"
 
 [display]
 
