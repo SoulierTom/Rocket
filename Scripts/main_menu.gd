@@ -44,7 +44,7 @@ func _on_play_pressed():
 
 	print("Arbre de scène:", get_tree())
 	if get_tree():
-		get_tree().change_scene_to_file("res://Levels/From_Godot/Test_Level_1.tscn")
+		get_tree().change_scene_to_file("res://Levels/From_Godot/New Levels/Level_1.tscn")
 	else:
 		print("Erreur: get_tree() est null")
 
