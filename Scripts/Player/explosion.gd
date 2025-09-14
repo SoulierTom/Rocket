@@ -8,9 +8,9 @@ extends Area2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer  # Référence à l'AnimationPlayer
 @onready var explo = $Explo
 
-@export var force_player : float = 400.0
-@export var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
-@export var force_objet: int = 75
+var force_player : float = 400.0
+var animation_duration: float = 0.5  # Durée totale de l'animation en secondes
+var force_objet: int = 20
 
 var explosion_active: bool = false  # Pour suivre l'état de l'activation de la collision
 var joy_vect = Global.target_pos
@@ -72,9 +72,9 @@ func apply_explosion_impulse():
 	# Applique une impulsion aux objets dans la zone de collision
 	for o in get_overlapping_bodies():
 		if o is RigidBody2D:
-			var force = (o.global_position - global_position).normalized() * force_objet
+			var force_object = (o.global_position - global_position).normalized() * force_objet
 			  # Applique une force à l'objet
-			o.apply_central_impulse(force)
+			o.apply_central_impulse(force_object)
 		
 		if o is CharacterBody2D:
 			var modif_force = 1.0

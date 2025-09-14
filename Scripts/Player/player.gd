@@ -7,8 +7,13 @@ var FRICTION = 800.0
 var GRAVITY = 1500.0
 var max_fall_speed : float = 250
 
-var is_wall_sliding := false
-const wall_slide_gravity := 0
+#Concerne l'interaction avec les murs
+var is_grabbing := false
+var just_on_wall := false
+var was_on_wall := false
+
+var just_landed := false
+var was_on_floor := true
 
 var fall_time := 0.0
 const FALL_ACCEL_TIME := 1.0  # durée avant chute pleine vitesse
@@ -65,9 +70,9 @@ func _physics_process(delta: float) -> void:
 		bonk_freeze_timer = BONK_FREEZE_TIME  # Active le freeze
 		# Fmod Son : lancement Event Bonk depuis l'Emitter sur Playernode
 		$FmodBonk.play()
-		
-	wall_slide(delta)
-		
+
+	wall_sliding(delta)
+
 	if not Global.player_impulsed:
 		if is_on_floor():
 			if abs(horizontal_input.x) >= 0.1:
@@ -90,11 +95,27 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
 		else :
 			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
-	
-	if is_on_floor():
+
+#Permet de descendre des one way plateformes 
+	if is_on_floor(): 
 		if horizontal_input.y > 0.95:
 			position.y += 1
-	
+
+#Concerne l'atterissage au sol
+	if is_on_floor() :
+		if not was_on_floor :
+			just_landed = true
+			was_on_floor = true
+		else:
+			just_landed = false
+	else: 
+		was_on_floor = false
+		just_landed = false
+
+	if just_landed :
+		#remplace le son par celui d'atterisage
+		$FmodBonk.play()
+
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
 	
@@ -122,11 +143,9 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("run_left")
 				if current_frame >= 0 and current_frame < 1:
 					$FmodWalk.play_one_shot()
-					# $walk_sound.play()
-				#if current_frame >= 2 and current_frame < 3:
-					# $walk_sound.play()
-					#$FmodWalk.play_one_shot()
-	else:
+
+	else: #si le player est en l'air
+
 		if dir_arm.x > 0:
 			animated_sprite.play("jump")
 		else:
@@ -151,23 +170,28 @@ func add_gravity() -> float:
 func ease_out(t: float) -> float:
 	return sin(t * PI * 0.5)
 
-func wall_slide(delta):
+func wall_sliding(delta):
+	#Lance un son quand on se tape contre un mur après s'etre propulsé par une rocket
 	if is_on_wall() and not is_on_floor():
-		## Son Fmod lancement du SFX de grab lorsque la touche est pressée
-		## Bug : si le joueur presse Grab en l'air et le maintient pressé lors du contact avec le mur
-		## alors le perso va grabber le mur mais le son se jouera pas
-		if Input.is_action_just_pressed("Grab"):
-			$FmodWallgrab.play()
+		if not was_on_wall :
+			if Global.player_impulsed :
+				##Remplace le son par celui quand on se tape contre un mur
+				$FmodBonk.play()
+				was_on_wall = true
+			was_on_wall = true
+		#Detecte si on vient de Grab pour lancer le son associé
 		if Input.is_action_pressed("Grab"):
-			is_wall_sliding = true
+			if not is_grabbing:
+				$FmodWallgrab.play()
+				is_grabbing = true
 		else:
-			is_wall_sliding = false
+			is_grabbing = false
 	else:
-		is_wall_sliding = false
-
-	if is_wall_sliding:
-		velocity.y += wall_slide_gravity * delta
-		velocity.y = min(velocity.y, wall_slide_gravity)
+		is_grabbing = false
+		was_on_wall = false
+	#Grab le mur
+	if is_grabbing:
+		velocity.y = 0
 
 
 func pause_game():
