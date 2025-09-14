@@ -36,7 +36,8 @@ var pause_instance = null
 var camera: Camera2D = null
 
 # Référence au CanvasLayer
-@onready var canvas_layer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $Camera/CanvasLayer
+@onready var speedrun_timer: Control = $"Speedrun timer"
 
 func _physics_process(delta: float) -> void:
 
@@ -194,7 +195,7 @@ func wall_sliding(delta):
 func pause_game():
 	pause_instance = pause_menu.instantiate()
 	pause_instance.z_index = 100
-	canvas_layer.add_child(pause_instance)
+	speedrun_timer.add_child(pause_instance)
 
 	# Positionner le menu au centre de la caméra visible
 	var cam := get_viewport().get_camera_2d()

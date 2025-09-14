@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3l7e672drq3v"]
+[gd_scene load_steps=13 format=3 uid="uid://c3l7e672drq3v"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_platform.gd" id="1_itx37"]
 [ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_5jha8"]
+[ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_l4d6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
@@ -71,9 +72,9 @@ collision_mask = 0
 script = ExtResource("1_itx37")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
-texture = ExtResource("2_5jha8")
+position = Vector2(258.835, 3.805)
+scale = Vector2(2.846, 0.526)
+texture = ExtResource("2_l4d6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(259, -8.9407e-07)

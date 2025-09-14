@@ -245,7 +245,7 @@ z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("5_4metu")]
+[node name="Speedrun timer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/PlayerMovements/WallGrab"
