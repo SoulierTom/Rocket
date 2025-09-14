@@ -113,8 +113,8 @@ func _physics_process(delta: float) -> void:
 		just_landed = false
 
 	if just_landed :
-		#remplace le son par celui d'atterisage
-		$FmodBonk.play()
+		# Fmod Son atterissage
+		$FmodLanding.play()
 
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed

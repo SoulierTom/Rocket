@@ -263,6 +263,10 @@ event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
 [node name="RocketSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 3)
 
+[node name="FmodLanding" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/Landing"
+event_guid = "{9ffd7896-907e-43a4-80c1-b66217f8692b}"
+
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
