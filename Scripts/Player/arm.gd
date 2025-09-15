@@ -3,8 +3,8 @@ extends Node2D
 @onready var player = $".."
 
 # Variables propres au mouvement du bras
-var is_using_gamepad = false
-var last_joystick_vector = Vector2(0.5,0.866)
+var is_using_gamepad = true
+var last_joystick_vector = Vector2(1,0)
 
 # Position du bras
 @export var pos_arm_x: float = -3
@@ -64,7 +64,6 @@ func _physics_process(_delta):
 		position.x = lerp(position.x, character_pos.x + pos_arm_x + recoil_vector.x, 0.8)
 		position.y = lerp(position.y, character_pos.y + pos_arm_y + recoil_vector.y, 0.8)
 
-	var mouse_pos = get_global_mouse_position()
 	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down")
 
 	if is_using_gamepad:
@@ -75,9 +74,6 @@ func _physics_process(_delta):
 		else:
 			Global.target_pos = character_pos + last_joystick_vector * 1000000
 			look_at(Global.target_pos)
-	#else:    #desactivation temporaire de la souris
-		#Global.target_pos = mouse_pos
-		#look_at(Global.target_pos)
 	
 	# NOUVEAU SYSTÈME DE RECHARGEMENT
 	update_reload_system()
@@ -95,6 +91,7 @@ func _physics_process(_delta):
 		rocket_sound_started = true
 	elif not rocket_traveling:
 		rocket_sound_started = false  # Reset quand la roquette n'est plus en voyage
+		#Ici il faut kill le son
 
 # NOUVELLE FONCTION DE GESTION DU RECHARGEMENT
 func update_reload_system():
@@ -123,8 +120,6 @@ func update_reload_system():
 func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		is_using_gamepad = true
-	elif event is InputEventMouse or event is InputEventKey:
-		is_using_gamepad = false
 
 	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
 		if Global.current_ammo > 0:

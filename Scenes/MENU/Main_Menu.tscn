@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://r7xghap7k5ad"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_y2m26"]
-[ext_resource type="Texture2D" uid="uid://b6480ppbyoco" path="res://Assets/Images/Divers/PushStart.png" id="2_47qby"]
-[ext_resource type="Texture2D" uid="uid://bfhkxafero20y" path="res://Assets/Images/Divers/RnJ.png" id="3_i577s"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_h637y"]
+[ext_resource type="Texture2D" uid="uid://b6480ppbyoco" path="res://Assets/Images/Divers/PushStart.png" id="2_wcdc1"]
+[ext_resource type="Texture2D" uid="uid://bfhkxafero20y" path="res://Assets/Images/Divers/RnJ.png" id="3_spx78"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y2m26")
+script = ExtResource("1_h637y")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,12 +37,12 @@ text = "Quit"
 [node name="PushStart" type="Sprite2D" parent="."]
 position = Vector2(606, 219)
 scale = Vector2(10, 10)
-texture = ExtResource("2_47qby")
+texture = ExtResource("2_wcdc1")
 
 [node name="RnJ" type="Sprite2D" parent="."]
 position = Vector2(66, -89)
 scale = Vector2(10, 10)
-texture = ExtResource("3_i577s")
+texture = ExtResource("3_spx78")
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
 is_locked = true

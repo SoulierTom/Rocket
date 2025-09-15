@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxq632opcv5qe"]
 
 [ext_resource type="Script" path="res://Scripts/speedrun.gd" id="1_jkgkb"]
-[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/FieldGuide.ttf" id="2_yei8v"]
+[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/Fonts/FieldGuide.ttf" id="2_yei8v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vhmu8"]
 font = ExtResource("2_yei8v")

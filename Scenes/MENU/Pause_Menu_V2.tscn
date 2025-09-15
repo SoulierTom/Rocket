@@ -1,8 +1,8 @@
 [gd_scene load_steps=30 format=3 uid="uid://cey7fjnvdhrdu"]
 
 [ext_resource type="Script" path="res://Assets/Menu/Pause Menu/death_screen.gd" id="1_mkif6"]
-[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/FieldGuide.ttf" id="2_s7nmx"]
-[ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_8vi3w"]
+[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/Fonts/FieldGuide.ttf" id="2_s7nmx"]
+[ext_resource type="Script" path="res://Scripts/MENU/AnimatedButton.gd" id="3_8vi3w"]
 [ext_resource type="Texture2D" uid="uid://dookwvw8tm2d3" path="res://Assets/Menu/resume/Resume_0001.png" id="4_n7oeo"]
 [ext_resource type="Texture2D" uid="uid://dagqyguv75h3p" path="res://Assets/Menu/resume/Resume_0002.png" id="5_li5jm"]
 [ext_resource type="Texture2D" uid="uid://nmsha53xvuvk" path="res://Assets/Menu/resume/Resume_0003.png" id="6_cvyvt"]
