@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="5_e8r37"]
 [ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="6_7jqku"]
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="6_oqgvh"]
-[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="7_hn6q4"]
+[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/LD/Level_Cam_Manager.tscn" id="7_hn6q4"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="7_u4hnn"]
-[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/CameraBounds.tscn" id="10_yqit4"]
+[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/LD/CameraBounds.tscn" id="10_yqit4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_eebiv")

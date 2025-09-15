@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://djx8g733c018p"]
+[gd_scene load_steps=12 format=3 uid="uid://djx8g733c018p"]
 
-[ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_ye2u5"]
-[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="2_fv4mx"]
+[ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_qm0tg"]
+[ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_s6cla"]
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="3_msrs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(642, 120)
@@ -65,14 +66,16 @@ position = Vector2(-3, 0)
 scale = Vector2(0.012, 0.06)
 collision_layer = 3
 collision_mask = 0
-script = ExtResource("1_ye2u5")
+script = ExtResource("1_qm0tg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
-texture = ExtResource("2_fv4mx")
+modulate = Color(0.686275, 0.419608, 0.0980392, 1)
+position = Vector2(900, -130)
+scale = Vector2(8.908, 1.771)
+texture = ExtResource("2_s6cla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(259, -8.9407e-07)
 shape = SubResource("RectangleShape2D_uf8v0")
 
@@ -80,6 +83,7 @@ shape = SubResource("RectangleShape2D_uf8v0")
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
+visible = false
 position = Vector2(260, -2.98023e-07)
 shape = SubResource("RectangleShape2D_lkyip")
 
@@ -93,7 +97,7 @@ emitting = false
 amount = 20
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_vpcld")
-texture = ExtResource("2_fv4mx")
+texture = ExtResource("3_msrs7")
 one_shot = true
 explosiveness = 1.0
 
@@ -106,7 +110,7 @@ emitting = false
 amount = 20
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_1an5h")
-texture = ExtResource("2_fv4mx")
+texture = ExtResource("3_msrs7")
 one_shot = true
 
 [connection signal="area_entered" from="Area_rocket" to="." method="_on_area_rocket_area_entered"]

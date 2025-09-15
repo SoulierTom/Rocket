@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://b4ab8mv5n4god"]
 
-[ext_resource type="Script" path="res://Assets/Menu/main_menu.gd" id="1_flytq"]
-[ext_resource type="Script" path="res://Assets/Menu/AnimatedButton.gd" id="3_r66qg"]
+[ext_resource type="Script" path="res://Scripts/MENU/main_menu.gd" id="1_flytq"]
+[ext_resource type="Script" path="res://Scripts/MENU/AnimatedButton.gd" id="3_r66qg"]
 [ext_resource type="Texture2D" uid="uid://cyrypfpv76j14" path="res://Assets/Menu/Play_V3/Play_V3_0001.png" id="4_sqp5k"]
 [ext_resource type="Texture2D" uid="uid://jqtaeqvxhnce" path="res://Assets/Menu/Play_V3/Play_V3_0002.png" id="5_425f4"]
 [ext_resource type="Texture2D" uid="uid://b3s8ny5rjyyno" path="res://Assets/Menu/RnJ.png" id="5_rfryb"]
@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://Assets/Menu/crt.gdshader" id="6_waeoh"]
 [ext_resource type="Texture2D" uid="uid://p8b851u2jawc" path="res://Assets/Menu/Play_V3/Play_V3_0004.png" id="7_hs0kw"]
 [ext_resource type="Texture2D" uid="uid://bikxdpox27dmr" path="res://Assets/Menu/Play_V3/Play_V3_0005.png" id="8_08ga7"]
-[ext_resource type="Script" path="res://Assets/Menu/crt.gd" id="8_alrad"]
+[ext_resource type="Script" path="res://Scripts/MENU/crt.gd" id="8_alrad"]
 [ext_resource type="Texture2D" uid="uid://bjxl5npf47uke" path="res://Assets/Menu/Play_V3/Play_V3_0006.png" id="9_1w5ou"]
 [ext_resource type="Texture2D" uid="uid://cex81dems2pua" path="res://Assets/Menu/Play_V3/Play_V3_0007.png" id="10_uepbi"]
 [ext_resource type="AudioStream" uid="uid://s3dtm0e0ukpn" path="res://Assets/Menu/wallace cleaver + notinbed type beat ESPOIR PERDU (kayce!).mp3" id="10_vlxob"]

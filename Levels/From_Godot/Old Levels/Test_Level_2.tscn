@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://btply6jvbeecr"]
+[gd_scene load_steps=18 format=4 uid="uid://btply6jvbeecr"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_rdu16"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_vq1js"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kanfh"]
 [ext_resource type="Texture2D" uid="uid://hisufxsm86ub" path="res://Assets/Images/Tilesets/Tile_set_tuto_3.png" id="5_rcduy"]
 [ext_resource type="Texture2D" uid="uid://grnkmxe27hkv" path="res://Assets/Images/Tilesets/Tile_set_tuto_2__Explo.png" id="6_jvxv1"]
-[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/Level_Cam_Manager.tscn" id="9_woubr"]
-[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/CameraBounds.tscn" id="10_qhwb0"]
+[ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/LD/Level_Cam_Manager.tscn" id="9_woubr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
 texture = ExtResource("1_rdu16")
@@ -757,18 +756,12 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(0, -1)
 
-[node name="Camera" parent="Player" index="3"]
-bounds_node_path = NodePath("../../Line2D")
-
 [node name="finish" parent="." instance=ExtResource("5_kanfh")]
 position = Vector2(134, -312)
 scale = Vector2(1, 1.68)
 
 [node name="LevelCamManager" parent="." instance=ExtResource("9_woubr")]
 camera_vertical_offset = -30.0
-
-[node name="Line2D" parent="." instance=ExtResource("10_qhwb0")]
-points = PackedVector2Array(128, 64, 128, -448, -373, -447, -371, 66, 128, 64)
 
 [editable path="Player"]
 [editable path="Player/Camera"]

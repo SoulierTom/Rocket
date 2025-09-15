@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cnjmr4evohsr4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/explosion.gd" id="1_6xgrk"]
-[ext_resource type="PackedScene" uid="uid://cgm4xyrdc7ywx" path="res://Scenes/explo_feu.tscn" id="2_83578"]
+[ext_resource type="PackedScene" uid="uid://cgm4xyrdc7ywx" path="res://Scenes/Player/explo_feu.tscn" id="2_83578"]
 [ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="3_le5k6"]
 
 [sub_resource type="Curve" id="Curve_l6dob"]

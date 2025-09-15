@@ -261,7 +261,7 @@ event_name = "event:/PlayerMovements/Bonk"
 event_guid = "{e8d1de39-2910-4e6d-84ef-442730b9ddfc}"
 
 [node name="RocketSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 2)
 
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]

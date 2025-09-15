@@ -4,6 +4,7 @@ extends Node
 # Liste de tous les niveaux dans l'ordre
 var levels = [
 	"res://Levels/From_Godot/New Levels/Level_1.tscn",
+	"res://Levels/From_Godot/Inter Levels/Inter_2.tscn",
 	"res://Levels/From_Godot/New Levels/Level_2.tscn",
 	
 	# Ajoutez autant de niveaux que nécessaire
