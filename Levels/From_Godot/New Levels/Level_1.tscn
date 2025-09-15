@@ -798,9 +798,6 @@ limit_right = 595
 limit_bottom = 565
 zoom_level = Vector2(4.5, 4.5)
 
-[node name="Crt" parent="Player/Camera" index="1"]
-visible = false
-
 [node name="AnimatedText1" type="Node2D" parent="."]
 position = Vector2(-118, 479)
 script = ExtResource("17_hf2gu")
