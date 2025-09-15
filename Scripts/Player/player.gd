@@ -29,7 +29,7 @@ var arm_offset_x: float = 0.85
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var pause_menu = preload("res://Scenes/Pause_Menu_V2.tscn")
+@onready var pause_menu = preload("res://Scenes/MENU/Pause_Menu_V2.tscn")
 var pause_instance = null
 
 # Référence à la caméra

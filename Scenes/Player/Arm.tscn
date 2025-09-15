@@ -97,3 +97,4 @@ event_name = "event:/WeaponsSystems/ShootingSequence/ShotNoAmmo"
 event_guid = "{49be5e6e-eee0-47e5-b4fa-ca7b943a53ed}"
 
 [node name="FmodEventEmitterRefill" type="FmodEventEmitter2D" parent="."]
+event_guid = "{00000001-0000-0000-0000-000000000000}"

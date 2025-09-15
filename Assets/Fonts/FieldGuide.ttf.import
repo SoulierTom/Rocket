@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cw571obscfhmv"
-path="res://.godot/imported/FieldGuide.ttf-f20b3648090967a262fda238045c3179.fontdata"
+path="res://.godot/imported/FieldGuide.ttf-11ee5069eca3054ce105af54abea41f1.fontdata"
 
 [deps]
 
-source_file="res://Assets/FieldGuide.ttf"
-dest_files=["res://.godot/imported/FieldGuide.ttf-f20b3648090967a262fda238045c3179.fontdata"]
+source_file="res://Assets/Fonts/FieldGuide.ttf"
+dest_files=["res://.godot/imported/FieldGuide.ttf-11ee5069eca3054ce105af54abea41f1.fontdata"]
 
 [params]
 
