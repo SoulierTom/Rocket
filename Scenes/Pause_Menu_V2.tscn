@@ -94,7 +94,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Play",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [sub_resource type="Curve" id="Curve_d1yv3"]

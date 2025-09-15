@@ -30,6 +30,7 @@ func _on_resume_focus_entered() -> void:
 
 func _on_resume_focus_exited() -> void:
 	# Remettre à la première frame
+	button_play_anim.stop()
 	button_play_anim.frame = 0
 
 func _on_quit_focus_entered() -> void:
@@ -37,7 +38,8 @@ func _on_quit_focus_entered() -> void:
 	button_quit_anim.play("Quit")
 
 func _on_quit_focus_exited() -> void:
-	# Remettre à la première frame
+	# Arrêter l'animation puis remettre à la première frame
+	button_quit_anim.stop()
 	button_quit_anim.frame = 0
 
 func _on_resume_pressed() -> void:
