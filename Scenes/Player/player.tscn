@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=35 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
+[ext_resource type="PackedScene" uid="uid://bfn383r81c0w2" path="res://Scenes/Player/dust_trail.tscn" id="2_ma32d"]
 [ext_resource type="Script" path="res://Scripts/GPE/spike_interact_box.gd" id="3_htni6"]
 [ext_resource type="PackedScene" uid="uid://br48rbyr8k4q" path="res://Scenes/Player/Arm.tscn" id="3_n5sxh"]
 [ext_resource type="PackedScene" uid="uid://ea86o06c3kd" path="res://Scenes/Player/camera_2d.tscn" id="3_s4l33"]
@@ -183,6 +184,9 @@ floor_stop_on_slope = false
 safe_margin = 0.1
 script = ExtResource("1_li7m8")
 
+[node name="Dust_trail" parent="." instance=ExtResource("2_ma32d")]
+color = Color(0.60933, 0.60933, 0.60933, 0.211)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
 animation = &"run"
@@ -194,8 +198,8 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_fq3ek")
 
 [node name="SpikeInteractBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 2048
+collision_mask = 2056
 script = ExtResource("3_htni6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeInteractBox"]
@@ -267,9 +271,14 @@ position = Vector2(0, 2)
 event_name = "event:/PlayerMovements/Landing"
 event_guid = "{9ffd7896-907e-43a4-80c1-b66217f8692b}"
 
+[node name="DustTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
 [connection signal="area_entered" from="InteractionBox" to="InteractionBox" method="_on_area_entered"]
+[connection signal="timeout" from="DustTimer" to="." method="_on_dust_timer_timeout"]
 
 [editable path="Camera"]
 [editable path="Arm"]

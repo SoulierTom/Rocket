@@ -38,6 +38,11 @@ var camera: Camera2D = null
 # Référence au CanvasLayer
 @onready var canvas_layer: CanvasLayer = $Camera/CanvasLayer
 @onready var speedrun_timer: Control = $"Speedrun timer"
+@onready var dust_timer: Timer = $DustTimer
+@onready var dust_trail: CPUParticles2D = $"Dust_trail"
+
+func _ready() -> void:
+	dust_trail.emitting = false
 
 func _physics_process(delta: float) -> void:
 
@@ -216,3 +221,13 @@ func resume_game():
 		get_tree().paused = false
 		$Arm/ReloadTimer.paused = false
 		$Arm/Cooldown.paused = false
+
+
+
+func _on_spike_interact_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("boom"):
+		dust_timer.start()
+		dust_trail.emitting = true
+
+func _on_dust_timer_timeout() -> void:
+	dust_trail.emitting = false
