@@ -87,7 +87,10 @@ func _physics_process(_delta):
 
 
 	if rocket_traveling and not rocket_sound_started:
-		$Rocket/FmodEventEmitterRocketTravel.play()
+		#### $Rocket/FmodEventEmitterRocketTravel.play()
+		## Si on déclare le Node Rocket ou un de ses enfants,
+		## on peut peut-être y accrocher l'Event
+		## FmodServer.play_one_shot_attached("event:/Tests/TestRestart", NodeName)
 		rocket_sound_started = true
 	elif not rocket_traveling:
 		rocket_sound_started = false  # Reset quand la roquette n'est plus en voyage
