@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjtxp43vhk0fj"]
+[gd_scene load_steps=10 format=3 uid="uid://dx24vfs4461vq"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_6705v"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
-[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
+[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
+[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_qeegp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
-font = ExtResource("2_adgwp")
+font = ExtResource("2_ayepf")
 font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
@@ -66,13 +66,13 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_uou52"]
 line_spacing = 5.0
-font = ExtResource("2_adgwp")
+font = ExtResource("2_ayepf")
 font_size = 60
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_6705v")
+script = ExtResource("1_2u17t")
 
 [node name="Label_Continue" type="Label" parent="."]
 offset_left = 1095.0
@@ -86,7 +86,7 @@ vertical_alignment = 1
 
 [node name="DisplayText" type="Node2D" parent="."]
 position = Vector2(-118, 479)
-script = ExtResource("3_fikwp")
+script = ExtResource("3_qeegp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
 libraries = {

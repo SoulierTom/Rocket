@@ -1,28 +1,28 @@
 [gd_scene load_steps=36 format=4 uid="uid://dshq24ra64qmv"]
 
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_11t02"]
-[ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="2_wh77j"]
-[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="3_oi30r"]
-[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="4_ivddw"]
-[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="5_qwtxd"]
-[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="6_5floe"]
-[ext_resource type="PackedScene" uid="uid://bo01vmxbggn2w" path="res://Scenes/GPE/destruct_wall_8x2.tscn" id="7_e4nlm"]
-[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="8_u7wlh"]
-[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="9_0mksk"]
-[ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/destruct_platform_8x2.tscn" id="10_dswh5"]
-[ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="11_6cftg"]
-[ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="12_06my5"]
-[ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="13_g1p2i"]
-[ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_2pvfv"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_de200"]
-[ext_resource type="Script" path="res://Scripts/animated_text.gd" id="17_hf2gu"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="18_nen6n"]
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_32a27"]
+[ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="2_x6ifo"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="3_3yma8"]
+[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="4_y5ynl"]
+[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="5_re0fv"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="6_eihql"]
+[ext_resource type="PackedScene" uid="uid://bo01vmxbggn2w" path="res://Scenes/GPE/destruct_wall_8x2.tscn" id="7_hb06h"]
+[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="8_0hyd7"]
+[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="9_cexmq"]
+[ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/destruct_platform_8x2.tscn" id="10_q1si6"]
+[ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="11_kbg24"]
+[ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="12_onk0u"]
+[ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="13_iy47f"]
+[ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_mvgwb"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_vh0y5"]
+[ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_tmnq4"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="17_t747w"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nfjtd"]
-scenes/2/scene = ExtResource("2_wh77j")
+scenes/2/scene = ExtResource("2_x6ifo")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
-texture = ExtResource("3_oi30r")
+texture = ExtResource("3_3yma8")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -97,7 +97,7 @@ separation = Vector2i(1, 1)
 6:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ifp74"]
-texture = ExtResource("4_ivddw")
+texture = ExtResource("4_y5ynl")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -159,7 +159,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_nfjtd")
 sources/2 = SubResource("TileSetAtlasSource_ifp74")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tadxp"]
-texture = ExtResource("4_ivddw")
+texture = ExtResource("4_y5ynl")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -572,7 +572,7 @@ texture_region_size = Vector2i(8, 8)
 16:0/0/terrains_peering_bit/top_side = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47jt4"]
-texture = ExtResource("5_qwtxd")
+texture = ExtResource("5_re0fv")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -672,16 +672,16 @@ texture_region_size = Vector2i(8, 8)
 7:11/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0hlb5"]
-scenes/1/scene = ExtResource("6_5floe")
-scenes/2/scene = ExtResource("9_0mksk")
-scenes/3/scene = ExtResource("10_dswh5")
-scenes/4/scene = ExtResource("11_6cftg")
-scenes/5/scene = ExtResource("12_06my5")
-scenes/6/scene = ExtResource("13_g1p2i")
-scenes/7/scene = ExtResource("14_2pvfv")
-scenes/9/scene = ExtResource("2_wh77j")
-scenes/10/scene = ExtResource("7_e4nlm")
-scenes/12/scene = ExtResource("8_u7wlh")
+scenes/1/scene = ExtResource("6_eihql")
+scenes/2/scene = ExtResource("9_cexmq")
+scenes/3/scene = ExtResource("10_q1si6")
+scenes/4/scene = ExtResource("11_kbg24")
+scenes/5/scene = ExtResource("12_onk0u")
+scenes/6/scene = ExtResource("13_iy47f")
+scenes/7/scene = ExtResource("14_mvgwb")
+scenes/9/scene = ExtResource("2_x6ifo")
+scenes/10/scene = ExtResource("7_hb06h")
+scenes/12/scene = ExtResource("8_0hyd7")
 
 [sub_resource type="TileSet" id="TileSet_vvb5x"]
 tile_size = Vector2i(8, 8)
@@ -700,7 +700,7 @@ sources/2 = SubResource("TileSetScenesCollectionSource_0hlb5")
 
 [sub_resource type="LabelSettings" id="LabelSettings_obam0"]
 line_spacing = 1.0
-font = ExtResource("18_nen6n")
+font = ExtResource("17_t747w")
 font_size = 7
 font_color = Color(0, 0.972549, 0, 1)
 outline_size = 1
@@ -836,7 +836,7 @@ size = Vector2(216, 19.75)
 
 [sub_resource type="LabelSettings" id="LabelSettings_icta2"]
 line_spacing = 1.0
-font = ExtResource("18_nen6n")
+font = ExtResource("17_t747w")
 font_size = 7
 font_color = Color(0, 0.972549, 0, 1)
 outline_size = 1
@@ -850,7 +850,7 @@ size = Vector2(193, 16.75)
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Finish" parent="Tiles" instance=ExtResource("1_11t02")]
+[node name="Finish" parent="Tiles" instance=ExtResource("1_32a27")]
 position = Vector2(532, 606)
 scale = Vector2(1.7017, 0.73448)
 
@@ -874,7 +874,7 @@ tile_set = SubResource("TileSet_vvb5x")
 z_index = 5
 tile_set = SubResource("TileSet_vvb5x")
 
-[node name="Player" parent="." instance=ExtResource("15_de200")]
+[node name="Player" parent="." instance=ExtResource("15_vh0y5")]
 position = Vector2(-136, -2)
 
 [node name="Camera" parent="Player" index="3"]
@@ -887,7 +887,7 @@ zoom_level = Vector2(4.5, 4.5)
 
 [node name="AnimatedText1" type="Node2D" parent="."]
 position = Vector2(-118, 479)
-script = ExtResource("17_hf2gu")
+script = ExtResource("16_tmnq4")
 
 [node name="Label" type="Label" parent="AnimatedText1"]
 anchors_preset = 8
@@ -925,7 +925,7 @@ shape = SubResource("RectangleShape2D_08cv8")
 
 [node name="AnimatedText2" type="Node2D" parent="."]
 position = Vector2(277, 527)
-script = ExtResource("17_hf2gu")
+script = ExtResource("16_tmnq4")
 
 [node name="Label" type="Label" parent="AnimatedText2"]
 anchors_preset = 8

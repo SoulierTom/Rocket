@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_83e2x"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_bk7qd"]
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_853sy"]
-[ext_resource type="Script" path="res://Levels/From_Godot/New Levels/animated_text_multiple.gd" id="18_ppyfw"]
+[ext_resource type="Script" path="res://Scripts/animated_text_multiple.gd" id="18_ppyfw"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nfjtd"]
 scenes/2/scene = ExtResource("2_72kf2")

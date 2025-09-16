@@ -1,16 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmiq12qqjnw06"]
+[gd_scene load_steps=10 format=3 uid="uid://bjtxp43vhk0fj"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_oy6x4"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_3df1u"]
-[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_bldho"]
+[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_6705v"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
+[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
-font = ExtResource("2_3df1u")
+font = ExtResource("2_adgwp")
 font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_f7f7t"]
+[sub_resource type="Animation" id="Animation_q3jx4"]
 resource_name = "Display_Text"
 length = 4.0
 tracks/0/type = "value"
@@ -59,34 +59,34 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snssw"]
 _data = {
-"Display_Text": SubResource("Animation_f7f7t"),
+"Display_Text": SubResource("Animation_q3jx4"),
 "RESET": SubResource("Animation_wasww"),
 "Show_Text": SubResource("Animation_ry6e4")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_umx0l"]
-line_spacing = 5.0
-font = ExtResource("2_3df1u")
-font_size = 60
+[sub_resource type="LabelSettings" id="LabelSettings_uou52"]
+line_spacing = 10.0
+font = ExtResource("2_adgwp")
+font_size = 57
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_oy6x4")
+script = ExtResource("1_6705v")
 
 [node name="Label_Continue" type="Label" parent="."]
-offset_left = 1095.0
-offset_top = 1023.0
-offset_right = 2107.0
-offset_bottom = 1087.0
+offset_left = 1082.0
+offset_top = 1016.0
+offset_right = 2094.0
+offset_bottom = 1080.0
 text = "PRESS A To continue"
 label_settings = SubResource("LabelSettings_bkkpx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DisplayText" type="Node2D" parent="."]
-position = Vector2(-118, 479)
-script = ExtResource("3_bldho")
+position = Vector2(0, 540)
+script = ExtResource("3_fikwp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
 libraries = {
@@ -95,17 +95,17 @@ libraries = {
 speed_scale = 0.66
 
 [node name="Main_Text" type="Label" parent="DisplayText"]
-offset_left = 305.0
-offset_top = -85.0
-offset_right = 1903.0
-offset_bottom = 194.0
-text = "Use the Power of your Cyborg
-to accomplish the mission. 
-You can’t allow you to fail. 
-This Mission is very important !"
-label_settings = SubResource("LabelSettings_umx0l")
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -272.0
+offset_right = 1991.0
+offset_bottom = 272.0
+grow_vertical = 2
+text = "Operator, Mcorp needs you today.
+One of our mines has just found a rare crystal deep inside planet P-216, right before a collapse started. We are sending a Remote-Controlled Robot (RCR_model_3) to recover it. Your our best Operator. Take control of it. You need to succeed."
+label_settings = SubResource("LabelSettings_uou52")
+autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
