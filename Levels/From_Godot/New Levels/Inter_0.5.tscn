@@ -1,14 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmiq12qqjnw06"]
+[gd_scene load_steps=10 format=3 uid="uid://bjtxp43vhk0fj"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_vk5rf"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_chqbg"]
-[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_ncvcl"]
+[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_6705v"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
+[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
-font = ExtResource("2_chqbg")
+font = ExtResource("2_adgwp")
 font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_q3jx4"]
+resource_name = "Display_Text"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main_Text:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_wasww"]
 length = 0.001
@@ -41,38 +57,22 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_f7f7t"]
-resource_name = "Display_Text"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main_Text:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snssw"]
 _data = {
-"Display_Text": SubResource("Animation_f7f7t"),
+"Display_Text": SubResource("Animation_q3jx4"),
 "RESET": SubResource("Animation_wasww"),
 "Show_Text": SubResource("Animation_ry6e4")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_umx0l"]
+[sub_resource type="LabelSettings" id="LabelSettings_uou52"]
 line_spacing = 5.0
-font = ExtResource("2_chqbg")
+font = ExtResource("2_adgwp")
 font_size = 60
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_vk5rf")
+script = ExtResource("1_6705v")
 
 [node name="Label_Continue" type="Label" parent="."]
 offset_left = 1095.0
@@ -86,7 +86,7 @@ vertical_alignment = 1
 
 [node name="DisplayText" type="Node2D" parent="."]
 position = Vector2(-118, 479)
-script = ExtResource("3_ncvcl")
+script = ExtResource("3_fikwp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
 libraries = {
@@ -95,15 +95,16 @@ libraries = {
 speed_scale = 0.66
 
 [node name="Main_Text" type="Label" parent="DisplayText"]
-offset_left = 305.0
-offset_top = -85.0
-offset_right = 1903.0
-offset_bottom = 194.0
-text = "Use the Power of your Cyborg
-to accomplish the mission. 
-You can’t allow you to fail. 
-This Mission is very important !"
-label_settings = SubResource("LabelSettings_umx0l")
+offset_left = 122.0
+offset_top = -91.0
+offset_right = 2770.0
+offset_bottom = 234.0
+text = "Operator, your Robot is coming
+close to his objectif. 
+The Landscape is going
+to be more dangerous. 
+So we are giving you manual control now."
+label_settings = SubResource("LabelSettings_uou52")
 visible_characters = 0
 visible_ratio = 0.0
 

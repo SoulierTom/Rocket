@@ -24,6 +24,10 @@ var gravity_scale = 1.0
 var was_going_up = false
 var time_in_fall = 0.0
 
+#Concerne le shake du saut
+var shake_tween: Tween
+var original_pos: Vector2
+
 @onready var arm = $Arm
 var arm_offset_x: float = 0.85
 
@@ -53,6 +57,12 @@ func _physics_process(delta: float) -> void:
 		Global.VBR = !Global.VBR
 
 	var horizontal_input := Input.get_vector("Move_Left", "Move_Right","Move_Up", "Move_Down")
+
+	#Feedback lorsqu'on appuie sur la touche de saut
+	if Input.is_action_just_pressed("ok") and is_on_floor():
+		# Fmod Son Saut non fonctionnel
+		$FmodBonk.play()
+		quick_shake()
 
 	if bonk_freeze_timer > 0.0:
 		bonk_freeze_timer -= delta
@@ -155,6 +165,19 @@ func _physics_process(delta: float) -> void:
 			pause_game()
 		else:
 			resume_game()
+
+func quick_shake():
+	if shake_tween:
+		shake_tween.kill()
+	
+	shake_tween = create_tween()
+	original_pos = position
+	
+	# 5 petites vibrations rapides
+	for i in range(5):
+		shake_tween.tween_property(self, "position", original_pos + Vector2(randf_range(-1, 1), randf_range(-1, 1)), 0.01)
+		shake_tween.tween_property(self, "position", original_pos, 0.01)
+
 
 func add_gravity() -> float:
 	var fall_progress: float = clamp(fall_time / FALL_ACCEL_TIME, 0.0, 1.0)
