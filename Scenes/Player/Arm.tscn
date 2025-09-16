@@ -99,3 +99,8 @@ event_guid = "{49be5e6e-eee0-47e5-b4fa-ca7b943a53ed}"
 [node name="FmodEventEmitterRefill" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/WeaponsSystems/Refill"
 event_guid = "{4bfa9494-d6a2-4d33-b9a4-8650ca83a151}"
+
+[node name="FmodEventEmitterRocketTravel" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/WeaponsSystems/ShootingSequence/RocketTravel"
+event_guid = "{f7f9c812-b4cf-4f05-83f8-76d70c6c0ff5}"
+allow_fadeout = false
