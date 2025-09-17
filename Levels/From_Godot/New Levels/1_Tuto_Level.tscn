@@ -832,7 +832,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08cv8"]
-size = Vector2(216, 19.75)
+size = Vector2(216, 9.75)
 
 [sub_resource type="LabelSettings" id="LabelSettings_icta2"]
 line_spacing = 1.0
@@ -892,13 +892,15 @@ limit_bottom = 565
 zoom_level = Vector2(4.5, 4.5)
 
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
-position = Vector2(-1, -1)
+position = Vector2(-52, 18)
 
 [node name="AnimatedText1" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(-118, 479)
 script = ExtResource("16_tmnq4")
 
 [node name="Label" type="Label" parent="AnimatedText1"]
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -910,10 +912,10 @@ offset_right = 51.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Use your
-Left Joystick
-to move RCR-3's 
-Bionics Legs"
+text = "To move RCR-3's 
+Bionics Legs:
+Use your
+Left Joystick"
 label_settings = SubResource("LabelSettings_obam0")
 autowrap_mode = 3
 uppercase = true
@@ -929,10 +931,11 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="AnimatedText1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText1/Area2D"]
-position = Vector2(-22, -9.125)
+position = Vector2(-22, -4.125)
 shape = SubResource("RectangleShape2D_08cv8")
 
 [node name="AnimatedText2" type="Node2D" parent="."]
+z_index = 20
 position = Vector2(277, 527)
 script = ExtResource("16_tmnq4")
 
@@ -942,15 +945,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -83.0
-offset_right = 116.0
-offset_bottom = -51.0
+offset_left = -70.0
+offset_top = -93.0
+offset_right = 111.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press RIGHT TRIGGER
-TO SHOOT with your
-rocket launcher arm"
+text = "TO SHOOT with your
+rocket launcher arm:
+Press RIGHT TRIGGER"
 label_settings = SubResource("LabelSettings_icta2")
 autowrap_mode = 3
 uppercase = true

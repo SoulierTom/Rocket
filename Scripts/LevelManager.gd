@@ -3,11 +3,13 @@ extends Node
 
 # Liste de tous les niveaux dans l'ordre
 var levels = [
-	"res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn",
 	"res://Levels/From_Godot/New Levels/0_Narrative_Image.tscn",
+	"res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn",
+	"res://Levels/From_Godot/New Levels/1_Narrative_Image.tscn",
+	"res://Levels/From_Godot/New Levels/1_Narrative_Text.tscn",
 	"res://Levels/From_Godot/New Levels/1_Tuto_Level.tscn",
 	"res://Levels/From_Godot/New Levels/2_Tuto_Level.tscn",
-	"res://Levels/From_Godot/New Levels/Level_3.tscn",
+	"res://Levels/From_Godot/New Levels/3_Narrative_Text.tscn",
 	# Ajoutez autant de niveaux que nécessaire
 ]
 

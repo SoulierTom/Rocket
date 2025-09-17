@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca4txkb0sbejp"]
+[gd_scene load_steps=5 format=3 uid="uid://dx24vfs4461vq"]
 
 [ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
-[ext_resource type="Texture2D" uid="uid://di6bijytqmlt0" path="res://Assets/Images/Artwork/Rj_crystal.webp" id="2_ik7em"]
+[ext_resource type="Texture2D" uid="uid://djnrjxsip7bsu" path="res://Assets/Images/Artwork/RJ_Intro_v2.png" id="2_q7jms"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
 font = ExtResource("2_ayepf")
@@ -13,10 +13,10 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="InterLvl1_5" type="Node2D"]
 script = ExtResource("1_2u17t")
 
-[node name="RjCrystal" type="Sprite2D" parent="."]
-position = Vector2(958, 634)
-scale = Vector2(1.265, 1.265)
-texture = ExtResource("2_ik7em")
+[node name="RjIntroV2" type="Sprite2D" parent="."]
+position = Vector2(960.5, 542)
+scale = Vector2(0.475342, 0.515741)
+texture = ExtResource("2_q7jms")
 
 [node name="Label_Continue" type="Label" parent="."]
 offset_left = 1095.0
@@ -28,3 +28,6 @@ label_settings = SubResource("LabelSettings_bkkpx")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

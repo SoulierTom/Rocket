@@ -38,7 +38,6 @@ func _on_animation_finished(anim_name: String):
 func _on_body_entered(body):
 	if body.name == "Player" or body.is_in_group("player"):
 		player_in_area = true
-		current_message = 0
 		animation_finished = false
 		show_message(current_message)
 
