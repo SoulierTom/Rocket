@@ -66,7 +66,7 @@ func _on_play_pressed() -> void:
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 	MusicManager.stop_music(0.4)  # Durée du fade out (ajustez selon la durée de votre transition)
-	get_tree().change_scene_to_file("res://Levels/From_Godot/New Levels/Inter_0.5.tscn")
+	get_tree().change_scene_to_file("res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

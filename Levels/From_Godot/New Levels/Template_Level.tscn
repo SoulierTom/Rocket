@@ -729,7 +729,7 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="." instance=ExtResource("9_dloas")]
 position = Vector2(-139, -3)
 
-[node name="Camera" parent="Player" index="3"]
+[node name="Camera" parent="Player" index="4"]
 limit_left = -100000
 limit_top = -100000
 
