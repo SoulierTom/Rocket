@@ -4,6 +4,8 @@ extends Node2D
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = true
+var can_aim = true
+var can_shoot = true
 var last_joystick_vector = Vector2(1,0)
 
 # Position du bras
@@ -67,10 +69,11 @@ func _physics_process(_delta):
 	var joystick_vector = Input.get_vector("Look_Left", "Look_Right", "Look_Up", "Look_Down")
 
 	if is_using_gamepad:
-		if joystick_vector.length() > 0.1:
-			Global.target_pos = character_pos + joystick_vector * 1000000
-			last_joystick_vector = joystick_vector
-			look_at(Global.target_pos)
+		if can_aim :
+			if joystick_vector.length() > 0.1:
+				Global.target_pos = character_pos + joystick_vector * 1000000
+				last_joystick_vector = joystick_vector
+				look_at(Global.target_pos)
 		else:
 			Global.target_pos = character_pos + last_joystick_vector * 1000000
 			look_at(Global.target_pos)
@@ -121,7 +124,7 @@ func _input(event):
 	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
 		is_using_gamepad = true
 
-	if event.is_action_pressed("Shoot") and cooldown.is_stopped():
+	if event.is_action_pressed("Shoot") and cooldown.is_stopped() and can_shoot:
 		if Global.current_ammo > 0:
 			shoot(RocketScene)
 			# Son / FMOD : lancement de la lecture de l'Event "tir" depuis son Emitter
