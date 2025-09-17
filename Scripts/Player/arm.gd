@@ -87,11 +87,11 @@ func _physics_process(_delta):
 
 
 	if rocket_traveling and not rocket_sound_started:
-		$Rocket/FmodEventEmitterRocketTravel.play()
+		$FmodEventEmitterRocketTravel.play()
 		rocket_sound_started = true
 	elif not rocket_traveling:
 		rocket_sound_started = false  # Reset quand la roquette n'est plus en voyage
-		#Ici il faut kill le son
+		$FmodEventEmitterRocketTravel.stop()
 
 # NOUVELLE FONCTION DE GESTION DU RECHARGEMENT
 func update_reload_system():
