@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
+var can_move = false
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
@@ -77,6 +78,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		Global.player_impulsed = false
 		fall_time = 0.0
+		can_move = true
 	else:
 		fall_time += delta
 		velocity.y += add_gravity() * delta
@@ -87,29 +89,31 @@ func _physics_process(delta: float) -> void:
 		$FmodBonk.play()
 
 	wall_sliding(delta)
-
-	if not Global.player_impulsed:
-		if is_on_floor():
-			if abs(horizontal_input.x) >= 0.1:
-				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)
-				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta)
+	
+	#Déplacement sur les cotés
+	if can_move :
+		if not Global.player_impulsed:
+			if is_on_floor():
+				if abs(horizontal_input.x) >= 0.1:
+					if sign(velocity.x) != sign(horizontal_input.x):
+						velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)
+					velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta)
+				else:
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2)
 			else:
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2)
+				if abs(horizontal_input.x) >= 0.1:
+					if sign(velocity.x) != sign(horizontal_input.x):
+						velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)
+					velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 )
+				else:
+					velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.25)
 		else:
 			if abs(horizontal_input.x) >= 0.1:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)
-				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 )
-			else:
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.25)
-	else:
-		if abs(horizontal_input.x) >= 0.1:
-			if sign(velocity.x) != sign(horizontal_input.x):
-				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1)
-			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
-		else :
-			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1)
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
+			else :
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 
 #Permet de descendre des one way plateformes 
 	if is_on_floor(): 
@@ -251,6 +255,18 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("boom"):
 		dust_timer.start()
 		dust_trail.emitting = true
+	if area.is_in_group("Disable_Arm"):
+		arm.can_aim = false
+		print("disable_arm")
+	if area.is_in_group("Enable_Arm"):
+		arm.can_aim = true
+		print("enable_arm")
+	if area.is_in_group("Disable_Shoot"):
+		arm.can_shoot = false
+		print("disable_shoot")
+	if area.is_in_group("Enable_Shoot"):
+		arm.can_shoot = true
+		print("Enable_shoot")
 
 func _on_dust_timer_timeout() -> void:
 	dust_trail.emitting = false
