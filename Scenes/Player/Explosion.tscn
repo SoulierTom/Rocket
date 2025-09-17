@@ -10,12 +10,12 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.217241, 35.6425), 0.0, 0.0, 0,
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_fe2vh"]
-_data = [Vector2(0, 0.500698), 0.0, 0.0, 0, 0, Vector2(0.172414, 1), 0.376098, 0.376098, 0, 0, Vector2(1, 0), -0.592541, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.175, 1), 0.18475, 0.18475, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_7ug2n"]
 offsets = PackedFloat32Array(0, 0.0954198, 0.270992, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.341, 0.341, 0.307, 0.2, 0.318, 0.318, 0.318, 0.2)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.489409, 0.489456, 0.447365, 0.2, 0.318, 0.318, 0.318, 0.2)
 
 [sub_resource type="Curve" id="Curve_hvdlb"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0448276, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -63,6 +63,7 @@ angle_max = 5.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_fe2vh")
+color = Color(1.2, 1.2, 1.2, 1)
 color_ramp = SubResource("Gradient_7ug2n")
 
 [node name="Explo_feu" parent="." instance=ExtResource("2_83578")]
