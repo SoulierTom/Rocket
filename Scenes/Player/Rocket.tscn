@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl48"]
 size = Vector2(50, 60)
 
-[sub_resource type="Gradient" id="Gradient_slfmi"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_hd4vj"]
+colors = PackedColorArray(0.817521, 0.817521, 0.817521, 1, 0.296, 0.296, 0.296, 0.8)
 
 [node name="Rocket" type="CharacterBody2D" node_paths=PackedStringArray("explosion_notifier") groups=["Rocket"]]
 z_index = 6
@@ -33,12 +33,13 @@ scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_7hl48")
 
 [node name="Bullet" type="Sprite2D" parent="."]
-self_modulate = Color(1.5, 1.5, 1.5, 1)
+self_modulate = Color(1.1, 1.1, 1.1, 1)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_6y0mm")
 
 [node name="trainé" type="CPUParticles2D" parent="."]
+self_modulate = Color(1.2, 1.2, 1.2, 1)
 position = Vector2(-6, 0)
 amount = 20
 lifetime = 0.2
@@ -51,6 +52,6 @@ initial_velocity_min = 200.0
 initial_velocity_max = 200.0
 scale_amount_min = 1.2
 scale_amount_max = 1.2
-color_ramp = SubResource("Gradient_slfmi")
+color_ramp = SubResource("Gradient_hd4vj")
 
 [connection signal="timeout" from="TrailTimer" to="." method="_on_trail_timer_timeout"]
