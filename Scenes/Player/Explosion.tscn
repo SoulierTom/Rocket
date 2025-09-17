@@ -14,16 +14,16 @@ _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.175, 1), 0.18475, 0.18475, 0
 point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_7ug2n"]
-offsets = PackedFloat32Array(0, 0.0954198, 0.270992, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.489409, 0.489456, 0.447365, 0.2, 0.318, 0.318, 0.318, 0.2)
+offsets = PackedFloat32Array(0, 0.0954198, 0.152672, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.172549, 0.172549, 0.14902, 0.2, 0.172549, 0.172549, 0.14902, 0.2)
 
 [sub_resource type="Curve" id="Curve_hvdlb"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0448276, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0448276, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_l6vuh"]
 offsets = PackedFloat32Array(0, 0.160305, 0.320611, 1)
-colors = PackedColorArray(1, 1, 0, 1, 0.91, 0.082, 0.082, 1, 0.341, 0.341, 0.306, 0.2, 0.318, 0.318, 0.318, 0.2)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.171101, 0.171089, 0.150093, 0.2, 0.172549, 0.172549, 0.14902, 0.2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1u4h7"]
 radius = 34.0
@@ -45,7 +45,7 @@ script = ExtResource("1_6xgrk")
 force_objet = 150
 
 [node name="Explo" type="CPUParticles2D" parent="."]
-self_modulate = Color(1.1, 1.1, 1.1, 1)
+self_modulate = Color(1.7, 1.7, 1.7, 1)
 position = Vector2(-1.13687e-13, 5.68434e-14)
 emitting = false
 amount = 300
@@ -63,11 +63,10 @@ angle_max = 5.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_fe2vh")
-color = Color(1.2, 1.2, 1.2, 1)
 color_ramp = SubResource("Gradient_7ug2n")
 
 [node name="Explo_feu" parent="." instance=ExtResource("2_83578")]
-self_modulate = Color(1.2, 1.2, 1.2, 1)
+self_modulate = Color(1.7, 1.7, 1.7, 1)
 emitting = false
 amount = 100
 lifetime = 0.75
@@ -76,8 +75,8 @@ explosiveness = 1.0
 initial_velocity_min = 32.26
 damping_min = 200.0
 damping_max = 200.0
-scale_amount_min = 4.0
-scale_amount_max = 8.0
+angle_max = 5.0
+scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_hvdlb")
 color_ramp = SubResource("Gradient_l6vuh")
 
