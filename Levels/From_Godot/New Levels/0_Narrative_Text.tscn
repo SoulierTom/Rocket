@@ -1,8 +1,13 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=10 format=3 uid="uid://bjtxp43vhk0fj"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://bjtxp43vhk0fj"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_6705v"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_pu1xm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
 font = ExtResource("2_adgwp")
@@ -71,6 +76,12 @@ font_size = 57
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5y0h"]
+shader = ExtResource("4_pu1xm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2j0m4"]
+size = Vector2(5000, 5000)
+
 [node name="InterLvl1_5" type="Node2D"]
 script = ExtResource("1_6705v")
 
@@ -109,3 +120,9 @@ label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_l5y0h")
+mesh = SubResource("QuadMesh_2j0m4")

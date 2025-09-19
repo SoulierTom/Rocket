@@ -1,28 +1,24 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=10 format=3 uid="uid://dx24vfs4461vq"]
+[gd_scene load_steps=14 format=3 uid="uid://vc0er8anrdai"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
-[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_qeegp"]
-=======
-[gd_scene load_steps=8 format=3 uid="uid://ca4txkb0sbejp"]
+[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_27xi2"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_43eww"]
+[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_tw2rj"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_pjeso"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
-[ext_resource type="Texture2D" uid="uid://di6bijytqmlt0" path="res://Assets/Images/Artwork/Rj_crystal.webp" id="2_ik7em"]
-[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_6x4c5"]
->>>>>>> Stashed changes
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
-font = ExtResource("2_ayepf")
-font_size = 40
+font = ExtResource("2_43eww")
+font_size = 30
 font_color = Color(0, 1, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-<<<<<<< Updated upstream
 [sub_resource type="Animation" id="Animation_q3jx4"]
 resource_name = "Display_Text"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,7 +26,7 @@ tracks/0/path = NodePath("Main_Text:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -75,65 +71,71 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_uou52"]
-line_spacing = 5.0
-font = ExtResource("2_ayepf")
-font_size = 60
+line_spacing = 45.0
+font = ExtResource("2_43eww")
+font_size = 40
 font_color = Color(0, 1, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
-=======
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mf8nf"]
-shader = ExtResource("4_6x4c5")
 
-[sub_resource type="QuadMesh" id="QuadMesh_0vnf3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nr5ei"]
+shader = ExtResource("4_pjeso")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4p0yk"]
 size = Vector2(5000, 5000)
->>>>>>> Stashed changes
 
 [node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_2u17t")
+script = ExtResource("1_27xi2")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -72.0
+offset_top = -66.0
+offset_right = 1969.0
+offset_bottom = 1134.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7xotb")
 
 [node name="Label_Continue" type="Label" parent="."]
-offset_left = 1095.0
-offset_top = 1023.0
-offset_right = 2107.0
-offset_bottom = 1087.0
+offset_left = 1168.0
+offset_top = 1019.0
+offset_right = 2180.0
+offset_bottom = 1083.0
 text = "PRESS A To continue"
 label_settings = SubResource("LabelSettings_bkkpx")
 horizontal_alignment = 1
 vertical_alignment = 1
-<<<<<<< Updated upstream
+uppercase = true
 
 [node name="DisplayText" type="Node2D" parent="."]
-position = Vector2(-118, 479)
-script = ExtResource("3_qeegp")
+position = Vector2(0, 540)
+script = ExtResource("3_tw2rj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
 libraries = {
 "": SubResource("AnimationLibrary_snssw")
 }
-speed_scale = 0.66
 
 [node name="Main_Text" type="Label" parent="DisplayText"]
-offset_left = 122.0
-offset_top = -91.0
-offset_right = 2770.0
-offset_bottom = 234.0
-text = "Operator, your Robot is coming
-close to his objectif. 
-The Landscape is going
-to be more dangerous. 
-So we are giving you manual control now."
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -110.0
+offset_right = 1913.0
+offset_bottom = 434.0
+grow_vertical = 2
+text = "Jump function offline due to fall damage.
+RCR-3's Explosive tolerance exceeds expectation. 
+Authorization to continue like that, Operator.
+"
 label_settings = SubResource("LabelSettings_uou52")
+autowrap_mode = 3
+uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-=======
-uppercase = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_mf8nf")
-mesh = SubResource("QuadMesh_0vnf3")
->>>>>>> Stashed changes
+material = SubResource("ShaderMaterial_nr5ei")
+mesh = SubResource("QuadMesh_4p0yk")
