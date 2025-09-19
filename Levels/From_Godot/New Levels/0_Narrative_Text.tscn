@@ -126,3 +126,13 @@ autowrap_mode = 3
 uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
