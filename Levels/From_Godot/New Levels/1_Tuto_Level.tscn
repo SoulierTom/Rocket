@@ -936,8 +936,8 @@ position = Vector2(-24, -4.125)
 shape = SubResource("RectangleShape2D_08cv8")
 
 [node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="AnimatedText1"]
-event_name = "event:/UI-and-Events/TypeScreenTemp"
-event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
 attached = false
 auto_release = true
 fmod_parameters/Typing/id = 1468802155495202495
@@ -984,8 +984,8 @@ position = Vector2(-9.5, -7.625)
 shape = SubResource("RectangleShape2D_kewrd")
 
 [node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="AnimatedText2"]
-event_name = "event:/UI-and-Events/TypeScreenTemp"
-event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
 attached = false
 auto_release = true
 fmod_parameters/Typing/id = 1468802155495202495

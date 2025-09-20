@@ -128,10 +128,9 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="DisplayText"]
-event_name = "event:/UI-and-Events/TypeScreenTemp"
-event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+event_name = "event:/UI-and-Events/TypeScreenSoft"
+event_guid = "{1fd72139-f6a0-48d3-a2e2-9bbf1f7f12bd}"
 attached = false
-auto_release = true
 fmod_parameters/Typing/id = 1468802155495202495
 fmod_parameters/Typing = "ON"
 fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
