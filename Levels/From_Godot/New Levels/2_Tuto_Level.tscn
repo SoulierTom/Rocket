@@ -1083,7 +1083,6 @@ shape = SubResource("RectangleShape2D_ti7jj")
 event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
 event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
 attached = false
-auto_release = true
 fmod_parameters/Typing/id = 1468802155495202495
 fmod_parameters/Typing = "ON"
 fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
