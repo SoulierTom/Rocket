@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjtxp43vhk0fj"]
+[gd_scene load_steps=11 format=3 uid="uid://ctnjv8x03o6iv"]
 
-[ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_6705v"]
-[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
-[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
+[ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_tmg4q"]
+[ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_xlsts"]
+[ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_wk0om"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
-font = ExtResource("2_adgwp")
+font = ExtResource("2_xlsts")
 font_size = 30
 font_color = Color(0, 1, 0, 1)
 outline_size = 5
@@ -71,7 +71,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_uou52"]
 line_spacing = 45.0
-font = ExtResource("2_adgwp")
+font = ExtResource("2_xlsts")
 font_size = 40
 font_color = Color(0, 1, 0, 1)
 outline_size = 5
@@ -79,13 +79,13 @@ outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_6705v")
+script = ExtResource("1_tmg4q")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -63.0
-offset_top = -45.0
-offset_right = 1968.0
-offset_bottom = 1124.0
+offset_left = -72.0
+offset_top = -66.0
+offset_right = 1969.0
+offset_bottom = 1134.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7xotb")
 
 [node name="Label_Continue" type="Label" parent="."]
@@ -101,7 +101,7 @@ uppercase = true
 
 [node name="DisplayText" type="Node2D" parent="."]
 position = Vector2(0, 540)
-script = ExtResource("3_fikwp")
+script = ExtResource("3_wk0om")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
 libraries = {
@@ -113,13 +113,13 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 26.0
-offset_top = -153.0
+offset_top = -191.0
 offset_right = 1913.0
-offset_bottom = 391.0
+offset_bottom = 353.0
 grow_vertical = 2
-text = "Operator, M_Corp needs you right now.
-One of our mining facility on planet P-216 found 
-an extremely worthy Crystal deep inside a cave. We just deployed a robot inside to collect it...
+text = "It is an Remote Controlled Robot (model 3).
+As our new operator, you are going to take control of it, using your own computer.
+From where you are on Earth, You will see RCR-3 through a flying drone following it.
 "
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3

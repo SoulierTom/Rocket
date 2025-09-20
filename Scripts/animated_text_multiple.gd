@@ -25,6 +25,7 @@ func _process(_delta):
 		if input_pressed and not input_pressed_last_frame:
 			print("OK pressé - Animation terminée, passage au suivant")
 			advance_message()
+
 		
 		input_pressed_last_frame = input_pressed
 	else:
@@ -34,11 +35,11 @@ func _on_animation_finished(anim_name: String):
 	"""Appelé quand une animation se termine"""
 	print("Animation terminée:", anim_name)
 	animation_finished = true
+	$FmodTypeScreenM1.stop()
 	
 func _on_body_entered(body):
 	if body.name == "Player" or body.is_in_group("player"):
 		player_in_area = true
-		current_message = 0
 		animation_finished = false
 		show_message(current_message)
 
@@ -60,14 +61,18 @@ func show_message(message_index: int):
 			label1.visible_ratio = 0.0
 			label1.visible = true
 			animation_player.play("Show_Text_1")
+			$FmodTypeScreenM1.play()
 		1:
 			label2.visible_ratio = 0.0
 			label2.visible = true
 			animation_player.play("Show_Text_2")
+			$FmodTypeScreenM1.play()
 		2:
 			label3.visible_ratio = 0.0
 			label3.visible = true
 			animation_player.play("Show_Text_3")
+			$FmodTypeScreenM1.play()
+
 
 func hide_all_labels():
 	label1.visible = false

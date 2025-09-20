@@ -1,8 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://r7xghap7k5ad"]
+[gd_scene load_steps=4 format=3 uid="uid://dwgknfeeq12m3"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_h637y"]
 [ext_resource type="Texture2D" uid="uid://b6480ppbyoco" path="res://Assets/Images/Divers/PushStart.png" id="2_wcdc1"]
 [ext_resource type="Texture2D" uid="uid://bfhkxafero20y" path="res://Assets/Images/Divers/RnJ.png" id="3_spx78"]
+
+[sub_resource type="GDScript" id="GDScript_5n22s"]
+script/source = "extends Control
+
+var is_using_gamepad = false
+
+func _input(event):
+	# Vérifier si l'événement vient d'une manette
+	if event is InputEventJoypadMotion or event is InputEventJoypadButton:
+		if not is_using_gamepad:
+			is_using_gamepad = true
+			_enable_buttons_focus(true)
+
+	# Si une autre entrée (clavier/souris) est détectée, désactiver la manette
+	elif event is InputEventMouseMotion or event is InputEventMouseButton or event is InputEventKey:
+		if is_using_gamepad:
+			is_using_gamepad = false
+			_enable_buttons_focus(false)
+
+	# Si l'utilisateur appuie sur \"ok\", activer le bouton sélectionné
+	if Input.is_action_just_pressed(\"ok\"):
+		press_focused_button()
+
+func _enable_buttons_focus(focus: bool):
+	# Parcourir tous les descendants de la hiérarchie pour trouver les boutons
+	for button in $MarginContainer/VBoxContainer.get_children():
+		if button is Button:
+			if focus:
+				button.grab_focus()  # Permet de naviguer avec la manette
+			else:
+				button.release_focus()  # Empêche la navigation avec la manette
+
+func press_focused_button():
+	# Trouver le bouton actuellement sélectionné et simuler un appui
+	for button in $MarginContainer/VBoxContainer.get_children():
+		if button is Button and button.has_focus():
+			button.emit_signal(\"pressed\")
+			break
+
+func _on_play_pressed():
+	Global.speedrun_time = 0.0
+	Global.timer_initialized = false
+	LevelManager.current_level_index = 0
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+
+	print(\"Arbre de scène:\", get_tree())
+	if get_tree():
+		get_tree().change_scene_to_file(\"res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn\")
+	else:
+		print(\"Erreur: get_tree() est null\")
+
+func _on_quit_pressed():
+	get_tree().quit()
+"
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,7 +67,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h637y")
+script = SubResource("GDScript_5n22s")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
