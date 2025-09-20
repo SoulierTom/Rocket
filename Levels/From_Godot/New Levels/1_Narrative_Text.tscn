@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ctnjv8x03o6iv"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_tmg4q"]
+[ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_tmg4q"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_xlsts"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_wk0om"]
 
@@ -126,3 +126,14 @@ autowrap_mode = 3
 uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="DisplayText"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)

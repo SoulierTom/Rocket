@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dshq24ra64qmv"]
+[gd_scene load_steps=39 format=4 uid="uid://dshq24ra64qmv"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_32a27"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="2_x6ifo"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_vh0y5"]
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_tmnq4"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="17_t747w"]
+[ext_resource type="Script" path="res://Levels/From_Godot/New Levels/animated_text_2.gd" id="18_8xeum"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nfjtd"]
 scenes/2/scene = ExtResource("2_x6ifo")
@@ -832,7 +833,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08cv8"]
-size = Vector2(216, 9.75)
+size = Vector2(212, 9.75)
 
 [sub_resource type="LabelSettings" id="LabelSettings_icta2"]
 line_spacing = 1.0
@@ -931,13 +932,24 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="AnimatedText1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText1/Area2D"]
-position = Vector2(-22, -4.125)
+position = Vector2(-24, -4.125)
 shape = SubResource("RectangleShape2D_08cv8")
+
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="AnimatedText1"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
 
 [node name="AnimatedText2" type="Node2D" parent="."]
 z_index = 20
 position = Vector2(277, 527)
-script = ExtResource("16_tmnq4")
+script = ExtResource("18_8xeum")
 
 [node name="Label" type="Label" parent="AnimatedText2"]
 anchors_preset = 8
@@ -970,6 +982,17 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText2/Area2D"]
 position = Vector2(-9.5, -7.625)
 shape = SubResource("RectangleShape2D_kewrd")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(-395, -588)
 
 [node name="Disable_Arm" type="Area2D" parent="." groups=["Disable_Arm"]]
 position = Vector2(-134, -166)

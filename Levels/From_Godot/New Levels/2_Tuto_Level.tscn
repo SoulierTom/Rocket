@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cvitpsk2mijap"]
+[gd_scene load_steps=40 format=4 uid="uid://cvitpsk2mijap"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_ge6f8"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="2_72kf2"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_bk7qd"]
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_853sy"]
 [ext_resource type="Script" path="res://Scripts/animated_text_multiple.gd" id="18_ppyfw"]
+[ext_resource type="Script" path="res://Levels/From_Godot/New Levels/animated_text_2.gd" id="18_rqee3"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nfjtd"]
 scenes/2/scene = ExtResource("2_72kf2")
@@ -878,7 +879,7 @@ tile_map_data = PackedByteArray("AAAiABYAAAANAAMAAAAhABYAAAAMAAMAAAAgABYAAAAMAAQ
 tile_set = SubResource("TileSet_vvb5x")
 
 [node name="Player" parent="." instance=ExtResource("15_bk7qd")]
-position = Vector2(-117, 701)
+position = Vector2(-115, 702)
 
 [node name="Camera" parent="Player" index="4"]
 limit_left = -7940
@@ -933,9 +934,20 @@ libraries = {
 position = Vector2(-3, -9)
 shape = SubResource("RectangleShape2D_q24rj")
 
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="AnimatedText1"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
+
 [node name="AnimatedText2" type="Node2D" parent="."]
 position = Vector2(-786, 1086)
-script = ExtResource("16_853sy")
+script = ExtResource("18_rqee3")
 
 [node name="Label" type="Label" parent="AnimatedText2"]
 anchors_preset = 8
@@ -970,6 +982,17 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText2/Area2D"]
 position = Vector2(251, -71.5156)
 shape = SubResource("RectangleShape2D_pfy2e")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(668, -552)
 
 [node name="AnimatedTextMultiple" type="Node2D" parent="."]
 z_index = 10
@@ -1055,6 +1078,18 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedTextMultiple/Area2D"]
 position = Vector2(5.97833, -3.0625)
 shape = SubResource("RectangleShape2D_ti7jj")
+
+[node name="FmodTypeScreenM1" type="FmodEventEmitter2D" parent="AnimatedTextMultiple"]
+event_name = "event:/UI-and-Events/TypeScreenTemp"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+auto_release = true
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(247.826, -553)
+scale = Vector2(1.08695, 1)
 
 [node name="Disable_Arm" type="Area2D" parent="." groups=["Disable_Arm"]]
 position = Vector2(-111, 733)

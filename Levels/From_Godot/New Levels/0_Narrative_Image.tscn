@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca4txkb0sbejp"]
+[gd_scene load_steps=5 format=3 uid="uid://doap1uhobfa62"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
+[ext_resource type="Script" path="res://Scripts/narrative_image.gd" id="1_s45cx"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
 [ext_resource type="Texture2D" uid="uid://di6bijytqmlt0" path="res://Assets/Images/Artwork/Rj_crystal.webp" id="2_ik7em"]
 
@@ -10,12 +10,12 @@ font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_2u17t")
+[node name="Narrative_Image" type="Node2D"]
+script = ExtResource("1_s45cx")
 
 [node name="RjCrystal" type="Sprite2D" parent="."]
-position = Vector2(958, 634)
-scale = Vector2(1.265, 1.265)
+position = Vector2(959, 538.5)
+scale = Vector2(1.27083, 1.08301)
 texture = ExtResource("2_ik7em")
 
 [node name="Label_Continue" type="Label" parent="."]

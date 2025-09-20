@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx24vfs4461vq"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_2u17t"]
+[ext_resource type="Script" path="res://Scripts/narrative_image.gd" id="1_2mjgm"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
 [ext_resource type="Texture2D" uid="uid://djnrjxsip7bsu" path="res://Assets/Images/Artwork/RJ_Intro_v2.png" id="2_q7jms"]
 
@@ -10,8 +10,8 @@ font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="InterLvl1_5" type="Node2D"]
-script = ExtResource("1_2u17t")
+[node name="Narrative_Image" type="Node2D"]
+script = ExtResource("1_2mjgm")
 
 [node name="RjIntroV2" type="Sprite2D" parent="."]
 position = Vector2(960.5, 542)
@@ -28,6 +28,3 @@ label_settings = SubResource("LabelSettings_bkkpx")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0

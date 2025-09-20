@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://vc0er8anrdai"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_27xi2"]
+[ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_27xi2"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_43eww"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_tw2rj"]
 
