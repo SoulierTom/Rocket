@@ -541,12 +541,11 @@ tile_set = SubResource("TileSet_vvb5x")
 collision_enabled = false
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2"]
-visible = false
 offset_left = -423.0
 offset_top = -836.0
 offset_right = 577.0
 offset_bottom = 164.0
-color = Color(0.489622, 0.489622, 0.489622, 0.61)
+color = Color(0.129412, 0.701961, 0.603922, 0.0823529)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.8, 0.8)
