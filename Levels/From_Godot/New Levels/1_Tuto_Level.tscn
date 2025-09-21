@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dshq24ra64qmv"]
+[gd_scene load_steps=39 format=4 uid="uid://dshq24ra64qmv"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_32a27"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="2_x6ifo"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="15_vh0y5"]
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_tmnq4"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="17_t747w"]
+[ext_resource type="Script" path="res://Levels/From_Godot/New Levels/animated_text_2.gd" id="18_8xeum"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nfjtd"]
 scenes/2/scene = ExtResource("2_x6ifo")
@@ -760,7 +761,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ry6e4"]
 resource_name = "Show_Text"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -768,7 +769,7 @@ tracks/0/path = NodePath("Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -832,7 +833,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08cv8"]
-size = Vector2(216, 19.75)
+size = Vector2(212, 9.75)
 
 [sub_resource type="LabelSettings" id="LabelSettings_icta2"]
 line_spacing = 1.0
@@ -845,6 +846,12 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kewrd"]
 size = Vector2(193, 16.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apevv"]
+size = Vector2(55, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_talow"]
+size = Vector2(82.7587, 20)
 
 [node name="Template Level" type="Node2D"]
 
@@ -875,7 +882,7 @@ z_index = 5
 tile_set = SubResource("TileSet_vvb5x")
 
 [node name="Player" parent="." instance=ExtResource("15_vh0y5")]
-position = Vector2(-135, -118)
+position = Vector2(-133, -173)
 
 [node name="Camera" parent="Player" index="4"]
 zoom = Vector2(1, 1)
@@ -885,11 +892,16 @@ limit_right = 595
 limit_bottom = 565
 zoom_level = Vector2(4.5, 4.5)
 
+[node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
+position = Vector2(-52, 18)
+
 [node name="AnimatedText1" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(-118, 479)
 script = ExtResource("16_tmnq4")
 
 [node name="Label" type="Label" parent="AnimatedText1"]
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -901,10 +913,10 @@ offset_right = 51.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Use your
-Left Joystick
-to move \"RJ-82\"
-Bionics Legs"
+text = "To move RCR-3's 
+Bionics Legs:
+Use your
+Left Joystick"
 label_settings = SubResource("LabelSettings_obam0")
 autowrap_mode = 3
 uppercase = true
@@ -920,12 +932,23 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="AnimatedText1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText1/Area2D"]
-position = Vector2(-22, -9.125)
+position = Vector2(-24, -4.125)
 shape = SubResource("RectangleShape2D_08cv8")
 
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="AnimatedText1"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
+
 [node name="AnimatedText2" type="Node2D" parent="."]
+z_index = 20
 position = Vector2(277, 527)
-script = ExtResource("16_tmnq4")
+script = ExtResource("18_8xeum")
 
 [node name="Label" type="Label" parent="AnimatedText2"]
 anchors_preset = 8
@@ -933,15 +956,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -83.0
-offset_right = 120.0
-offset_bottom = -51.0
+offset_left = -70.0
+offset_top = -93.0
+offset_right = 111.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press RIGHT TRIGGER
-TO SHOOT with your
-rocket launcher arm"
+text = "TO SHOOT with your
+rocket launcher arm:
+Press RIGHT TRIGGER"
 label_settings = SubResource("LabelSettings_icta2")
 autowrap_mode = 3
 uppercase = true
@@ -958,6 +981,44 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedText2/Area2D"]
 position = Vector2(-9.5, -7.625)
 shape = SubResource("RectangleShape2D_kewrd")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(-395, -588)
+
+[node name="Disable_Arm" type="Area2D" parent="." groups=["Disable_Arm"]]
+position = Vector2(-134, -166)
+collision_layer = 2049
+collision_mask = 2049
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Disable_Arm"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_apevv")
+
+[node name="Disable_Shoot" type="Area2D" parent="." groups=["Disable_Shoot"]]
+position = Vector2(-136, -170)
+scale = Vector2(0.64, 1.63217)
+collision_layer = 2049
+collision_mask = 2049
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Disable_Shoot"]
+shape = SubResource("RectangleShape2D_talow")
+
+[node name="Enable_Shoot" type="Area2D" parent="." groups=["Enable_Shoot"]]
+position = Vector2(235, 519)
+scale = Vector2(2.32, 1)
+collision_layer = 2049
+collision_mask = 2049
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enable_Shoot"]
+position = Vector2(13.7931, 0)
+shape = SubResource("RectangleShape2D_talow")
 
 [editable path="Player"]
 [editable path="Player/Camera"]

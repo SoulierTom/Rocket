@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctnjv8x03o6iv"]
+[gd_scene load_steps=11 format=3 uid="uid://ctnjv8x03o6iv"]
 
-[ext_resource type="Script" path="res://Scripts/inter_lvl.gd" id="1_tmg4q"]
+[ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_tmg4q"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_xlsts"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_wk0om"]
-[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_n6mfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
 bg_color = Color(0, 0, 0, 1)
@@ -79,12 +78,6 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpvmh"]
-shader = ExtResource("4_n6mfj")
-
-[sub_resource type="QuadMesh" id="QuadMesh_uq15e"]
-size = Vector2(5000, 5000)
-
 [node name="InterLvl1_5" type="Node2D"]
 script = ExtResource("1_tmg4q")
 
@@ -134,8 +127,12 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_hpvmh")
-mesh = SubResource("QuadMesh_uq15e")
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="DisplayText"]
+event_name = "event:/UI-and-Events/TypeScreenSoft"
+event_guid = "{1fd72139-f6a0-48d3-a2e2-9bbf1f7f12bd}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
