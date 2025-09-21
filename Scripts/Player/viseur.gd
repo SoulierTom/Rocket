@@ -36,6 +36,8 @@ var original_positions: Array[Vector2] = []
 var last_ammo_count: int = 0
 var current_spread_time: float = 0.0
 var angle_materials: Array[ShaderMaterial] = []
+var middle_material: ShaderMaterial
+var carre_materials: Array[ShaderMaterial] = []
 
 # Directions pour chaque angle (diagonales) - initialisées dans _ready
 var angle_directions: Array[Vector2] = []
@@ -88,7 +90,13 @@ func initialize_spread_curve():
 		spread_curve.add_point(Vector2(1.0, 0.0))  # Retour à 0 après 1 seconde
 
 func setup_shaders():
-	"""Récupère les shaders déjà attachés manuellement"""
+	"""Configure les shaders pour tous les éléments"""
+	setup_angle_shaders()
+	setup_middle_shader()
+	setup_carre_shaders()
+
+func setup_angle_shaders():
+	"""Récupère les shaders déjà attachés manuellement pour les angles"""
 	angle_materials.clear()
 	
 	for i in range(cursor_angles.size()):
@@ -99,12 +107,47 @@ func setup_shaders():
 				# Configure les paramètres initiaux pour 4 roquettes
 				existing_material.set_shader_parameter("angle_id", i + 1)
 				existing_material.set_shader_parameter("current_ammo", Global.current_ammo)
-				# Assure-toi que le shader supporte jusqu'à 4 munitions
 				angle_materials.append(existing_material)
 			else:
 				angle_materials.append(null)
 		else:
 			angle_materials.append(null)
+
+func setup_middle_shader():
+	"""Configure le shader pour CursorMiddle"""
+	if cursor_middle:
+		var renderable = find_renderable_node(cursor_middle)
+		if renderable:
+			# Si pas de matériel existant, en crée un
+			if not renderable.material:
+				middle_material = create_element_material(5) # ID spécial pour le middle
+				renderable.material = middle_material
+			elif renderable.material is ShaderMaterial:
+				middle_material = renderable.material as ShaderMaterial
+				middle_material.set_shader_parameter("angle_id", 5)
+				middle_material.set_shader_parameter("current_ammo", Global.current_ammo)
+
+func setup_carre_shaders():
+	"""Configure les shaders pour les carrés"""
+	carre_materials.clear()
+	var carres = [carre1, carre2, carre3]
+	
+	for i in range(carres.size()):
+		if carres[i]:
+			# Si pas de matériel existant, en crée un
+			if not carres[i].material:
+				var material = create_element_material(i + 6) # ID 6, 7, 8 pour les carrés
+				carres[i].material = material
+				carre_materials.append(material)
+			elif carres[i].material is ShaderMaterial:
+				var existing_material = carres[i].material as ShaderMaterial
+				existing_material.set_shader_parameter("angle_id", i + 6)
+				existing_material.set_shader_parameter("current_ammo", Global.current_ammo)
+				carre_materials.append(existing_material)
+			else:
+				carre_materials.append(null)
+		else:
+			carre_materials.append(null)
 
 # === GESTION DE LA POSITION ET DU MOUVEMENT ===
 
@@ -166,25 +209,28 @@ func reset_crosshair():
 
 # === GESTION DES SHADERS ===
 
-func create_angle_material(angle_id: int) -> ShaderMaterial:
-	"""Crée un matériel shader pour un angle spécifique"""
+func create_element_material(element_id: int) -> ShaderMaterial:
+	"""Crée un matériel shader pour un élément spécifique"""
 	var material: ShaderMaterial
 	
 	if crosshair_shader:
 		material = crosshair_shader.duplicate()
 	else:
 		material = ShaderMaterial.new()
-		# Le shader doit être assigné dans l'éditeur
 		push_warning("Aucun shader assigné au crosshair_shader")
 	
 	if material:
-		material.set_shader_parameter("angle_id", angle_id)
+		material.set_shader_parameter("angle_id", element_id)
 		material.set_shader_parameter("current_ammo", Global.current_ammo)
 		# Paramètres par défaut pour la transparence
 		material.set_shader_parameter("normal_alpha", 1.0)
 		material.set_shader_parameter("transparent_alpha", 0.3)
 	
 	return material
+
+func create_angle_material(angle_id: int) -> ShaderMaterial:
+	"""Crée un matériel shader pour un angle spécifique"""
+	return create_element_material(angle_id)
 
 func apply_material_to_angle(angle_node: Node2D, material: ShaderMaterial):
 	"""Applique un matériel à un angle"""
@@ -198,23 +244,33 @@ func apply_material_to_angle(angle_node: Node2D, material: ShaderMaterial):
 func find_renderable_node(node: Node2D) -> Node:
 	"""Trouve le nœud qui peut recevoir un matériel"""
 	# Vérifie le nœud lui-même
-	if node is Sprite2D:
+	if ColorRect:
 		return node
 	
 	# Cherche dans les enfants
 	for child in node.get_children():
-		if child is Sprite2D:
+		if child is Sprite2D or child is ColorRect:
 			return child
 	
 	return null
 
 func update_shader_parameters():
-	"""Met à jour les paramètres des shaders"""
+	"""Met à jour les paramètres des shaders pour tous les éléments"""
 	var current_ammo = Global.current_ammo
 	
+	# Met à jour les angles
 	for i in range(angle_materials.size()):
 		if angle_materials[i] and angle_materials[i].shader:
 			angle_materials[i].set_shader_parameter("current_ammo", current_ammo)
+	
+	# Met à jour CursorMiddle
+	if middle_material and middle_material.shader:
+		middle_material.set_shader_parameter("current_ammo", current_ammo)
+	
+	# Met à jour les carrés
+	for i in range(carre_materials.size()):
+		if carre_materials[i] and carre_materials[i].shader:
+			carre_materials[i].set_shader_parameter("current_ammo", current_ammo)
 
 # === GESTION DE L'AFFICHAGE DES MUNITIONS ===
 
@@ -247,8 +303,22 @@ func update_crosshair_appearance():
 	modulate = color
 	visible = true
 
-	# Mise à jour de la couleur dans les shaders
+	# Mise à jour de la couleur dans tous les shaders
+	update_all_shader_colors(color)
+
+func update_all_shader_colors(color: Color):
+	"""Met à jour la couleur dans tous les matériels"""
+	# Angles
 	for material in angle_materials:
+		if material and material.shader:
+			material.set_shader_parameter("tint_color", color)
+	
+	# CursorMiddle
+	if middle_material and middle_material.shader:
+		middle_material.set_shader_parameter("tint_color", color)
+	
+	# Carrés
+	for material in carre_materials:
 		if material and material.shader:
 			material.set_shader_parameter("tint_color", color)
 

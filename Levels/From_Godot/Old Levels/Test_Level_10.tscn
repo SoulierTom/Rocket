@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bovdug2b8uhhd"]
+[gd_scene load_steps=14 format=4 uid="uid://bovdug2b8uhhd"]
 
 [ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/LD/CameraBounds.tscn" id="1_qiwt2"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_p24pl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="6_ppp2v"]
 [ext_resource type="PackedScene" uid="uid://bdpmvbxhnyp8v" path="res://Scenes/LD/Finish.tscn" id="7_0k38a"]
 [ext_resource type="PackedScene" uid="uid://bt6nfj5gnt2jf" path="res://Scenes/LD/Level_Cam_Manager.tscn" id="7_obv5d"]
+[ext_resource type="Shader" path="res://Assets/Menu/crt.gdshader" id="8_jckxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tadxp"]
 texture = ExtResource("2_p24pl")
@@ -527,6 +528,26 @@ terrain_set_0/terrain_2/color = Color(0.607843, 0.670588, 0.698039, 1)
 sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wku8"]
+shader = ExtResource("8_jckxs")
+shader_parameter/resolution = Vector2(720, 360)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.001
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -12.0
+shader_parameter/pixel_strength = -4.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7bme6"]
+size = Vector2(5000, 5000)
+
 [node name="Level 4" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -594,6 +615,9 @@ position = Vector2(2, -2)
 [node name="Camera" parent="Player" index="4"]
 bounds_node_path = NodePath("../../Line2D")
 
+[node name="Crt" parent="Player/Camera" index="1"]
+visible = false
+
 [node name="Finish" parent="." instance=ExtResource("7_0k38a")]
 position = Vector2(26, -659)
 rotation = 1.5708
@@ -602,6 +626,12 @@ rotation = 1.5708
 
 [node name="Line2D" parent="." instance=ExtResource("1_qiwt2")]
 points = PackedVector2Array(-128, 64, 208, 64, 208, -656, -128, -656, -128, 64)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2wku8")
+mesh = SubResource("QuadMesh_7bme6")
 
 [editable path="Player"]
 [editable path="Player/Camera"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm8mltsrod3rr"]
+[gd_scene load_steps=13 format=3 uid="uid://bm8mltsrod3rr"]
 
 [ext_resource type="Script" path="res://Scripts/Player/viseur.gd" id="1_sm52v"]
 [ext_resource type="Texture2D" uid="uid://baihjuhvixvlq" path="res://Assets/Images/Divers/cursor_middle 2.png" id="2_8kmi8"]
@@ -36,6 +36,30 @@ shader_parameter/tint_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2uer"]
 shader = ExtResource("3_e6814")
 shader_parameter/current_ammo = 3
+shader_parameter/angle_id = 1
+shader_parameter/normal_alpha = 1.0
+shader_parameter/transparent_alpha = 0.3
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecrnf"]
+shader = ExtResource("3_e6814")
+shader_parameter/current_ammo = 4
+shader_parameter/angle_id = 1
+shader_parameter/normal_alpha = 1.0
+shader_parameter/transparent_alpha = 0.3
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynflr"]
+shader = ExtResource("3_e6814")
+shader_parameter/current_ammo = 4
+shader_parameter/angle_id = 1
+shader_parameter/normal_alpha = 1.0
+shader_parameter/transparent_alpha = 0.3
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8j2qd"]
+shader = ExtResource("3_e6814")
+shader_parameter/current_ammo = 4
 shader_parameter/angle_id = 1
 shader_parameter/normal_alpha = 1.0
 shader_parameter/transparent_alpha = 0.3
@@ -84,6 +108,7 @@ rotation = -1.5708
 texture = ExtResource("3_g1dfp")
 
 [node name="Carré1" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ecrnf")
 offset_left = 16.0
 offset_top = -1.0
 offset_right = 18.0
@@ -91,6 +116,7 @@ offset_bottom = 1.0
 pivot_offset = Vector2(1, 1)
 
 [node name="Carré2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ynflr")
 offset_left = 22.0
 offset_top = -2.0
 offset_right = 26.0
@@ -98,6 +124,7 @@ offset_bottom = 2.0
 pivot_offset = Vector2(2, 2)
 
 [node name="Carré3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8j2qd")
 offset_left = 30.0
 offset_top = -3.0
 offset_right = 36.0
