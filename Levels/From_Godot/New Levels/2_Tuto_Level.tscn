@@ -1236,10 +1236,10 @@ _data = {
 size = Vector2(141, 19.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfy2e"]
-size = Vector2(228, 110.969)
+size = Vector2(180, 110.969)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ti7jj"]
-size = Vector2(168.478, 7.875)
+size = Vector2(148.913, 121.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj4fe"]
 size = Vector2(55, 46)
@@ -1411,7 +1411,7 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="Text/AnimatedText2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Text/AnimatedText2/Area2D"]
-position = Vector2(251, -71.5156)
+position = Vector2(275, -71.5156)
 shape = SubResource("RectangleShape2D_pfy2e")
 
 [node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Text/AnimatedText2"]
@@ -1506,7 +1506,7 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="Text/AnimatedTextMultiple"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Text/AnimatedTextMultiple/Area2D"]
-position = Vector2(5.97833, -3.0625)
+position = Vector2(-3.80435, -60.0625)
 shape = SubResource("RectangleShape2D_ti7jj")
 
 [node name="FmodTypeScreenM1" type="FmodEventEmitter2D" parent="Text/AnimatedTextMultiple"]
