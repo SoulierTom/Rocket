@@ -12,6 +12,7 @@ func _process(_delta):
 func _on_area_rocket_area_entered(area: Area2D):
 	if area.is_in_group("destruction"):
 			print("exploded")
+			$FmodRockDestroyed.play()
 			set_process(true)
 			$Timer.start(0.1)  # Destruction plus rapide par l'explosion
 

@@ -118,7 +118,7 @@ offset_right = 1913.0
 offset_bottom = 434.0
 grow_vertical = 2
 text = "Jump function offline due to fall damage.
-RCR-3's Explosive tolerance exceeds expectation. 
+RCR-3's Explosive tolerance exceeds expectations. 
 Authorization to continue like that, Operator.
 "
 label_settings = SubResource("LabelSettings_uou52")
@@ -126,3 +126,13 @@ autowrap_mode = 3
 uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/UI-and-Events/TypeScreenHard"
+event_guid = "{0e44330e-c7fd-4506-b621-70b84c94b239}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
