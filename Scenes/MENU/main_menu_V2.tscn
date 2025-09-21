@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4ab8mv5n4god"]
+[gd_scene load_steps=29 format=3 uid="uid://b4ab8mv5n4god"]
 
 [ext_resource type="Script" path="res://Scripts/MENU/main_menu.gd" id="1_flytq"]
 [ext_resource type="Script" path="res://Scripts/MENU/AnimatedButton.gd" id="3_r66qg"]
@@ -6,10 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://jqtaeqvxhnce" path="res://Assets/Menu/Play_V3/Play_V3_0002.png" id="5_425f4"]
 [ext_resource type="Texture2D" uid="uid://b3s8ny5rjyyno" path="res://Assets/Menu/RnJ.png" id="5_rfryb"]
 [ext_resource type="Texture2D" uid="uid://jr064dnor47g" path="res://Assets/Menu/Play_V3/Play_V3_0003.png" id="6_0gvkt"]
-[ext_resource type="Shader" path="res://Assets/Menu/crt.gdshader" id="6_waeoh"]
 [ext_resource type="Texture2D" uid="uid://p8b851u2jawc" path="res://Assets/Menu/Play_V3/Play_V3_0004.png" id="7_hs0kw"]
 [ext_resource type="Texture2D" uid="uid://bikxdpox27dmr" path="res://Assets/Menu/Play_V3/Play_V3_0005.png" id="8_08ga7"]
-[ext_resource type="Script" path="res://Scripts/MENU/crt.gd" id="8_alrad"]
 [ext_resource type="Texture2D" uid="uid://bjxl5npf47uke" path="res://Assets/Menu/Play_V3/Play_V3_0006.png" id="9_1w5ou"]
 [ext_resource type="Texture2D" uid="uid://cex81dems2pua" path="res://Assets/Menu/Play_V3/Play_V3_0007.png" id="10_uepbi"]
 [ext_resource type="AudioStream" uid="uid://s3dtm0e0ukpn" path="res://Assets/Menu/wallace cleaver + notinbed type beat ESPOIR PERDU (kayce!).mp3" id="10_vlxob"]
@@ -20,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://j7qg1rldka6m" path="res://Assets/Menu/Quit_V3/Quit_V2_0005.png" id="15_6706j"]
 [ext_resource type="Texture2D" uid="uid://lju0d4my8x68" path="res://Assets/Menu/Quit_V3/Quit_V2_0006.png" id="16_vx1cj"]
 [ext_resource type="Texture2D" uid="uid://q22s7sejd0wx" path="res://Assets/Menu/Quit_V3/Quit_V2_0007.png" id="17_hiu0x"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="18_bl7v4"]
 
 [sub_resource type="Animation" id="Animation_u2785"]
 length = 0.001
@@ -114,24 +113,10 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_etnmc"]
-shader = ExtResource("6_waeoh")
-shader_parameter/resolution = Vector2(540, 360)
-shader_parameter/scan_line_amount = 1.0
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.005
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 3.8e-07
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -3.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23yxk"]
+shader = ExtResource("18_bl7v4")
 
-[sub_resource type="QuadMesh" id="QuadMesh_uxu3n"]
+[sub_resource type="QuadMesh" id="QuadMesh_qnx3u"]
 size = Vector2(5000, 5000)
 
 [node name="main_menu" type="Control"]
@@ -216,10 +201,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_etnmc")
-mesh = SubResource("QuadMesh_uxu3n")
-script = ExtResource("8_alrad")
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/CanvasLayer"]
+material = SubResource("ShaderMaterial_23yxk")
+mesh = SubResource("QuadMesh_qnx3u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -228,7 +214,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0616706, 0.116051, 0.0600491, 1)
+color = Color(0, 0.129412, 0, 1)
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_vlxob")
