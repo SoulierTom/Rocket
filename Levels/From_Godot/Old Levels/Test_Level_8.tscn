@@ -686,7 +686,7 @@ position = Vector2(243, -90)
 position = Vector2(124, -129)
 
 [node name="Player" parent="." instance=ExtResource("7_x8ehb")]
-position = Vector2(-139, -3)
+position = Vector2(-116, -165)
 
 [editable path="Player"]
 [editable path="Player/Camera"]

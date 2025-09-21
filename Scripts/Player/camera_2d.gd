@@ -156,9 +156,10 @@ func _update_explosion_shake(delta):
 func _apply_shake():
 	var total_shake_offset = Vector2.ZERO
 	
-	var normal_shake_x = sin(time_elapsed * shake_frequency) * shake_intensity
-	var normal_shake_y = cos(time_elapsed * shake_frequency * 0.7) * shake_intensity * 0.5
-	total_shake_offset += Vector2(normal_shake_x, normal_shake_y)
+	# Suppression du tremblement automatique constant :
+	# var normal_shake_x = sin(time_elapsed * shake_frequency) * shake_intensity
+	# var normal_shake_y = cos(time_elapsed * shake_frequency * 0.7) * shake_intensity * 0.5
+	# total_shake_offset += Vector2(normal_shake_x, normal_shake_y)
 	
 	if explosion_shake_active:
 		var explosion_shake_x = (randf() - 0.5) * 2.0 * explosion_shake_current_intensity
