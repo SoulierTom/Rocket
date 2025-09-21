@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx24vfs4461vq"]
+[gd_scene load_steps=8 format=3 uid="uid://dx24vfs4461vq"]
 
 [ext_resource type="Script" path="res://Scripts/narrative_image.gd" id="1_2mjgm"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_ayepf"]
 [ext_resource type="Texture2D" uid="uid://djnrjxsip7bsu" path="res://Assets/Images/Artwork/RJ_Intro_v2.png" id="2_q7jms"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_px5ml"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
 font = ExtResource("2_ayepf")
 font_size = 40
 font_color = Color(0, 1, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo4au"]
+shader = ExtResource("4_px5ml")
+
+[sub_resource type="QuadMesh" id="QuadMesh_48h3j"]
+size = Vector2(5000, 5000)
 
 [node name="Narrative_Image" type="Node2D"]
 script = ExtResource("1_2mjgm")
@@ -28,3 +35,9 @@ label_settings = SubResource("LabelSettings_bkkpx")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_xo4au")
+mesh = SubResource("QuadMesh_48h3j")
