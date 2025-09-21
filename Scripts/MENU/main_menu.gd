@@ -49,6 +49,7 @@ func _on_play_focus_entered() -> void:
 	button_play_anim.play("Play")
 
 func _on_play_focus_exited() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuMove")
 	# Arrêter l'animation puis remettre à la première frame
 	button_play_anim.stop()
 	button_play_anim.frame = 0
@@ -58,11 +59,13 @@ func _on_quit_focus_entered() -> void:
 	button_quit_anim.play("Quit")
 
 func _on_quit_focus_exited() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuMove")
 	# Arrêter l'animation puis remettre à la première frame
 	button_quit_anim.stop()
 	button_quit_anim.frame = 0
 
 func _on_play_pressed() -> void: 
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuConfirm")
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
 	MusicManager.stop_music(0.4)  # Durée du fade out (ajustez selon la durée de votre transition)

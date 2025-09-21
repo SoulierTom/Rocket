@@ -25,6 +25,7 @@ func setup_controller_navigation():
 	resume.grab_focus()
 
 func _on_resume_focus_entered() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuMove")
 	# Lancer l'animation de l'AnimatedSprite2D
 	button_play_anim.play("Play")
 
@@ -34,6 +35,7 @@ func _on_resume_focus_exited() -> void:
 	button_play_anim.frame = 0
 
 func _on_quit_focus_entered() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuMove")
 	# Lancer l'animation de l'AnimatedSprite2D
 	button_quit_anim.play("Quit")
 
@@ -43,9 +45,11 @@ func _on_quit_focus_exited() -> void:
 	button_quit_anim.frame = 0
 
 func _on_resume_pressed() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuConfirm")
 	emit_signal("resume_requested")  # Émettre le signal
 	queue_free()  # Supprimer le menu pause
 
 func _on_quit_pressed() -> void:
+	FmodServer.play_one_shot("event:/UI-and-Events/MenuQuit")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MENU/main_menu_V2.tscn")
