@@ -790,10 +790,10 @@ tile_map_data = PackedByteArray("AADp/93/AQABAAYAAADp/97/AQABAAYAAADp/9//AQABAAY
 tile_set = SubResource("TileSet_ttcse")
 
 [node name="ColorRect" type="ColorRect" parent="Tiles/background"]
-offset_left = -1007.0
-offset_top = -743.0
-offset_right = 1728.0
-offset_bottom = 817.0
+offset_left = -629.0
+offset_top = -246.0
+offset_right = 2106.0
+offset_bottom = 1314.0
 color = Color(0.18454, 0.0679492, 0.21469, 0.392157)
 
 [node name="ground" type="TileMapLayer" parent="Tiles"]
@@ -924,6 +924,8 @@ points = PackedVector2Array(272, -128, -192, -128, -192, 800, 272, 800, 272, -12
 position = Vector2(52, -121)
 scale = Vector2(10, 10)
 shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.7
 texture = SubResource("GradientTexture2D_506wn")
 
 [editable path="Player"]

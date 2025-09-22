@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="3_le5k6"]
 
 [sub_resource type="Curve" id="Curve_17o2t"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.252492, 0.487984), 0.0, 0.0, 0, 0, Vector2(0.504983, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.252492, 0.600801), 0.0, 0.0, 0, 0, Vector2(0.504983, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_l6dob"]
@@ -121,9 +121,11 @@ event_guid = "{43cde0d8-1266-4f18-b36b-1407cf01fc58}"
 autoplay = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(10, 10)
+scale = Vector2(3, 3)
 color = Color(0.999999, 0.972062, 0.732222, 1)
 shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.8
 texture = SubResource("GradientTexture2D_ik4jm")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
