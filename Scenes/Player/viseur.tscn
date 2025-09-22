@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm8mltsrod3rr"]
+[gd_scene load_steps=14 format=3 uid="uid://bm8mltsrod3rr"]
 
 [ext_resource type="Script" path="res://Scripts/Player/viseur.gd" id="1_sm52v"]
 [ext_resource type="Texture2D" uid="uid://baihjuhvixvlq" path="res://Assets/Images/Divers/cursor_middle 2.png" id="2_8kmi8"]
@@ -8,6 +8,14 @@
 [sub_resource type="Curve" id="Curve_ne6dx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04, 0.2), 0.0, 0.0, 0, 0, Vector2(0.101449, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tquq7"]
+shader = ExtResource("3_e6814")
+shader_parameter/current_ammo = 4
+shader_parameter/angle_id = 1
+shader_parameter/normal_alpha = 1.0
+shader_parameter/transparent_alpha = 0.3
+shader_parameter/tint_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4qgyl"]
 shader = ExtResource("3_e6814")
@@ -80,6 +88,7 @@ offset_bottom = 8.0
 pivot_offset = Vector2(8, 8)
 
 [node name="CursorMiddle" type="Sprite2D" parent="Control"]
+material = SubResource("ShaderMaterial_tquq7")
 position = Vector2(8, 8)
 scale = Vector2(0.191667, 0.191667)
 texture = ExtResource("2_8kmi8")
