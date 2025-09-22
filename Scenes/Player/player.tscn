@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=36 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -178,6 +178,9 @@ stream_1/stream = ExtResource("7_71co6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymg54"]
 size = Vector2(9, 12)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7vgyt"]
+polygon = PackedVector2Array(5, -3, -5, -3, -5, 9, 5, 9)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_as_relative = false
 floor_stop_on_slope = false
@@ -269,6 +272,9 @@ event_guid = "{9ffd7896-907e-43a4-80c1-b66217f8692b}"
 
 [node name="DustTimer" type="Timer" parent="."]
 wait_time = 0.7
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7vgyt")
 
 [connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
