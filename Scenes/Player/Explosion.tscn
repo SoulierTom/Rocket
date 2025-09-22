@@ -1,8 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnjmr4evohsr4"]
+[gd_scene load_steps=15 format=3 uid="uid://cnjmr4evohsr4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/explosion.gd" id="1_6xgrk"]
 [ext_resource type="PackedScene" uid="uid://cgm4xyrdc7ywx" path="res://Scenes/Player/explo_feu.tscn" id="2_83578"]
 [ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="3_le5k6"]
+
+[sub_resource type="Curve" id="Curve_17o2t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.252492, 0.487984), 0.0, 0.0, 0, 0, Vector2(0.504983, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_l6dob"]
 max_value = 40.0
@@ -36,6 +40,15 @@ glow_hdr_threshold = 1.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ma04u"]
 
+[sub_resource type="Gradient" id="Gradient_h53b1"]
+offsets = PackedFloat32Array(0, 0.716981)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ik4jm"]
+gradient = SubResource("Gradient_h53b1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Explosion" type="Area2D" groups=["boom"]]
 z_index = 10
 scale = Vector2(2, 2)
@@ -43,6 +56,7 @@ collision_layer = 2051
 collision_mask = 2051
 script = ExtResource("1_6xgrk")
 force_objet = 150
+light_energy_curve = SubResource("Curve_17o2t")
 
 [node name="Explo" type="CPUParticles2D" parent="."]
 self_modulate = Color(1.7, 1.7, 1.7, 1)
@@ -105,5 +119,11 @@ shape = SubResource("CircleShape2D_ma04u")
 event_name = "event:/WeaponsSystems/ShootingSequence/Xplosion"
 event_guid = "{43cde0d8-1266-4f18-b36b-1407cf01fc58}"
 autoplay = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(10, 10)
+color = Color(0.999999, 0.972062, 0.732222, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ik4jm")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

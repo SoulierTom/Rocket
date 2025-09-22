@@ -6,6 +6,7 @@ extends Area2D
 @onready var explo = $Explo
 @onready var collision_timer: Timer = Timer.new()  # Timer pour gérer la collision
 @onready var explo_feu: CPUParticles2D = $Explo_feu
+@onready var point_light: PointLight2D = $PointLight2D
 
 @export var force_player: float = 400.0
 @export var animation_duration: float = 0.5
@@ -13,13 +14,25 @@ extends Area2D
 @export var collision_start_delay: float = 0.0  # Délai avant activation de la collision (équivalent frame 0)
 @export var collision_duration: float = 0.1     # Durée d'activation de la collision (équivalent frames 0-1)
 
+# Nouvelle variable pour la courbe d'énergie lumineuse
+@export var light_energy_curve: Curve
+@export var max_light_energy: float = 2.0  # Énergie maximale de la lumière
+
 var explosion_active: bool = false
 var joy_vect = Global.target_pos
+var explosion_start_time: float = 0.0
+var initial_light_energy: float = 0.0
 
 func _ready():
 	set_as_top_level(true)
 	explo.emitting = true
 	explo_feu.emitting = true
+	
+	# Stocker l'énergie initiale de la lumière
+	if point_light:
+		initial_light_energy = point_light.energy
+	
+	
 	# Récupérer automatiquement la durée de vie des particules selon le type
 	if explo:
 		if explo is CPUParticles2D:
@@ -39,6 +52,9 @@ func _ready():
 	add_child(collision_timer)
 	collision_timer.one_shot = true
 	collision_timer.timeout.connect(_on_collision_timer_timeout)
+	
+	# Enregistrer le temps de début de l'explosion
+	explosion_start_time = Time.get_ticks_msec() / 1000.0
 	
 	# Démarrer la séquence d'explosion
 	start_explosion_sequence()
@@ -73,10 +89,28 @@ func deactivate_collision():
 func _on_collision_timer_timeout():
 	deactivate_collision()
 
-func _process(_delta):
+func _process(delta):
+	# Mettre à jour l'énergie de la lumière selon la courbe
+	update_light_energy()
+	
 	# Appliquer l'impulsion seulement quand l'explosion est active
 	if explosion_active:
 		apply_explosion_impulse()
+
+func update_light_energy():
+	if not point_light or not light_energy_curve:
+		return
+	
+	# Calculer le temps écoulé depuis le début de l'explosion (0.0 à 1.0)
+	var current_time = Time.get_ticks_msec() / 1000.0
+	var elapsed_time = current_time - explosion_start_time
+	var time_ratio = clamp(elapsed_time / animation_duration, 0.0, 1.0)
+	
+	# Obtenir la valeur de la courbe à ce moment
+	var curve_value = light_energy_curve.sample(time_ratio)
+	
+	# Appliquer la nouvelle énergie
+	point_light.energy = curve_value * max_light_energy
 
 func apply_explosion_impulse():
 	# Applique une impulsion aux objets dans la zone de collision
