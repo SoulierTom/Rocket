@@ -23,6 +23,7 @@ stream_0/stream = ExtResource("6_7svj1")
 stream_1/stream = ExtResource("6_7svj1")
 
 [node name="Arm" type="Node2D" groups=["arm_group"]]
+z_index = 100
 z_as_relative = false
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_t4ufm")
@@ -59,11 +60,13 @@ rotation = -1.39626
 script = ExtResource("7_7ctjl")
 
 [node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
+z_index = 100
 position = Vector2(-0.101035, 33.0192)
 scale = Vector2(0.0238692, 0.0238692)
 texture = ExtResource("7_a1xb5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="RayCast2D"]
+z_index = 100
 position = Vector2(0.237925, 25.3437)
 scale = Vector2(0.0114268, 0.0114268)
 texture = ExtResource("7_a1xb5")
@@ -79,10 +82,12 @@ pivot_offset = Vector2(10, 10)
 size_flags_horizontal = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="RayCast2D/Control"]
+z_index = 100
 position = Vector2(10.2838, 1.79803)
 texture = ExtResource("7_73eg5")
 
 [node name="arm_sprite" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(2.38419e-07, 0)
 rotation = -0.226893
 texture = ExtResource("9_xu18f")
