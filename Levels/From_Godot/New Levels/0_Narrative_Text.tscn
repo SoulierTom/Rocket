@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjtxp43vhk0fj"]
+[gd_scene load_steps=11 format=3 uid="uid://bjtxp43vhk0fj"]
 
 [ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_6705v"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
-[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_5ltye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
-bg_color = Color(0, 0.129412, 0, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bkkpx"]
 font = ExtResource("2_adgwp")
@@ -79,13 +78,7 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3r3vg"]
-shader = ExtResource("4_5ltye")
-
-[sub_resource type="QuadMesh" id="QuadMesh_tfpu1"]
-size = Vector2(5000, 5000)
-
-[node name="InterLvl1_5" type="Node2D"]
+[node name="InterLvl1_6" type="Node2D"]
 script = ExtResource("1_6705v")
 
 [node name="Panel" type="Panel" parent="."]
@@ -141,9 +134,3 @@ fmod_parameters/Typing = "ON"
 fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
 fmod_parameters/Typing/variant_type = 4
 position = Vector2(0, -540)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_3r3vg")
-mesh = SubResource("QuadMesh_tfpu1")
