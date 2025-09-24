@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	#Feedback lorsqu'on appuie sur la touche de saut
 	if Input.is_action_just_pressed("ok") and is_on_floor():
 		# Fmod Son Saut non fonctionnel
-		FmodServer.play_one_shot("event:/Tests/TestToneA")
+		FmodServer.play_one_shot("event:/PlayerMovements/JumpFail")
 		quick_shake()
 
 	if bonk_freeze_timer > 0.0:
