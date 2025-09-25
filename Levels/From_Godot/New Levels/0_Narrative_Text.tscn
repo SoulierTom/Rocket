@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_6705v"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
-[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_5ltye"]
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_u1dgi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
 bg_color = Color(0, 0.129412, 0, 1)
@@ -79,13 +79,13 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3r3vg"]
-shader = ExtResource("4_5ltye")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4faa"]
+shader = ExtResource("4_u1dgi")
 
-[sub_resource type="QuadMesh" id="QuadMesh_tfpu1"]
+[sub_resource type="QuadMesh" id="QuadMesh_d2cft"]
 size = Vector2(5000, 5000)
 
-[node name="InterLvl1_5" type="Node2D"]
+[node name="InterLvl1_6" type="Node2D"]
 script = ExtResource("1_6705v")
 
 [node name="Panel" type="Panel" parent="."]
@@ -124,8 +124,12 @@ offset_top = -153.0
 offset_right = 1913.0
 offset_bottom = 391.0
 grow_vertical = 2
-text = "Operator, M_Corp needs you right now.
-On of our mining facilities on planet P-216 found an extremely worthy Crystal deep inside a cave. We just deployed a robot on site to collect it..."
+text = "Rock'n'jump
+...........
+arrive sur Steam 
+............
+en 2025
+"
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
 uppercase = true
@@ -145,5 +149,5 @@ position = Vector2(0, -540)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_3r3vg")
-mesh = SubResource("QuadMesh_tfpu1")
+material = SubResource("ShaderMaterial_c4faa")
+mesh = SubResource("QuadMesh_d2cft")

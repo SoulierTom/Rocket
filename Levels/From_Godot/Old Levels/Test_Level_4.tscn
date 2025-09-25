@@ -672,7 +672,7 @@ position = Vector2(448, -72)
 [node name="Player" parent="." instance=ExtResource("4_uodr6")]
 position = Vector2(320, -201)
 
-[node name="Camera" parent="Player" index="3"]
+[node name="Camera" parent="Player" index="4"]
 bounds_node_path = NodePath("../../Line2D")
 
 [node name="Finish" parent="." instance=ExtResource("5_kanfh")]

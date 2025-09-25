@@ -634,7 +634,7 @@ tile_set = SubResource("TileSet_vvb5x")
 [node name="Player" parent="Tiles" instance=ExtResource("4_nrnsa")]
 position = Vector2(-216, -89)
 
-[node name="Camera" parent="Tiles/Player" index="3"]
+[node name="Camera" parent="Tiles/Player" index="4"]
 bounds_node_path = NodePath("../../../Line2D")
 
 [node name="SpiekManager" type="Node" parent="Tiles"]

@@ -276,6 +276,10 @@ wait_time = 0.7
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_7vgyt")
 
+[node name="FmodJumpFail" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/JumpFail"
+event_guid = "{fb555025-21ce-497b-901c-fd4aece3d38e}"
+
 [connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
 [connection signal="projectile_fired" from="Arm" to="." method="_on_arm_projectile_fired"]
