@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cvitpsk2mijap"]
+[gd_scene load_steps=52 format=4 uid="uid://cvitpsk2mijap"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_ge6f8"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_grooq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="16_853sy"]
 [ext_resource type="Script" path="res://Scripts/animated_text_multiple.gd" id="18_ppyfw"]
 [ext_resource type="Script" path="res://Scripts/animated_text_2.gd" id="18_rqee3"]
+[ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/Crystal.tscn" id="20_by6tk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28cap"]
 texture = ExtResource("1_grooq")
@@ -2822,6 +2823,38 @@ shape = SubResource("RectangleShape2D_d3kqp")
 [node name="Finish" parent="." instance=ExtResource("1_ge6f8")]
 position = Vector2(-1322, 1194)
 scale = Vector2(2.52, 1)
+
+[node name="Crystal" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-89, 770)
+rotation = -1.5708
+
+[node name="Crystal2" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-160, 956)
+rotation = 1.5708
+
+[node name="Crystal3" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-370, 984)
+rotation = 3.14159
+
+[node name="Crystal4" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-653, 919)
+rotation = 3.14159
+
+[node name="Crystal5" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-984, 840)
+rotation = 3.14159
+
+[node name="Crystal6" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-849, 994)
+rotation = -1.5708
+
+[node name="Crystal7" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-1008, 1011)
+rotation = 1.5708
+
+[node name="Crystal8" parent="." instance=ExtResource("20_by6tk")]
+position = Vector2(-1151, 976)
+rotation = -3.14159
 
 [editable path="Player"]
 [editable path="Player/Camera"]
