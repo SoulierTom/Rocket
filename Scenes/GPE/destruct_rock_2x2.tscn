@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4qys3gs8tdew"]
+[gd_scene load_steps=8 format=3 uid="uid://c4qys3gs8tdew"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_s81ia"]
 [ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_53lbw"]
@@ -34,6 +34,9 @@ scale_min = 0.1
 scale_max = 0.18
 scale_over_velocity_max = 37.85
 anim_offset_max = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s3m3s"]
+polygon = PackedVector2Array(-285.714, -114.286, 857.143, -114.286, 857.143, 114.286, -285.714, 114.286)
 
 [node name="Breakable Block" type="StaticBody2D"]
 position = Vector2(0, -4)
@@ -79,6 +82,9 @@ explosiveness = 1.0
 [node name="FmodRockDestroyed" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/Environment/BlockDestroyed"
 event_guid = "{62a02df0-8060-4d17-b7c1-0ada9f2f5e96}"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_s3m3s")
 
 [connection signal="area_entered" from="Area_rocket" to="." method="_on_area_rocket_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://db2mh3gtnjjje"]
+[gd_scene load_steps=10 format=3 uid="uid://db2mh3gtnjjje"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/crystal.gd" id="1_cupwe"]
 [ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="1_t8hfr"]
@@ -15,6 +15,11 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_y5uax")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_4rluw"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.917722, 100), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_ik05h"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.117089, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -34,12 +39,12 @@ energy_curve = SubResource("Curve_k1i4u")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.462745, 0.286275, 0.737255, 1)
-energy = 4.0
+energy = 5.0
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 4.0
 texture = SubResource("GradientTexture2D_jaw7i")
-texture_scale = 2.0
+texture_scale = 3.0
 
 [node name="CristalVrai" type="Sprite2D" parent="."]
 texture = ExtResource("1_t8hfr")
@@ -55,8 +60,11 @@ emission_shape = 1
 emission_sphere_radius = 2.0
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 80.0
-initial_velocity_max = 80.0
+initial_velocity_min = 94.04
+initial_velocity_max = 242.85
+damping_min = 84.385
+damping_max = 100.0
+damping_curve = SubResource("Curve_4rluw")
 angle_min = 222.9
 angle_max = 300.0
 scale_amount_min = 4.0
@@ -70,6 +78,7 @@ collision_layer = 2049
 collision_mask = 2049
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_tmskt")
 
 [node name="Timer" type="Timer" parent="."]
