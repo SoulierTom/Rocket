@@ -20,7 +20,7 @@
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="17_t747w"]
 [ext_resource type="Script" path="res://Scripts/animated_text_2.gd" id="18_8xeum"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymlky"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72oph"]
 texture = ExtResource("1_r57p1")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
@@ -96,9 +96,9 @@ separation = Vector2i(1, 1)
 6:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_cetin"]
-sources/1 = SubResource("TileSetAtlasSource_ymlky")
+sources/1 = SubResource("TileSetAtlasSource_72oph")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj6dq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3qnm"]
 texture = ExtResource("4_y5ynl")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
@@ -511,7 +511,7 @@ texture_region_size = Vector2i(8, 8)
 16:0/0/terrains_peering_bit/bottom_side = 2
 16:0/0/terrains_peering_bit/top_side = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28n6y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s83et"]
 texture = ExtResource("5_re0fv")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -611,7 +611,7 @@ texture_region_size = Vector2i(8, 8)
 6:11/0 = 0
 7:11/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d11s0"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_108cl"]
 scenes/1/scene = ExtResource("6_eihql")
 scenes/2/scene = ExtResource("9_cexmq")
 scenes/3/scene = ExtResource("10_q1si6")
@@ -634,9 +634,9 @@ terrain_set_0/terrain_1/name = "Fill"
 terrain_set_0/terrain_1/color = Color(0.588235, 0.423529, 0.423529, 1)
 terrain_set_0/terrain_2/name = "Metal"
 terrain_set_0/terrain_2/color = Color(0.607843, 0.670588, 0.698039, 1)
-sources/0 = SubResource("TileSetAtlasSource_fj6dq")
-sources/1 = SubResource("TileSetAtlasSource_28n6y")
-sources/2 = SubResource("TileSetScenesCollectionSource_d11s0")
+sources/0 = SubResource("TileSetAtlasSource_a3qnm")
+sources/1 = SubResource("TileSetAtlasSource_s83et")
+sources/2 = SubResource("TileSetScenesCollectionSource_108cl")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tkaa5"]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -1639,12 +1639,16 @@ fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
 fmod_parameters/Typing/variant_type = 4
 position = Vector2(0, -540)
 
-[node name="AnimatedText2" type="Node2D" parent="Texts"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedText2" type="Node2D" parent="Texts/CanvasLayer2"]
 z_index = 20
 position = Vector2(277, 527)
 script = ExtResource("18_8xeum")
 
-[node name="Label" type="Label" parent="Texts/AnimatedText2"]
+[node name="Label" type="Label" parent="Texts/CanvasLayer2/AnimatedText2"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1665,18 +1669,18 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/AnimatedText2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/CanvasLayer2/AnimatedText2"]
 libraries = {
 "": SubResource("AnimationLibrary_snssw")
 }
 
-[node name="Area2D" type="Area2D" parent="Texts/AnimatedText2"]
+[node name="Area2D" type="Area2D" parent="Texts/CanvasLayer2/AnimatedText2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/AnimatedText2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/CanvasLayer2/AnimatedText2/Area2D"]
 position = Vector2(-9.5, -7.625)
 shape = SubResource("RectangleShape2D_kewrd")
 
-[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/AnimatedText2"]
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/CanvasLayer2/AnimatedText2"]
 event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
 event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
 attached = false
