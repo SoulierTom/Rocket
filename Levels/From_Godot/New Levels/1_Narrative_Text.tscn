@@ -119,15 +119,16 @@ libraries = {
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 26.0
-offset_top = -191.0
-offset_right = 1913.0
-offset_bottom = 353.0
+offset_left = 750.0
+offset_top = -199.0
+offset_right = 2637.0
+offset_bottom = 345.0
 grow_vertical = 2
-text = "It is an Remote Controlled Robot (model 3).
-As our new operator, you are going to take control of it, using your own computer.
-From where you are on Earth, You will see RCR-3 through a flying drone following it.
-"
+text = "Operateur,
+Rock'n'Jump
+sortira le 
+../../2025
+sur STEAM !"
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
 uppercase = true
