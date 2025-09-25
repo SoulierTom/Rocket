@@ -124,11 +124,10 @@ offset_top = -153.0
 offset_right = 1913.0
 offset_bottom = 391.0
 grow_vertical = 2
-text = "Rock'n'jump
-...........
-arrive sur Steam 
-............
-en 2025
+text = "Operator, you are now logged on your terminal.
+Mcorp needs you for an important mission !
+One of our mining facilities on planet P-216 found 
+an extremely worthy Crystal deep inside a cave...
 "
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
