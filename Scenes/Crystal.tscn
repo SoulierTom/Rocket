@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://db2mh3gtnjjje"]
+[gd_scene load_steps=8 format=3 uid="uid://db2mh3gtnjjje"]
 
+[ext_resource type="Script" path="res://Scripts/GPE/crystal.gd" id="1_cupwe"]
 [ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="1_t8hfr"]
 
 [sub_resource type="Gradient" id="Gradient_y5uax"]
@@ -11,11 +12,58 @@ gradient = SubResource("Gradient_y5uax")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve" id="Curve_ik05h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.117089, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7jj07"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.732639)
+colors = PackedColorArray(0.127115, 0.0780587, 0.269386, 1, 0.972549, 0.862745, 0.858824, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmskt"]
+radius = 8.0
+
+[node name="Crystal" type="Node2D"]
+script = ExtResource("1_cupwe")
 
 [node name="CristalVrai" type="Sprite2D" parent="."]
 texture = ExtResource("1_t8hfr")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 color = Color(0.462745, 0.286275, 0.737255, 1)
 texture = SubResource("GradientTexture2D_jaw7i")
+
+[node name="Crystal_Particle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 2.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+angle_min = 222.9
+angle_max = 300.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ik05h")
+color = Color(0.265948, 0.155182, 0.437976, 1)
+color_ramp = SubResource("Gradient_7jj07")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2049
+collision_mask = 2049
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tmskt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
