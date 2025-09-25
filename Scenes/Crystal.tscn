@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://db2mh3gtnjjje"]
+
+[ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="1_t8hfr"]
+
+[sub_resource type="Gradient" id="Gradient_y5uax"]
+offsets = PackedFloat32Array(0, 0.743151)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jaw7i"]
+gradient = SubResource("Gradient_y5uax")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CristalVrai" type="Sprite2D" parent="."]
+texture = ExtResource("1_t8hfr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.462745, 0.286275, 0.737255, 1)
+texture = SubResource("GradientTexture2D_jaw7i")
