@@ -60,6 +60,7 @@ light_energy_curve = SubResource("Curve_17o2t")
 
 [node name="Explo" type="CPUParticles2D" parent="."]
 self_modulate = Color(1.7, 1.7, 1.7, 1)
+z_index = -2
 position = Vector2(-1.13687e-13, 5.68434e-14)
 emitting = false
 amount = 300
@@ -81,6 +82,7 @@ color_ramp = SubResource("Gradient_7ug2n")
 
 [node name="Explo_feu" parent="." instance=ExtResource("2_83578")]
 self_modulate = Color(1.7, 1.7, 1.7, 1)
+z_index = -2
 emitting = false
 amount = 100
 lifetime = 0.75

@@ -4,6 +4,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var cristal_vrai: Sprite2D = $CristalVrai
 @onready var point_light: PointLight2D = $PointLight2D
+@onready var area_2d: Area2D = $Area2D
 
 # Courbe pour contrôler l'énergie de la lumière pendant la destruction
 @export var energy_curve: Curve
@@ -36,6 +37,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		destruct()
 
 func destruct():
+	area_2d.queue_free()
 	is_destructing = true
 	crystal_particle.emitting = true
 	cristal_vrai.visible = false

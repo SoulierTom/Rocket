@@ -25,6 +25,7 @@ var initial_light_energy: float = 0.0
 
 func _ready():
 	set_as_top_level(true)
+	z_index = -1
 	explo.emitting = true
 	explo_feu.emitting = true
 	
