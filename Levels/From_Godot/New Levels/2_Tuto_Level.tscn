@@ -2564,6 +2564,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Devant" type="CanvasLayer" parent="Tiles"]
 layer = 0
+follow_viewport_enabled = true
 follow_viewport_scale = 1.25
 
 [node name="Background_Tile_1" type="TileMapLayer" parent="Tiles/Devant"]

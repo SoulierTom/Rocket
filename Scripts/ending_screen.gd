@@ -208,4 +208,4 @@ func display_final_time():
 func _on_main_menu_pressed():
 	print("Bouton Main Menu pressé")
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MENU/main_menu_V2.tscn")

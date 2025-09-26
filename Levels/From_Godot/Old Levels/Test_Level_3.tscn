@@ -2030,9 +2030,6 @@ limit_bottom = 50
 editor_draw_limits = true
 zoom_level = Vector2(3.5, 3.5)
 
-[node name="Crt" parent="Player/Camera" index="1"]
-visible = false
-
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
 position = Vector2(243, -52)
 
