@@ -202,8 +202,10 @@ grow_vertical = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
+layer = 10
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/CanvasLayer"]
+z_index = 10
 material = SubResource("ShaderMaterial_23yxk")
 mesh = SubResource("QuadMesh_qnx3u")
 

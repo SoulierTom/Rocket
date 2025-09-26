@@ -146,6 +146,7 @@ fmod_parameters/Typing/variant_type = 4
 position = Vector2(0, -540)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_5stgb")

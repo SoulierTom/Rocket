@@ -8,7 +8,7 @@ signal on_transition_finished
 
 func _ready():
 	# Définir le layer pour être sous l'UI mais au-dessus du jeu
-	layer = 0  # Ajustez selon vos besoins (UI généralement à 100+)
+	layer = 8  # Ajustez selon vos besoins (UI généralement à 100+)
 	
 	color_rect.visible = false
 	animation_player.animation_finished.connect(_on_animation_finished)

@@ -48,7 +48,7 @@ var camera: Camera2D = null
 
 func _ready() -> void:
 	dust_trail.emitting = false
-
+	
 func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("Reset_Chapter"):

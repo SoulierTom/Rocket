@@ -10,12 +10,12 @@ uniform vec4 tint_color : source_color = vec4(1.0);
 void fragment() {
 	vec4 tex_color = texture(TEXTURE, UV);
 	bool should_be_transparent = false;
-	
+
 	// Logique de transparence pour tous les éléments
 	// angle_id 1-4: CursorAngle 1-4
 	// angle_id 5: CursorMiddle
 	// angle_id 6-8: Carré 1-3
-	
+
 	if (current_ammo == 3) {
 		// Avec 3 munitions, seul l'angle 1 devient transparent
 		if (angle_id == 1) {
@@ -40,7 +40,7 @@ void fragment() {
 			should_be_transparent = true;
 		}
 	}
-	
+
 	float alpha = should_be_transparent ? transparent_alpha : normal_alpha;
 	COLOR = vec4(tint_color.rgb * tex_color.rgb, tex_color.a * alpha * tint_color.a);
 }
