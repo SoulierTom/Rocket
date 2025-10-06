@@ -14,6 +14,11 @@ var initial_energy: float
 var is_destructing: bool = false
 var destruction_time: float = 0.0
 
+# Variables pour les fragments
+@export var fragment_count: int = 5
+@export var spawn_radius: float = 20.0
+var fragment_scene = preload("res://Scenes/crystal_part.tscn")
+
 func _ready() -> void:
 	crystal_particle.emitting = false
 	# Stocker l'énergie initiale de la lumière
@@ -37,11 +42,49 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		destruct()
 
 func destruct():
+	Global.current_level_crystals += 1
 	area_2d.queue_free()
 	is_destructing = true
 	crystal_particle.emitting = true
 	cristal_vrai.visible = false
+	
+	# Créer les fragments ColorRect
+	spawn_fragments()
+	
 	timer.start()
+
+func spawn_fragments():
+	# Trouver le joueur
+	var player = get_tree().get_first_node_in_group("Player")
+	if player == null:
+		return
+	
+	# Obtenir le parent du cristal pour y ajouter les fragments
+	var parent = get_parent()
+	if parent == null:
+		return
+	
+	for i in range(fragment_count):
+		# Instancier la scène crystal_part
+		var fragment = fragment_scene.instantiate()
+		
+		# Calculer une position aléatoire dans le rayon
+		var angle = randf() * TAU  # Angle aléatoire (0 à 2π)
+		var distance = randf() * spawn_radius  # Distance aléatoire
+		var offset = Vector2(cos(angle), sin(angle)) * distance
+		
+		# Stocker la position globale avant d'ajouter le fragment
+		var spawn_position = global_position + offset
+		
+		# Ajouter le fragment au parent du cristal (pas comme enfant du cristal)
+		parent.add_child(fragment)
+		
+		# Positionner le fragment en coordonnées globales
+		fragment.global_position = spawn_position
+		
+		# Passer la référence du joueur au fragment (si le script du fragment le supporte)
+		if fragment.has_method("set_target"):
+			fragment.set_target(player)
 
 func _on_timer_timeout() -> void:
 	queue_free()

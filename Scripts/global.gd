@@ -16,3 +16,6 @@ var is_floating : bool = false
 
 
 var VBR = true
+
+var current_level_crystals : int = 0
+var total_crystal : int = 0

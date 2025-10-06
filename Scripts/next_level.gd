@@ -8,5 +8,7 @@ func _on_body_entered(body):
 		if timer_node and timer_node.has_method("trigger_level_complete"):
 			timer_node.trigger_level_complete()
 		
+		Global.total_crystal += Global.current_level_crystals
+		
 		# Changer de niveau
 		LevelManager.go_to_next_level()

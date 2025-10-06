@@ -3,6 +3,7 @@ extends Area2D
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		print("Player entered death area")
+		Global.current_level_crystals = 0
 		body.set_process(false)  # Désactive _process du joueur
 		body.set_physics_process(false)  # Désactive _physics_process du joueur
 		

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://gw1vs4c7v8w7"]
+
+[ext_resource type="Script" path="res://Scripts/crystal_part.gd" id="1_t3dji"]
+
+[sub_resource type="Curve" id="Curve_i0jkd"]
+min_value = -1.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0882353, -0.120879), 6.11389, 6.11389, 0, 0, Vector2(0.495098, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdrnf"]
+size = Vector2(6, 6)
+
+[node name="Crystal_part" type="Area2D"]
+script = ExtResource("1_t3dji")
+acceleration_curve = SubResource("Curve_i0jkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tdrnf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1.2, 1.2, 1.2, 1)
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+color = Color(0.612758, 0.301282, 0.621806, 1)

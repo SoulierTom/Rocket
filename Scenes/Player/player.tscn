@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=37 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/player_interaction.gd" id="6_boj3a"]
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Assets/Audio/sounds/Walk_sound.wav" id="7_71co6"]
 [ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/Player/viseur.tscn" id="8_f2ryt"]
+[ext_resource type="PackedScene" uid="uid://wnuykavgigo2" path="res://Scenes/crystal_counter.tscn" id="11_uttty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -247,6 +248,15 @@ visible = false
 z_index = 1
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ymg54")
+
+[node name="crystal_counter" parent="." instance=ExtResource("11_uttty")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Speedrun timer" parent="." instance=ExtResource("5_4metu")]
 

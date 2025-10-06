@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://wnuykavgigo2"]
+
+[ext_resource type="Script" path="res://Scripts/crystal_counter.gd" id="1_6gmym"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g1tcl"]
+font_size = 40
+
+[node name="crystal_counter" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_6gmym")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 1835.0
+offset_top = 23.0
+offset_right = 1881.0
+offset_bottom = 78.0
+text = "00"
+label_settings = SubResource("LabelSettings_g1tcl")

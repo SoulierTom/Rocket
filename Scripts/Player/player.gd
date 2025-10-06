@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 		Global.speedrun_time = 0
 
 	if Input.is_action_just_pressed("Reset_Level"):
+		Global.current_level_crystals = 0
 		get_tree().reload_current_scene()
 
 	if Input.is_action_just_pressed("toggle_vibration"):
