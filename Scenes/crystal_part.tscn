@@ -4,8 +4,8 @@
 
 [sub_resource type="Curve" id="Curve_i0jkd"]
 min_value = -1.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0882353, -0.120879), 6.11389, 6.11389, 0, 0, Vector2(0.495098, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0833333, -0.421118), 11.5304, 11.5304, 0, 0, Vector2(0.485294, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdrnf"]
 size = Vector2(6, 6)
