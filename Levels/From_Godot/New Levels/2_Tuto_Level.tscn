@@ -2606,6 +2606,14 @@ editor_draw_limits = true
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
 position = Vector2(272, 114)
 
+[node name="FmodWallgrab" parent="Player" index="11"]
+event_name = "event:/PlayerMovements/Bonk"
+event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
+
+[node name="FmodBonk" parent="Player" index="13"]
+event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
+
 [node name="Text" type="Node2D" parent="."]
 
 [node name="AnimatedText1" type="Node2D" parent="Text"]
@@ -2856,6 +2864,13 @@ rotation = 1.5708
 [node name="Crystal8" parent="." instance=ExtResource("20_by6tk")]
 position = Vector2(-1151, 976)
 rotation = -3.14159
+
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/1 Small Verb"
+event_guid = "{99c02129-6301-48b2-8370-596849a37c3b}"
+autoplay = true
+auto_release = true
+preload_event = false
 
 [editable path="Player"]
 [editable path="Player/Camera"]

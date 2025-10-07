@@ -1549,6 +1549,14 @@ zoom_level = Vector2(6, 6)
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
 position = Vector2(11, 293)
 
+[node name="FmodWallgrab" parent="Player" index="11"]
+event_name = "event:/PlayerMovements/Bonk"
+event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
+
+[node name="FmodBonk" parent="Player" index="13"]
+event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
+
 [node name="Finish" parent="." instance=ExtResource("1_32a27")]
 position = Vector2(532, 606)
 scale = Vector2(1.7017, 0.73448)
@@ -1689,6 +1697,13 @@ fmod_parameters/Typing = "ON"
 fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
 fmod_parameters/Typing/variant_type = 4
 position = Vector2(-395, -588)
+
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/2 Medium Verb"
+event_guid = "{00c6df3a-c0d8-4240-9049-237437099eb2}"
+autoplay = true
+auto_release = true
+preload_event = false
 
 [editable path="Player"]
 [editable path="Player/Camera"]
