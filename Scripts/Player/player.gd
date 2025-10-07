@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Variables de mouvement du Player
-var can_move = false
+var can_move = true
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
@@ -79,7 +79,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		Global.player_impulsed = false
 		fall_time = 0.0
-		can_move = true
 	else:
 		fall_time += delta
 		velocity.y += add_gravity() * delta

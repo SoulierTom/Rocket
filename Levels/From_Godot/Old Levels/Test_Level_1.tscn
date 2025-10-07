@@ -430,7 +430,7 @@ color = Color(0.000819306, 0.151938, 0.133229, 0.392157)
 [node name="Player" parent="." instance=ExtResource("5_3lkrf")]
 position = Vector2(-1, -1)
 
-[node name="Camera" parent="Player" index="3"]
+[node name="Camera" parent="Player" index="4"]
 limit_left = 0
 limit_top = -270
 limit_right = 875

@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/animated_text_2.gd" id="18_rqee3"]
 [ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/Crystal.tscn" id="20_by6tk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28cap"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu47k"]
 texture = ExtResource("1_grooq")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
@@ -97,7 +97,7 @@ separation = Vector2i(1, 1)
 6:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wyk5s"]
-sources/1 = SubResource("TileSetAtlasSource_28cap")
+sources/1 = SubResource("TileSetAtlasSource_vu47k")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oetda"]
 texture = ExtResource("4_elffs")
@@ -2477,7 +2477,6 @@ color = Color(0.170273, 0.0601401, 0.198306, 0.816)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Tiles/Background"]
 layer = -1
-visible = false
 follow_viewport_enabled = true
 
 [node name="Background_Tile_1" type="TileMapLayer" parent="Tiles/Background/CanvasLayer2"]
@@ -2502,7 +2501,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Tiles/Background"]
 layer = -2
-visible = false
 follow_viewport_enabled = true
 follow_viewport_scale = 0.9
 
@@ -2833,35 +2831,37 @@ shape = SubResource("RectangleShape2D_d3kqp")
 position = Vector2(-1322, 1194)
 scale = Vector2(2.52, 1)
 
-[node name="Crystal" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystals" type="Node" parent="."]
+
+[node name="Crystal" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-89, 770)
 rotation = -1.5708
 
-[node name="Crystal2" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal2" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-160, 956)
 rotation = 1.5708
 
-[node name="Crystal3" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal3" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-370, 984)
 rotation = 3.14159
 
-[node name="Crystal4" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal4" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-653, 919)
 rotation = 3.14159
 
-[node name="Crystal5" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal5" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-984, 840)
 rotation = 3.14159
 
-[node name="Crystal6" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal6" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-849, 994)
 rotation = -1.5708
 
-[node name="Crystal7" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal7" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-1008, 1011)
 rotation = 1.5708
 
-[node name="Crystal8" parent="." instance=ExtResource("20_by6tk")]
+[node name="Crystal8" parent="Crystals" instance=ExtResource("20_by6tk")]
 position = Vector2(-1151, 976)
 rotation = -3.14159
 
