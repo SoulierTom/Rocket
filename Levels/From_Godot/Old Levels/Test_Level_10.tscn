@@ -569,6 +569,13 @@ rotation = 1.5708
 [node name="Line2D" parent="." instance=ExtResource("1_qiwt2")]
 points = PackedVector2Array(-128, 64, 208, 64, 208, -656, -128, -656, -128, 64)
 
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/2 Medium Verb"
+event_guid = "{00c6df3a-c0d8-4240-9049-237437099eb2}"
+autoplay = true
+auto_release = true
+preload_event = false
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Arm"]

@@ -684,6 +684,13 @@ script = ExtResource("7_48i5o")
 [node name="Line2D" parent="." instance=ExtResource("8_o6ebm")]
 points = PackedVector2Array(32, 64, 32, -320, 576, -320, 576, 64, 32, 64)
 
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/1 Small Verb"
+event_guid = "{99c02129-6301-48b2-8370-596849a37c3b}"
+autoplay = true
+auto_release = true
+preload_event = false
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Arm"]

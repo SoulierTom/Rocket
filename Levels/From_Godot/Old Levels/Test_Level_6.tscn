@@ -894,6 +894,13 @@ script = ExtResource("7_y5tj1")
 [node name="Line2D" parent="." instance=ExtResource("9_61ydp")]
 points = PackedVector2Array(-704, -384, 872, -384, 872, 64, -688, 64)
 
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/3 Big Verb"
+event_guid = "{5f092f99-d31c-4e60-83bc-8902f6b886c2}"
+autoplay = true
+auto_release = true
+preload_event = false
+
 [editable path="Tiles/Player"]
 [editable path="Tiles/Player/Camera"]
 [editable path="Tiles/Player/Arm"]

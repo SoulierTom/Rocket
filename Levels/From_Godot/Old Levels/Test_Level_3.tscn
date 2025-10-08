@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="14_cw08n"]
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="15_rojdm"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="16_t7bmn"]
-[ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/GPE/Crystal.tscn" id="17_qhoxl"]
+[ext_resource type="PackedScene" path="res://Scenes/Crystal.tscn" id="17_qhoxl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4gvn"]
 texture = ExtResource("1_h2g4d")
@@ -2035,6 +2035,13 @@ position = Vector2(243, -52)
 
 [node name="Finish" parent="." instance=ExtResource("1_wk2u3")]
 position = Vector2(403, -479)
+
+[node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/3 Big Verb"
+event_guid = "{5f092f99-d31c-4e60-83bc-8902f6b886c2}"
+autoplay = true
+auto_release = true
+preload_event = false
 
 [editable path="Player"]
 [editable path="Player/Camera"]
