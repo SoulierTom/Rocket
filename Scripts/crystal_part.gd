@@ -37,3 +37,4 @@ func _process(delta: float):
 		# Se détruire quand on atteint le joueur
 		if global_position.distance_to(target.global_position) < 10:
 			queue_free()
+			# FmodServer.play_one_shot("event:/UI-and-Events/CrystalCollect")
