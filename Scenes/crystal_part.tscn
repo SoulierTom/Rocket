@@ -1,18 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://gw1vs4c7v8w7"]
+[gd_scene load_steps=8 format=3 uid="uid://gw1vs4c7v8w7"]
 
 [ext_resource type="Script" path="res://Scripts/crystal_part.gd" id="1_t3dji"]
 
 [sub_resource type="Curve" id="Curve_i0jkd"]
 min_value = -1.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0833333, -0.421118), 11.5304, 11.5304, 0, 0, Vector2(0.485294, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0833333, -0.421118), 7.27728, 7.27728, 0, 0, Vector2(0.727627, 1), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Curve" id="Curve_j10ul"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5y5a1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdrnf"]
 size = Vector2(6, 6)
 
+[sub_resource type="Gradient" id="Gradient_s47ny"]
+offsets = PackedFloat32Array(0, 0.728507)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pli33"]
+gradient = SubResource("Gradient_s47ny")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Crystal_part" type="Area2D"]
 script = ExtResource("1_t3dji")
+speed = 600.0
 acceleration_curve = SubResource("Curve_i0jkd")
+spawn_light_curve = SubResource("Curve_j10ul")
+despawn_light_curve = SubResource("Curve_5y5a1")
+spawn_duration = 0.2
+despawn_duration = 0.2
+max_light_energy = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tdrnf")
@@ -24,3 +47,12 @@ offset_top = -3.0
 offset_right = 3.0
 offset_bottom = 3.0
 color = Color(0.612758, 0.301282, 0.621806, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.462745, 0.286275, 0.737255, 1)
+energy = 0.4
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 4.0
+texture = SubResource("GradientTexture2D_pli33")
+texture_scale = 2.0
