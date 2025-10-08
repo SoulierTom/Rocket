@@ -92,4 +92,4 @@ func _process_despawning(_delta: float):
 	# Se détruire à la fin de l'animation
 	if progress >= 1.0:
 		queue_free()
-		FmodServer.play_one_shot("event:/UI-and-Events/CrystalCollect")
+		# FmodServer.play_one_shot("event:/UI-and-Events/CrystalCollect")
