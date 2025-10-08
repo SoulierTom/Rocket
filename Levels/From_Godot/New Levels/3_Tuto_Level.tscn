@@ -728,14 +728,6 @@ zoom_level = Vector2(3.5, 3.5)
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
 position = Vector2(-45, 224)
 
-[node name="FmodWallgrab" parent="Player" index="11"]
-event_name = "event:/PlayerMovements/Bonk"
-event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
-
-[node name="FmodBonk" parent="Player" index="13"]
-event_name = ""
-event_guid = "{00000000-0000-0000-0000-000000000000}"
-
 [node name="Finish" parent="." instance=ExtResource("16_fs5dm")]
 position = Vector2(1148, 1471)
 scale = Vector2(1.7017, 0.73448)
