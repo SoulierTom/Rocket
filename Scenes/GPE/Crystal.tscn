@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://db2mh3gtnjjje"]
 
-[ext_resource type="Script" path="res://Scripts/GPE/crystal.gd" id="1_cupwe"]
-[ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="1_t8hfr"]
+[ext_resource type="Script" path="res://Scripts/GPE/crystal.gd" id="1_43cfe"]
+[ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="2_vbjci"]
 
 [sub_resource type="Curve" id="Curve_k1i4u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -34,7 +34,7 @@ colors = PackedColorArray(0.127115, 0.0780587, 0.269386, 1, 0.972549, 0.862745, 
 radius = 8.0
 
 [node name="Crystal" type="Node2D"]
-script = ExtResource("1_cupwe")
+script = ExtResource("1_43cfe")
 energy_curve = SubResource("Curve_k1i4u")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -47,7 +47,7 @@ texture = SubResource("GradientTexture2D_jaw7i")
 texture_scale = 3.0
 
 [node name="CristalVrai" type="Sprite2D" parent="."]
-texture = ExtResource("1_t8hfr")
+texture = ExtResource("2_vbjci")
 
 [node name="Crystal_Particle" type="CPUParticles2D" parent="."]
 emitting = false

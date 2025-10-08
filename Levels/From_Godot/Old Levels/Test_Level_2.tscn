@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="10_yf8dj"]
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="11_2hae0"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="12_tfioh"]
-[ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/Crystal.tscn" id="17_44pht"]
+[ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/GPE/Crystal.tscn" id="17_44pht"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td23c"]
 texture = ExtResource("2_vq1js")

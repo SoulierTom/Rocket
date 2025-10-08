@@ -18,7 +18,7 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_q3jx4"]
 resource_name = "Display_Text"
-length = 6.0
+length = 13.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +26,7 @@ tracks/0/path = NodePath("Main_Text:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 13),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -71,9 +71,9 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_uou52"]
-line_spacing = 45.0
+line_spacing = 50.0
 font = ExtResource("2_adgwp")
-font_size = 40
+font_size = 34
 font_color = Color(0, 1, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -107,7 +107,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="DisplayText" type="Node2D" parent="."]
-position = Vector2(0, 540)
+position = Vector2(0, 431)
 script = ExtResource("3_fikwp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayText"]
@@ -120,18 +120,21 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 26.0
-offset_top = -153.0
+offset_top = -276.0
 offset_right = 1913.0
-offset_bottom = 391.0
+offset_bottom = 484.0
 grow_vertical = 2
-text = "Operator, you are now logged on your terminal.
-Mcorp needs you for an important mission !
-One of our mining facilities on planet P-216 found 
-an extremely worthy Crystal deep inside a cave...
-"
+text = "Operateur, Mcorp a une mission pour vous :
+Dans une de nos mines, nous deployons un robot.
+Prenez-en le controle, et servez-vous en 
+pour collecter un maximum de crystaux.
+...../...//......
+Leur valeur diminue avec le temps.
+Plus vite vous quitterez la grotte, 
+meilleure sera votre paie.
+Depechez-vous, nous vous chronometrons ! "
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
-uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 

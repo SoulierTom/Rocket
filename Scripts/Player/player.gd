@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # Variables de mouvement du Player
 var can_move = true
+var can_jump = true
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
@@ -67,9 +68,9 @@ func _physics_process(delta: float) -> void:
 
 	#Feedback lorsqu'on appuie sur la touche de saut
 	if Input.is_action_just_pressed("ok") and is_on_floor():
-		# Fmod Son Saut non fonctionnel
-		$FmodJumpFail.play()
-		quick_shake()
+		if can_jump:
+			$FmodJumpFail.play()
+			quick_shake()
 
 	if bonk_freeze_timer > 0.0:
 		bonk_freeze_timer -= delta
@@ -258,6 +259,9 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Disable_Arm"):
 		arm.can_aim = false
 		print("disable_arm")
+	if area.is_in_group("Disable_Jump"):
+		can_jump = false
+		print("disable_jump")
 	if area.is_in_group("Enable_Arm"):
 		arm.can_aim = true
 		print("enable_arm")

@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ok"):
 		if not display_text.animation_finished :
 			print("skip text")
-			display_text.Anim.seek(6.0)
+			display_text.Anim.seek(13.0)
 			display_text.animation_finished = true
 		else:
 			LevelManager.go_to_next_level()
