@@ -258,6 +258,21 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" parent="crystal_counter/CanvasLayer" index="0"]
+offset_left = 25.0
+offset_top = 130.0
+offset_right = 137.0
+offset_bottom = 194.0
+
+[node name="Label" parent="crystal_counter/CanvasLayer" index="1"]
+offset_left = 44.0
+offset_top = 120.0
+offset_right = 58.0
+offset_bottom = 157.0
+
+[node name="Sprite2D" parent="crystal_counter/CanvasLayer" index="2"]
+position = Vector2(102, 159)
+
 [node name="Speedrun timer" parent="." instance=ExtResource("5_4metu")]
 
 [node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
@@ -298,3 +313,5 @@ event_guid = "{fb555025-21ce-497b-901c-fd4aece3d38e}"
 
 [editable path="Camera"]
 [editable path="Arm"]
+[editable path="crystal_counter"]
+[editable path="Speedrun timer"]
