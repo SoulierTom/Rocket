@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmxs5fgfqdcov"]
+
+[ext_resource type="Script" path="res://Scripts/kill.gd" id="1_4chvs"]
+[ext_resource type="Texture2D" uid="uid://fjtmunsed46a" path="res://Assets/Images/Divers/spike_8pixels.png" id="2_v8hle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w6uh"]
+size = Vector2(8, 5)
+
+[node name="Spikes" type="Area2D" groups=["mousse"]]
+position = Vector2(-4, 4)
+script = ExtResource("1_4chvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(6.01634e-07, 0.438857, 0.088697, 1)
+position = Vector2(4, -4)
+texture = ExtResource("2_v8hle")
+region_rect = Rect2(0, 30.59, 0, -0.32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -2.5)
+shape = SubResource("RectangleShape2D_0w6uh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
