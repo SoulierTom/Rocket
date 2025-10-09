@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve" id="Curve_i0jkd"]
 min_value = -1.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0833333, -0.421118), 7.27728, 7.27728, 0, 0, Vector2(0.727627, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.044164, -0.277819), 5.67751, 5.67751, 0, 0, Vector2(0.727627, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_j10ul"]

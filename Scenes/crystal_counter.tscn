@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://wnuykavgigo2"]
+[gd_scene load_steps=4 format=3 uid="uid://wnuykavgigo2"]
 
 [ext_resource type="Script" path="res://Scripts/crystal_counter.gd" id="1_6gmym"]
+[ext_resource type="FontFile" uid="uid://cw571obscfhmv" path="res://Assets/Fonts/FieldGuide.ttf" id="2_2laxj"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_g1tcl"]
-font_size = 40
+[sub_resource type="LabelSettings" id="LabelSettings_cjqy1"]
+font = ExtResource("2_2laxj")
+font_size = 30
+outline_size = 5
+outline_color = Color(0.113725, 0.133333, 0.160784, 1)
 
 [node name="crystal_counter" type="Control"]
 layout_mode = 3
@@ -15,10 +19,18 @@ script = ExtResource("1_6gmym")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1815.0
+offset_top = 8.0
+offset_right = 1906.0
+offset_bottom = 72.0
+color = Color(0.129412, 0.14902, 0.180392, 0.568627)
+
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 1835.0
-offset_top = 23.0
-offset_right = 1881.0
-offset_bottom = 78.0
+offset_left = 1834.0
+offset_top = -2.0
+offset_right = 1862.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
 text = "00"
-label_settings = SubResource("LabelSettings_g1tcl")
+label_settings = SubResource("LabelSettings_cjqy1")
