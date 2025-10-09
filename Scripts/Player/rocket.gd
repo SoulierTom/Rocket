@@ -26,3 +26,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_trail_timer_timeout() -> void:
 	trail_particles.emitting = true
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("mousse"):
+		destruct()
+
+func destruct():
+	queue_free()
