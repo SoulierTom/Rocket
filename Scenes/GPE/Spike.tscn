@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4yfhvifo5im8"]
+[gd_scene load_steps=5 format=3 uid="uid://b4yfhvifo5im8"]
 
 [ext_resource type="Script" path="res://Scripts/kill.gd" id="1_cu28q"]
 [ext_resource type="Texture2D" uid="uid://fjtmunsed46a" path="res://Assets/Images/Divers/spike_8pixels.png" id="2_xjyu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w6uh"]
 size = Vector2(6.5, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43epy"]
+size = Vector2(8, 8)
 
 [node name="Spikes" type="Area2D"]
 position = Vector2(-4, 4)
@@ -18,6 +21,14 @@ region_rect = Rect2(0, 30.59, 0, -0.32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -2)
 shape = SubResource("RectangleShape2D_0w6uh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_43epy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
