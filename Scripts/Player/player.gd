@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Variables de mouvement du Player
 var can_move = true
-var can_jump = true
+var can_jump = false
 var SPEED = 150
 var ACCELERATION = 250.0
 var FRICTION = 800.0
@@ -267,8 +267,8 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Disable_Arm"):
 		arm.can_aim = false
 		print("disable_arm")
-	if area.is_in_group("Disable_Jump"):
-		can_jump = false
+	if area.is_in_group("Enable_Jump"):
+		can_jump = true
 		print("disable_jump")
 	if area.is_in_group("Enable_Arm"):
 		arm.can_aim = true
@@ -278,6 +278,9 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 		print("disable_shoot")
 	if area.is_in_group("Enable_Shoot"):
 		arm.can_shoot = true
+		print("Enable_shoot")
+	if area.is_in_group("Set_Aim"):
+		arm.jotystick_vector = ("Look_Left")
 		print("Enable_shoot")
 
 func _on_dust_timer_timeout() -> void:

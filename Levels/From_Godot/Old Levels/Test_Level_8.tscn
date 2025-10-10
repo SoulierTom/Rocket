@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="4_pplf8"]
 [ext_resource type="PackedScene" uid="uid://d11tok77s5cbk" path="res://Scenes/GPE/Killzone.tscn" id="5_1qg7t"]
 [ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="6_lv4i4"]
-[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="7_htvn8"]
+[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x2.tscn" id="7_htvn8"]
 [ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="7_x8ehb"]
 [ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="8_1mxfr"]
 

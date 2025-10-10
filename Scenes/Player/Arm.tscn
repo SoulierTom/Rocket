@@ -58,7 +58,7 @@ volume_db = -7.5
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 z_index = -1
-rotation = -1.39626
+rotation = -1.56533
 script = ExtResource("7_7ctjl")
 
 [node name="Sprite2D" type="Sprite2D" parent="RayCast2D"]
@@ -86,13 +86,13 @@ size_flags_horizontal = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="RayCast2D/Control"]
 z_index = -1
-position = Vector2(10.2838, 1.79803)
+position = Vector2(10.3235, 16.1658)
 texture = ExtResource("7_73eg5")
 
 [node name="arm_sprite" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(2.38419e-07, 0)
-rotation = -0.226893
+rotation = -0.151031
 texture = ExtResource("9_xu18f")
 offset = Vector2(6, -3)
 

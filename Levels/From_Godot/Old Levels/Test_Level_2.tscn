@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="5_kanfh"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="5_ouwc0"]
 [ext_resource type="Texture2D" uid="uid://hisufxsm86ub" path="res://Assets/Images/Tilesets/Tile_set_tuto_3.png" id="5_rcduy"]
-[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="6_852jk"]
+[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x2.tscn" id="6_852jk"]
 [ext_resource type="Texture2D" uid="uid://grnkmxe27hkv" path="res://Assets/Images/Tilesets/Tile_set_tuto_2__Explo.png" id="6_jvxv1"]
 [ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/destruct_platform_8x2.tscn" id="7_3a62u"]
 [ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="8_jlpcq"]

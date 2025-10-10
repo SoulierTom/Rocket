@@ -1,7 +1,7 @@
 extends Node
 
 # Le point que regarde le bras (soit la souris, soit le joystick)
-var target_pos = Vector2.RIGHT
+var target_pos = Vector2.LEFT
 
 
 @export var magazine_size: int = 4  # Taille du chargeur (ex: 3 rockets)

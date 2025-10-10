@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cblfns0jy88ut"]
+[gd_scene load_steps=9 format=3 uid="uid://cblfns0jy88ut"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_xxaw4"]
+[ext_resource type="Texture2D" uid="uid://cihbsgoqo7w4h" path="res://Assets/Images/Blocs/BlocCassable4x4.png" id="2_li7d7"]
 [ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_vvkp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
@@ -47,9 +48,9 @@ script = ExtResource("1_xxaw4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.686275, 0.419608, 0.0980392, 1)
-position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
-texture = ExtResource("2_vvkp7")
+position = Vector2(250, -3.8147e-06)
+scale = Vector2(35.7143, 6.84932)
+texture = ExtResource("2_li7d7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -60,6 +61,7 @@ shape = SubResource("RectangleShape2D_uf8v0")
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
+visible = false
 position = Vector2(250, -4.89901e-06)
 shape = SubResource("RectangleShape2D_lkyip")
 

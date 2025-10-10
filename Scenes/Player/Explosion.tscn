@@ -112,9 +112,10 @@ autostart = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ma124")
 
-[node name="Area2D" type="Area2D" parent="." groups=["destruction"]]
+[node name="Destruction_Area" type="Area2D" parent="." groups=["destruction"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destruction_Area"]
+scale = Vector2(1.75, 1.75)
 shape = SubResource("CircleShape2D_ma04u")
 
 [node name="FmodExplosionEventEmitter" type="FmodEventEmitter2D" parent="."]

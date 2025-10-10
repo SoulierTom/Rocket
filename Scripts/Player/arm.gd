@@ -6,7 +6,7 @@ extends Node2D
 var is_using_gamepad = true
 var can_aim = true
 var can_shoot = true
-var last_joystick_vector = Vector2(1,0)
+var last_joystick_vector = Vector2(-1,0)
 
 # Position du bras
 @export var pos_arm_x: float = -3
