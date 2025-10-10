@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqod2t2tuu181"]
+[gd_scene load_steps=39 format=3 uid="uid://dqod2t2tuu181"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_li7m8"]
 [ext_resource type="Texture2D" uid="uid://dbawyolt2qcih" path="res://Assets/Images/Tilesets/Chara_Walk_Animation.png" id="2_cqlv8"]
@@ -12,6 +12,14 @@
 [ext_resource type="AudioStream" uid="uid://c2eo1cgovcshb" path="res://Assets/Audio/sounds/Walk_sound.wav" id="7_71co6"]
 [ext_resource type="PackedScene" uid="uid://bm8mltsrod3rr" path="res://Scenes/Player/viseur.tscn" id="8_f2ryt"]
 [ext_resource type="PackedScene" uid="uid://wnuykavgigo2" path="res://Scenes/crystal_counter.tscn" id="11_uttty"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o85vc"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjbsh"]
+atlas = ExtResource("2_cqlv8")
+region = Rect2(36, 54, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eljve"]
 atlas = ExtResource("2_cqlv8")
@@ -79,6 +87,22 @@ region = Rect2(54, 54, 18, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kd5hf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o85vc")
+}],
+"loop": false,
+"name": &"Grab",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjbsh")
+}],
+"loop": true,
+"name": &"Grab_left",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eljve")
@@ -193,7 +217,7 @@ color = Color(0.60933, 0.60933, 0.60933, 0.211)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kd5hf")
-animation = &"run"
+animation = &"Grab"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
