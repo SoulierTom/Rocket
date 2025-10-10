@@ -165,10 +165,16 @@ func _physics_process(delta: float) -> void:
 					$FmodWalk.play_one_shot()
 
 	else: #si le player est en l'air
-		if dir_arm.x > 0:
-			animated_sprite.play("jump")
-		else:
-			animated_sprite.play("jump_left")
+		if not is_grabbing :
+			if dir_arm.x > 0:
+				animated_sprite.play("jump")
+			else:
+				animated_sprite.play("jump_left")
+		else: 
+			if dir_arm.x > 0:
+				animated_sprite.play("Grab")
+			else:
+				animated_sprite.play("Grab_left")
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		if pause_instance == null:
@@ -224,6 +230,8 @@ func wall_sliding(delta):
 	#Grab le mur
 	if is_grabbing:
 		velocity.y = 0
+
+
 
 func pause_game():
 	pause_instance = pause_menu.instantiate()
