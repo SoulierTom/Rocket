@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="8_xjlag"]
 [ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="9_c58gm"]
 [ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="9_ulpa2"]
-[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x1.tscn" id="10_1r8cl"]
+[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x2.tscn" id="10_1r8cl"]
 [ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="11_6g76b"]
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_eaggy"]
 

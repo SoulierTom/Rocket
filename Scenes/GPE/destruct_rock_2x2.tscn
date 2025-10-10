@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4qys3gs8tdew"]
 
 [ext_resource type="Script" path="res://Scripts/GPE/destruct_rock.gd" id="1_s81ia"]
-[ext_resource type="Texture2D" uid="uid://dhnahsbienqif" path="res://Assets/Images/Divers/rock.jpg" id="2_53lbw"]
+[ext_resource type="Texture2D" uid="uid://b6jyq1wwmpvb1" path="res://Assets/Images/Blocs/BlocCassable2x2.png" id="2_tgmaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf8v0"]
 size = Vector2(1142.86, 228.571)
@@ -47,19 +47,21 @@ script = ExtResource("1_s81ia")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.687486, 0.417779, 0.0987657, 1)
-position = Vector2(258, 0)
-scale = Vector2(5.03125, 1)
-texture = ExtResource("2_53lbw")
+position = Vector2(285.714, 7.62939e-06)
+scale = Vector2(71.4286, 14.2857)
+texture = ExtResource("2_tgmaj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(285.714, 1.70299e-06)
+position = Vector2(285.713, 3.8147e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_rocket" type="Area2D" parent="."]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_rocket"]
+visible = false
 position = Vector2(285.714, 3.40598e-06)
 shape = SubResource("RectangleShape2D_lkyip")
 
@@ -75,7 +77,7 @@ emitting = false
 amount = 20
 sub_emitter = NodePath(".")
 process_material = SubResource("ParticleProcessMaterial_vpcld")
-texture = ExtResource("2_53lbw")
+texture = ExtResource("2_tgmaj")
 one_shot = true
 explosiveness = 1.0
 
