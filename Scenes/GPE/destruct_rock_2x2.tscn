@@ -46,7 +46,6 @@ collision_mask = 0
 script = ExtResource("1_s81ia")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.687486, 0.417779, 0.0987657, 1)
 position = Vector2(285.714, 7.62939e-06)
 scale = Vector2(71.4286, 14.2857)
 texture = ExtResource("2_tgmaj")
@@ -54,7 +53,6 @@ texture = ExtResource("2_tgmaj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(285.713, 3.8147e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uf8v0")
 
 [node name="Area_rocket" type="Area2D" parent="."]
