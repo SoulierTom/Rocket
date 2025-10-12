@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgydsc0h6my"
-path="res://.godot/imported/manette verte Aim.png-31ade646223143a45577df93331a1105.ctex"
+uid="uid://dkg1mltq7us0i"
+path="res://.godot/imported/controller Grab.png-4b602aecedd81794f9f541b91f14c24b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Tutos/manette verte Aim.png"
-dest_files=["res://.godot/imported/manette verte Aim.png-31ade646223143a45577df93331a1105.ctex"]
+source_file="res://Assets/Images/Tutos/Controller/controller Grab.png"
+dest_files=["res://.godot/imported/controller Grab.png-4b602aecedd81794f9f541b91f14c24b.ctex"]
 
 [params]
 

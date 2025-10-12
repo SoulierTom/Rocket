@@ -1,5 +1,8 @@
 extends RayCast2D
 
+
+@onready var arm: = $"."
+
 # Références UI
 @onready var ammo_ui: Control = $Control
 @onready var carre1: ColorRect = $"Carré1"
@@ -301,7 +304,7 @@ func update_crosshair_appearance():
 			color = Color.WHITE
 	
 	modulate = color
-	visible = true
+	
 
 	# Mise à jour de la couleur dans tous les shaders
 	update_all_shader_colors(color)

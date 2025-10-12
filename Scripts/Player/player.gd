@@ -33,6 +33,12 @@ var original_pos: Vector2
 @onready var arm = $Arm
 var arm_offset_x: float = 0.85
 
+@onready var viseur: RayCast2D = $Viseur
+var viseur_timer: Timer
+var viseur_fade_tween: Tween
+
+
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var pause_menu = preload("res://Scenes/MENU/Pause_Menu_V2.tscn")
@@ -49,6 +55,12 @@ var camera: Camera2D = null
 
 func _ready() -> void:
 	dust_trail.emitting = false
+	
+	viseur_timer = Timer.new()
+	viseur_timer.wait_time = 1.0
+	viseur_timer.one_shot = true
+	add_child(viseur_timer)
+	viseur_timer.timeout.connect(_on_viseur_timer_timeout)
 	
 func _physics_process(delta: float) -> void:
 
@@ -69,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	#Feedback lorsqu'on appuie sur la touche de saut
 	if Input.is_action_just_pressed("ok") and is_on_floor():
 		if can_jump:
-			$FmodJumpFail.play()
+			$"Sound Design/FmodJumpFail".play()
 			quick_shake()
 
 	if bonk_freeze_timer > 0.0:
@@ -87,7 +99,18 @@ func _physics_process(delta: float) -> void:
 	if is_on_ceiling():
 		bonk_freeze_timer = BONK_FREEZE_TIME  # Active le freeze
 		# Fmod Son : lancement Event Bonk depuis l'Emitter sur Playernode
-		$FmodBonk.play()
+		$"Sound Design/FmodBonk".play()
+		
+	if arm.is_aiming:
+		viseur.visible = true
+		viseur.modulate.a = 1.0  # Opacité maximale
+		viseur_timer.stop()
+		# Arrête le fade out s'il était en cours
+		if viseur_fade_tween:
+			viseur_fade_tween.kill()
+	else:
+		if viseur_timer.is_stopped():
+			viseur_timer.start()
 
 	wall_sliding(delta)
 	
@@ -133,7 +156,7 @@ func _physics_process(delta: float) -> void:
 
 	if just_landed :
 		# Fmod Son atterissage
-		$FmodLanding.play()
+		$"Sound Design/FmodLanding".play()
 
 	if velocity.y > max_fall_speed:
 		velocity.y = max_fall_speed
@@ -154,11 +177,11 @@ func _physics_process(delta: float) -> void:
 				if dir_arm.x > 0:
 					animated_sprite.play("run")
 					if current_frame >= 0 and current_frame < 1:
-						$FmodWalk.play_one_shot()
+						$"Sound Design/FmodWalk".play_one_shot()
 				else:
 					animated_sprite.play("run_left")
 					if current_frame >= 0 and current_frame < 1:
-						$FmodWalk.play_one_shot()
+						$"Sound Design/FmodWalk".play_one_shot()
 
 	else: #si le player est en l'air
 		if dir_arm.x > 0:
@@ -210,13 +233,13 @@ func wall_sliding(delta):
 		if not was_on_wall :
 			if Global.player_impulsed :
 				##Remplace le son par celui quand on se tape contre un mur
-				$FmodBonk.play()
+				$"Sound Design/FmodBonk".play()
 				was_on_wall = true
 			was_on_wall = true
 		#Detecte si on vient de Grab pour lancer le son associé
 		if Input.is_action_pressed("Grab"):
 			if not is_grabbing:
-				$FmodWallgrab.play()
+				$"Sound Design/FmodWallgrab".play()
 				is_grabbing = true
 		else:
 			is_grabbing = false
@@ -287,3 +310,13 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 
 func _on_dust_timer_timeout() -> void:
 	dust_trail.emitting = false
+
+func _on_viseur_timer_timeout():
+	# Crée un nouveau tween pour le fade out
+	viseur_fade_tween = create_tween()
+	viseur_fade_tween.tween_property(viseur, "modulate:a", 0.0, 0.3)  # 0.3 secondes de fade
+	viseur_fade_tween.finished.connect(_on_fade_finished)
+
+# Optionnel : cache complètement le viseur après le fade
+func _on_fade_finished():
+	viseur.visible = false

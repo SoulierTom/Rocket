@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="15_rojdm"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="16_t7bmn"]
 [ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/GPE/Crystal.tscn" id="17_qhoxl"]
-[ext_resource type="Texture2D" uid="uid://b8m2pwyhwvh5r" path="res://Assets/Images/Tutos/manette verte.png" id="20_7muq1"]
-[ext_resource type="Texture2D" uid="uid://dkv331yqp7oo1" path="res://Assets/Images/Tutos/manette verte Grab v2.png" id="21_apkdc"]
+[ext_resource type="Texture2D" uid="uid://d2qklynfcqxpm" path="res://Assets/Images/Tutos/Controller/controller.png" id="22_o16m5"]
+[ext_resource type="Texture2D" uid="uid://dkg1mltq7us0i" path="res://Assets/Images/Tutos/Controller/controller Grab.png" id="23_npywk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4gvn"]
 texture = ExtResource("1_h2g4d")
@@ -1882,17 +1882,17 @@ _data = {
 "Show_Text_3": SubResource("Animation_fq7ke")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ho36"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_eih5l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_7muq1")
+"texture": ExtResource("22_o16m5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_apkdc")
+"texture": ExtResource("23_npywk")
 }],
 "loop": true,
-"name": &"Grab",
+"name": &"GRAB",
 "speed": 2.0
 }]
 
@@ -2036,14 +2036,14 @@ libraries = {
 "": SubResource("AnimationLibrary_snssw")
 }
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Textes/CanvasLayer/AnimatedText1"]
+[node name="Controller Anim" type="AnimatedSprite2D" parent="Textes/CanvasLayer/AnimatedText1"]
 z_index = 10
-position = Vector2(-161.905, -67.619)
-scale = Vector2(0.065, 0.065)
-sprite_frames = SubResource("SpriteFrames_2ho36")
-animation = &"Grab"
-autoplay = "Grab"
-frame_progress = 0.37897
+position = Vector2(-191.429, -69.5238)
+scale = Vector2(0.013, 0.013)
+sprite_frames = SubResource("SpriteFrames_eih5l")
+animation = &"GRAB"
+autoplay = "GRAB"
+frame_progress = 0.932978
 
 [node name="Area2D" type="Area2D" parent="Textes/CanvasLayer/AnimatedText1"]
 position = Vector2(-95.2381, -9.53674e-07)

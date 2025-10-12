@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var player = $".."
+@onready var viseur = $"."
 
 # Variables propres au mouvement du bras
 var is_using_gamepad = true
 var can_aim = true
 var can_shoot = true
 var last_joystick_vector = Vector2(-1,0)
+var is_aiming = false
 
 # Position du bras
 @export var pos_arm_x: float = -3
@@ -44,8 +46,8 @@ const RocketScene = preload("res://Scenes/Player/Rocket.tscn")
 
 func _ready():
 	set_as_top_level(true)  # Dessine l'objet devant les autres
-	$RayCast2D.z_index = 10
-	
+
+
 	# Réinitialisation du système de rechargement au début de chaque niveau
 	shot_in_air = false
 	shot_on_ground = false
@@ -71,17 +73,20 @@ func _physics_process(_delta):
 	if is_using_gamepad:
 		if can_aim :
 			if joystick_vector.length() > 0.1:
+				is_aiming = true
 				Global.target_pos = character_pos + joystick_vector * 1000000
 				last_joystick_vector = joystick_vector
 				look_at(Global.target_pos)
-		else:
-			Global.target_pos = character_pos + last_joystick_vector * 1000000
-			look_at(Global.target_pos)
+			else:
+				is_aiming = false
+				Global.target_pos = character_pos + last_joystick_vector * 1000000
+				look_at(Global.target_pos)
 	
 	# NOUVEAU SYSTÈME DE RECHARGEMENT
 	update_reload_system()
 	
 	$RayCast2D.update_ammo_display()
+
 	if dir_arm.x > 0:  # Le bras vise à droite
 		z_index = 1  # Devant le personnage
 	else:  # Le bras vise à gauche

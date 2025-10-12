@@ -96,6 +96,7 @@ offset_bottom = 1134.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7xotb")
 
 [node name="Label_Continue" type="Label" parent="."]
+visible = false
 offset_left = 1168.0
 offset_top = 1019.0
 offset_right = 2180.0
@@ -119,19 +120,21 @@ libraries = {
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 27.0
-offset_top = -204.0
-offset_right = 1914.0
-offset_bottom = 340.0
+offset_left = 25.0
+offset_top = -255.0
+offset_right = 1912.0
+offset_bottom = 295.0
 grow_vertical = 2
-text = "We just dropped an Remote-Controlled-Robot (model 3).
-As our new operator, you are going 
-to take control of it, using your own computer.
-From where you are on Earth, You will see 
-RCR-3 through a drone following it."
+text = "FERRAND Mayeul,
+Mcorp vous souhaite
+un joyeux anniversaire,
+et une longue vie en tant que
+membre de notre compagnie
+(votre contrat avec nous 
+prenant fin en 2093). 
+"
 label_settings = SubResource("LabelSettings_uou52")
 autowrap_mode = 3
-uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwsbh18je7kag"
-path="res://.godot/imported/manette verte Tir.png-e810e7f8a1edf4d214cd6c0a7d91097c.ctex"
+uid="uid://c6aw4gvipgv3x"
+path="res://.godot/imported/controller original.png-0495652b3e965313755ab06c1eb672e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Tutos/manette verte Tir.png"
-dest_files=["res://.godot/imported/manette verte Tir.png-e810e7f8a1edf4d214cd6c0a7d91097c.ctex"]
+source_file="res://Assets/Images/Tutos/Controller/controller original.png"
+dest_files=["res://.godot/imported/controller original.png-0495652b3e965313755ab06c1eb672e1.ctex"]
 
 [params]
 

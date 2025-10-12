@@ -299,35 +299,37 @@ position = Vector2(102, 159)
 
 [node name="Speedrun timer" parent="." instance=ExtResource("5_4metu")]
 
-[node name="FmodWallgrab" type="FmodEventEmitter2D" parent="."]
+[node name="Sound Design" type="Node" parent="."]
+
+[node name="FmodWallgrab" type="FmodEventEmitter2D" parent="Sound Design"]
 event_name = "event:/PlayerMovements/WallGrab"
 event_guid = "{4850548a-1e85-4e1c-a066-80b8e805e8cf}"
 allow_fadeout = false
 
-[node name="FmodWalk" type="FmodEventEmitter2D" parent="."]
+[node name="FmodWalk" type="FmodEventEmitter2D" parent="Sound Design"]
 event_name = "event:/PlayerMovements/Walking"
 event_guid = "{71bf9bc1-15bb-412d-b2f0-d742e926a385}"
 
-[node name="FmodBonk" type="FmodEventEmitter2D" parent="."]
+[node name="FmodBonk" type="FmodEventEmitter2D" parent="Sound Design"]
 event_name = "event:/PlayerMovements/Bonk"
 event_guid = "{31b7a0f9-6f82-4118-b5d7-770089ca2d55}"
 
-[node name="RocketSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(0, 2)
-
-[node name="FmodLanding" type="FmodEventEmitter2D" parent="."]
+[node name="FmodLanding" type="FmodEventEmitter2D" parent="Sound Design"]
 event_name = "event:/PlayerMovements/Landing"
 event_guid = "{9ffd7896-907e-43a4-80c1-b66217f8692b}"
+
+[node name="FmodJumpFail" type="FmodEventEmitter2D" parent="Sound Design"]
+event_name = "event:/PlayerMovements/JumpFail"
+event_guid = "{fb555025-21ce-497b-901c-fd4aece3d38e}"
+
+[node name="RocketSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 2)
 
 [node name="DustTimer" type="Timer" parent="."]
 wait_time = 0.7
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_7vgyt")
-
-[node name="FmodJumpFail" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/PlayerMovements/JumpFail"
-event_guid = "{fb555025-21ce-497b-901c-fd4aece3d38e}"
 
 [connection signal="area_entered" from="SpikeInteractBox" to="." method="_on_spike_interact_box_area_entered"]
 [connection signal="body_entered" from="SpikeInteractBox" to="SpikeInteractBox" method="_on_body_entered"]
