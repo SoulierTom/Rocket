@@ -9,4 +9,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ok"):
-			LevelManager.go_to_next_level()
+		set_process(false)  # Désactive _process pour bloquer tout input ultérieur
+		LevelManager.go_to_next_level()
