@@ -82,7 +82,6 @@ func _physics_process(_delta):
 	update_reload_system()
 	
 	$RayCast2D.update_ammo_display()
-	
 	if dir_arm.x > 0:  # Le bras vise à droite
 		z_index = 1  # Devant le personnage
 	else:  # Le bras vise à gauche

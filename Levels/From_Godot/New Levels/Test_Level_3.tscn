@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://d0xpjhfkqs1pd"]
+[gd_scene load_steps=45 format=4 uid="uid://d0xpjhfkqs1pd"]
 
 [ext_resource type="Script" path="res://Scripts/level_Cam_Manager.gd" id="1_42xig"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_h2g4d"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="15_rojdm"]
 [ext_resource type="PackedScene" uid="uid://c8ipw2cngkk2l" path="res://Scenes/GPE/Crate_Background_1x1.tscn" id="16_t7bmn"]
 [ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/GPE/Crystal.tscn" id="17_qhoxl"]
+[ext_resource type="Texture2D" uid="uid://b8m2pwyhwvh5r" path="res://Assets/Images/Tutos/manette verte.png" id="20_7muq1"]
+[ext_resource type="Texture2D" uid="uid://dkv331yqp7oo1" path="res://Assets/Images/Tutos/manette verte Grab v2.png" id="21_apkdc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4gvn"]
 texture = ExtResource("1_h2g4d")
@@ -1750,10 +1752,10 @@ sources/2 = SubResource("TileSetScenesCollectionSource_cby4a")
 [sub_resource type="LabelSettings" id="LabelSettings_2pr22"]
 line_spacing = 1.0
 font = ExtResource("6_xck7q")
-font_size = 6
+font_size = 8
 font_color = Color(0, 0.972549, 0, 1)
 outline_size = 1
-outline_color = Color(0, 0.168627, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_wasww"]
@@ -1880,6 +1882,20 @@ _data = {
 "Show_Text_3": SubResource("Animation_fq7ke")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ho36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_7muq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_apkdc")
+}],
+"loop": true,
+"name": &"Grab",
+"speed": 2.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eici"]
 size = Vector2(212, 56.1309)
 
@@ -1999,10 +2015,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.429
-offset_top = -77.1429
-offset_right = -47.4285
-offset_bottom = -38.1427
+offset_left = -144.762
+offset_top = -76.1905
+offset_right = -40.7614
+offset_bottom = -37.1903
 grow_horizontal = 2
 grow_vertical = 2
 text = "Maintenez
@@ -2011,7 +2027,6 @@ Accrochez vous
 au mur."
 label_settings = SubResource("LabelSettings_2pr22")
 autowrap_mode = 3
-uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
@@ -2020,6 +2035,15 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_snssw")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Textes/CanvasLayer/AnimatedText1"]
+z_index = 10
+position = Vector2(-161.905, -67.619)
+scale = Vector2(0.065, 0.065)
+sprite_frames = SubResource("SpriteFrames_2ho36")
+animation = &"Grab"
+autoplay = "Grab"
+frame_progress = 0.37897
 
 [node name="Area2D" type="Area2D" parent="Textes/CanvasLayer/AnimatedText1"]
 position = Vector2(-95.2381, -9.53674e-07)

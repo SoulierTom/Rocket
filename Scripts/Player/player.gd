@@ -92,29 +92,28 @@ func _physics_process(delta: float) -> void:
 	wall_sliding(delta)
 	
 	#Déplacement sur les cotés
-	if can_move :
-		if not Global.player_impulsed:
-			if is_on_floor():
-				if abs(horizontal_input.x) >= 0.1:
-					if sign(velocity.x) != sign(horizontal_input.x):
-						velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)
-					velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta)
-				else:
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2)
-			else:
-				if abs(horizontal_input.x) >= 0.1:
-					if sign(velocity.x) != sign(horizontal_input.x):
-						velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)
-					velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 )
-				else:
-					velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.25)
-		else:
-			if abs(horizontal_input.x) >= 0.1:
+	if not Global.player_impulsed:
+		if is_on_floor():
+			if abs(horizontal_input.x) >= 0.1 and can_move:
 				if sign(velocity.x) != sign(horizontal_input.x):
-					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1)
-				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
-			else :
-				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 10)
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED , ACCELERATION * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 2)
+		else:
+			if abs(horizontal_input.x) >= 0.1 and can_move:
+				if sign(velocity.x) != sign(horizontal_input.x):
+					velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 1.5)
+				velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 2 )
+			else:
+				velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.25)
+	else:
+		if abs(horizontal_input.x) >= 0.1 and can_move:
+			if sign(velocity.x) != sign(horizontal_input.x):
+				velocity.x = move_toward(velocity.x, 0, FRICTION * delta * 0.1)
+			velocity.x = move_toward(velocity.x, sign(horizontal_input.x) * SPEED, ACCELERATION * delta * 1)
+		else :
+			velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * 0.1)
 
 #Permet de descendre des one way plateformes 
 	if is_on_floor(): 
@@ -151,28 +150,25 @@ func _physics_process(delta: float) -> void:
 			else:
 				animated_sprite.play("idle_left")
 		else:
-			if dir_arm.x > 0:
-				animated_sprite.play("run")
-				if current_frame >= 0 and current_frame < 1:
-					$FmodWalk.play_one_shot()
-				# $walk_sound.play()
-				#if current_frame >= 2 and current_frame < 3:
-					# $walk_sound.play()
-					#$FmodWalk.play_one_shot()
-			else:
-				animated_sprite.play("run_left")
-				if current_frame >= 0 and current_frame < 1:
-					$FmodWalk.play_one_shot()
+			if can_move:
+				if dir_arm.x > 0:
+					animated_sprite.play("run")
+					if current_frame >= 0 and current_frame < 1:
+						$FmodWalk.play_one_shot()
+				else:
+					animated_sprite.play("run_left")
+					if current_frame >= 0 and current_frame < 1:
+						$FmodWalk.play_one_shot()
 
 	else: #si le player est en l'air
-		if not is_grabbing :
-			if dir_arm.x > 0:
+		if dir_arm.x > 0:
+			if not is_grabbing :
 				animated_sprite.play("jump")
-			else:
-				animated_sprite.play("jump_left")
-		else: 
-			if dir_arm.x > 0:
+			else: 
 				animated_sprite.play("Grab")
+		else:
+			if not is_grabbing :
+				animated_sprite.play("jump_left")
 			else:
 				animated_sprite.play("Grab_left")
 
@@ -281,7 +277,13 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 		print("Enable_shoot")
 	if area.is_in_group("Set_Aim"):
 		arm.jotystick_vector = ("Look_Left")
-		print("Enable_shoot")
+		print("Set_Aim")
+	if area.is_in_group("Disable_Move"):
+		can_move = false
+		print("Disable_move")
+	if area.is_in_group("Enable_Move"):
+		can_move = true
+		print("Enable_move")
 
 func _on_dust_timer_timeout() -> void:
 	dust_trail.emitting = false

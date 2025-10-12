@@ -1250,7 +1250,7 @@ outline_size = 1
 outline_color = Color(0, 0.168627, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_uq13u"]
+[sub_resource type="Animation" id="Animation_80y13"]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1301,7 +1301,7 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_ktsju"]
+[sub_resource type="Animation" id="Animation_myi1o"]
 resource_name = "Show_Text"
 length = 2.0
 tracks/0/type = "value"
@@ -1317,7 +1317,7 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_oc0wo"]
+[sub_resource type="Animation" id="Animation_hpl7v"]
 resource_name = "Show_Text_1"
 length = 3.0
 tracks/0/type = "value"
@@ -1333,7 +1333,7 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_jbhih"]
+[sub_resource type="Animation" id="Animation_jfxbw"]
 resource_name = "Show_Text_2"
 length = 5.0
 tracks/0/type = "value"
@@ -1349,7 +1349,7 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_o3xkn"]
+[sub_resource type="Animation" id="Animation_53otm"]
 resource_name = "Show_Text_3"
 length = 3.0
 tracks/0/type = "value"
@@ -1365,13 +1365,13 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ju3t"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvwlb"]
 _data = {
-"RESET": SubResource("Animation_uq13u"),
-"Show_Text": SubResource("Animation_ktsju"),
-"Show_Text_1": SubResource("Animation_oc0wo"),
-"Show_Text_2": SubResource("Animation_jbhih"),
-"Show_Text_3": SubResource("Animation_o3xkn")
+"RESET": SubResource("Animation_80y13"),
+"Show_Text": SubResource("Animation_myi1o"),
+"Show_Text_1": SubResource("Animation_hpl7v"),
+"Show_Text_2": SubResource("Animation_jfxbw"),
+"Show_Text_3": SubResource("Animation_53otm")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08cv8"]
@@ -1610,16 +1610,16 @@ shape = SubResource("RectangleShape2D_k3nbt")
 
 [node name="Texts" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Texts"]
+[node name="Visez" type="CanvasLayer" parent="Texts"]
 follow_viewport_enabled = true
 follow_viewport_scale = 1.05
 
-[node name="AnimatedText1" type="Node2D" parent="Texts/CanvasLayer"]
+[node name="AnimatedText1" type="Node2D" parent="Texts/Visez"]
 z_index = 10
 position = Vector2(-116.19, 479.048)
 script = ExtResource("16_tmnq4")
 
-[node name="Label" type="Label" parent="Texts/CanvasLayer/AnimatedText1"]
+[node name="Label" type="Label" parent="Texts/Visez/AnimatedText1"]
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
@@ -1642,18 +1642,18 @@ visible_characters = 0
 visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/CanvasLayer/AnimatedText1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Visez/AnimatedText1"]
 libraries = {
-"": SubResource("AnimationLibrary_8ju3t")
+"": SubResource("AnimationLibrary_tvwlb")
 }
 
-[node name="Area2D" type="Area2D" parent="Texts/CanvasLayer/AnimatedText1"]
+[node name="Area2D" type="Area2D" parent="Texts/Visez/AnimatedText1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/CanvasLayer/AnimatedText1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Visez/AnimatedText1/Area2D"]
 position = Vector2(-24, -4.125)
 shape = SubResource("RectangleShape2D_08cv8")
 
-[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="Texts/CanvasLayer/AnimatedText1"]
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="Texts/Visez/AnimatedText1"]
 event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
 event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
 attached = false
@@ -1694,7 +1694,7 @@ visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Tirez/AnimatedText2"]
 libraries = {
-"": SubResource("AnimationLibrary_8ju3t")
+"": SubResource("AnimationLibrary_tvwlb")
 }
 
 [node name="Area2D" type="Area2D" parent="Texts/Tirez/AnimatedText2"]
