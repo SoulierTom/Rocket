@@ -2,22 +2,26 @@
 
 [ext_resource type="Script" path="res://Scripts/narrative_text.gd" id="1_6705v"]
 [ext_resource type="FontFile" uid="uid://hgxea712s78b" path="res://Assets/Fonts/Ac437_Phoenix_BIOS.ttf" id="2_adgwp"]
-[ext_resource type="Texture2D" uid="uid://b8m2pwyhwvh5r" path="res://Assets/Images/Tutos/manette verte.png" id="2_prbct"]
 [ext_resource type="Script" path="res://Scripts/display_text.gd" id="3_fikwp"]
-[ext_resource type="Texture2D" uid="uid://c4xskuh40plw6" path="res://Assets/Images/Tutos/manette verte A.png" id="3_wc3xn"]
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="4_u1dgi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xotb"]
 bg_color = Color(0, 0.129412, 0, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1mlxp"]
+load_path = "res://.godot/imported/manette verte.png-103126cfc960cd7c23e5da4f1d609842.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oygna"]
+load_path = "res://.godot/imported/manette verte A.png-a0148993236f37a44c5d7188169e2592.ctex"
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_koidm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_prbct")
+"texture": SubResource("CompressedTexture2D_1mlxp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_wc3xn")
+"texture": SubResource("CompressedTexture2D_oygna")
 }],
 "loop": true,
 "name": &"Manette A",
