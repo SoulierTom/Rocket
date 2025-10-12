@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://cw58re1i6dod"]
+[gd_scene load_steps=75 format=4 uid="uid://cw58re1i6dod"]
 
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_jqu5i"]
 [ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="2_ibfnm"]
@@ -20,6 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="18_vf0bl"]
 [ext_resource type="PackedScene" uid="uid://db2mh3gtnjjje" path="res://Scenes/GPE/Crystal.tscn" id="19_2fudu"]
 [ext_resource type="Script" path="res://Scripts/animated_text.gd" id="20_n7jwu"]
+[ext_resource type="Texture2D" uid="uid://bpik7gnio3660" path="res://Assets/Images/Tutos/Controller/controller Move gauche.png" id="21_1au4i"]
+[ext_resource type="Texture2D" uid="uid://e4dof6yxe15c" path="res://Assets/Images/Tutos/Controller/controller Move.png" id="22_vult8"]
+[ext_resource type="Texture2D" uid="uid://c5bl504vbnpk4" path="res://Assets/Images/Tutos/Controller/controller Move droite.png" id="23_340ot"]
+[ext_resource type="Texture2D" uid="uid://d2qklynfcqxpm" path="res://Assets/Images/Tutos/Controller/controller.png" id="24_p6u7t"]
+[ext_resource type="Texture2D" uid="uid://bwgfphtda26tx" path="res://Assets/Images/Tutos/Controller/controller Tir.png" id="25_caaec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu47k"]
 texture = ExtResource("1_jqu5i")
@@ -1769,6 +1774,27 @@ sources/0 = SubResource("TileSetAtlasSource_fdfj2")
 sources/1 = SubResource("TileSetAtlasSource_l5c8m")
 sources/2 = SubResource("TileSetScenesCollectionSource_6roje")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr52c"]
+size = Vector2(43, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njw4l"]
+size = Vector2(55, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvwa"]
+size = Vector2(82.7587, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehea6"]
+size = Vector2(137, 12.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhd1"]
+size = Vector2(63.5, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lchec"]
+size = Vector2(37, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho4pm"]
+size = Vector2(135, 18)
+
 [sub_resource type="LabelSettings" id="LabelSettings_o5h2q"]
 line_spacing = 1.0
 font = ExtResource("16_kaiqv")
@@ -1909,12 +1935,13 @@ size = Vector2(148.913, 13.875)
 size = Vector2(180, 110.969)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q50ij"]
-line_spacing = 1.0
+line_spacing = 2.0
 font = ExtResource("16_kaiqv")
-font_size = 7
+font_size = 8
 font_color = Color(0, 0.972549, 0, 1)
-outline_size = 1
-outline_color = Color(0, 0.168627, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_uq13u"]
@@ -1970,7 +1997,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ktsju"]
 resource_name = "Show_Text"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1978,7 +2005,7 @@ tracks/0/path = NodePath("Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -2043,6 +2070,43 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwqcl"]
 size = Vector2(111.81, 16.75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qeso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_p6u7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_p6u7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_caaec")
+}],
+"loop": true,
+"name": &"controller_tir",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5kid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_1au4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vult8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_340ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vult8")
+}],
+"loop": true,
+"name": &"controller_move",
+"speed": 4.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uqqwu"]
 line_spacing = 1.0
@@ -2180,27 +2244,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_euutq"]
 size = Vector2(154, 9.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr52c"]
-size = Vector2(43, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_njw4l"]
-size = Vector2(55, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvwa"]
-size = Vector2(82.7587, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehea6"]
-size = Vector2(137, 12.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhd1"]
-size = Vector2(63.5, 31)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lchec"]
-size = Vector2(37, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho4pm"]
-size = Vector2(135, 18)
-
 [node name="Template Level" type="Node2D"]
 
 [node name="Tiles" type="Node" parent="."]
@@ -2283,7 +2326,7 @@ color = Color(0.114633, 0.0941652, 0.132796, 0.501961)
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("14_m512b")]
-position = Vector2(-323, 1079)
+position = Vector2(-323, 919)
 
 [node name="Camera" parent="Player" index="4"]
 zoom = Vector2(1, 1)
@@ -2317,311 +2360,6 @@ event_guid = "{99c02129-6301-48b2-8370-596849a37c3b}"
 autoplay = true
 auto_release = true
 preload_event = false
-
-[node name="Texts" type="Node" parent="."]
-
-[node name="Sautez" type="CanvasLayer" parent="Texts"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.05
-
-[node name="AnimatedTextMultiple" type="Node2D" parent="Texts/Sautez"]
-z_index = 10
-position = Vector2(368.571, 1295.24)
-scale = Vector2(0.920002, 1)
-script = ExtResource("15_d16sp")
-
-[node name="Label1" type="Label" parent="Texts/Sautez/AnimatedTextMultiple"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.2172
-offset_top = -98.0
-offset_right = 34.7828
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Bouton A :
-Sautez."
-label_settings = SubResource("LabelSettings_o5h2q")
-autowrap_mode = 3
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="Texts/Sautez/AnimatedTextMultiple"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.2172
-offset_top = -98.0
-offset_right = 38.7828
-offset_bottom = -54.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Analyse../.../.
-.du probleme...
-..Reesayez..//.
-./...de sauter.
-"
-label_settings = SubResource("LabelSettings_o5h2q")
-autowrap_mode = 2
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="Texts/Sautez/AnimatedTextMultiple"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.2172
-offset_top = -98.0
-offset_right = 162.783
-offset_bottom = -63.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Dysfonctionnement de 
-la fonction de saut.
-Trouvez un autre moyen de 
-surmonter les obstacles.
-"
-label_settings = SubResource("LabelSettings_o5h2q")
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayerMultiple" type="AnimationPlayer" parent="Texts/Sautez/AnimatedTextMultiple"]
-libraries = {
-"": SubResource("AnimationLibrary_snssw")
-}
-
-[node name="Area2D" type="Area2D" parent="Texts/Sautez/AnimatedTextMultiple"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Sautez/AnimatedTextMultiple/Area2D"]
-position = Vector2(-3.80435, -6.0625)
-shape = SubResource("RectangleShape2D_ti7jj")
-
-[node name="FmodTypeScreenM1" type="FmodEventEmitter2D" parent="Texts/Sautez/AnimatedTextMultiple"]
-event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
-event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
-attached = false
-fmod_parameters/Typing/id = 1468802155495202495
-fmod_parameters/Typing = "ON"
-fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
-fmod_parameters/Typing/variant_type = 4
-position = Vector2(247.826, -553)
-scale = Vector2(1.08695, 1)
-
-[node name="Felicitation" type="CanvasLayer" parent="Texts"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.05
-
-[node name="AnimatedText2" type="Node2D" parent="Texts/Felicitation"]
-position = Vector2(28.5715, 1026.67)
-script = ExtResource("17_ycqao")
-
-[node name="Label" type="Label" parent="Texts/Felicitation/AnimatedText2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 202.19
-offset_top = -117.428
-offset_right = 354.19
-offset_bottom = -64.4285
-grow_horizontal = 2
-grow_vertical = 2
-text = "Voici un nouveau moyen 
-original de vous deplacer.
-Continuez ainsi."
-label_settings = SubResource("LabelSettings_o5h2q")
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Felicitation/AnimatedText2"]
-libraries = {
-"": SubResource("AnimationLibrary_snssw")
-}
-
-[node name="Area2D" type="Area2D" parent="Texts/Felicitation/AnimatedText2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Felicitation/AnimatedText2/Area2D"]
-position = Vector2(275, -71.5156)
-shape = SubResource("RectangleShape2D_pfy2e")
-
-[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/Felicitation/AnimatedText2"]
-event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
-event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
-attached = false
-fmod_parameters/Typing/id = 1468802155495202495
-fmod_parameters/Typing = "ON"
-fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
-fmod_parameters/Typing/variant_type = 4
-position = Vector2(668, -552)
-
-[node name="Tirez" type="CanvasLayer" parent="Texts"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.05
-
-[node name="AnimatedText2" type="Node2D" parent="Texts/Tirez"]
-z_index = 20
-position = Vector2(-297.143, 1083.81)
-script = ExtResource("17_ycqao")
-
-[node name="Label" type="Label" parent="Texts/Tirez/AnimatedText2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -69.5238
-offset_top = -60.9524
-offset_right = 111.476
-offset_bottom = -28.9524
-grow_horizontal = 2
-grow_vertical = 2
-text = "Gachette droite :
-Tirez."
-label_settings = SubResource("LabelSettings_q50ij")
-autowrap_mode = 3
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Tirez/AnimatedText2"]
-libraries = {
-"": SubResource("AnimationLibrary_8ju3t")
-}
-
-[node name="Area2D" type="Area2D" parent="Texts/Tirez/AnimatedText2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Tirez/AnimatedText2/Area2D"]
-position = Vector2(-50.4762, -0.952403)
-shape = SubResource("RectangleShape2D_rwqcl")
-
-[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/Tirez/AnimatedText2"]
-event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
-event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
-attached = false
-fmod_parameters/Typing/id = 1468802155495202495
-fmod_parameters/Typing = "ON"
-fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
-fmod_parameters/Typing/variant_type = 4
-position = Vector2(-395, -588)
-
-[node name="Move" type="CanvasLayer" parent="Texts"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.05
-
-[node name="AnimatedText2" type="Node2D" parent="Texts/Move"]
-z_index = 20
-position = Vector2(19.0476, 1311.43)
-script = ExtResource("17_ycqao")
-
-[node name="Label" type="Label" parent="Texts/Move/AnimatedText2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -86.6667
-offset_top = -87.6191
-offset_right = 94.3333
-offset_bottom = -55.6191
-grow_horizontal = 2
-grow_vertical = 2
-text = "Joystick Gauche :
-Courez."
-label_settings = SubResource("LabelSettings_q50ij")
-autowrap_mode = 3
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Move/AnimatedText2"]
-libraries = {
-"": SubResource("AnimationLibrary_8ju3t")
-}
-
-[node name="Area2D" type="Area2D" parent="Texts/Move/AnimatedText2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Move/AnimatedText2/Area2D"]
-position = Vector2(-50.4762, -0.952403)
-shape = SubResource("RectangleShape2D_rwqcl")
-
-[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/Move/AnimatedText2"]
-event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
-event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
-attached = false
-fmod_parameters/Typing/id = 1468802155495202495
-fmod_parameters/Typing = "ON"
-fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
-fmod_parameters/Typing/variant_type = 4
-position = Vector2(-395, -588)
-
-[node name="Visez" type="CanvasLayer" parent="Texts"]
-follow_viewport_enabled = true
-follow_viewport_scale = 1.05
-
-[node name="AnimatedText1" type="Node2D" parent="Texts/Visez"]
-z_index = 10
-position = Vector2(241.905, 1422.86)
-script = ExtResource("20_n7jwu")
-
-[node name="Label" type="Label" parent="Texts/Visez/AnimatedText1"]
-z_index = 10
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.4286
-offset_top = -78.0952
-offset_right = 52.5714
-offset_bottom = -43.0952
-grow_horizontal = 2
-grow_vertical = 2
-text = "Joystick Droit :
-Visez.
-"
-label_settings = SubResource("LabelSettings_uqqwu")
-autowrap_mode = 3
-uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts/Visez/AnimatedText1"]
-libraries = {
-"": SubResource("AnimationLibrary_tvwlb")
-}
-
-[node name="Area2D" type="Area2D" parent="Texts/Visez/AnimatedText1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Visez/AnimatedText1/Area2D"]
-position = Vector2(-15.9048, -4.125)
-shape = SubResource("RectangleShape2D_euutq")
-
-[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="Texts/Visez/AnimatedText1"]
-event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
-event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
-attached = false
-fmod_parameters/Typing/id = 1468802155495202495
-fmod_parameters/Typing = "ON"
-fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
-fmod_parameters/Typing/variant_type = 4
-position = Vector2(0, -540)
 
 [node name="Triggers" type="Node" parent="."]
 
@@ -2696,6 +2434,354 @@ collision_mask = 2049
 position = Vector2(-29, 1312)
 shape = SubResource("RectangleShape2D_ho4pm")
 
+[node name="Tutos" type="Node" parent="."]
+
+[node name="Texts" type="Node" parent="Tutos"]
+
+[node name="Sautez" type="CanvasLayer" parent="Tutos/Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedTextMultiple" type="Node2D" parent="Tutos/Texts/Sautez"]
+z_index = 10
+position = Vector2(368.571, 1295.24)
+scale = Vector2(0.920002, 1)
+script = ExtResource("15_d16sp")
+
+[node name="Label1" type="Label" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.2172
+offset_top = -98.0
+offset_right = 34.7828
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bouton A :
+Sautez."
+label_settings = SubResource("LabelSettings_o5h2q")
+autowrap_mode = 3
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.2172
+offset_top = -98.0
+offset_right = 38.7828
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Analyse../.../.
+.du probleme...
+..Reesayez..//.
+./...de sauter.
+"
+label_settings = SubResource("LabelSettings_o5h2q")
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.2172
+offset_top = -98.0
+offset_right = 162.783
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dysfonctionnement de 
+la fonction de saut.
+Trouvez un autre moyen de 
+surmonter les obstacles.
+"
+label_settings = SubResource("LabelSettings_o5h2q")
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayerMultiple" type="AnimationPlayer" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+libraries = {
+"": SubResource("AnimationLibrary_snssw")
+}
+
+[node name="Area2D" type="Area2D" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutos/Texts/Sautez/AnimatedTextMultiple/Area2D"]
+position = Vector2(-3.80435, -6.0625)
+shape = SubResource("RectangleShape2D_ti7jj")
+
+[node name="FmodTypeScreenM1" type="FmodEventEmitter2D" parent="Tutos/Texts/Sautez/AnimatedTextMultiple"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(247.826, -553)
+scale = Vector2(1.08695, 1)
+
+[node name="Felicitation" type="CanvasLayer" parent="Tutos/Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedText2" type="Node2D" parent="Tutos/Texts/Felicitation"]
+position = Vector2(28.5715, 1026.67)
+script = ExtResource("17_ycqao")
+
+[node name="Label" type="Label" parent="Tutos/Texts/Felicitation/AnimatedText2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 202.19
+offset_top = -117.428
+offset_right = 354.19
+offset_bottom = -64.4285
+grow_horizontal = 2
+grow_vertical = 2
+text = "Voici un nouveau moyen 
+original de vous deplacer.
+Continuez ainsi."
+label_settings = SubResource("LabelSettings_o5h2q")
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutos/Texts/Felicitation/AnimatedText2"]
+libraries = {
+"": SubResource("AnimationLibrary_snssw")
+}
+
+[node name="Area2D" type="Area2D" parent="Tutos/Texts/Felicitation/AnimatedText2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutos/Texts/Felicitation/AnimatedText2/Area2D"]
+position = Vector2(275, -71.5156)
+shape = SubResource("RectangleShape2D_pfy2e")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Tutos/Texts/Felicitation/AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(668, -552)
+
+[node name="Tirez" type="CanvasLayer" parent="Tutos/Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedText2" type="Node2D" parent="Tutos/Texts/Tirez" node_paths=PackedStringArray("AnimatedTuto", "TextTuto")]
+z_index = 20
+position = Vector2(-297.143, 1083.81)
+script = ExtResource("17_ycqao")
+AnimatedTuto = NodePath("Controller_Tir")
+TextTuto = NodePath("Tir_Text")
+
+[node name="Label" type="Label" parent="Tutos/Texts/Tirez/AnimatedText2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.95225
+offset_top = -96.1909
+offset_right = 180.048
+offset_bottom = -43.1909
+grow_horizontal = 2
+grow_vertical = 2
+text = "Le bras droit de 
+RCR-3 est équipé 
+d'un puissant
+lance-roquettes.
+"
+label_settings = SubResource("LabelSettings_q50ij")
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutos/Texts/Tirez/AnimatedText2"]
+libraries = {
+"": SubResource("AnimationLibrary_8ju3t")
+}
+
+[node name="Area2D" type="Area2D" parent="Tutos/Texts/Tirez/AnimatedText2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutos/Texts/Tirez/AnimatedText2/Area2D"]
+position = Vector2(-24.7618, -1.90525)
+shape = SubResource("RectangleShape2D_rwqcl")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Tutos/Texts/Tirez/AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(-395, -588)
+
+[node name="Tir_Text" type="Label" parent="Tutos/Texts/Tirez/AnimatedText2"]
+offset_left = -59.0475
+offset_top = -64.7624
+offset_right = 1605.95
+offset_bottom = -24.7624
+text = "TIR"
+label_settings = SubResource("LabelSettings_q50ij")
+
+[node name="Controller_Tir" type="AnimatedSprite2D" parent="Tutos/Texts/Tirez/AnimatedText2"]
+position = Vector2(-48.857, -78.8101)
+scale = Vector2(0.015, 0.015)
+sprite_frames = SubResource("SpriteFrames_7qeso")
+animation = &"controller_tir"
+autoplay = "controller_tir"
+frame_progress = 0.281521
+
+[node name="Move" type="CanvasLayer" parent="Tutos/Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedText2" type="Node2D" parent="Tutos/Texts/Move" node_paths=PackedStringArray("AnimatedTuto", "TextTuto")]
+z_index = 20
+position = Vector2(19.0476, 1311.43)
+script = ExtResource("17_ycqao")
+AnimatedTuto = NodePath("Controller_Move")
+TextTuto = NodePath("Move_Text")
+
+[node name="Label" type="Label" parent="Tutos/Texts/Move/AnimatedText2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -87.6205
+offset_right = 101.0
+offset_bottom = -55.6205
+grow_horizontal = 2
+grow_vertical = 2
+text = "Joystick Gauche :
+Courez."
+label_settings = SubResource("LabelSettings_q50ij")
+autowrap_mode = 3
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutos/Texts/Move/AnimatedText2"]
+libraries = {
+"": SubResource("AnimationLibrary_8ju3t")
+}
+
+[node name="Area2D" type="Area2D" parent="Tutos/Texts/Move/AnimatedText2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutos/Texts/Move/AnimatedText2/Area2D"]
+position = Vector2(-50.4762, -0.952403)
+shape = SubResource("RectangleShape2D_rwqcl")
+
+[node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Tutos/Texts/Move/AnimatedText2"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(-395, -588)
+
+[node name="Move_Text" type="Label" parent="Tutos/Texts/Move/AnimatedText2"]
+offset_left = -100.0
+offset_top = -52.3824
+offset_right = -26.0
+offset_bottom = -29.3824
+text = "DEPLACEMENT"
+label_settings = SubResource("LabelSettings_q50ij")
+
+[node name="Controller_Move" type="AnimatedSprite2D" parent="Tutos/Texts/Move/AnimatedText2"]
+position = Vector2(-67.0476, -34.4301)
+scale = Vector2(0.012, 0.012)
+sprite_frames = SubResource("SpriteFrames_w5kid")
+animation = &"controller_move"
+autoplay = "controller_move"
+frame_progress = 0.633343
+
+[node name="Visez" type="CanvasLayer" parent="Tutos/Texts"]
+follow_viewport_enabled = true
+follow_viewport_scale = 1.05
+
+[node name="AnimatedText1" type="Node2D" parent="Tutos/Texts/Visez"]
+z_index = 10
+position = Vector2(241.905, 1422.86)
+script = ExtResource("20_n7jwu")
+
+[node name="Label" type="Label" parent="Tutos/Texts/Visez/AnimatedText1"]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.4286
+offset_top = -78.0952
+offset_right = 52.5714
+offset_bottom = -43.0952
+grow_horizontal = 2
+grow_vertical = 2
+text = "Joystick Droit :
+Visez.
+"
+label_settings = SubResource("LabelSettings_uqqwu")
+autowrap_mode = 3
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutos/Texts/Visez/AnimatedText1"]
+libraries = {
+"": SubResource("AnimationLibrary_tvwlb")
+}
+
+[node name="Area2D" type="Area2D" parent="Tutos/Texts/Visez/AnimatedText1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutos/Texts/Visez/AnimatedText1/Area2D"]
+position = Vector2(-15.9048, -4.125)
+shape = SubResource("RectangleShape2D_euutq")
+
+[node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="Tutos/Texts/Visez/AnimatedText1"]
+event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
+event_guid = "{bae723ca-040b-4a46-b5b9-55152bf507c2}"
+attached = false
+fmod_parameters/Typing/id = 1468802155495202495
+fmod_parameters/Typing = "ON"
+fmod_parameters/Typing/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/Typing/variant_type = 4
+position = Vector2(0, -540)
+
+[node name="AnimatedTuto" type="Node" parent="Tutos"]
+
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Viseur"]
 [editable path="Player/Arm"]

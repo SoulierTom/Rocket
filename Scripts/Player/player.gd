@@ -34,8 +34,10 @@ var original_pos: Vector2
 var arm_offset_x: float = 0.85
 
 @onready var viseur: RayCast2D = $Viseur
-var viseur_timer: Timer
-var viseur_fade_tween: Tween
+var was_aiming = false
+var is_fading = false
+var fade_progress = 0.0
+var fade_speed = 2.0
 
 
 
@@ -55,12 +57,6 @@ var camera: Camera2D = null
 
 func _ready() -> void:
 	dust_trail.emitting = false
-	
-	viseur_timer = Timer.new()
-	viseur_timer.wait_time = 1.0
-	viseur_timer.one_shot = true
-	add_child(viseur_timer)
-	viseur_timer.timeout.connect(_on_viseur_timer_timeout)
 	
 func _physics_process(delta: float) -> void:
 
@@ -103,14 +99,9 @@ func _physics_process(delta: float) -> void:
 		
 	if arm.is_aiming:
 		viseur.visible = true
-		viseur.modulate.a = 1.0  # Opacité maximale
-		viseur_timer.stop()
-		# Arrête le fade out s'il était en cours
-		if viseur_fade_tween:
-			viseur_fade_tween.kill()
 	else:
-		if viseur_timer.is_stopped():
-			viseur_timer.start()
+		viseur.visible = false
+
 
 	wall_sliding(delta)
 	
@@ -310,13 +301,3 @@ func _on_spike_interact_box_area_entered(area: Area2D) -> void:
 
 func _on_dust_timer_timeout() -> void:
 	dust_trail.emitting = false
-
-func _on_viseur_timer_timeout():
-	# Crée un nouveau tween pour le fade out
-	viseur_fade_tween = create_tween()
-	viseur_fade_tween.tween_property(viseur, "modulate:a", 0.0, 0.3)  # 0.3 secondes de fade
-	viseur_fade_tween.finished.connect(_on_fade_finished)
-
-# Optionnel : cache complètement le viseur après le fade
-func _on_fade_finished():
-	viseur.visible = false
