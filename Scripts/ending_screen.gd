@@ -2,6 +2,7 @@ extends Control
 
 @onready var ending_screen: Control = $"."
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+@onready var crystal_count: Label = $CanvasLayer/autre/crystal_count
 
 # Variables pour les seuils de temps des médailles (en secondes)
 var bronze_time_threshold: float = 600.0  # 10 minutes
@@ -45,6 +46,9 @@ func press_focused_button():
 			break
 
 func _ready():
+	
+	crystal_count.text = str(Global.total_crystal)
+	
 	# Masquer toutes les médailles au début (garder seulement les fonds)
 	hide_all_medals()
 	

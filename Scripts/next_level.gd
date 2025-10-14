@@ -11,4 +11,5 @@ func _on_body_entered(body):
 		Global.total_crystal += Global.current_level_crystals
 		
 		# Changer de niveau
+		Global.current_level_crystals = 0
 		LevelManager.go_to_next_level()

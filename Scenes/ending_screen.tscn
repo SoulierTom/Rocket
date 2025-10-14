@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bay45tlsap6u7"]
+[gd_scene load_steps=21 format=3 uid="uid://bay45tlsap6u7"]
 
 [ext_resource type="Script" path="res://Scripts/ending_screen.gd" id="1_vbw75"]
 [ext_resource type="Texture2D" uid="uid://wrkfj6pm5psf" path="res://Assets/Images/Divers/circle-xxl.png" id="2_svmx2"]
 [ext_resource type="Texture2D" uid="uid://dvkhpjmiublea" path="res://Assets/Images/Divers/medaille_bronze.png" id="2_xmghj"]
 [ext_resource type="Texture2D" uid="uid://bksg1y36mw66t" path="res://Assets/Images/Divers/medaille_argent.png" id="3_47a57"]
 [ext_resource type="AudioStream" uid="uid://bqtkkhprd8gbr" path="res://Assets/Audio/sounds/badge-coin-win.mp3" id="3_ddnqx"]
+[ext_resource type="Texture2D" uid="uid://6hias5pdgw5u" path="res://Assets/Images/Divers/cristal_vrai.png" id="4_gjsfb"]
 [ext_resource type="Texture2D" uid="uid://swomfadh0onv" path="res://Assets/Images/Divers/medaille_or.png" id="4_ldsag"]
 [ext_resource type="Texture2D" uid="uid://cpbxy2dexlh6" path="res://Assets/Images/Divers/medaille_dev.png" id="5_6h2vg"]
 [ext_resource type="AudioStream" uid="uid://etc5bax732s6" path="res://Assets/Audio/sounds/metallic-clang.mp3" id="7_ida1h"]
@@ -201,13 +202,36 @@ grow_vertical = 2
 text = "Main Menu"
 metadata/_edit_use_anchors_ = true
 
+[node name="crystal_ count_text" type="Label" parent="CanvasLayer/autre"]
+layout_mode = 0
+offset_left = 698.0
+offset_top = 591.0
+offset_right = 812.0
+offset_bottom = 640.0
+text = "Nombre totale
+de crystaux :"
+label_settings = SubResource("LabelSettings_k37jj")
+
+[node name="crystal_count" type="Label" parent="CanvasLayer/autre"]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 651.0
+offset_right = 835.0
+offset_bottom = 700.0
+scale = Vector2(1.5, 1.5)
+label_settings = SubResource("LabelSettings_k37jj")
+
+[node name="CristalVrai" type="Sprite2D" parent="CanvasLayer/autre"]
+position = Vector2(773, 666)
+scale = Vector2(2.0625, 2.0625)
+texture = ExtResource("4_gjsfb")
+
 [node name="fond_medaille" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_right = 0.982813
 anchor_bottom = 0.968518
 offset_right = 40.0
 offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="fond_medaille_bronze" type="Sprite2D" parent="CanvasLayer/fond_medaille"]
 modulate = Color(0.237539, 0.237539, 0.237539, 1)
@@ -239,7 +263,6 @@ anchor_right = 0.982813
 anchor_bottom = 0.962037
 offset_right = 40.0
 offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="medaille_bronze" type="Sprite2D" parent="CanvasLayer/medaille"]
 visible = false
@@ -270,7 +293,6 @@ anchor_right = 0.984375
 anchor_bottom = 0.962963
 offset_right = 40.0
 offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="temps_bronze" type="Label" parent="CanvasLayer/temps_medaille"]
 layout_mode = 0

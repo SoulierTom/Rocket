@@ -43,7 +43,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func destruct():
 	$CrystalBreak.play()
-	Global.current_level_crystals += 1
+	Global.total_crystal += 1
 	area_2d.queue_free()
 	is_destructing = true
 	crystal_particle.emitting = true
