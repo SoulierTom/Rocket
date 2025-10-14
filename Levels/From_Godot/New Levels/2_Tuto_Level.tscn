@@ -2772,6 +2772,12 @@ autoplay = true
 auto_release = true
 preload_event = false
 
+[node name="FmodGrottoAmb" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Environment/Grotto Amb"
+event_guid = "{f0102e96-8163-42a3-9ffa-1f028ee68527}"
+autoplay = true
+auto_release = true
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Arm"]

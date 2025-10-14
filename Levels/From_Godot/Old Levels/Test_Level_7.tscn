@@ -713,6 +713,13 @@ camera_vertical_offset = -30.0
 [node name="Line2D" parent="." instance=ExtResource("10_yqit4")]
 points = PackedVector2Array(536, 40, 536, -304, 192, -304, 192, -192, 0, -192, 0, 40, 536, 40)
 
+[node name="FmodGrottoAmb" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Environment/Grotto Amb"
+event_guid = "{f0102e96-8163-42a3-9ffa-1f028ee68527}"
+autoplay = true
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Arm"]
+[editable path="Player/crystal_counter"]
+[editable path="Player/Speedrun timer"]

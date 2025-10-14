@@ -901,6 +901,13 @@ autoplay = true
 auto_release = true
 preload_event = false
 
+[node name="FmodGrottoAmb" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Environment/Grotto Amb"
+event_guid = "{f0102e96-8163-42a3-9ffa-1f028ee68527}"
+autoplay = true
+
 [editable path="Tiles/Player"]
 [editable path="Tiles/Player/Camera"]
 [editable path="Tiles/Player/Arm"]
+[editable path="Tiles/Player/crystal_counter"]
+[editable path="Tiles/Player/Speedrun timer"]
