@@ -736,4 +736,7 @@ position = Vector2(268, -4)
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Viseur"]
 [editable path="Player/Arm"]
+[editable path="Player/crystal_counter"]
+[editable path="Player/Speedrun timer"]
