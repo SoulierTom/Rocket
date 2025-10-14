@@ -713,7 +713,7 @@ tile_map_data = PackedByteArray("AACTANkAAAATAAAAAACTANgAAAATAAAAAACTANcAAAATAAA
 tile_set = SubResource("TileSet_vvb5x")
 
 [node name="Player" parent="." instance=ExtResource("15_yu05u")]
-position = Vector2(1230, 1732)
+position = Vector2(933, 1477)
 
 [node name="Camera" parent="Player" index="4"]
 position = Vector2(1, 0)
@@ -726,7 +726,7 @@ offset_y = -40.0
 zoom_level = Vector2(3.5, 3.5)
 
 [node name="MeshInstance2D" parent="Player/Camera/Crt" index="0"]
-position = Vector2(-45, 224)
+position = Vector2(-64, 206)
 
 [node name="Finish" parent="." instance=ExtResource("16_fs5dm")]
 position = Vector2(1148, 1471)

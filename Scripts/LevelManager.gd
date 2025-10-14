@@ -5,12 +5,12 @@ extends Node
 var levels = [
 	"res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn",
 	"res://Levels/From_Godot/New Levels/1_Narrative_Image.tscn",
-	"res://Levels/From_Godot/New Levels/1_Tuto_Level.tscn",
-	"res://Levels/From_Godot/New Levels/2_Tuto_Level.tscn",
+	"res://Levels/From_Godot/New Levels/Tuto_Level.tscn",
 	"res://Levels/From_Godot/New Levels/Test_Level_3.tscn",
 	"res://Levels/From_Godot/New Levels/3_Tuto_Level.tscn",
 	"res://Levels/From_Godot/Old Levels/Test_Level_2.tscn",
 	"res://Levels/From_Godot/Old Levels/Test_Level_4.tscn",
+	"res://Levels/From_Godot/Old Levels/Test_Level_5.tscn",
 	"res://Levels/From_Godot/Old Levels/Test_Level_6.tscn",
 	"res://Levels/From_Godot/Old Levels/Test_Level_10.tscn",
 	# Ajoutez autant de niveaux que nécessaire

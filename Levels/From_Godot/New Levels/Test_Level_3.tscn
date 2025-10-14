@@ -2038,7 +2038,7 @@ libraries = {
 
 [node name="Controller Anim" type="AnimatedSprite2D" parent="Textes/CanvasLayer/AnimatedText1"]
 z_index = 10
-position = Vector2(-191.429, -69.5238)
+position = Vector2(-120, -91.4286)
 scale = Vector2(0.013, 0.013)
 sprite_frames = SubResource("SpriteFrames_eih5l")
 animation = &"GRAB"

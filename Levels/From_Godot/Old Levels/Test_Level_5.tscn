@@ -806,15 +806,15 @@ tile_set = SubResource("TileSet_vvb5x")
 tile_set = SubResource("TileSet_vvb5x")
 
 [node name="Player" parent="." instance=ExtResource("5_cp4a2")]
-position = Vector2(56, 626)
+position = Vector2(40, -146)
 
 [node name="Camera" parent="Player" index="4"]
 position = Vector2(2, 0)
 offset = Vector2(0, 70)
 zoom = Vector2(1, 1)
-limit_left = -215
+limit_left = -245
 limit_top = -125
-limit_right = 265
+limit_right = 285
 limit_bottom = 1115
 editor_draw_limits = true
 zoom_level = Vector2(4, 4)
@@ -931,6 +931,7 @@ texture = SubResource("GradientTexture2D_506wn")
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Viseur"]
 [editable path="Player/Arm"]
 [editable path="Player/crystal_counter"]
 [editable path="Player/Speedrun timer"]
