@@ -23,16 +23,16 @@ func _ready() -> void:
 		scale_curve.add_point(Vector2(0.5, 1.5))  # Milieu: échelle maximale
 		scale_curve.add_point(Vector2(1, 1))  # Fin: retour à l'échelle normale
 	
-	previous_crystals = Global.current_level_crystals
+	previous_crystals = Global.total_crystal
 
 func _process(delta: float) -> void:
 	# Mettre à jour le texte
-	label.text = str(Global.current_level_crystals)
+	label.text = str(Global.total_crystal)
 	
 	# Détecter si un cristal a été ajouté
-	if Global.current_level_crystals > previous_crystals:
+	if Global.total_crystal > previous_crystals:
 		start_scale_animation()
-		previous_crystals = Global.current_level_crystals
+		previous_crystals = Global.total_crystal
 	
 	# Gérer l'animation
 	if is_animating:

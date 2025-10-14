@@ -71,6 +71,7 @@ func _on_play_pressed() -> void:
 	MusicManager.stop_music(0.4)  # Durée du fade out (ajustez selon la durée de votre transition)
 	LevelManager.current_level_index = 0
 	Global.speedrun_time = 0
+	Global.total_crystal = 0
 	get_tree().change_scene_to_file("res://Levels/From_Godot/New Levels/0_Narrative_Text.tscn")
 
 func _on_quit_pressed() -> void:
