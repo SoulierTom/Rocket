@@ -1720,6 +1720,20 @@ autoplay = true
 auto_release = true
 preload_event = false
 
+[node name="FmodIntroFall" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PlayerMovements/FreeFall"
+event_guid = "{e3a1731d-01d7-4d2d-87ab-f980dcfe5ed9}"
+autoplay = true
+auto_release = true
+
+[node name="FmodGrottoAmb" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Environment/Grotto Amb"
+event_guid = "{f0102e96-8163-42a3-9ffa-1f028ee68527}"
+autoplay = true
+auto_release = true
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Arm"]
+[editable path="Player/crystal_counter"]
+[editable path="Player/Speedrun timer"]

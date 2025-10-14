@@ -1981,8 +1981,8 @@ position = Vector2(243, -52)
 position = Vector2(403, -479)
 
 [node name="FmodReverbSelector" type="FmodEventEmitter2D" parent="."]
-event_name = "snapshot:/3 Big Verb"
-event_guid = "{5f092f99-d31c-4e60-83bc-8902f6b886c2}"
+event_name = "snapshot:/2 Medium Verb"
+event_guid = "{00c6df3a-c0d8-4240-9049-237437099eb2}"
 autoplay = true
 auto_release = true
 preload_event = false
@@ -2092,7 +2092,14 @@ position = Vector2(-2, 80)
 [node name="Spikes9" parent="Spikes" instance=ExtResource("7_flc7w")]
 position = Vector2(7, 80)
 
+[node name="FmodGrottoAmb" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Environment/Grotto Amb"
+event_guid = "{f0102e96-8163-42a3-9ffa-1f028ee68527}"
+autoplay = true
+
 [editable path="Player"]
 [editable path="Player/Camera"]
 [editable path="Player/Viseur"]
 [editable path="Player/Arm"]
+[editable path="Player/crystal_counter"]
+[editable path="Player/Speedrun timer"]
