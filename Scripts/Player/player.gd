@@ -13,6 +13,7 @@ var max_fall_speed : float = 250
 var is_grabbing := false
 var just_on_wall := false
 var was_on_wall := false
+var platform_moving = Vector2.ZERO
 
 var just_landed := false
 var was_on_floor := true
@@ -84,7 +85,8 @@ func _physics_process(delta: float) -> void:
 		bonk_freeze_timer -= delta
 		velocity.y *= 0.9
 		velocity.x *= 0.9  
-
+	
+	
 	if is_on_floor():
 		Global.player_impulsed = false
 		fall_time = 0.0
@@ -104,6 +106,8 @@ func _physics_process(delta: float) -> void:
 
 
 	wall_sliding(delta)
+	
+	platform_moving = get_platform_velocity()
 	
 	#Déplacement sur les cotés
 	if not Global.player_impulsed:
@@ -232,14 +236,16 @@ func wall_sliding(delta):
 			if not is_grabbing:
 				$"Sound Design/FmodWallgrab".play()
 				is_grabbing = true
+				Global.player_impulsed = false
 		else:
 			is_grabbing = false
 	else:
-		is_grabbing = false
 		was_on_wall = false
+		is_grabbing = false
 	#Grab le mur
-	if is_grabbing:
-		velocity.y = 0
+	if is_grabbing :
+		if not Global.player_impulsed :
+			velocity = platform_moving
 
 
 

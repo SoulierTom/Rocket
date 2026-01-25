@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1r6hcvx8881j"]
+
+[ext_resource type="Texture2D" uid="uid://dusrh006trou8" path="res://Assets/Images/Divers/icon.svg" id="1_akdwb"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="2_k4561"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhsag"]
+size = Vector2(16, 64)
+
+[sub_resource type="Animation" id="Animation_rjy73"]
+resource_name = "Move_LeftRight"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kxtsx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jor0u"]
+_data = {
+"Move_LeftRight": SubResource("Animation_rjy73"),
+"RESET": SubResource("Animation_kxtsx")
+}
+
+[node name="Moving_Platform" type="Node2D"]
+position = Vector2(-4, -4)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+sync_to_physics = false
+
+[node name="Icon" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(8, 32)
+scale = Vector2(0.125, 0.5)
+texture = ExtResource("1_akdwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+visible = false
+light_mask = 3
+visibility_layer = 3
+position = Vector2(8, 32)
+shape = SubResource("RectangleShape2D_jhsag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_jor0u")
+}
+autoplay = "Move_LeftRight"
+
+[node name="Spikes" parent="AnimatableBody2D" instance=ExtResource("2_k4561")]
+position = Vector2(0, 0)
+
+[node name="Spikes2" parent="AnimatableBody2D" instance=ExtResource("2_k4561")]
+position = Vector2(8, 0)
