@@ -637,6 +637,7 @@ position = Vector2(-216, -89)
 
 [node name="Camera" parent="Tiles/Player" index="4"]
 limit_left = -350
+zoom_level = Vector2(4, 4)
 bounds_node_path = NodePath("../../../Line2D")
 
 [node name="SpiekManager" type="Node" parent="Tiles"]

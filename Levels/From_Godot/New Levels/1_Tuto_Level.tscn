@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dshq24ra64qmv"]
+[gd_scene load_steps=39 format=4 uid="uid://dshq24ra64qmv"]
 
 [ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_32a27"]
 [ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="1_r57p1"]
@@ -1229,18 +1229,6 @@ sources/0 = SubResource("TileSetAtlasSource_tadxp")
 sources/1 = SubResource("TileSetAtlasSource_47jt4")
 sources/2 = SubResource("TileSetScenesCollectionSource_0hlb5")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_di58s"]
-size = Vector2(43, 29)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_apevv"]
-size = Vector2(55, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_talow"]
-size = Vector2(82.7587, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3nbt"]
-size = Vector2(120.5, 12.25)
-
 [sub_resource type="LabelSettings" id="LabelSettings_obam0"]
 line_spacing = 1.0
 font = ExtResource("17_t747w")
@@ -1374,9 +1362,6 @@ _data = {
 "Show_Text_3": SubResource("Animation_53otm")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_08cv8"]
-size = Vector2(212, 9.75)
-
 [sub_resource type="LabelSettings" id="LabelSettings_icta2"]
 line_spacing = 1.0
 font = ExtResource("17_t747w")
@@ -1385,9 +1370,6 @@ font_color = Color(0, 0.972549, 0, 1)
 outline_size = 1
 outline_color = Color(0, 0.168627, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kewrd"]
-size = Vector2(193, 16.75)
 
 [node name="Template Level" type="Node2D"]
 
@@ -1567,27 +1549,10 @@ position = Vector2(-136, -562)
 collision_layer = 2049
 collision_mask = 2049
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Enable_Jump"]
-position = Vector2(4.5, -4.5)
-shape = SubResource("RectangleShape2D_di58s")
-
 [node name="Disable_Arm" type="Area2D" parent="Triggers" groups=["Disable_Arm"]]
 position = Vector2(-134, -559)
 collision_layer = 2049
 collision_mask = 2049
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Disable_Arm"]
-position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_apevv")
-
-[node name="Disable_Shoot" type="Area2D" parent="Triggers" groups=["Disable_Shoot"]]
-position = Vector2(-136, -564)
-scale = Vector2(0.64, 1.63217)
-collision_layer = 2049
-collision_mask = 2049
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Disable_Shoot"]
-shape = SubResource("RectangleShape2D_talow")
 
 [node name="Enable_Shoot" type="Area2D" parent="Triggers" groups=["Enable_Shoot"]]
 position = Vector2(235, 519)
@@ -1595,18 +1560,10 @@ scale = Vector2(2.32, 1)
 collision_layer = 2049
 collision_mask = 2049
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Enable_Shoot"]
-position = Vector2(13.7931, 0)
-shape = SubResource("RectangleShape2D_talow")
-
 [node name="Enable_Arm" type="Area2D" parent="Triggers" groups=["Enable_Arm"]]
 position = Vector2(14, 432)
 collision_layer = 2049
 collision_mask = 2049
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Enable_Arm"]
-position = Vector2(-151.75, 44.125)
-shape = SubResource("RectangleShape2D_k3nbt")
 
 [node name="Texts" type="Node" parent="."]
 
@@ -1648,10 +1605,6 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="Texts/Visez/AnimatedText1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Visez/AnimatedText1/Area2D"]
-position = Vector2(-24, -4.125)
-shape = SubResource("RectangleShape2D_08cv8")
 
 [node name="FmodTypeScreen" type="FmodEventEmitter2D" parent="Texts/Visez/AnimatedText1"]
 event_name = "event:/UI-and-Events/TypeScreenSoftInGame"
@@ -1698,10 +1651,6 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="Texts/Tirez/AnimatedText2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Tirez/AnimatedText2/Area2D"]
-position = Vector2(-9.5, -7.625)
-shape = SubResource("RectangleShape2D_kewrd")
 
 [node name="FmodTypeScreen2" type="FmodEventEmitter2D" parent="Texts/Tirez/AnimatedText2"]
 event_name = "event:/UI-and-Events/TypeScreenSoftInGame"

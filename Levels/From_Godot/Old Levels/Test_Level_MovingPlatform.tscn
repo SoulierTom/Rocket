@@ -1,24 +1,24 @@
 [gd_scene load_steps=23 format=4 uid="uid://cocyao3323xhc"]
 
-[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/LD/CameraBounds.tscn" id="1_8ddmc"]
-[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="1_sk66a"]
-[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="2_w16hg"]
-[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="3_ej8cx"]
-[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="4_qif71"]
-[ext_resource type="PackedScene" uid="uid://d11tok77s5cbk" path="res://Scenes/GPE/Killzone.tscn" id="5_c1ore"]
-[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="5_fb1i3"]
-[ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/destruct_platform_8x2.tscn" id="6_w5me4"]
-[ext_resource type="PackedScene" uid="uid://bo01vmxbggn2w" path="res://Scenes/GPE/destruct_wall_8x2.tscn" id="7_dk4ty"]
-[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="8_l511l"]
-[ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="8_xjlag"]
-[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="9_c58gm"]
-[ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="9_ulpa2"]
-[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x2.tscn" id="10_1r8cl"]
-[ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="11_6g76b"]
-[ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_eaggy"]
+[ext_resource type="PackedScene" uid="uid://dtxvg447byeme" path="res://Scenes/LD/CameraBounds.tscn" id="1_06v07"]
+[ext_resource type="PackedScene" uid="uid://dqod2t2tuu181" path="res://Scenes/Player/player.tscn" id="2_me6fe"]
+[ext_resource type="PackedScene" uid="uid://dn5d2ohn64mjd" path="res://Scenes/Next_Level.tscn" id="3_syfla"]
+[ext_resource type="Texture2D" uid="uid://ds065wgs13ioe" path="res://Assets/Images/Tilesets/Tile_Set_Dirt_v2.png" id="4_eg2uo"]
+[ext_resource type="Texture2D" uid="uid://d1c2800ko30my" path="res://Assets/Images/Tilesets/Tile_Set_Grassy_Cave.png" id="5_tkymq"]
+[ext_resource type="Texture2D" uid="uid://crdss1xcj1q72" path="res://Assets/Images/Tilesets/Tuto picture set.png" id="6_488a7"]
+[ext_resource type="PackedScene" uid="uid://c24n1lawsjlrw" path="res://Scenes/GPE/destruct_platform_4x2.tscn" id="7_ccnl5"]
+[ext_resource type="PackedScene" uid="uid://b4yfhvifo5im8" path="res://Scenes/GPE/Spike.tscn" id="8_oil36"]
+[ext_resource type="PackedScene" uid="uid://duch1ixhvbekr" path="res://Scenes/GPE/Crate_2x2.tscn" id="9_vehfq"]
+[ext_resource type="PackedScene" uid="uid://c3l7e672drq3v" path="res://Scenes/GPE/destruct_platform_8x2.tscn" id="10_oxbun"]
+[ext_resource type="PackedScene" uid="uid://djx8g733c018p" path="res://Scenes/GPE/destruct_rock_3x3.tscn" id="11_fytct"]
+[ext_resource type="PackedScene" uid="uid://c4qys3gs8tdew" path="res://Scenes/GPE/destruct_rock_2x2.tscn" id="12_ml6ef"]
+[ext_resource type="PackedScene" uid="uid://cblfns0jy88ut" path="res://Scenes/GPE/destruct_rock_4x4.tscn" id="13_k4es7"]
+[ext_resource type="PackedScene" uid="uid://lxj8vlgkljex" path="res://Scenes/GPE/destruct_wall_4x1.tscn" id="14_xfift"]
+[ext_resource type="PackedScene" uid="uid://bo01vmxbggn2w" path="res://Scenes/GPE/destruct_wall_8x2.tscn" id="15_twwdv"]
+[ext_resource type="PackedScene" uid="uid://d11tok77s5cbk" path="res://Scenes/GPE/Killzone.tscn" id="16_wou7j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbd66"]
-texture = ExtResource("2_w16hg")
+texture = ExtResource("4_eg2uo")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -96,7 +96,7 @@ separation = Vector2i(1, 1)
 sources/1 = SubResource("TileSetAtlasSource_gbd66")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tadxp"]
-texture = ExtResource("3_ej8cx")
+texture = ExtResource("5_tkymq")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -511,7 +511,7 @@ texture_region_size = Vector2i(8, 8)
 18:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47jt4"]
-texture = ExtResource("4_qif71")
+texture = ExtResource("6_488a7")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -611,15 +611,15 @@ texture_region_size = Vector2i(8, 8)
 7:11/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7n241"]
-scenes/1/scene = ExtResource("10_1r8cl")
-scenes/2/scene = ExtResource("8_l511l")
-scenes/3/scene = ExtResource("9_c58gm")
-scenes/4/scene = ExtResource("6_w5me4")
-scenes/5/scene = ExtResource("11_6g76b")
-scenes/6/scene = ExtResource("9_ulpa2")
-scenes/7/scene = ExtResource("8_xjlag")
-scenes/8/scene = ExtResource("14_eaggy")
-scenes/9/scene = ExtResource("7_dk4ty")
+scenes/1/scene = ExtResource("7_ccnl5")
+scenes/2/scene = ExtResource("8_oil36")
+scenes/3/scene = ExtResource("9_vehfq")
+scenes/4/scene = ExtResource("10_oxbun")
+scenes/5/scene = ExtResource("11_fytct")
+scenes/6/scene = ExtResource("12_ml6ef")
+scenes/7/scene = ExtResource("13_k4es7")
+scenes/8/scene = ExtResource("14_xfift")
+scenes/9/scene = ExtResource("15_twwdv")
 
 [sub_resource type="TileSet" id="TileSet_vvb5x"]
 tile_size = Vector2i(8, 8)
@@ -638,10 +638,10 @@ sources/2 = SubResource("TileSetScenesCollectionSource_7n241")
 
 [node name="Level 3" type="Node2D"]
 
-[node name="Line2D" parent="." instance=ExtResource("1_8ddmc")]
+[node name="Line2D" parent="." instance=ExtResource("1_06v07")]
 points = PackedVector2Array(-256, -384, -256, -192, 160, -192, 160, -128, 600, -128, 600, -576, 24, -576, 24, -384, -256, -384)
 
-[node name="Player" parent="." instance=ExtResource("5_fb1i3")]
+[node name="Player" parent="." instance=ExtResource("2_me6fe")]
 position = Vector2(178, -330)
 
 [node name="Camera" parent="Player" index="4"]
@@ -649,7 +649,7 @@ bounds_node_path = NodePath("../../Line2D")
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Finish" parent="Tiles" instance=ExtResource("1_sk66a")]
+[node name="Finish" parent="Tiles" instance=ExtResource("3_syfla")]
 position = Vector2(614, -477)
 
 [node name="background" type="TileMapLayer" parent="Tiles"]
@@ -683,48 +683,49 @@ tile_set = SubResource("TileSet_vvb5x")
 
 [node name="destruct_Platforms" type="Node" parent="Tiles"]
 
-[node name="Breakable_small_platform" parent="Tiles/destruct_Platforms" instance=ExtResource("6_w5me4")]
+[node name="Breakable_small_platform" parent="Tiles/destruct_Platforms" instance=ExtResource("10_oxbun")]
 position = Vector2(99, -295)
 
-[node name="Breakable_small_platform2" parent="Tiles/destruct_Platforms" instance=ExtResource("7_dk4ty")]
+[node name="Breakable_small_platform2" parent="Tiles/destruct_Platforms" instance=ExtResource("15_twwdv")]
 position = Vector2(446, -390)
 
-[node name="Breakable_small_platform5" parent="Tiles/destruct_Platforms" instance=ExtResource("7_dk4ty")]
+[node name="Breakable_small_platform5" parent="Tiles/destruct_Platforms" instance=ExtResource("15_twwdv")]
 position = Vector2(379, -449)
 
-[node name="Breakable Block5" parent="Tiles/destruct_Platforms" instance=ExtResource("8_xjlag")]
+[node name="Breakable Block5" parent="Tiles/destruct_Platforms" instance=ExtResource("13_k4es7")]
 position = Vector2(-32, -270)
 
-[node name="Breakable Block2" parent="Tiles/destruct_Platforms" instance=ExtResource("8_xjlag")]
+[node name="Breakable Block2" parent="Tiles/destruct_Platforms" instance=ExtResource("13_k4es7")]
 position = Vector2(16, -269)
 
-[node name="Breakable Block10" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
+[node name="Breakable Block10" parent="Tiles/destruct_Platforms" instance=ExtResource("12_ml6ef")]
 position = Vector2(-5, -261)
 
-[node name="Breakable Block11" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
+[node name="Breakable Block11" parent="Tiles/destruct_Platforms" instance=ExtResource("12_ml6ef")]
 position = Vector2(-5, -277)
 
-[node name="Breakable Block9" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
+[node name="Breakable Block9" parent="Tiles/destruct_Platforms" instance=ExtResource("12_ml6ef")]
 position = Vector2(-37, -293)
 
-[node name="Breakable Block8" parent="Tiles/destruct_Platforms" instance=ExtResource("9_ulpa2")]
+[node name="Breakable Block8" parent="Tiles/destruct_Platforms" instance=ExtResource("12_ml6ef")]
 position = Vector2(-21, -309)
 
-[node name="Breakable_small_platform3" parent="Tiles/destruct_Platforms" instance=ExtResource("10_1r8cl")]
+[node name="Breakable_small_platform3" parent="Tiles/destruct_Platforms" instance=ExtResource("7_ccnl5")]
 position = Vector2(264, -295)
 
-[node name="Breakable_small_platform4" parent="Tiles/destruct_Platforms" instance=ExtResource("10_1r8cl")]
+[node name="Breakable_small_platform4" parent="Tiles/destruct_Platforms" instance=ExtResource("7_ccnl5")]
 position = Vector2(344, -315)
 
-[node name="Breakable_small_platform6" parent="Tiles/destruct_Platforms" instance=ExtResource("10_1r8cl")]
+[node name="Breakable_small_platform6" parent="Tiles/destruct_Platforms" instance=ExtResource("7_ccnl5")]
 position = Vector2(456, -431)
 
-[node name="Area2D" parent="Tiles" instance=ExtResource("5_c1ore")]
+[node name="Area2D" parent="Tiles" instance=ExtResource("16_wou7j")]
 position = Vector2(202, -86)
 scale = Vector2(5.6, 1)
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Viseur"]
 [editable path="Player/Arm"]
 [editable path="Player/crystal_counter"]
 [editable path="Player/Speedrun timer"]

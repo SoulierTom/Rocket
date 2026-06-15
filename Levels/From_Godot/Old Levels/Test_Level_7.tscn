@@ -701,6 +701,7 @@ position = Vector2(484, -216)
 position = Vector2(67, -58)
 
 [node name="Camera" parent="Player" index="4"]
+zoom_level = Vector2(4, 4)
 bounds_node_path = NodePath("../../Line2D")
 
 [node name="Finish" parent="." instance=ExtResource("6_oqgvh")]
@@ -720,6 +721,7 @@ autoplay = true
 
 [editable path="Player"]
 [editable path="Player/Camera"]
+[editable path="Player/Viseur"]
 [editable path="Player/Arm"]
 [editable path="Player/crystal_counter"]
 [editable path="Player/Speedrun timer"]
